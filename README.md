@@ -4,13 +4,13 @@
 
 **Modern Laravel Web Application**
 
-[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-*A robust and scalable web application built with Laravel 11, featuring modern UI/UX design and best practices.*
+*A robust and scalable web application built with Laravel 12, featuring modern UI/UX design and best practices.*
 
 [🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🛠️ Features](#️-features) • [🤝 Contributing](#-contributing)
 
@@ -20,11 +20,11 @@
 
 ## 📖 About
 
-Zow Zow is a modern web application built with Laravel 11, PostgreSQL, and Tailwind CSS. It follows industry best practices and provides a solid foundation for scalable web development.
+Zow Zow is a modern web application built with Laravel 12, PostgreSQL, and Tailwind CSS. It follows industry best practices and provides a solid foundation for scalable web development.
 
 ### ✨ Key Highlights
 
-- 🎯 **Modern Stack**: Laravel 11 + PostgreSQL + Tailwind CSS
+- 🎯 **Modern Stack**: Laravel 12 + PostgreSQL + Tailwind CSS
 - 🔒 **Secure**: Built-in authentication with Laravel Sanctum
 - 🎨 **Responsive**: Mobile-first design approach
 - ⚡ **Fast**: Optimized performance with Vite build tool
@@ -115,7 +115,7 @@ Ensure your system meets these requirements:
 
 | Component | Technology | Description |
 |-----------|------------|-------------|
-| **Framework** | Laravel 11 | Modern PHP framework with elegant syntax |
+| **Framework** | Laravel 12 | Modern PHP framework with elegant syntax |
 | **Database** | PostgreSQL | Robust relational database |
 | **Authentication** | Laravel Sanctum | API token authentication |
 | **Caching** | Redis/File | High-performance caching system |
