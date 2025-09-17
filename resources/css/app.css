@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    
+    /* Matcha → #809671 */
+    --color-matcha-50: #f6f8f4;
+    --color-matcha-100: #edf2e7;
+    --color-matcha-200: #d9e5ce;
+    --color-matcha-300: #c4d8b5;
+    --color-matcha-400: #a8c68f;
+    --color-matcha-500: #809671;
+    --color-matcha-600: #6d8c4f;
+    --color-matcha-700: #5a7342;
+    --color-matcha-800: #475a35;
+    --color-matcha-900: #344028;
+    
+    /* Almond → #E5E0D8 */
+    --color-almond-50: #fefcf9;
+    --color-almond-100: #fdf8f0;
+    --color-almond-200: #faf0e1;
+    --color-almond-300: #f5e6d3;
+    --color-almond-400: #eed9c4;
+    --color-almond-500: #e5e0d8;
+    --color-almond-600: #d2c7b8;
+    --color-almond-700: #b7a58d;
+    --color-almond-800: #9e8b6e;
+    --color-almond-900: #725c3a;
+    
+    /* Pistache → #B3B792 */
+    --color-pistache-50: #f7f8f5;
+    --color-pistache-100: #eff1ea;
+    --color-pistache-200: #d7dccb;
+    --color-pistache-300: #bfc7ac;
+    --color-pistache-400: #c6cfa4;
+    --color-pistache-500: #b3b792;
+    --color-pistache-600: #a1a583;
+    --color-pistache-700: #86896d;
+    --color-pistache-800: #6b6e57;
+    --color-pistache-900: #575a47;
+    
+    /* Chai → #D2AB80 */
+    --color-chai-50: #faf8f5;
+    --color-chai-100: #f5f0ea;
+    --color-chai-200: #e8ddd0;
+    --color-chai-300: #dbcab6;
+    --color-chai-400: #d7c19c;
+    --color-chai-500: #d2ab80;
+    --color-chai-600: #bd9a73;
+    --color-chai-700: #9e8060;
+    --color-chai-800: #7f664d;
+    --color-chai-900: #67533f;
+    
+    /* Carob → #725C3A */
+    --color-carob-50: #f6f4f1;
+    --color-carob-100: #ede9e3;
+    --color-carob-200: #d2c7b8;
+    --color-carob-300: #b7a58d;
+    --color-carob-400: #9e8b6e;
+    --color-carob-500: #725c3a;
+    --color-carob-600: #675334;
+    --color-carob-700: #56452b;
+    --color-carob-800: #453722;
+    --color-carob-900: #392e1c;
+    
+    /* Vanilla → #E5D2B8 */
+    --color-vanilla-50: #fdfcfa;
+    --color-vanilla-100: #fbf8f4;
+    --color-vanilla-200: #f4ede4;
+    --color-vanilla-300: #ede2d4;
+    --color-vanilla-400: #e8d5c1;
+    --color-vanilla-500: #e5d2b8;
+    --color-vanilla-600: #cebda6;
+    --color-vanilla-700: #ac9d8b;
+    --color-vanilla-800: #8a7e70;
+    --color-vanilla-900: #71675c;
+ }
+
+/* Custom scrollbar hide utility */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
