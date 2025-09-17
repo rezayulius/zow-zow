@@ -1,171 +1,306 @@
-# Zow Zow - Laravel Application
+<div align="center">
 
-## 📋 Deskripsi
-Zow Zow adalah aplikasi web berbasis Laravel 11 dengan PostgreSQL sebagai database dan Tailwind CSS untuk styling.
+# 🌟 Zow Zow
 
-## 🚀 Instalasi Awal
+**Modern Laravel Web Application**
+
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+*A robust and scalable web application built with Laravel 11, featuring modern UI/UX design and best practices.*
+
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🛠️ Features](#️-features) • [🤝 Contributing](#-contributing)
+
+</div>
+
+---
+
+## 📖 About
+
+Zow Zow is a modern web application built with Laravel 11, PostgreSQL, and Tailwind CSS. It follows industry best practices and provides a solid foundation for scalable web development.
+
+### ✨ Key Highlights
+
+- 🎯 **Modern Stack**: Laravel 11 + PostgreSQL + Tailwind CSS
+- 🔒 **Secure**: Built-in authentication with Laravel Sanctum
+- 🎨 **Responsive**: Mobile-first design approach
+- ⚡ **Fast**: Optimized performance with Vite build tool
+- 🧪 **Tested**: Comprehensive test coverage
+- 📱 **PWA Ready**: Progressive Web App capabilities
+
+## 🚀 Quick Start
 
 ### Prerequisites
-Pastikan sistem Anda sudah terinstall:
-- PHP >= 8.2
-- Composer
-- Node.js & NPM
-- PostgreSQL
-- Git
 
-### 1. Clone Repository
-```bash
-git clone <repository-url>
-cd zow-zow
+Ensure your system meets these requirements:
+
+| Requirement | Version | Status |
+|-------------|---------|--------|
+| PHP | >= 8.2 | ✅ Required |
+| Composer | Latest | ✅ Required |
+| Node.js | >= 18.x | ✅ Required |
+| NPM/Yarn | Latest | ✅ Required |
+| PostgreSQL | >= 13.x | ✅ Required |
+| Git | Latest | ✅ Required |
+
+### 🔧 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/zow-zow.git
+   cd zow-zow
+   ```
+
+2. **Install dependencies**
+   ```bash
+   # Backend dependencies
+   composer install
+   
+   # Frontend dependencies
+   npm install
+   ```
+
+3. **Environment configuration**
+   ```bash
+   # Copy environment file
+   cp .env.example .env
+   
+   # Generate application key
+   php artisan key:generate
+   ```
+
+4. **Database setup**
+   
+   Edit `.env` file with your database credentials:
+   ```env
+   DB_CONNECTION=pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_DATABASE=zow_zow_db
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
+
+5. **Run migrations**
+   ```bash
+   # Create database tables
+   php artisan migrate
+   
+   # Seed sample data (optional)
+   php artisan db:seed
+   ```
+
+6. **Build assets**
+   ```bash
+   # Development build
+   npm run dev
+   
+   # Production build
+   npm run build
+   ```
+
+7. **Start the server**
+   ```bash
+   php artisan serve
+   ```
+
+🎉 **Success!** Your application is now running at [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+## 🛠️ Features
+
+### 🔧 Backend Stack
+
+| Component | Technology | Description |
+|-----------|------------|-------------|
+| **Framework** | Laravel 11 | Modern PHP framework with elegant syntax |
+| **Database** | PostgreSQL | Robust relational database |
+| **Authentication** | Laravel Sanctum | API token authentication |
+| **Caching** | Redis/File | High-performance caching system |
+| **Queue** | Database/Redis | Background job processing |
+| **Testing** | PHPUnit | Comprehensive test suite |
+
+### 🎨 Frontend Stack
+
+| Component | Technology | Description |
+|-----------|------------|-------------|
+| **CSS Framework** | Tailwind CSS | Utility-first CSS framework |
+| **Build Tool** | Vite | Fast build tool and dev server |
+| **JavaScript** | Vanilla JS | Lightweight and performant |
+| **Icons** | Heroicons | Beautiful hand-crafted SVG icons |
+
+### 🔒 Security Features
+
+- ✅ **CSRF Protection** - Cross-site request forgery protection
+- ✅ **Rate Limiting** - API rate limiting (60 requests/minute)
+- ✅ **Secure Headers** - Security headers configuration
+- ✅ **Input Validation** - Comprehensive input validation
+- ✅ **File Upload Security** - Secure file upload with size limits (10MB)
+- ✅ **Session Security** - Secure session cookie configuration
+
+## 📁 Project Structure
+
+```
+zow-zow/
+├── 📂 app/
+│   ├── 📂 Http/
+│   │   ├── 📂 Controllers/     # HTTP Controllers
+│   │   ├── 📂 Middleware/      # Custom Middleware
+│   │   └── 📂 Requests/        # Form Requests
+│   ├── 📂 Models/              # Eloquent Models
+│   ├── 📂 Repositories/        # Repository Pattern
+│   ├── 📂 Services/            # Business Logic Services
+│   └── 📂 Traits/              # Reusable Traits
+├── 📂 database/
+│   ├── 📂 migrations/          # Database Migrations
+│   ├── 📂 seeders/             # Database Seeders
+│   └── 📂 factories/           # Model Factories
+├── 📂 resources/
+│   ├── 📂 css/                 # Stylesheets
+│   ├── 📂 js/                  # JavaScript Files
+│   ├── 📂 views/               # Blade Templates
+│   └── 📂 lang/                # Localization Files
+├── 📂 routes/
+│   ├── 📄 web.php              # Web Routes
+│   ├── 📄 api.php              # API Routes
+│   └── 📄 console.php          # Console Routes
+├── 📂 tests/
+│   ├── 📂 Feature/             # Feature Tests
+│   └── 📂 Unit/                # Unit Tests
+└── 📂 public/                  # Public Assets
 ```
 
-### 2. Install Dependencies
-```bash
-# Install PHP dependencies
-composer install
+## 🧪 Testing
 
-# Install Node.js dependencies
-npm install
+Run the comprehensive test suite:
+
+```bash
+# Run all tests
+php artisan test
+
+# Run tests with coverage report
+php artisan test --coverage
+
+# Run specific test file
+php artisan test tests/Feature/ExampleTest.php
+
+# Run tests in parallel
+php artisan test --parallel
 ```
 
-### 3. Environment Setup
-```bash
-# Copy environment file
-cp .env.example .env
+## 🚀 Development
 
-# Generate application key
-php artisan key:generate
+### Available Commands
+
+```bash
+# 🧹 Clear application cache
+php artisan optimize:clear
+
+# 🔄 Generate IDE helper files
+php artisan ide-helper:generate
+php artisan ide-helper:models
+
+# 👀 Watch for frontend changes
+npm run dev
+
+# 🏗️ Build for production
+npm run build
+
+# 🔍 Code analysis
+php artisan insights
 ```
 
-### 4. Database Configuration
-Edit file `.env` dan sesuaikan konfigurasi database:
+### Environment Configuration
+
+Key environment variables in `.env`:
+
 ```env
+# Application
+APP_NAME="Zow Zow"
+APP_ENV=local
+APP_DEBUG=true
+APP_TIMEZONE=Asia/Jakarta
+
+# Database
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
 DB_DATABASE=zow_zow_db
-DB_USERNAME=postgres
-DB_PASSWORD=admin
+
+# Security
+RATE_LIMIT_PER_MINUTE=60
+MAX_UPLOAD_SIZE=10240
+
+# Cache & Session
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_CONNECTION=sync
 ```
 
-### 5. Database Migration
-```bash
-# Jalankan migration untuk membuat tabel
-php artisan migrate
+## 📖 Documentation
 
-# (Opsional) Jalankan seeder jika ada
-php artisan db:seed
-```
+- [📚 Laravel Documentation](https://laravel.com/docs)
+- [🎨 Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [🐘 PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [⚡ Vite Documentation](https://vitejs.dev/guide/)
 
-### 6. Build Assets
-```bash
-# Build CSS dan JS untuk development
-npm run dev
+## 🤝 Contributing
 
-# Atau untuk production
-npm run build
-```
+We welcome contributions! Please follow these steps:
 
-### 7. Jalankan Server
-```bash
-# Jalankan development server
-php artisan serve
-```
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
 
-Aplikasi akan berjalan di: **http://127.0.0.1:8000**
+### Development Guidelines
 
-## 🛠️ Fitur yang Sudah Terinstall
+- Follow [PSR-12](https://www.php-fig.org/psr/psr-12/) coding standards
+- Write comprehensive tests for new features
+- Update documentation as needed
+- Use conventional commit messages
 
-### Backend
-- ✅ Laravel 11
-- ✅ Laravel Sanctum (API Authentication)
-- ✅ PostgreSQL Database
-- ✅ Session Management
-- ✅ Cache System
-- ✅ Queue Jobs
+## 🐛 Troubleshooting
 
-### Development Tools
-- ✅ Laravel Debugbar
-- ✅ Laravel IDE Helper
-- ✅ PHPUnit Testing
+### Common Issues
 
-### Frontend
-- ✅ Tailwind CSS
-- ✅ Vite Build Tool
-- ✅ PostCSS
+| Issue | Solution |
+|-------|----------|
+| **Composer install fails** | Run `composer install --no-dev --optimize-autoloader` |
+| **NPM install fails** | Delete `node_modules` and `package-lock.json`, then run `npm install` |
+| **Database connection error** | Check `.env` database credentials and ensure PostgreSQL is running |
+| **Permission denied** | Run `chmod -R 775 storage bootstrap/cache` |
+| **Key not found** | Run `php artisan key:generate` |
 
-## 📁 Struktur Proyek
-```
-zow-zow/
-├── app/
-│   ├── Http/Controllers/
-│   ├── Models/
-│   ├── Repositories/     # Repository Pattern
-│   ├── Services/         # Business Logic
-│   └── Traits/          # Reusable Traits
-├── database/
-│   ├── migrations/
-│   └── seeders/
-├── resources/
-│   ├── css/
-│   ├── js/
-│   └── views/
-└── routes/
-```
+### Getting Help
 
-## 🔧 Konfigurasi Keamanan
+- 📧 **Email**: support@zowzow.com
+- 💬 **Discord**: [Join our community](https://discord.gg/zowzow)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/your-username/zow-zow/issues)
+- 📖 **Wiki**: [Project Wiki](https://github.com/your-username/zow-zow/wiki)
 
-Proyek ini sudah dikonfigurasi dengan:
-- CORS settings
-- Rate limiting (60 requests/minute)
-- Secure session cookies
-- File upload limits (10MB)
-- Sanctum stateful domains
+## 📄 License
 
-## 🧪 Testing
-```bash
-# Jalankan semua test
-php artisan test
+This project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.
 
-# Jalankan test dengan coverage
-php artisan test --coverage
-```
+## 🙏 Acknowledgments
 
-## 📝 Development Commands
-
-```bash
-# Clear cache
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-
-# Generate IDE helper files
-php artisan ide-helper:generate
-php artisan ide-helper:models
-
-# Watch untuk perubahan frontend
-npm run dev
-```
-
-## 🌍 Environment Variables
-
-Konfigurasi penting di file `.env`:
-- `APP_NAME`: Nama aplikasi
-- `APP_URL`: URL aplikasi
-- `APP_TIMEZONE`: Timezone (Asia/Jakarta)
-- `DB_*`: Konfigurasi database
-- `RATE_LIMIT_PER_MINUTE`: Limit request per menit
-- `MAX_UPLOAD_SIZE`: Maksimal ukuran file upload
-
-## 📞 Support
-
-Jika mengalami masalah selama instalasi:
-1. Pastikan semua prerequisites sudah terinstall
-2. Periksa konfigurasi database di `.env`
-3. Jalankan `composer install` dan `npm install` ulang
-4. Clear cache dengan `php artisan optimize:clear`
+- [Laravel Team](https://laravel.com/team) for the amazing framework
+- [Tailwind Labs](https://tailwindlabs.com/) for the utility-first CSS framework
+- [PostgreSQL Global Development Group](https://www.postgresql.org/) for the robust database
+- All [contributors](https://github.com/your-username/zow-zow/contributors) who helped build this project
 
 ---
 
-**Status**: ✅ Setup awal selesai - Siap untuk development!
+<div align="center">
+
+**Made with ❤️ by the Zow Zow Team**
+
+[![GitHub stars](https://img.shields.io/github/stars/your-username/zow-zow?style=social)](https://github.com/your-username/zow-zow/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/your-username/zow-zow?style=social)](https://github.com/your-username/zow-zow/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/your-username/zow-zow)](https://github.com/your-username/zow-zow/issues)
+
+</div>
