@@ -10,7 +10,7 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
     --font-display: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
     --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
-    
+
     /* Matcha → #809671 */
     --color-matcha-50: #f6f8f4;
     --color-matcha-100: #edf2e7;
@@ -22,7 +22,7 @@
     --color-matcha-700: #5a7342;
     --color-matcha-800: #475a35;
     --color-matcha-900: #344028;
-    
+
     /* Almond → #E5E0D8 */
     --color-almond-50: #fefcf9;
     --color-almond-100: #fdf8f0;
@@ -34,7 +34,7 @@
     --color-almond-700: #b7a58d;
     --color-almond-800: #9e8b6e;
     --color-almond-900: #725c3a;
-    
+
     /* Pistache → #B3B792 */
     --color-pistache-50: #f7f8f5;
     --color-pistache-100: #eff1ea;
@@ -46,7 +46,7 @@
     --color-pistache-700: #86896d;
     --color-pistache-800: #6b6e57;
     --color-pistache-900: #575a47;
-    
+
     /* Chai → #D2AB80 */
     --color-chai-50: #faf8f5;
     --color-chai-100: #f5f0ea;
@@ -58,7 +58,7 @@
     --color-chai-700: #9e8060;
     --color-chai-800: #7f664d;
     --color-chai-900: #67533f;
-    
+
     /* Carob → #725C3A */
     --color-carob-50: #f6f4f1;
     --color-carob-100: #ede9e3;
@@ -70,7 +70,7 @@
     --color-carob-700: #56452b;
     --color-carob-800: #453722;
     --color-carob-900: #392e1c;
-    
+
     /* Vanilla → #E5D2B8 */
     --color-vanilla-50: #fdfcfa;
     --color-vanilla-100: #fbf8f4;
@@ -82,13 +82,444 @@
     --color-vanilla-700: #ac9d8b;
     --color-vanilla-800: #8a7e70;
     --color-vanilla-900: #71675c;
- }
-
-/* Custom scrollbar hide utility */
-.scrollbar-hide {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
 }
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
+
+/* Hero Slider - Core Animation States Only */
+.slide {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide:not(.active) {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide.prev {
+    transform: translateX(-100%);
+}
+
+/* Animation for top badge/header - slide down */
+.slide-badge {
+    animation: slideDownFromTop 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+}
+
+/* Parallax Scrolling Effects */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.parallax-element {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.parallax-slow {
+    transform: translate3d(0, var(--parallax-offset-slow, 0), 0);
+}
+
+.parallax-medium {
+    transform: translate3d(0, var(--parallax-offset-medium, 0), 0);
+}
+
+.parallax-fast {
+    transform: translate3d(0, var(--parallax-offset-fast, 0), 0);
+}
+
+/* Custom Gradients - Keep only complex ones */
+.gradient-text {
+    background: linear-gradient(135deg, #8B7355 0%, #7BA05B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Floating Elements and Micro-interactions */
+.floating-element {
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(2) {
+    animation-delay: -2s;
+}
+
+.floating-element:nth-child(3) {
+    animation-delay: -4s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.pulse-effect {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keep only complex animations */
+.shake-on-hover:hover {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-2px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(2px);
+    }
+}
+
+/* Animation for left content - slide in from right */
+.slide-content-left {
+    animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+
+/* Animation for right content - slide in from left */
+.slide-content-right {
+    animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+}
+
+/* Exit animations - opposite direction */
+.slide.exiting .slide-badge {
+    animation: slideUpToTop 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) both;
+}
+
+.slide.exiting .slide-content-left {
+    animation: slideOutToRight 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.1s both;
+}
+
+.slide.exiting .slide-content-right {
+    animation: slideOutToLeft 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.05s both;
+}
+
+/* Progress Bar - Simplified */
+.progress-indicator {
+    contain: layout style paint;
+}
+
+.progress-bar-fill {
+    @apply absolute inset-0 h-full w-0 rounded-sm shadow-sm;
+    background: linear-gradient(90deg, #84cc16, #65a30d);
+    transition: width 0.1s ease-out;
+    will-change: width;
+    transform: translateZ(0);
+}
+
+.progress-indicator.active .progress-bar-fill {
+    animation: progressFill 5s linear;
+}
+
+/* Slider Progress Bar & Navigation */
+.progress-indicator[data-slide="0"] .progress-bar-fill {
+    background: linear-gradient(90deg, #8B7355, #A0845C);
+}
+
+.progress-indicator[data-slide="1"] .progress-bar-fill {
+    background: linear-gradient(90deg, #7BA05B, #8FB069);
+}
+
+.progress-indicator[data-slide="2"] .progress-bar-fill {
+    background: linear-gradient(90deg, #D4A574, #E0B584);
+}
+
+.slide-nav-btn.active div {
+    background-color: white !important;
+    transform: scale(1.25);
+}
+
+.slide-nav-btn[data-slide="0"].active div {
+    background-color: #8B7355 !important;
+}
+
+.slide-nav-btn[data-slide="1"].active div {
+    background-color: #7BA05B !important;
+}
+
+.slide-nav-btn[data-slide="2"].active div {
+    background-color: #D4A574 !important;
+}
+
+.slide-nav-btn[data-slide="3"].active div {
+    background-color: #F4E4BC !important;
+}
+
+/* Progress bar colors for slide 4 */
+.progress-indicator[data-slide="3"] .progress-bar-fill {
+    background: linear-gradient(90deg, #F4E4BC, #D4A574);
+}
+
+/* Button Shine Effect */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Hover Effects */
+.service-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.service-icon {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Floating Animation */
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+.floating-delayed {
+    animation: floating 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Keyframes for top badge */
+@keyframes slideDownFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUpToTop {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+/* Keyframes for left content */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+}
+
+/* Keyframes for right content */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+}
+
+/* Progress Fill Animation (Optimized with transform) */
+@keyframes progressFill {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* Alternative transform-based animation for better performance */
+@keyframes progressFillTransform {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.slide:not(.active) .slide-content {
+    animation: slideOutContent 0.5s ease-in both;
+}
+
+@keyframes slideOutContent {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.progress-bar {
+    transition: width 0.1s linear;
+}
+
+.indicator.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+.indicator:not(.active) {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Header responsive styles */
+@media (max-width: 1280px) {
+    .header-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-right {
+        gap: 0.5rem !important;
+    }
+
+    .header-right a,
+    .header-right button {
+        font-size: 0.875rem !important;
+        padding: 0.5rem 1rem !important;
+    }
 }
