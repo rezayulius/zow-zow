@@ -8,5 +8,6 @@
     @include('partials.services')
     @include('partials.pricing')
     @include('partials.membership')
+    @include('partials.testimonials')
     @include('partials.footer')
 @endsection
