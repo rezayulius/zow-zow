@@ -23,6 +23,14 @@
 </head>
 
 <body class="font-sans antialiased">
+    <!-- Global Animated Background Bubbles -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <div class="absolute -top-10 -left-10 w-72 h-72 bg-matcha-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute -top-10 -right-10 w-72 h-72 bg-chai-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-10 left-20 w-72 h-72 bg-almond-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-vanilla-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000"></div>
+    </div>
+
     @yield('content')
     
     @stack('scripts')

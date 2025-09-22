@@ -4,7 +4,7 @@
                 <!-- Slide 1: Complete Care -->
                 <div class="slide active absolute inset-0 w-full h-full z-10" data-slide="0">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#8B7355]/10 to-[#7BA05B]/10"></div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
+                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                             <div class="slide-content-left">
                                 <div class="slide-badge inline-flex items-center bg-[#8B7355] text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
@@ -76,7 +76,7 @@
                 <!-- Slide 2: Emergency Care -->
                 <div class="slide absolute inset-0 w-full h-full z-[1]" data-slide="1">
                     <div class="absolute inset-0 bg-gradient-to-r from-matcha-500/10 to-carob-700/10"></div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
+                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                             <div class="slide-content-left">
                                 <div class="slide-badge inline-flex items-center bg-matcha-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
@@ -148,7 +148,7 @@
                 <!-- Slide 3: Luxury Spa -->
                 <div class="slide absolute inset-0 w-full h-full z-[1]" data-slide="2">
                     <div class="absolute inset-0 bg-gradient-to-r from-chai-500/10 to-carob-700/10"></div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
+                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                             <div class="slide-content-left">
                                 <div class="slide-badge inline-flex items-center bg-chai-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
@@ -220,7 +220,7 @@
                 <!-- Slide 4: Membership -->
                 <div class="slide absolute inset-0 w-full h-full z-[1]" data-slide="3">
                     <div class="absolute inset-0 bg-gradient-to-r from-vanilla-500/10 to-chai-500/10"></div>
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
+                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                             <div class="slide-content-left">
                                 <div class="slide-badge inline-flex items-center bg-vanilla-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">

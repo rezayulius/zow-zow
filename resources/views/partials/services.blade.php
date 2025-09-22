@@ -325,46 +325,46 @@
                         <!-- Services Grid -->
                         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <!-- Grooming Premium -->
-                            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4 border border-yellow-200 relative">
+                            <div class="bg-gradient-to-r from-chai-50 to-vanilla-50 rounded-xl p-4 border border-chai-200 relative">
                                 <div class="flex items-center justify-between mb-2">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-chai-400 to-chai-600 rounded-lg flex items-center justify-center">
                                         <i data-lucide="sparkles" class="text-white w-4 h-4"></i>
                                     </div>
-                                    <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
+                                    <span class="bg-chai-500 text-white text-xs px-2 py-1 rounded-full font-medium">NEW</span>
                                 </div>
                                 <h5 class="font-bold text-carob-900 mb-1">Grooming Premium</h5>
-                                <p class="text-orange-700 font-semibold text-sm mb-2">Rp 100.000</p>
-                                <button class="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-2 rounded-lg text-sm hover:from-yellow-600 hover:to-orange-600 transition-colors font-medium">
+                                <p class="text-chai-700 font-semibold text-sm mb-2">Rp 100.000</p>
+                                <button class="w-full bg-gradient-to-r from-chai-500 to-chai-600 text-white py-2 rounded-lg text-sm hover:from-chai-600 hover:to-chai-700 transition-colors font-medium">
                                     Book Now
                                 </button>
                             </div>
 
                             <!-- Konsultasi Dokter -->
-                            <div class="bg-gradient-to-r from-chai-50 to-chai-100 rounded-xl p-4 border border-chai-200">
+                            <div class="bg-gradient-to-r from-matcha-50 to-matcha-100 rounded-xl p-4 border border-matcha-200">
                                 <div class="flex items-center justify-between mb-2">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-chai-400 to-chai-600 rounded-lg flex items-center justify-center">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-lg flex items-center justify-center">
                                         <i data-lucide="stethoscope" class="text-white w-4 h-4"></i>
                                     </div>
-                                    <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">Popular</span>
+                                    <span class="bg-matcha-600 text-white text-xs px-2 py-1 rounded-full font-medium">Popular</span>
                                 </div>
                                 <h5 class="font-bold text-carob-900 mb-1">Konsultasi Dokter</h5>
-                                <p class="text-chai-700 font-semibold text-sm mb-2">Rp 150.000</p>
-                                <button class="w-full bg-chai-500 text-white py-2 rounded-lg text-sm hover:bg-chai-600 transition-colors font-medium">
+                                <p class="text-matcha-700 font-semibold text-sm mb-2">Rp 150.000</p>
+                                <button class="w-full bg-matcha-500 text-white py-2 rounded-lg text-sm hover:bg-matcha-600 transition-colors font-medium">
                                     Book Now
                                 </button>
                             </div>
 
                             <!-- Vaksinasi Lengkap -->
-                            <div class="bg-gradient-to-r from-matcha-50 to-matcha-100 rounded-xl p-4 border border-matcha-200">
+                            <div class="bg-gradient-to-r from-pistache-50 to-pistache-100 rounded-xl p-4 border border-pistache-200">
                                 <div class="flex items-center justify-between mb-2">
-                                    <div class="w-8 h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-lg flex items-center justify-center">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-pistache-400 to-pistache-600 rounded-lg flex items-center justify-center">
                                         <i data-lucide="syringe" class="text-white w-4 h-4"></i>
                                     </div>
-                                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">Essential</span>
+                                    <span class="bg-pistache-600 text-white text-xs px-2 py-1 rounded-full font-medium">Essential</span>
                                 </div>
                                 <h5 class="font-bold text-carob-900 mb-1">Vaksinasi Lengkap</h5>
-                                <p class="text-matcha-700 font-semibold text-sm mb-2">Rp 200.000</p>
-                                <button class="w-full bg-matcha-500 text-white py-2 rounded-lg text-sm hover:bg-matcha-600 transition-colors font-medium">
+                                <p class="text-pistache-700 font-semibold text-sm mb-2">Rp 200.000</p>
+                                <button class="w-full bg-pistache-500 text-white py-2 rounded-lg text-sm hover:bg-pistache-600 transition-colors font-medium">
                                     Book Now
                                 </button>
                             </div>
@@ -375,7 +375,7 @@
                                     <div class="w-8 h-8 bg-gradient-to-br from-carob-400 to-carob-600 rounded-lg flex items-center justify-center">
                                         <i data-lucide="search" class="text-white w-4 h-4"></i>
                                     </div>
-                                    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-medium">Trusted</span>
+                                    <span class="bg-carob-600 text-white text-xs px-2 py-1 rounded-full font-medium">Trusted</span>
                                 </div>
                                 <h5 class="font-bold text-carob-900 mb-1">Health Check-up</h5>
                                 <p class="text-carob-700 font-semibold text-sm mb-2">Rp 250.000</p>

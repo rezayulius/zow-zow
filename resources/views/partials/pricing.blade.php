@@ -1,9 +1,9 @@
 <!-- Pricing Section -->
 <section id="harga" class="py-16 bg-gradient-to-br from-chai-25 to-matcha-25">
-    <div class="container mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-6">
         <!-- Header -->
         <div class="text-center mb-12">
-            <div class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div class="inline-flex items-center bg-vanilla-100 text-chai-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
                 <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i>
                 Transparent Pricing
             </div>
@@ -16,11 +16,11 @@
         <!-- Pricing Cards Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <!-- Basic Health Checkup -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-chai-100 relative">
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-chai-100 relative flex flex-col h-full">
                 <div class="absolute top-4 left-4">
                     <span class="bg-chai-500 text-white text-xs px-3 py-1 rounded-full font-medium">POPULAR</span>
                 </div>
-                <div class="pt-8">
+                <div class="pt-8 flex-1 flex flex-col">
                     <h3 class="text-xl font-bold text-carob-900 mb-2">Basic Health Checkup</h3>
                     <p class="text-carob-600 text-sm mb-4">Comprehensive health examination for your pet</p>
                     
@@ -32,23 +32,23 @@
                         </div>
                     </div>
 
-                    <ul class="space-y-2 mb-6">
+                    <ul class="space-y-2 mb-6 flex-1">
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Physical examination
                         </li>
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Temperature check
                         </li>
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Weight measurement
                         </li>
                         <li class="text-chai-600 text-sm font-medium">+1 more features...</li>
                     </ul>
 
-                    <button class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 transition-colors font-medium">
+                    <button class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 transition-colors font-medium mt-auto">
                         <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
                         Book Now
                     </button>
@@ -56,8 +56,8 @@
             </div>
 
             <!-- Vaccination Package -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-matcha-100">
-                <div class="pt-4">
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-matcha-100 flex flex-col h-full">
+                <div class="pt-4 flex-1 flex flex-col">
                     <h3 class="text-xl font-bold text-carob-900 mb-2">Vaccination Package</h3>
                     <p class="text-carob-600 text-sm mb-4">Complete vaccination program for pets</p>
                     
@@ -69,23 +69,23 @@
                         </div>
                     </div>
 
-                    <ul class="space-y-2 mb-6">
+                    <ul class="space-y-2 mb-6 flex-1">
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Core vaccines
                         </li>
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Health certificate
                         </li>
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Follow-up consultation
                         </li>
                         <li class="text-matcha-600 text-sm font-medium">+1 more features...</li>
                     </ul>
 
-                    <button class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 transition-colors font-medium">
+                    <button class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 transition-colors font-medium mt-auto">
                         <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
                         Book Now
                     </button>
@@ -93,12 +93,12 @@
             </div>
 
             <!-- Premium Grooming -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-yellow-200 relative">
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-vanilla-200 relative">
                 <div class="absolute top-4 left-4">
-                    <span class="bg-yellow-500 text-white text-xs px-3 py-1 rounded-full font-medium">POPULAR</span>
+                    <span class="bg-vanilla-500 text-white text-xs px-3 py-1 rounded-full font-medium">POPULAR</span>
                 </div>
                 <div class="absolute top-4 right-4">
-                    <div class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">20%</div>
+                    <div class="bg-carob-500 text-white text-xs px-2 py-1 rounded-full font-bold">20%</div>
                 </div>
                 <div class="pt-8">
                     <h3 class="text-xl font-bold text-carob-900 mb-2">Premium Grooming</h3>
@@ -108,7 +108,7 @@
                         <div class="flex items-center">
                             <span class="text-sm text-carob-400 line-through mr-2">Rp 250.000</span>
                         </div>
-                        <span class="text-3xl font-bold text-yellow-600">Rp 200.000</span>
+                        <span class="text-3xl font-bold text-vanilla-600">Rp 200.000</span>
                         <div class="flex items-center text-carob-500 text-sm mt-1">
                             <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
                             2 hours
@@ -117,21 +117,21 @@
 
                     <ul class="space-y-2 mb-6">
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Bath & blow dry
                         </li>
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Nail trimming
                         </li>
                         <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
                             Ear cleaning
                         </li>
-                        <li class="text-yellow-600 text-sm font-medium">+2 more features...</li>
+                        <li class="text-vanilla-600 text-sm font-medium">+2 more features...</li>
                     </ul>
 
-                    <button class="w-full bg-yellow-500 text-white py-3 rounded-xl hover:bg-yellow-600 transition-colors font-medium">
+                    <button class="w-full bg-vanilla-500 text-white py-3 rounded-xl hover:bg-vanilla-600 transition-colors font-medium">
                         <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
                         Book Now
                     </button>
@@ -249,80 +249,84 @@
             </div>
 
             <!-- Emergency Care -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-green-200">
-                <h3 class="text-xl font-bold text-carob-900 mb-2">Emergency Care</h3>
-                <p class="text-carob-600 text-sm mb-4">24/7 emergency veterinary services</p>
-                
-                <div class="mb-4">
-                    <span class="text-3xl font-bold text-green-600">Rp 500.000</span>
-                    <div class="flex items-center text-carob-500 text-sm mt-1">
-                        <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                        As needed
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-pistache-200 flex flex-col h-full">
+                <div class="pt-4 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-carob-900 mb-2">Emergency Care</h3>
+                    <p class="text-carob-600 text-sm mb-4">24/7 emergency veterinary services</p>
+                    
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-pistache-600">Rp 500.000</span>
+                        <div class="flex items-center text-carob-500 text-sm mt-1">
+                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
+                            As needed
+                        </div>
                     </div>
+
+                    <ul class="space-y-2 mb-6 flex-1">
+                        <li class="flex items-center text-sm text-carob-700">
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                            Immediate response
+                        </li>
+                        <li class="flex items-center text-sm text-carob-700">
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                            Emergency surgery
+                        </li>
+                        <li class="flex items-center text-sm text-carob-700">
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                            ICU facilities
+                        </li>
+                        <li class="text-pistache-600 text-sm font-medium">+1 more features...</li>
+                    </ul>
+
+                    <button class="w-full bg-pistache-600 text-white py-3 rounded-xl hover:bg-pistache-700 transition-colors font-medium mt-auto">
+                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
+                        Book Now
+                    </button>
                 </div>
-
-                <ul class="space-y-2 mb-6">
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Immediate response
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Emergency surgery
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        ICU facilities
-                    </li>
-                    <li class="text-green-600 text-sm font-medium">+1 more features...</li>
-                </ul>
-
-                <button class="w-full bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-colors font-medium">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                    Book Now
-                </button>
             </div>
 
             <!-- Dental Care -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-carob-100">
-                <h3 class="text-xl font-bold text-carob-900 mb-2">Dental Care</h3>
-                <p class="text-carob-600 text-sm mb-4">Professional dental cleaning and treatment</p>
-                
-                <div class="mb-4">
-                    <span class="text-3xl font-bold text-carob-600">Rp 350.000</span>
-                    <div class="flex items-center text-carob-500 text-sm mt-1">
-                        <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                        1.5 hours
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-carob-100 flex flex-col h-full">
+                <div class="pt-4 flex-1 flex flex-col">
+                    <h3 class="text-xl font-bold text-carob-900 mb-2">Dental Care</h3>
+                    <p class="text-carob-600 text-sm mb-4">Professional dental cleaning and treatment</p>
+                    
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-carob-600">Rp 350.000</span>
+                        <div class="flex items-center text-carob-500 text-sm mt-1">
+                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
+                            1.5 hours
+                        </div>
                     </div>
+
+                    <ul class="space-y-2 mb-6 flex-1">
+                        <li class="flex items-center text-sm text-carob-700">
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                            Dental examination
+                        </li>
+                        <li class="flex items-center text-sm text-carob-700">
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                            Teeth cleaning
+                        </li>
+                        <li class="flex items-center text-sm text-carob-700">
+                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                            Plaque removal
+                        </li>
+                        <li class="text-carob-600 text-sm font-medium">+1 more features...</li>
+                    </ul>
+
+                    <button class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 transition-colors font-medium mt-auto">
+                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
+                        Book Now
+                    </button>
                 </div>
-
-                <ul class="space-y-2 mb-6">
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Dental examination
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Teeth cleaning
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Plaque removal
-                    </li>
-                    <li class="text-carob-600 text-sm font-medium">+1 more features...</li>
-                </ul>
-
-                <button class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 transition-colors font-medium">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                    Book Now
-                </button>
             </div>
         </div>
 
         <!-- Special Member Benefits -->
-        <div class="bg-gradient-to-r from-yellow-100 to-yellow-200 rounded-3xl p-8 text-center">
+        <div class="bg-gradient-to-r from-vanilla-100 to-vanilla-200 rounded-3xl p-8 text-center">
             <div class="flex items-center justify-center mb-4">
-                <i data-lucide="heart" class="w-6 h-6 text-yellow-600 mr-2"></i>
+                <i data-lucide="heart" class="w-6 h-6 text-vanilla-600 mr-2"></i>
                 <h3 class="text-2xl font-bold text-carob-900">Special Member Benefits</h3>
             </div>
             <p class="text-carob-700 mb-6 max-w-2xl mx-auto">
@@ -344,7 +348,7 @@
                 </div>
                 <div class="bg-white rounded-xl p-4 shadow-md">
                     <div class="flex items-center justify-center mb-2">
-                        <i data-lucide="star" class="w-6 h-6 text-yellow-500"></i>
+                        <i data-lucide="star" class="w-6 h-6 text-vanilla-500"></i>
                     </div>
                     <h4 class="font-semibold text-carob-900 mb-1">Satisfaction Guaranteed</h4>
                 </div>
@@ -359,10 +363,11 @@
 
 <!-- Technology Section -->
 <section class="py-16 bg-gradient-to-br from-carob-50 to-chai-50">
-    <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-6">
+
         <!-- Header -->
         <div class="text-center mb-12">
-            <div class="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div class="inline-flex items-center bg-vanilla-100 text-chai-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
                 <i data-lucide="zap" class="w-4 h-4 mr-2"></i>
                 Latest Features
             </div>
@@ -377,7 +382,7 @@
             <!-- Pet Lovers -->
             <div class="bg-white rounded-2xl p-6 shadow-lg border border-carob-100 text-center">
                 <div class="flex items-center justify-center mb-4">
-                    <i data-lucide="users" class="w-8 h-8 text-blue-500"></i>
+                    <i data-lucide="users" class="w-8 h-8 text-chai-500"></i>
                 </div>
                 <div class="text-3xl font-bold text-carob-900 mb-2">2,500+</div>
                 <div class="text-carob-600 text-sm">Pet Lovers</div>

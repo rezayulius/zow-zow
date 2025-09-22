@@ -10,7 +10,7 @@
         <div class="absolute top-1/3 right-10 w-16 h-16 bg-matcha-400/15 rounded-full blur-md"></div>
         <div class="absolute bottom-1/4 right-1/3 w-28 h-28 bg-vanilla-400/10 rounded-full blur-lg"></div>
     </div>
-    <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-6">
             <div>
                 <div class="flex items-center space-x-2.5 mb-4">
