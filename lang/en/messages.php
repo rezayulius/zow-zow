@@ -34,4 +34,6 @@ return [
     'all_rights_reserved' => 'All Rights Reserved',
     'login' => 'Login',
     'register' => 'Register',
+    'location_title' => 'Visit Our Location',
+    'location_subtitle' => 'Find us in the Heart of Kembang, South Jakarta',
 ];

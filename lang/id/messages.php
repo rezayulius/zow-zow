@@ -34,4 +34,6 @@ return [
     'all_rights_reserved' => 'Hak Cipta Dilindungi',
     'login' => 'Masuk',
     'register' => 'Daftar',
+    'location_title' => 'Kunjungi Lokasi Kami',
+    'location_subtitle' => 'Temukan kami di Jantung Kembang Jakarta Selatan',
 ];
