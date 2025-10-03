@@ -33,6 +33,23 @@
 
     @yield('content')
     
+    <!-- Cekat.AI Live Chat Widget -->
+    <script type="text/javascript">
+        window.mychat = window.mychat || {};
+        window.mychat.server = 'https://live.cekat.ai/widget.js';
+        window.mychat.iframeWidth = '400px';
+        window.mychat.iframeHeight = '700px';
+        window.mychat.accessKey = 'ZOW-moTIgTQw';
+        (function() {
+            var mychat = document.createElement('script');
+            mychat.type = 'text/javascript';
+            mychat.async = true;
+            mychat.src = window.mychat.server;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(mychat, s);
+        })();
+    </script>
+    
     @stack('scripts')
 </body>
 
