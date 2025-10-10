@@ -385,9 +385,9 @@
                         </div>
 
                         <!-- Multi-Step Booking Form -->
-                        <div id="bookingForm" class="hidden mt-2 sm:mt-8 bg-white rounded-xl sm:rounded-3xl shadow-2xl border border-chai-100 transform transition-all duration-700 ease-in-out opacity-0 translate-y-4 backdrop-blur-sm h-[90vh] sm:h-[85vh] max-h-[90vh] sm:max-h-[85vh] flex flex-col mx-1 sm:mx-0 overflow-hidden">
+                        <div id="bookingForm" class="hidden mt-1 sm:mt-4 bg-white rounded-xl sm:rounded-3xl shadow-2xl border border-chai-100 transform transition-all duration-700 ease-in-out opacity-0 translate-y-4 backdrop-blur-sm h-[99vh] sm:h-[97vh] max-h-[99vh] sm:max-h-[97vh] flex flex-col mx-1 sm:mx-0 overflow-hidden">
                             <!-- Form Header -->
-                            <div class="text-center mb-3 sm:mb-8 p-3 sm:p-8 pb-0 flex-shrink-0">
+                            <div class="text-center mb-2 sm:mb-6 p-2 sm:p-6 pb-0 flex-shrink-0">
                                 <div class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-chai-500 to-chai-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-4 shadow-lg">
                                     <i data-lucide="calendar-plus" class="text-white w-5 h-5 sm:w-8 sm:h-8"></i>
                                 </div>
@@ -396,7 +396,7 @@
                             </div>
                             
                             <!-- Progress Bar -->
-                            <div class="mb-3 sm:mb-8 px-3 sm:px-8 flex-shrink-0">
+                            <div class="mb-2 sm:mb-6 px-3 sm:px-8 flex-shrink-0">
                                 <div class="flex items-center justify-between mb-2 sm:mb-4">
                                     <span class="text-xs font-semibold text-carob-700 bg-carob-50 px-2 py-1 rounded-full">
                                         Step <span id="currentStep">1</span> of 4
@@ -530,10 +530,33 @@
                                         </label>
                                         <input type="text" id="petAge" class="w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base" placeholder="Contoh: 2 tahun, 6 bulan">
                                     </div>
+                                    <div class="space-y-1 sm:space-y-2">
+                                        <label class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                            <i data-lucide="user" class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-matcha-600 flex-shrink-0"></i>
+                                            <span>Jenis Kelamin</span>
+                                        </label>
+                                        <div class="flex gap-3 sm:gap-4">
+                                            <label class="flex items-center cursor-pointer group">
+                                                <input type="radio" name="petGender" value="jantan" class="mr-1 sm:mr-2 text-chai-500 scale-110 sm:scale-125">
+                                                <span class="text-xs sm:text-sm text-carob-700 group-hover:text-chai-600 transition-colors">♂️ Jantan</span>
+                                            </label>
+                                            <label class="flex items-center cursor-pointer group">
+                                                <input type="radio" name="petGender" value="betina" class="mr-1 sm:mr-2 text-chai-500 scale-110 sm:scale-125">
+                                                <span class="text-xs sm:text-sm text-carob-700 group-hover:text-chai-600 transition-colors">♀️ Betina</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-1 sm:space-y-2">
+                                        <label class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                            <i data-lucide="palette" class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-pistache-600 flex-shrink-0"></i>
+                                            <span>Warna</span>
+                                        </label>
+                                        <input type="text" id="petColor" class="w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base" placeholder="Contoh: Coklat, Putih, Hitam belang">
+                                    </div>
                                     <div class="sm:col-span-2 space-y-1 sm:space-y-2">
                                         <label class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
                                             <i data-lucide="file-text" class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-chai-600 flex-shrink-0"></i>
-                                            <span>Catatan Khusus</span>
+                                            <span>Catatan Khusus / Keluhan</span>
                                         </label>
                                         <textarea id="petNotes" rows="2" class="w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md resize-none text-sm sm:text-base" placeholder="Ceritakan kondisi khusus, alergi, atau hal penting lainnya tentang hewan peliharaan Anda..."></textarea>
                                     </div>
@@ -674,6 +697,20 @@
                                         </div>
                                         <div class="flex justify-between items-center p-3 bg-white rounded-xl border border-carob-100">
                                             <span class="text-carob-600 font-medium flex items-center text-xs sm:text-sm">
+                                                <i data-lucide="user" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-matcha-600 flex-shrink-0"></i>
+                                                <span>Jenis Kelamin:</span>
+                                            </span>
+                                            <span id="summaryGender" class="font-bold text-carob-900 text-xs sm:text-sm truncate ml-2">-</span>
+                                        </div>
+                                        <div class="flex justify-between items-center p-3 bg-white rounded-xl border border-carob-100">
+                                            <span class="text-carob-600 font-medium flex items-center text-xs sm:text-sm">
+                                                <i data-lucide="palette" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-pistache-600 flex-shrink-0"></i>
+                                                <span>Warna:</span>
+                                            </span>
+                                            <span id="summaryColor" class="font-bold text-carob-900 text-xs sm:text-sm truncate ml-2">-</span>
+                                        </div>
+                                        <div class="flex justify-between items-center p-3 bg-white rounded-xl border border-carob-100">
+                                            <span class="text-carob-600 font-medium flex items-center text-xs sm:text-sm">
                                                 <i data-lucide="calendar-clock" class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-chai-600 flex-shrink-0"></i>
                                                 <span>Tanggal & Waktu:</span>
                                             </span>
@@ -694,6 +731,16 @@
                                             <input type="checkbox" id="agreeTerms" class="mt-1 mr-2 sm:mr-3 text-chai-500 scale-110 sm:scale-125 flex-shrink-0" required>
                                             <span class="text-xs sm:text-sm text-carob-700">
                                                 Saya setuju dengan <a href="#" class="text-chai-600 font-semibold hover:underline">syarat dan ketentuan</a> yang berlaku dan memahami bahwa informasi booking akan dikirimkan melalui WhatsApp.
+                                            </span>
+                                        </label>
+                                    </div>
+                                    
+                                    <!-- Clinic Responsibility Terms -->
+                                    <div class="mt-3 sm:mt-4 p-3 sm:p-4 bg-gradient-to-r from-pistache-50 to-chai-50 rounded-xl border border-pistache-200">
+                                        <label class="flex items-start cursor-pointer">
+                                            <input type="checkbox" id="agreeResponsibility" class="mt-1 mr-2 sm:mr-3 text-pistache-500 scale-110 sm:scale-125 flex-shrink-0" required>
+                                            <span class="text-xs sm:text-sm text-carob-700">
+                                                Saya memahami bahwa <strong>klinik bertanggung jawab berdasarkan data yang saya isi pada formulir</strong> dan telah memberikan informasi yang akurat mengenai hewan peliharaan saya.
                                             </span>
                                         </label>
                                     </div>
