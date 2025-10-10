@@ -41,17 +41,12 @@
                 <div class="h-5 w-px bg-almond-200"></div>
 
                 <!-- Contact Buttons -->
-                <div class="flex items-center space-x-0.5">
-                    <a href="tel:+6281234567890"
-                        class="bg-matcha-500 text-white px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-1 font-medium text-xs shadow-lg hover:shadow-xl">
-                        <i data-lucide="phone" class="w-3 h-3"></i>
-                        <span class="hidden xl:inline">{{ __('messages.call') }}</span>
-                    </a>
-                    <a href="https://wa.me/6281234567890"
-                        class="bg-matcha-500 text-white px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-1 font-medium text-xs shadow-lg hover:shadow-xl">
-                        <i data-lucide="message-circle" class="w-3 h-3"></i>
-                        <span class="hidden xl:inline">{{ __('messages.whatsapp') }}</span>
-                    </a>
+                <div class="flex items-center">
+                    <button id="btnEmergencyCall"
+                        class="bg-rose-400 text-white px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-rose-500 transition-all duration-200 flex items-center space-x-1 font-medium text-xs shadow-lg hover:shadow-xl">
+                        <i data-lucide="alert-triangle" class="w-3 h-3"></i>
+                        <span class="hidden xl:inline">Emergency Call</span>
+                    </button>
                 </div>
 
                 <div class="h-5 w-px bg-almond-200"></div>
@@ -75,6 +70,8 @@
             </button>
         </nav>
 
+        <!-- Emergency modal dipindahkan ke layout global -->
+
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden lg:hidden pb-4">
             <div class="px-6">
@@ -96,31 +93,15 @@
 
                 <div class="border-t border-almond-200 pt-4 mt-4">
                     <!-- Language Switcher -->
-                    <div class="flex items-center justify-center space-x-1 mb-4 bg-almond-100 rounded-lg p-1">
-                        <a href="{{ route('locale.set', 'id') }}"
-                            class="px-4 py-2 rounded-lg text-sm font-medium 
-                                  {{ app()->getLocale() === 'id' ? 'bg-white text-[#725C3A] shadow' : 'text-[#725C3A] hover:bg-white hover:shadow' }}">
-                            ID
-                        </a>
-                        <a href="{{ route('locale.set', 'en') }}"
-                            class="px-4 py-2 rounded-lg text-sm font-medium 
-                                  {{ app()->getLocale() === 'en' ? 'bg-white text-[#725C3A] shadow' : 'text-[#725C3A] hover:bg-white hover:shadow' }}">
-                            EN
-                        </a>
-                    </div>
+                    <x-lang-switch :locales="['id', 'en']" class="flex items-center justify-center space-x-1 mb-4 bg-almond-100 rounded-lg p-1" />
 
                     <!-- Contact Buttons -->
-                    <div class="flex justify-center gap-2 mb-4">
-                        <a href="tel:+6281234567890"
-                            class="bg-matcha-500 text-white px-4 py-2 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
-                            <i data-lucide="phone" class="w-4 h-4"></i>
-                            <span>{{ __('messages.call') }}</span>
-                        </a>
-                        <a href="https://wa.me/6281234567890"
-                            class="bg-matcha-500 text-white px-4 py-2 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
-                            <i data-lucide="message-circle" class="w-4 h-4"></i>
-                            <span>{{ __('messages.whatsapp') }}</span>
-                        </a>
+                    <div class="flex justify-center mb-4">
+                        <button id="emergency-call-mobile" 
+                            class="bg-red-400 hover:bg-red-500 text-white px-6 py-3 rounded-lg transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
+                            <i data-lucide="phone-call" class="w-4 h-4"></i>
+                            <span>Emergency Call</span>
+                        </button>
                     </div>
 
                     <!-- Auth Buttons -->

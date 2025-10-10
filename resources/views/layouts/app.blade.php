@@ -52,6 +52,42 @@
     
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        const bindEmergency = (btn) => {
+          if(!btn) return;
+          btn.addEventListener('click', function(){
+            Swal.fire({
+              icon: 'warning',
+              title: 'Konfirmasi Emergency Call',
+              html: `
+                <div class="text-left text-sm">
+                  <p class="text-gray-700 mb-2">Panggilan emergency dapat dikenakan biaya tambahan. Emergency mencakup:</p>
+                  <ul class="list-disc list-inside text-gray-800 mb-4">
+                    <li>Gangguan kritis pada sistem atau layanan.</li>
+                    <li>Kejadian terkait keselamatan atau keamanan.</li>
+                    <li>Permasalahan operasional mendesak di luar jam kerja.</li>
+                  </ul>
+                </div>
+              `,
+              showCancelButton: true,
+              confirmButtonText: 'Telpon Sekarang',
+              cancelButtonText: 'Tutup',
+              confirmButtonColor: '#f43f5e', // rose-500
+              cancelButtonColor: '#e5e7eb', // gray-200
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = 'tel:+6281234567890';
+              }
+            });
+          });
+        };
+
+        bindEmergency(document.getElementById('btnEmergencyCall'));
+        bindEmergency(document.getElementById('btnEmergencyCallMobile'));
+        bindEmergency(document.getElementById('emergency-call-mobile'));
+      });
+    </script>
     
     @stack('scripts')
 </body>
