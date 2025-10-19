@@ -67,10 +67,9 @@ function initHeaderScrollEffect() {
                 
                 if (scrollHeight > 0) {
                     const scrollPercentage = Math.min(100, Math.max(0, (scrollY / scrollHeight) * 100));
-                    const scaleValue = scrollPercentage / 100;
                     
-                    // Use transform instead of width for better performance
-                    scrollProgress.style.transform = `scaleX(${scaleValue})`;
+                    // Update width to reflect scroll progress with a smooth transition
+                    scrollProgress.style.width = `${scrollPercentage}%`;
                 }
             }
         } catch (error) {
@@ -91,8 +90,7 @@ function initHeaderScrollEffect() {
     
     // Initialize progress bar
     if (scrollProgress) {
-        scrollProgress.style.transform = 'scaleX(0)';
-        scrollProgress.style.transformOrigin = 'left';
+        scrollProgress.style.width = '0%';
         
         // Initial call to set proper state
         updateHeaderAndProgress();

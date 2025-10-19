@@ -2,11 +2,15 @@
 <header id="header"
     class="fixed top-3 left-1/2 transform -translate-x-1/2 w-full max-w-[98vw] xl:max-w-7xl mx-auto px-1 sm:px-2 z-50 transition-all duration-300">
     <div
-        class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/40 mx-0.5 sm:mx-1 ring-1 ring-black/10 relative overflow-hidden header-container">
+        class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/40 mx-0.5 sm:mx-1 ring-1 ring-black/10 relative overflow-visible header-container">
         <!-- Progress Bar -->
+        <!-- Track (always visible) -->
+        <div
+            class="absolute top-px left-2 right-2 sm:left-4 sm:right-4 lg:left-6 lg:right-6 h-1 bg-almond-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0"></div>
+        <!-- Fill (animated) -->
         <div id="scrollProgress"
-            class="absolute top-0 left-0 h-1 bg-gradient-to-r from-matcha-500 to-matcha-600 transition-transform duration-150 ease-out z-10"
-            style="transform: scaleX(0); transform-origin: left; will-change: transform; width: 100%;"></div>
+            class="absolute top-px left-2 right-2 sm:left-4 sm:right-4 lg:left-6 lg:right-6 h-1 bg-gradient-to-r from-matcha-500 to-matcha-600 rounded-full shadow-inner pointer-events-none z-10"
+            style="width: 0%; transition: width 200ms ease-out; will-change: width;"></div>
         <nav class="flex items-center justify-between py-2.5 px-2 sm:px-4 lg:px-6">
             <!-- Logo (Left) -->
             <div class="flex items-center space-x-2.5 flex-shrink-0">
@@ -21,8 +25,21 @@
             <div class="hidden lg:flex items-center space-x-1 xl:space-x-3 flex-1 justify-center ml-1 xl:ml-4">
                 <a href="#beranda"
                     class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.home') }}</a>
-                <a href="#layanan"
-                    class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.services') }}</a>
+                <div class="relative group">
+                    <button
+                        class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap inline-flex items-center">
+                        {{ __('messages.services') }}
+                        <svg class="ml-1 w-3 h-3 text-carob-500 group-hover:text-matcha-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="absolute left-0 top-full mt-0 bg-white rounded-xl shadow-xl border border-almond-200 p-2 min-w-[160px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                        <a href="#health" class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.health') }}</a>
+                        <a href="#wellness" class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.wellness') }}</a>
+                        <!-- Added Booking submenu item -->
+                        <a href="#booking" class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.booking') }}</a>
+                    </div>
+                </div>
                 <a href="#harga"
                     class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.pricing') }}</a>
                 <a href="#keanggotaan"
@@ -79,8 +96,16 @@
                 <div class="space-y-2 py-3">
                     <a href="#beranda"
                         class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.home') }}</a>
-                    <a href="#layanan"
-                        class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.services') }}</a>
+                    <div class="space-y-1">
+                        <div class="block text-carob-700 font-medium py-3 px-4 rounded-lg">{{ __('messages.services') }}</div>
+                        <a href="#health"
+                            class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.health') }}</a>
+                        <a href="#wellness"
+                            class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.wellness') }}</a>
+                        <!-- Added Booking submenu item (mobile) -->
+                        <a href="#booking"
+                            class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.booking') }}</a>
+                    </div>
                     <a href="#harga"
                         class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.pricing') }}</a>
                     <a href="#keanggotaan"
