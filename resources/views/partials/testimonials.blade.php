@@ -13,20 +13,22 @@
     <div class="relative max-w-7xl mx-auto px-6 z-10">
         
         {{-- Navigation Tabs --}}
-        <div class="flex justify-center mb-12">
-            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-white/20">
-                <button class="tab-btn active px-6 py-3 rounded-xl font-semibold transition-all duration-300" data-tab="testimonials">
-                    Testimonials
-                </button>
-                <button class="tab-btn px-6 py-3 rounded-xl font-semibold transition-all duration-300" data-tab="articles">
-                    Articles
-                </button>
-                <button class="tab-btn px-6 py-3 rounded-xl font-semibold transition-all duration-300" data-tab="news">
-                    News
-                </button>
-                <button class="tab-btn px-6 py-3 rounded-xl font-semibold transition-all duration-300" data-tab="promo">
-                    Promo
-                </button>
+        <div class="flex justify-center mb-8 md:mb-12 px-4">
+            <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-1.5 md:p-2 shadow-lg border border-white/20 w-full max-w-2xl">
+                <div class="grid grid-cols-2 md:flex md:justify-center gap-1 md:gap-0">
+                    <button class="tab-btn active px-3 py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl font-medium md:font-semibold text-sm md:text-base transition-all duration-300 text-center" data-tab="testimonials">
+                        Testimonials
+                    </button>
+                    <button class="tab-btn px-3 py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl font-medium md:font-semibold text-sm md:text-base transition-all duration-300 text-center" data-tab="articles">
+                        Articles
+                    </button>
+                    <button class="tab-btn px-3 py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl font-medium md:font-semibold text-sm md:text-base transition-all duration-300 text-center" data-tab="news">
+                        News
+                    </button>
+                    <button class="tab-btn px-3 py-2.5 md:px-6 md:py-3 rounded-lg md:rounded-xl font-medium md:font-semibold text-sm md:text-base transition-all duration-300 text-center" data-tab="promo">
+                        Promo
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -371,7 +373,7 @@
                                             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
                                             <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path>
                                         </svg>
-                                        <span class="font-medium">Min. pembelian:</span> 
+                                        <span class="font-medium">Min. transaksi:</span> 
                                         <span class="ml-1 font-bold text-{{ $color }}-800">Rp{{ number_format($promo->min_purchase, 0, ',', '.') }}</span>
                                     </div>
                                 @endif
