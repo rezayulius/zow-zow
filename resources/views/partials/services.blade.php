@@ -40,149 +40,80 @@
 
         <!-- Health Cards -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <!-- Klinik Hewan -->
-            <div
-                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                        alt="Klinik Hewan"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-matcha-400/80 to-matcha-600/80"></div>
-                    <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span class="text-white text-xs font-medium">POPULAR</span>
+            @forelse($services as $index => $service)
+                @php
+                    $colors = ['matcha', 'chai', 'pistache'];
+                    $color = $colors[$index % 3];
+                    $badges = ['POPULAR', 'ESSENTIAL', 'ONLINE'];
+                    $badge = $badges[$index % 3];
+                    $icons = ['heart', 'flask-conical', 'video'];
+                    $icon = $icons[$index % 3];
+                @endphp
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full {{ $index > 0 ? 'border border-' . $color . '-100' : '' }}">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="{{ $service->image ?: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' }}"
+                            alt="{{ $service->title }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/{{ $index === 0 ? '80' : '70' }} to-{{ $color }}-600/{{ $index === 0 ? '80' : '70' }}"></div>
+                        <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span class="text-white text-xs font-medium">{{ $badge }}</span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                            <i data-lucide="{{ $service->icon ?: $icon }}" class="text-white text-sm w-4 h-4"></i>
+                        </div>
                     </div>
-                    <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <i data-lucide="heart" class="text-white text-sm w-4 h-4"></i>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-carob-900 mb-1">Klinik Hewan</h3>
-                    <p class="text-chai-700 font-semibold text-sm mb-2">Mulai dari Rp 150.000</p>
-                    <p class="text-carob-600 text-sm mb-4 leading-relaxed">
-                        Perawatan dokter hewan profesional dengan fasilitas modern.
-                    </p>
-                    <ul class="space-y-2 mb-6 flex-grow">
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
-                                <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
-                            </span>
-                            Pemeriksaan kesehatan
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
-                                <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
-                            </span>
-                            Vaksinasi lengkap
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
-                                <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
-                            </span>
-                            Operasi
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <!-- Vaksinasi & Lab -->
-            <div
-                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full border border-matcha-100">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                        alt="Vaksinasi & Lab"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-chai-400/70 to-matcha-600/70"></div>
-                    <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span class="text-white text-xs font-medium">ESSENTIAL</span>
-                    </div>
-                    <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <i data-lucide="flask-conical" class="text-white text-sm w-4 h-4"></i>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-carob-900 mb-1">Vaksinasi & Lab</h3>
-                    <p class="text-chai-700 font-semibold text-sm mb-2">Mulai dari Rp 200.000</p>
-                    <p class="text-carob-600 text-sm mb-4 leading-relaxed">
-                        Vaksinasi, pemeriksaan darah, dan diagnostik laboratorium akurat.
-                    </p>
-                    <ul class="space-y-2 mb-6 flex-grow">
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Vaksin inti & booster
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Tes darah & urin lengkap
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Sertifikat kesehatan
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <!-- Telehealth Konsultasi -->
-            <div
-                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full border border-pistache-100">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                        alt="Telehealth Konsultasi"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-pistache-400/70 to-matcha-600/70"></div>
-                    <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span class="text-white text-xs font-medium">ONLINE</span>
-                    </div>
-                    <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <i data-lucide="video" class="text-white text-sm w-4 h-4"></i>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-carob-900 mb-1">{{ $service->title }}</h3>
+                        <p class="text-chai-700 font-semibold text-sm mb-2">{{ $service->formatted_price }}</p>
+                        <p class="text-carob-600 text-sm mb-4 leading-relaxed">
+                            {{ $service->description }}
+                        </p>
+                        <ul class="space-y-2 mb-6 flex-grow">
+                            @php
+                                $features = [
+                                    'Pemeriksaan kesehatan',
+                                    'Vaksinasi lengkap', 
+                                    'Operasi'
+                                ];
+                                if ($index === 1) {
+                                    $features = [
+                                        'Vaksin inti & booster',
+                                        'Tes darah & urin lengkap',
+                                        'Sertifikat kesehatan'
+                                    ];
+                                } elseif ($index === 2) {
+                                    $features = [
+                                        'Video call & chat',
+                                        'Resep digital & follow-up',
+                                        'Integrasi booking cepat'
+                                    ];
+                                }
+                            @endphp
+                            @foreach($features as $feature)
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
+                                        @if($index === 0)
+                                            <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
+                                        @else
+                                            <span class="text-white text-xs">✓</span>
+                                        @endif
+                                    </span>
+                                    {{ $feature }}
+                                </li>
+                            @endforeach
+                        </ul>
+                        <button
+                            class="w-full bg-{{ $color }}-500 text-white py-3 rounded-xl hover:bg-{{ $color }}-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                            Pesan Sekarang
+                        </button>
                     </div>
                 </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-carob-900 mb-1">Telehealth Konsultasi</h3>
-                    <p class="text-chai-700 font-semibold text-sm mb-2">Mulai dari Rp 120.000</p>
-                    <p class="text-carob-600 text-sm mb-4 leading-relaxed">
-                        Konsultasi jarak jauh dengan dokter hewan bersertifikat.
-                    </p>
-                    <ul class="space-y-2 mb-6 flex-grow">
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Video call & chat
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Resep digital & follow-up
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Integrasi booking cepat
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-pistache-500 text-white py-3 rounded-xl hover:bg-pistache-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
-                        Pesan Sekarang
-                    </button>
+            @empty
+                <!-- Fallback content if no services -->
+                <div class="col-span-full text-center py-8">
+                    <p class="text-carob-600">Belum ada layanan tersedia.</p>
                 </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
