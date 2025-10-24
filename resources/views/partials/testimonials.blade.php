@@ -81,7 +81,7 @@
                             @endphp
                             @foreach($chunks as $chunkIndex => $testimonialChunk)
                                 <div class="testimonial-slide w-full flex-shrink-0">
-                                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                                         @foreach($testimonialChunk as $index => $testimonial)
                                             @php
                                                 $color = $colors[$index % 4];
@@ -105,7 +105,7 @@
                                                 </p>
                                                 <div class="flex items-center">
                                                     @if($testimonial->avatar)
-                                                        <img src="{{ $testimonial->avatar }}" alt="{{ $testimonial->name }}" class="w-12 h-12 rounded-full mr-4 object-cover">
+                                                        <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" class="w-12 h-12 rounded-full mr-4 object-cover">
                                                     @else
                                                         <div class="w-12 h-12 bg-{{ $color }}-200 rounded-full flex items-center justify-center text-{{ $color }}-800 font-bold text-lg mr-4">{{ $initials }}</div>
                                                     @endif
@@ -113,7 +113,7 @@
                                                         <div class="font-semibold text-gray-800">{{ $testimonial->name }}</div>
                                                         <div class="text-sm text-gray-600">
                                                             @if($testimonial->pet_name && $testimonial->pet_type)
-                                                                {{ $testimonial->pet_type }} Owner
+                                                                {{ ucfirst($testimonial->pet_type) }} Owner
                                                                 @if($testimonial->pet_name)
                                                                     ({{ $testimonial->pet_name }})
                                                                 @endif
@@ -142,6 +142,7 @@
                 </div>
 
                 {{-- Carousel Navigation --}}
+                @if($testimonials->count() > 3)
                 <div class="flex justify-center mt-8 space-x-4">
                     <button class="testimonial-prev bg-white/60 backdrop-blur-sm hover:bg-white/80 rounded-full p-3 shadow-lg border border-white/20 transition-all duration-300">
                         <svg class="w-6 h-6 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,8 +150,12 @@
                         </svg>
                     </button>
                     <div class="flex space-x-2 items-center">
-                        <div class="testimonial-indicator w-3 h-3 rounded-full bg-matcha-600 transition-all duration-300"></div>
-                        <div class="testimonial-indicator w-3 h-3 rounded-full bg-matcha-300 transition-all duration-300"></div>
+                        @php
+                            $totalSlides = ceil($testimonials->count() / 3);
+                        @endphp
+                        @for($i = 0; $i < $totalSlides; $i++)
+                            <div class="testimonial-indicator w-3 h-3 rounded-full {{ $i === 0 ? 'bg-matcha-600' : 'bg-matcha-300' }} transition-all duration-300" data-slide="{{ $i }}"></div>
+                        @endfor
                     </div>
                     <button class="testimonial-next bg-white/60 backdrop-blur-sm hover:bg-white/80 rounded-full p-3 shadow-lg border border-white/20 transition-all duration-300">
                         <svg class="w-6 h-6 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,6 +163,7 @@
                         </svg>
                     </button>
                 </div>
+                @endif
             </div>
         </div>
 
@@ -186,14 +192,14 @@
                         <article class="bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300 group">
                             <div class="h-48 bg-gradient-to-br from-{{ $color }}-200 to-{{ $color }}-300 relative overflow-hidden">
                                 @if($article->featured_image)
-                                    <img src="{{ $article->featured_image }}" alt="{{ $article->title }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 bg-{{ $color }}-600/20 group-hover:bg-{{ $color }}-600/30 transition-all duration-300"></div>
                                 @else
                                     <div class="absolute inset-0 bg-{{ $color }}-600/20 group-hover:bg-{{ $color }}-600/30 transition-all duration-300"></div>
                                 @endif
                                 <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-{{ $color }}-700">
                                     @if($article->tags && count($article->tags) > 0)
-                                        {{ $article->tags[0] }}
+                                         {{ ucfirst($article->tags[0]) }}
                                     @else
                                         {{ $category }}
                                     @endif
@@ -250,7 +256,7 @@
                                 <div class="md:w-1/3">
                                     <div class="h-48 bg-gradient-to-br from-{{ $color }}-200 to-{{ $color }}-400 rounded-xl relative overflow-hidden">
                                         @if($newsItem->featured_image)
-                                            <img src="{{ $newsItem->featured_image }}" alt="{{ $newsItem->title }}" class="w-full h-full object-cover rounded-xl">
+                                    <img src="{{ asset('storage/' . $newsItem->featured_image) }}" alt="{{ $newsItem->title }}" class="w-full h-full object-cover rounded-xl">
                                         @endif
                                         <div class="absolute inset-0 bg-{{ $color }}-600/20"></div>
                                         @if($newsItem->is_breaking)
@@ -311,52 +317,125 @@
                             $badgeColor = $badgeColors[$index % 5];
                             $features = $promo->features ? json_decode($promo->features, true) : [];
                         @endphp
-                        <div class="bg-gradient-to-br from-{{ $color }}-100 to-{{ $color }}-200 rounded-2xl p-6 shadow-lg border border-{{ $color }}-300/30 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-                            @if($promo->discount_percentage || $promo->discount_amount)
-                                <div class="absolute top-4 right-4 bg-{{ $badgeColor }}-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                                    @if($promo->discount_percentage)
-                                        {{ $promo->discount_percentage }}% OFF
-                                    @elseif($promo->discount_amount)
-                                        ${{ $promo->discount_amount }} OFF
+                        <div class="bg-gradient-to-br from-{{ $color }}-50 to-{{ $color }}-100 rounded-2xl p-6 shadow-lg border border-{{ $color }}-200/50 hover:shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                            <!-- Decorative background pattern -->
+                            <div class="absolute inset-0 opacity-5">
+                                <div class="absolute top-0 right-0 w-32 h-32 bg-{{ $color }}-600 rounded-full -translate-y-16 translate-x-16"></div>
+                                <div class="absolute bottom-0 left-0 w-24 h-24 bg-{{ $color }}-400 rounded-full translate-y-12 -translate-x-12"></div>
+                            </div>
+                            
+                            @if($promo->discount_value)
+                                <div class="absolute top-4 right-4 bg-gradient-to-r from-{{ $badgeColor }}-500 to-{{ $badgeColor }}-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300">
+                                    @if($promo->discount_type === 'percentage')
+                                        {{ $promo->discount_value }}% OFF
+                                    @elseif($promo->discount_type === 'fixed')
+                                        Rp{{ number_format($promo->discount_value, 0, ',', '.') }} OFF
                                     @else
                                         SPECIAL
                                     @endif
                                 </div>
                             @endif
-                            <div class="mb-6">
-                                <h3 class="text-2xl font-bold text-{{ $color }}-800 mb-3">
-                                    {{ $promo->title }}
-                                </h3>
-                                <p class="text-{{ $color }}-700 leading-relaxed">
-                                    {{ $promo->description }}
-                                </p>
-                            </div>
-                            @if(!empty($features))
-                                <div class="space-y-3 mb-6">
-                                    @foreach($features as $feature)
-                                        <div class="flex items-center text-{{ $color }}-700">
-                                            <svg class="w-5 h-5 mr-3 text-{{ $color }}-600" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                            </svg>
-                                            {{ $feature }}
-                                        </div>
-                                    @endforeach
+                            
+                            @if($promo->featured_image)
+                                <div class="mb-6 relative">
+                                    <img src="{{ asset('storage/' . $promo->featured_image) }}" alt="{{ $promo->title }}" class="w-full h-48 object-cover rounded-xl shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"></div>
                                 </div>
                             @endif
-                            <div class="text-center">
-                                @if($promo->price)
-                                    <div class="text-3xl font-bold text-{{ $color }}-800 mb-2">
-                                        ${{ $promo->price }}
-                                        @if($promo->original_price)
-                                            <span class="text-lg line-through text-{{ $color }}-600">${{ $promo->original_price }}</span>
-                                        @endif
+                            
+                            <div class="relative z-10 mb-6">
+                                <h3 class="text-2xl font-bold text-{{ $color }}-900 mb-3 group-hover:text-{{ $color }}-800 transition-colors duration-300">
+                                    {{ $promo->title }}
+                                </h3>
+                                <p class="text-{{ $color }}-700 leading-relaxed mb-4 text-sm">
+                                    {{ $promo->description }}
+                                </p>
+                                
+                                @if($promo->promo_code)
+                                    <div class="bg-white/80 backdrop-blur-sm border-2 border-dashed border-{{ $color }}-400 rounded-lg p-4 mb-4 shadow-sm">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center">
+                                                <svg class="w-5 h-5 mr-2 text-{{ $color }}-600" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-sm text-{{ $color }}-700 font-medium">Kode Promo:</span>
+                                            </div>
+                                            <span class="text-lg font-bold text-{{ $color }}-900 bg-{{ $color }}-100 px-3 py-1 rounded-lg border border-{{ $color }}-300">{{ $promo->promo_code }}</span>
+                                        </div>
                                     </div>
-                                @elseif($promo->discount_percentage == 100 || $promo->price == 0)
-                                    <div class="text-3xl font-bold text-{{ $color }}-800 mb-2">FREE</div>
                                 @endif
-                                <button class="w-full bg-{{ $color }}-600 hover:bg-{{ $color }}-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300">
-                                    {{ $promo->cta_text ?: 'Claim Offer' }}
-                                </button>
+                                
+                                @if($promo->min_purchase)
+                                    <div class="flex items-center text-sm text-{{ $color }}-600 mb-3 bg-{{ $color }}-50 p-2 rounded-lg">
+                                        <svg class="w-4 h-4 mr-2 text-{{ $color }}-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
+                                            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span class="font-medium">Min. pembelian:</span> 
+                                        <span class="ml-1 font-bold text-{{ $color }}-800">Rp{{ number_format($promo->min_purchase, 0, ',', '.') }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                            
+                            @if($promo->terms_conditions)
+                                @php
+                                    // Handle both string and array data types
+                                    if (is_string($promo->terms_conditions)) {
+                                        $terms = json_decode($promo->terms_conditions, true) ?: [];
+                                    } else {
+                                        $terms = is_array($promo->terms_conditions) ? $promo->terms_conditions : [];
+                                    }
+                                @endphp
+                                @if(!empty($terms))
+                                    <div class="bg-{{ $color }}-50/50 rounded-lg p-4 mb-6 border border-{{ $color }}-200/50">
+                                        <h4 class="text-sm font-semibold text-{{ $color }}-800 mb-3 flex items-center">
+                                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            Syarat & Ketentuan:
+                                        </h4>
+                                        <div class="space-y-2">
+                                            @foreach($terms as $term)
+                                                <div class="flex items-start text-{{ $color }}-700 text-xs">
+                                                    <svg class="w-3 h-3 mr-2 mt-1 text-{{ $color }}-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <span class="leading-relaxed">{{ $term }}</span>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                            @endif
+                            
+                            <div class="relative z-10">
+                                @if($promo->start_date && $promo->end_date)
+                                    <div class="flex items-center justify-center text-xs text-{{ $color }}-600 mb-3 bg-{{ $color }}-50 p-2 rounded-lg">
+                                        <svg class="w-4 h-4 mr-2 text-{{ $color }}-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span class="font-medium">Berlaku:</span> 
+                                        <span class="ml-1">{{ \Carbon\Carbon::parse($promo->start_date)->format('d M Y') }} - {{ \Carbon\Carbon::parse($promo->end_date)->format('d M Y') }}</span>
+                                    </div>
+                                @endif
+                                
+                                @if($promo->usage_limit)
+                                    <div class="flex items-center justify-center text-xs text-{{ $color }}-600 mb-4 bg-{{ $color }}-50 p-2 rounded-lg">
+                                        <svg class="w-4 h-4 mr-2 text-{{ $color }}-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span class="font-medium">Tersisa:</span> 
+                                        <span class="ml-1 font-bold text-{{ $color }}-800">{{ $promo->usage_limit - $promo->used_count }}</span> 
+                                        <span class="text-{{ $color }}-500"> &nbsp; dari {{ $promo->usage_limit }} kuota</span>
+                                    </div>
+                                @endif
+                                
+                                <!-- <button class="w-full bg-gradient-to-r from-{{ $color }}-600 to-{{ $color }}-700 hover:from-{{ $color }}-700 hover:to-{{ $color }}-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center group">
+                                    <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    Gunakan Promo
+                                </button> -->
                             </div>
                         </div>
                     @endforeach

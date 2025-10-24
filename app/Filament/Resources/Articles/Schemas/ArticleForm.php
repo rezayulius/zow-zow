@@ -98,6 +98,7 @@ class ArticleForm
                         FileUpload::make('featured_image')
                             ->label('Gambar Utama')
                             ->image()
+                            ->disk('public')
                             ->directory('articles')
                             ->visibility('public')
                             ->imageEditor()

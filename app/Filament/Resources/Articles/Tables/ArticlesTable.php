@@ -24,8 +24,9 @@ class ArticlesTable
             ->columns([
                 ImageColumn::make('featured_image')
                     ->label('Gambar')
+                    ->disk('public')
                     ->circular()
-                    ->defaultImageUrl(url('/images/placeholders/article-placeholder.jpg'))
+                    ->defaultImageUrl(url('/images/placeholders/default-placeholder.jpg'))
                     ->size(50),
 
                 TextColumn::make('title')

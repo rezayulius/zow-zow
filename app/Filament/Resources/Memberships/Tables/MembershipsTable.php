@@ -23,9 +23,10 @@ class MembershipsTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Gambar')
+                    ->disk('public')
                     ->circular()
                     ->size(50)
-                    ->defaultImageUrl(url('/images/placeholders/membership-placeholder.png'))
+                    ->defaultImageUrl(url('/images/placeholders/default-placeholder.jpg'))
                     ->toggleable(),
 
                 TextColumn::make('title')

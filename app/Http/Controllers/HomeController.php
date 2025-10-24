@@ -17,6 +17,8 @@ class HomeController extends Controller
     {
         // Fetch dynamic data from database
         $services = Service::active()->ordered()->get();
+        $healthServices = Service::active()->where('category', 'Health')->ordered()->get();
+        $wellnessServices = Service::active()->where('category', 'Wellness')->ordered()->get();
         $pricing = Pricing::active()->ordered()->get();
         $memberships = Membership::active()->ordered()->get();
         $testimonials = Testimonial::active()->featured()->ordered()->limit(6)->get();
@@ -26,6 +28,8 @@ class HomeController extends Controller
 
         return view('home', compact(
             'services',
+            'healthServices',
+            'wellnessServices',
             'pricing',
             'memberships',
             'testimonials',

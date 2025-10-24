@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Services\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -31,6 +32,22 @@ class ServiceForm
                             ->rows(3)
                             ->placeholder('Masukkan deskripsi service'),
 
+                        TagsInput::make('features')
+                            ->label('Fitur-fitur')
+                            ->placeholder('Masukkan fitur dan tekan Enter')
+                            ->helperText('Tambahkan fitur-fitur yang tersedia untuk service ini')
+                            ->suggestions([
+                                'Pemeriksaan kesehatan lengkap',
+                                'Konsultasi dokter berpengalaman',
+                                'Diagnosis akurat',
+                                'Vaksin inti & booster',
+                                'Sertifikat vaksinasi',
+                                'Follow-up kesehatan',
+                                'Perawatan profesional',
+                                'Teknologi modern',
+                                'Hasil terjamin'
+                            ]),
+
                         Select::make('category')
                             ->label('Kategori')
                             ->required()
@@ -53,14 +70,38 @@ class ServiceForm
                 Section::make('Media & Icon')
                     ->description('Gambar dan icon untuk service')
                     ->schema([
-                        TextInput::make('icon')
+                        Select::make('icon')
                             ->label('Icon')
-                            ->placeholder('stethoscope, scissors, shield, dll')
-                            ->helperText('Nama icon untuk tampilan service'),
+                            ->options([
+                                'stethoscope' => '🩺 Stethoscope (Pemeriksaan)',
+                                'syringe' => '💉 Syringe (Vaksinasi)',
+                                'heart' => '❤️ Heart (Kesehatan Umum)',
+                                'shield' => '🛡️ Shield (Perlindungan)',
+                                'scissors' => '✂️ Scissors (Grooming)',
+                                'sparkles' => '✨ Sparkles (Spa/Wellness)',
+                                'bed' => '🛏️ Bed (Hotel/Daycare)',
+                                'coffee' => '☕ Coffee (Cafe)',
+                                'wand' => '🪄 Wand (Magic/Premium)',
+                                'trophy' => '🏆 Trophy (Premium Service)',
+                                'star' => '⭐ Star (Rating/Quality)',
+                                'zap' => '⚡ Zap (Quick Service)',
+                                'clock' => '🕐 Clock (24/7 Service)',
+                                'phone' => '📞 Phone (Konsultasi)',
+                                'camera' => '📷 Camera (Dokumentasi)',
+                                'pill' => '💊 Pill (Obat/Treatment)',
+                                'bandage' => '🩹 Bandage (Perawatan)',
+                                'thermometer' => '🌡️ Thermometer (Diagnosis)',
+                                'microscope' => '🔬 Microscope (Lab Test)',
+                                'bone' => '🦴 Bone (Ortopedi)',
+                            ])
+                            ->placeholder('Pilih icon untuk service')
+                            ->helperText('Icon akan ditampilkan di card service')
+                            ->searchable(),
 
                         FileUpload::make('image')
                             ->label('Gambar Service')
                             ->image()
+                            ->disk('public')
                             ->directory('services')
                             ->visibility('public')
                             ->helperText('Upload gambar untuk service'),

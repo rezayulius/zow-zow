@@ -18,8 +18,10 @@ class PromosTable
             ->columns([
                 ImageColumn::make('featured_image')
                     ->label('Gambar')
+                    ->disk('public')
                     ->circular()
-                    ->size(50),
+                    ->size(50)
+                    ->defaultImageUrl(url('/images/placeholders/default-placeholder.jpg')),
 
                 TextColumn::make('title')
                     ->label('Judul')

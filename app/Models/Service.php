@@ -9,6 +9,7 @@ class Service extends Model
     protected $fillable = [
         'title',
         'description',
+        'features',
         'category',
         'icon',
         'image',
@@ -18,6 +19,7 @@ class Service extends Model
     ];
 
     protected $casts = [
+        'features' => 'array',
         'price' => 'decimal:2',
         'is_active' => 'boolean',
         'sort_order' => 'integer'

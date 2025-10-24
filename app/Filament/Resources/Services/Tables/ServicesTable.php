@@ -22,9 +22,10 @@ class ServicesTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Gambar')
+                    ->disk('public')
                     ->circular()
                     ->size(50)
-                    ->defaultImageUrl(url('/images/placeholders/service-placeholder.png')),
+                    ->defaultImageUrl(url('/images/placeholders/default-placeholder.jpg')),
 
                 TextColumn::make('title')
                     ->label('Nama Service')
@@ -50,6 +51,28 @@ class ServicesTable
                         }
                         return $state;
                     }),
+
+                TextColumn::make('features')
+                    ->label('Fitur')
+                    ->formatStateUsing(function ($state) {
+                        if (empty($state)) {
+                            return '-';
+                        }
+                        return is_array($state) ? implode(', ', $state) : $state;
+                    })
+                    ->limit(30)
+                    ->tooltip(function (TextColumn $column): ?string {
+                        $state = $column->getState();
+                        if (empty($state)) {
+                            return null;
+                        }
+                        $formatted = is_array($state) ? implode(', ', $state) : $state;
+                        if (strlen($formatted) <= 30) {
+                            return null;
+                        }
+                        return $formatted;
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('icon')
                     ->label('Icon')

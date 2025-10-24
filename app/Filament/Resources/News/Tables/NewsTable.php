@@ -23,9 +23,10 @@ class NewsTable
             ->columns([
                 ImageColumn::make('featured_image')
                     ->label('Gambar')
+                    ->disk('public')
                     ->circular()
                     ->size(50)
-                    ->defaultImageUrl(url('/images/placeholder.jpg')),
+                    ->defaultImageUrl(url('/images/placeholders/default-placeholder.jpg')),
 
                 TextColumn::make('title')
                     ->label('Judul')

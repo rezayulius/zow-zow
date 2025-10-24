@@ -113,7 +113,9 @@ class NewsForm
                         FileUpload::make('featured_image')
                             ->label('Gambar Utama')
                             ->image()
+                            ->disk('public')
                             ->directory('news-images')
+                            ->visibility('public')
                             ->maxSize(2048)
                             ->imageEditor()
                             ->imageEditorAspectRatios([

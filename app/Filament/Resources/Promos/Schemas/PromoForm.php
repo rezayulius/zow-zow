@@ -6,6 +6,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -85,6 +86,7 @@ class PromoForm
                         FileUpload::make('featured_image')
                             ->label('Gambar Promo')
                             ->image()
+                            ->disk('public')
                             ->directory('promos')
                             ->visibility('public')
                             ->imageEditor()
@@ -99,11 +101,19 @@ class PromoForm
                 Section::make('Syarat & Ketentuan')
                     ->description('Syarat dan ketentuan promo')
                     ->schema([
-                        Textarea::make('terms_conditions')
+                        TagsInput::make('terms_conditions')
                             ->label('Syarat & Ketentuan')
                             ->columnSpanFull()
-                            ->rows(6)
-                            ->helperText('Syarat dan ketentuan promo'),
+                            ->placeholder('Tambahkan syarat & ketentuan...')
+                            ->helperText('Tekan Enter untuk menambah syarat & ketentuan baru')
+                            ->suggestions([
+                                'Berlaku untuk pelanggan baru',
+                                'Tidak dapat digabung dengan promo lain',
+                                'Berlaku untuk minimal pembelian tertentu',
+                                'Promo terbatas untuk 100 pengguna pertama',
+                                'Berlaku hingga tanggal yang ditentukan',
+                                'Tidak berlaku untuk produk sale',
+                            ]),
                     ]),
 
                 Section::make('Periode & Pengaturan')

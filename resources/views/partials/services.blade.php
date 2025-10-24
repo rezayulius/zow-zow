@@ -40,18 +40,38 @@
 
         <!-- Health Cards -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            @forelse($services as $index => $service)
+            @forelse($healthServices as $index => $service)
                 @php
                     $colors = ['matcha', 'chai', 'pistache'];
                     $color = $colors[$index % 3];
-                    $badges = ['POPULAR', 'ESSENTIAL', 'ONLINE'];
+                    $badges = ['POPULAR', 'ESSENTIAL', 'PREMIUM'];
                     $badge = $badges[$index % 3];
-                    $icons = ['heart', 'flask-conical', 'video'];
-                    $icon = $icons[$index % 3];
+                    
+                    // Default image berdasarkan kategori Health
+                    $defaultImages = [
+                        'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // Konsultasi
+                        'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // Vaksinasi
+                        'https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'  // Medical
+                    ];
+                    $defaultImage = $defaultImages[$index % 3];
+                    
+                    // Features dari database atau fallback ke default
+                    $features = $service->features ?? [];
+                    
+                    // Fallback jika features kosong
+                    if (empty($features)) {
+                        if (str_contains(strtolower($service->title), 'konsultasi')) {
+                            $features = ['Pemeriksaan kesehatan lengkap', 'Konsultasi dokter berpengalaman', 'Diagnosis akurat'];
+                        } elseif (str_contains(strtolower($service->title), 'vaksin')) {
+                            $features = ['Vaksin inti & booster', 'Sertifikat vaksinasi', 'Follow-up kesehatan'];
+                        } else {
+                            $features = ['Perawatan profesional', 'Teknologi modern', 'Hasil terjamin'];
+                        }
+                    }
                 @endphp
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full {{ $index > 0 ? 'border border-' . $color . '-100' : '' }}">
                     <div class="relative h-48 overflow-hidden">
-                        <img src="{{ $service->image ?: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' }}"
+                        <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}"
                             alt="{{ $service->title }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                         <div class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/{{ $index === 0 ? '80' : '70' }} to-{{ $color }}-600/{{ $index === 0 ? '80' : '70' }}"></div>
@@ -59,44 +79,20 @@
                             <span class="text-white text-xs font-medium">{{ $badge }}</span>
                         </div>
                         <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                            <i data-lucide="{{ $service->icon ?: $icon }}" class="text-white text-sm w-4 h-4"></i>
+                            <i data-lucide="{{ $service->icon ?: 'heart' }}" class="text-white text-sm w-4 h-4"></i>
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-carob-900 mb-1">{{ $service->title }}</h3>
-                        <p class="text-chai-700 font-semibold text-sm mb-2">{{ $service->formatted_price }}</p>
+                        <p class="text-chai-700 font-semibold text-sm mb-2">Rp {{ number_format($service->price, 0, ',', '.') }}</p>
                         <p class="text-carob-600 text-sm mb-4 leading-relaxed">
                             {{ $service->description }}
                         </p>
                         <ul class="space-y-2 mb-6 flex-grow">
-                            @php
-                                $features = [
-                                    'Pemeriksaan kesehatan',
-                                    'Vaksinasi lengkap', 
-                                    'Operasi'
-                                ];
-                                if ($index === 1) {
-                                    $features = [
-                                        'Vaksin inti & booster',
-                                        'Tes darah & urin lengkap',
-                                        'Sertifikat kesehatan'
-                                    ];
-                                } elseif ($index === 2) {
-                                    $features = [
-                                        'Video call & chat',
-                                        'Resep digital & follow-up',
-                                        'Integrasi booking cepat'
-                                    ];
-                                }
-                            @endphp
                             @foreach($features as $feature)
                                 <li class="flex items-center text-sm text-carob-600">
                                     <span class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
-                                        @if($index === 0)
-                                            <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
-                                        @else
-                                            <span class="text-white text-xs">✓</span>
-                                        @endif
+                                        <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
                                     </span>
                                     {{ $feature }}
                                 </li>
@@ -109,9 +105,9 @@
                     </div>
                 </div>
             @empty
-                <!-- Fallback content if no services -->
+                <!-- Fallback content if no health services -->
                 <div class="col-span-full text-center py-8">
-                    <p class="text-carob-600">Belum ada layanan tersedia.</p>
+                    <p class="text-carob-600">Belum ada layanan kesehatan tersedia.</p>
                 </div>
             @endforelse
         </div>
@@ -160,146 +156,78 @@
 
         <!-- Wellness Cards -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
-            <!-- Salon Hewan -->
-            <div
-                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Salon Hewan"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-chai-400/80 to-chai-600/80"></div>
-                    <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span class="text-white text-xs font-medium">QUICK & EASY</span>
+            @forelse($wellnessServices as $index => $service)
+                @php
+                    $colors = ['chai', 'carob', 'pistache'];
+                    $color = $colors[$index % 3];
+                    $badges = ['TRENDING', 'PREMIUM', 'RELAXING'];
+                    $badge = $badges[$index % 3];
+                    
+                    // Default image berdasarkan kategori Wellness
+                    $defaultImages = [
+                        'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', // Grooming
+                        'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', // Hotel
+                        'https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'  // Cafe
+                    ];
+                    $defaultImage = $defaultImages[$index % 3];
+                    
+                    // Features dari database atau fallback ke default
+                    $features = $service->features ?? [];
+                    
+                    // Fallback jika features kosong
+                    if (empty($features)) {
+                        if (str_contains(strtolower($service->title), 'grooming') || str_contains(strtolower($service->title), 'salon')) {
+                            $features = ['Grooming lengkap', 'Potong kuku profesional', 'Mandi aromaterapi'];
+                        } elseif (str_contains(strtolower($service->title), 'hotel') || str_contains(strtolower($service->title), 'daycare')) {
+                            $features = ['Pengawasan 24/7', 'Kamar ber-AC', 'Layanan makan premium'];
+                        } elseif (str_contains(strtolower($service->title), 'cafe') || str_contains(strtolower($service->title), 'kafe')) {
+                            $features = ['Menu spesial hewan', 'Tempat bermain luas', 'WiFi gratis'];
+                        } else {
+                            $features = ['Layanan berkualitas', 'Fasilitas modern', 'Pengalaman terbaik'];
+                        }
+                    }
+                @endphp
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}"
+                            alt="{{ $service->title }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/80 to-{{ $color }}-600/80"></div>
+                        <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span class="text-white text-xs font-medium">{{ $badge }}</span>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                            <i data-lucide="{{ $service->icon ?: 'sparkles' }}" class="text-white text-sm w-4 h-4"></i>
+                        </div>
                     </div>
-                    <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <i data-lucide="sparkles" class="text-white text-sm w-4 h-4"></i>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-carob-900 mb-3">Salon Hewan</h3>
-                    <p class="text-carob-600 text-sm mb-4 leading-relaxed">
-                        Layanan grooming profesional untuk kebersihan hewan Anda.
-                    </p>
-                    <ul class="space-y-2 mb-6 flex-grow">
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Grooming lengkap
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Potong kuku
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Mandi
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <!-- Hotel Hewan -->
-            <div
-                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Hotel Hewan"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-carob-400/80 to-carob-600/80"></div>
-                    <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span class="text-white text-xs font-medium">SAFE & COZY</span>
-                    </div>
-                    <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <span class="text-white text-sm">🛏️</span>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-carob-900 mb-3">Hotel Hewan</h3>
-                    <p class="text-carob-600 text-sm mb-4 leading-relaxed">
-                        Penginapan yang aman dan nyaman untuk hewan Anda.
-                    </p>
-                    <ul class="space-y-2 mb-6 flex-grow">
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-carob-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Pengawasan 24/7
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-carob-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Kamar ber-AC
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-carob-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Layanan Makan
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-
-            <!-- Kafe Hewan -->
-            <div
-                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
-                <div class="relative h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Kafe Hewan"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-pistache-400/80 to-pistache-600/80"></div>
-                    <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span class="text-white text-xs font-medium">RELAX & ENJOY</span>
-                    </div>
-                    <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
-                        <span class="text-white text-sm">🐾</span>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-carob-900 mb-1">{{ $service->title }}</h3>
+                        <p class="text-chai-700 font-semibold text-sm mb-2">Rp {{ number_format($service->price, 0, ',', '.') }}</p>
+                        <p class="text-carob-600 text-sm mb-4 leading-relaxed">
+                            {{ $service->description }}
+                        </p>
+                        <ul class="space-y-2 mb-6 flex-grow">
+                            @foreach($features as $feature)
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
+                                        <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
+                                    </span>
+                                    {{ $feature }}
+                                </li>
+                            @endforeach
+                        </ul>
+                        <button
+                            class="w-full bg-{{ $color }}-500 text-white py-3 rounded-xl hover:bg-{{ $color }}-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                            Pesan Sekarang
+                        </button>
                     </div>
                 </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold text-carob-900 mb-3">Kafe Hewan</h3>
-                    <p class="text-carob-600 text-sm mb-4 leading-relaxed">
-                        Bersantai dengan hewan Anda sambil menikmati kopi.
-                    </p>
-                    <ul class="space-y-2 mb-6 flex-grow">
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Menu Spesial Hewan
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            Tempat Bermain
-                        </li>
-                        <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
-                                <span class="text-white text-xs">✓</span>
-                            </span>
-                            WiFi Gratis
-                        </li>
-                    </ul>
-                    <button
-                        class="w-full bg-pistache-500 text-white py-3 rounded-xl hover:bg-pistache-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
-                        Pesan Sekarang
-                    </button>
+            @empty
+                <!-- Fallback content if no wellness services -->
+                <div class="col-span-full text-center py-8">
+                    <p class="text-carob-600">Belum ada layanan wellness tersedia.</p>
                 </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>

@@ -21,8 +21,9 @@ class TestimonialsTable
             ->columns([
                 ImageColumn::make('avatar')
                     ->label('Foto')
+                    ->disk('public')
                     ->circular()
-                    ->defaultImageUrl(url('/images/placeholders/avatar.png'))
+                    ->defaultImageUrl(url('/images/placeholders/default-placeholder.jpg'))
                     ->size(40),
 
                 TextColumn::make('name')

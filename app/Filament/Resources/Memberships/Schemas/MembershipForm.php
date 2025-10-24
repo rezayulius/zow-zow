@@ -82,6 +82,7 @@ class MembershipForm
                         FileUpload::make('image')
                             ->label('Gambar Membership')
                             ->image()
+                            ->disk('public')
                             ->directory('memberships')
                             ->visibility('public')
                             ->imageEditor()
