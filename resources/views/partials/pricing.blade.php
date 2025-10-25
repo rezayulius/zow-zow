@@ -15,322 +15,92 @@
         </div>
 
         <!-- Pricing Cards Grid -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <!-- Basic Health Checkup -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-chai-100 relative flex flex-col h-full">
-                <div class="absolute top-4 left-4">
-                    <span class="bg-chai-500 text-white text-xs px-3 py-1 rounded-full font-medium">POPULAR</span>
-                </div>
-                <div class="pt-8 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Basic Health Checkup</h3>
-                    <p class="text-carob-600 text-sm mb-4">Comprehensive health examination for your pet</p>
+        @if($pricing && $pricing->count() > 0)
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                @foreach($pricing as $index => $package)
+                    @php
+                        // Define color schemes for variety
+                        $colorSchemes = [
+                            ['border' => 'border-chai-100', 'price' => 'text-chai-600', 'button' => 'bg-chai-500 hover:bg-chai-600', 'popular' => 'bg-chai-500', 'feature' => 'text-chai-600'],
+                            ['border' => 'border-matcha-100', 'price' => 'text-matcha-600', 'button' => 'bg-matcha-500 hover:bg-matcha-600', 'popular' => 'bg-matcha-500', 'feature' => 'text-matcha-600'],
+                            ['border' => 'border-vanilla-200', 'price' => 'text-vanilla-600', 'button' => 'bg-vanilla-500 hover:bg-vanilla-600', 'popular' => 'bg-vanilla-500', 'feature' => 'text-vanilla-600'],
+                            ['border' => 'border-carob-100', 'price' => 'text-carob-600', 'button' => 'bg-carob-500 hover:bg-carob-600', 'popular' => 'bg-carob-500', 'feature' => 'text-carob-600'],
+                            ['border' => 'border-pistache-200', 'price' => 'text-pistache-600', 'button' => 'bg-pistache-600 hover:bg-pistache-700', 'popular' => 'bg-pistache-600', 'feature' => 'text-pistache-600']
+                        ];
+                        $colors = $colorSchemes[$index % count($colorSchemes)];
+                    @endphp
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border {{ $colors['border'] }} relative flex flex-col h-full">
+                        @if($package->is_popular)
+                            <div class="absolute top-4 left-4">
+                                <span class="{{ $colors['popular'] }} text-white text-xs px-3 py-1 rounded-full font-medium">POPULAR</span>
+                            </div>
+                        @endif
+                        
+                        <div class="{{ $package->is_popular ? 'pt-8' : 'pt-4' }} flex-1 flex flex-col">
+                            <h3 class="text-xl font-bold text-carob-900 mb-2">{{ $package->name }}</h3>
+                            <p class="text-carob-600 text-sm mb-4">{{ $package->description }}</p>
 
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold text-chai-600">Rp 150.000</span>
-                        <div class="flex items-center text-carob-500 text-sm mt-1">
-                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                            30 minutes
+                            <div class="mb-4">
+                                <span class="text-3xl font-bold {{ $colors['price'] }}">{{ $package->formatted_price }}</span>
+                                @if($package->duration)
+                                    <div class="flex items-center text-carob-500 text-sm mt-1">
+                                        <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
+                                        {{ $package->duration }}
+                                    </div>
+                                @endif
+                            </div>
+
+                            @if($package->features && is_array($package->features))
+                                <ul class="space-y-2 mb-6 flex-1" data-features-container>
+                                    @foreach(array_slice($package->features, 0, 3) as $feature)
+                                        <li class="flex items-center text-sm text-carob-700">
+                                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                                            {{ $feature }}
+                                        </li>
+                                    @endforeach
+                                    
+                                    @if(count($package->features) > 3)
+                                        <!-- Hidden features (initially hidden) -->
+                                        <div class="hidden-features" style="display: none;">
+                                            @foreach(array_slice($package->features, 3) as $feature)
+                                                <li class="flex items-center text-sm text-carob-700">
+                                                    <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                                                    {{ $feature }}
+                                                </li>
+                                            @endforeach
+                                        </div>
+                                        
+                                        <!-- Toggle button -->
+                                        <li class="expand-toggle cursor-pointer hover:underline {{ $colors['feature'] }} text-sm font-medium transition-colors duration-200" 
+                                            data-expanded="false"
+                                            data-more-text="+{{ count($package->features) - 3 }} more features..."
+                                            data-less-text="Show less features">
+                                            +{{ count($package->features) - 3 }} more features...
+                                        </li>
+                                    @endif
+                                </ul>
+                            @endif
+
+                            <a href="{{ $package->button_link ?? '#' }}"
+                               class="w-full {{ $colors['button'] }} text-white py-3 rounded-xl transition-colors font-medium mt-auto text-center block">
+                                <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
+                                {{ $package->button_text ?? 'Book Now' }}
+                            </a>
                         </div>
                     </div>
-
-                    <ul class="space-y-2 mb-6 flex-1">
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Physical examination
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Temperature check
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Weight measurement
-                        </li>
-                        <li class="text-chai-600 text-sm font-medium">+1 more features...</li>
-                    </ul>
-
-                    <button
-                        class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 transition-colors font-medium mt-auto">
-                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                        Book Now
-                    </button>
+                @endforeach
+            </div>
+        @else
+            <!-- Fallback content when no pricing data is available -->
+            <div class="text-center py-12">
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 max-w-md mx-auto">
+                    <i data-lucide="package" class="w-12 h-12 text-gray-400 mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold text-carob-900 mb-2">No Pricing Packages Available</h3>
+                    <p class="text-carob-600 text-sm">Please check back later for our pricing packages.</p>
                 </div>
             </div>
-
-            <!-- Vaccination Package -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-matcha-100 flex flex-col h-full">
-                <div class="pt-4 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Vaccination Package</h3>
-                    <p class="text-carob-600 text-sm mb-4">Complete vaccination program for pets</p>
-
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold text-matcha-600">Rp 300.000</span>
-                        <div class="flex items-center text-carob-500 text-sm mt-1">
-                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                            45 minutes
-                        </div>
-                    </div>
-
-                    <ul class="space-y-2 mb-6 flex-1">
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Core vaccines
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Health certificate
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Follow-up consultation
-                        </li>
-                        <li class="text-matcha-600 text-sm font-medium">+1 more features...</li>
-                    </ul>
-
-                    <button
-                        class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 transition-colors font-medium mt-auto">
-                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                        Book Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Premium Grooming -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-vanilla-200 relative">
-                <div class="absolute top-4 left-4">
-                    <span class="bg-vanilla-500 text-white text-xs px-3 py-1 rounded-full font-medium">POPULAR</span>
-                </div>
-                <div class="absolute top-4 right-4">
-                    <div class="bg-carob-500 text-white text-xs px-2 py-1 rounded-full font-bold">20%</div>
-                </div>
-                <div class="pt-8">
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Premium Grooming</h3>
-                    <p class="text-carob-600 text-sm mb-4">Full grooming service with luxury treatment</p>
-
-                    <div class="mb-4">
-                        <div class="flex items-center">
-                            <span class="text-sm text-carob-400 line-through mr-2">Rp 250.000</span>
-                        </div>
-                        <span class="text-3xl font-bold text-vanilla-600">Rp 200.000</span>
-                        <div class="flex items-center text-carob-500 text-sm mt-1">
-                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                            2 hours
-                        </div>
-                    </div>
-
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Bath & blow dry
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Nail trimming
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Ear cleaning
-                        </li>
-                        <li class="text-vanilla-600 text-sm font-medium">+2 more features...</li>
-                    </ul>
-
-                    <button
-                        class="w-full bg-vanilla-500 text-white py-3 rounded-xl hover:bg-vanilla-600 transition-colors font-medium">
-                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                        Book Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Spa Package -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-carob-100">
-                <div class="pt-4">
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Spa Package</h3>
-                    <p class="text-carob-600 text-sm mb-4">Relaxing spa treatment for your beloved pet</p>
-
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold text-carob-600">Rp 400.000</span>
-                        <div class="flex items-center text-carob-500 text-sm mt-1">
-                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                            3 hours
-                        </div>
-                    </div>
-
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                            Aromatherapy bath
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                            Massage therapy
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                            Face mask
-                        </li>
-                        <li class="text-carob-600 text-sm font-medium">+2 more features...</li>
-                    </ul>
-
-                    <button
-                        class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 transition-colors font-medium">
-                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                        Book Now
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Additional Services -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <!-- Hotel Stay -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-chai-100">
-                <h3 class="text-xl font-bold text-carob-900 mb-2">Hotel Stay (per night)</h3>
-                <p class="text-carob-600 text-sm mb-4">Comfortable accommodation with 24/7 care</p>
-
-                <div class="mb-4">
-                    <span class="text-3xl font-bold text-chai-600">Rp 200.000</span>
-                    <div class="flex items-center text-carob-500 text-sm mt-1">
-                        <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                        24 hours
-                    </div>
-                </div>
-
-                <ul class="space-y-2 mb-6">
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Individual room
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        24/7 supervision
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Feeding service
-                    </li>
-                    <li class="text-chai-600 text-sm font-medium">+2 more features...</li>
-                </ul>
-
-                <button
-                    class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 transition-colors font-medium">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                    Book Now
-                </button>
-            </div>
-
-            <!-- Day Care -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-matcha-100">
-                <h3 class="text-xl font-bold text-carob-900 mb-2">Day Care</h3>
-                <p class="text-carob-600 text-sm mb-4">Daily care and supervision for working pet parents</p>
-
-                <div class="mb-4">
-                    <span class="text-3xl font-bold text-matcha-600">Rp 100.000</span>
-                    <div class="flex items-center text-carob-500 text-sm mt-1">
-                        <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                        8 hours
-                    </div>
-                </div>
-
-                <ul class="space-y-2 mb-6">
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Supervised play
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Feeding
-                    </li>
-                    <li class="flex items-center text-sm text-carob-700">
-                        <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2"></i>
-                        Basic grooming
-                    </li>
-                    <li class="text-matcha-600 text-sm font-medium">+2 more features...</li>
-                </ul>
-
-                <button
-                    class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 transition-colors font-medium">
-                    <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                    Book Now
-                </button>
-            </div>
-
-            <!-- Emergency Care -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-pistache-200 flex flex-col h-full">
-                <div class="pt-4 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Emergency Care</h3>
-                    <p class="text-carob-600 text-sm mb-4">24/7 emergency veterinary services</p>
-
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold text-pistache-600">Rp 500.000</span>
-                        <div class="flex items-center text-carob-500 text-sm mt-1">
-                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                            As needed
-                        </div>
-                    </div>
-
-                    <ul class="space-y-2 mb-6 flex-1">
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Immediate response
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Emergency surgery
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            ICU facilities
-                        </li>
-                        <li class="text-pistache-600 text-sm font-medium">+1 more features...</li>
-                    </ul>
-
-                    <button
-                        class="w-full bg-pistache-600 text-white py-3 rounded-xl hover:bg-pistache-700 transition-colors font-medium mt-auto">
-                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                        Book Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Dental Care -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-carob-100 flex flex-col h-full">
-                <div class="pt-4 flex-1 flex flex-col">
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Dental Care</h3>
-                    <p class="text-carob-600 text-sm mb-4">Professional dental cleaning and treatment</p>
-
-                    <div class="mb-4">
-                        <span class="text-3xl font-bold text-carob-600">Rp 350.000</span>
-                        <div class="flex items-center text-carob-500 text-sm mt-1">
-                            <i data-lucide="clock" class="w-4 h-4 mr-1"></i>
-                            1.5 hours
-                        </div>
-                    </div>
-
-                    <ul class="space-y-2 mb-6 flex-1">
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Dental examination
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Teeth cleaning
-                        </li>
-                        <li class="flex items-center text-sm text-carob-700">
-                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
-                            Plaque removal
-                        </li>
-                        <li class="text-carob-600 text-sm font-medium">+1 more features...</li>
-                    </ul>
-
-                    <button
-                        class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 transition-colors font-medium mt-auto">
-                        <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                        Book Now
-                    </button>
-                </div>
-            </div>
-        </div>
+        @endif
 
         <!-- Special Member Benefits -->
         <div class="bg-gradient-to-r from-vanilla-100 to-vanilla-200 rounded-3xl p-8 text-center">
@@ -370,6 +140,97 @@
         </div>
     </div>
 </section>
+
+<style>
+    .hidden-features {
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+    }
+    
+    .hidden-features.expanding {
+        display: block !important;
+        animation: slideDown 0.3s ease-in-out;
+    }
+    
+    .hidden-features.collapsing {
+        animation: slideUp 0.3s ease-in-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            max-height: 200px;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 1;
+            max-height: 200px;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            max-height: 0;
+            transform: translateY(-10px);
+        }
+    }
+    
+    .expand-toggle:hover {
+        transform: translateX(2px);
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle expand/collapse functionality for pricing features
+    const expandToggles = document.querySelectorAll('.expand-toggle');
+    
+    expandToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('data-expanded') === 'true';
+            const hiddenFeatures = this.parentElement.querySelector('.hidden-features');
+            const moreText = this.getAttribute('data-more-text');
+            const lessText = this.getAttribute('data-less-text');
+            
+            if (!isExpanded) {
+                // Expand
+                hiddenFeatures.style.display = 'block';
+                hiddenFeatures.classList.add('expanding');
+                hiddenFeatures.classList.remove('collapsing');
+                
+                this.textContent = lessText;
+                this.setAttribute('data-expanded', 'true');
+                
+                // Remove expanding class after animation
+                setTimeout(() => {
+                    hiddenFeatures.classList.remove('expanding');
+                }, 300);
+                
+            } else {
+                // Collapse
+                hiddenFeatures.classList.add('collapsing');
+                hiddenFeatures.classList.remove('expanding');
+                
+                this.textContent = moreText;
+                this.setAttribute('data-expanded', 'false');
+                
+                // Hide after animation
+                setTimeout(() => {
+                    hiddenFeatures.style.display = 'none';
+                    hiddenFeatures.classList.remove('collapsing');
+                }, 300);
+            }
+        });
+    });
+});
+</script>
 
 <!-- Technology Section -->
 <section class="py-16 bg-gradient-to-br from-carob-50 to-chai-50">
