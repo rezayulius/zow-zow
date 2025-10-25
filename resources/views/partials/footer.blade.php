@@ -80,7 +80,7 @@
                 <h4 class="text-lg font-semibold mb-4">Kontak</h4>
                 <ul class="space-y-2 text-almond-300">
                     <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Raya Kemang No. 88, Jakarta Selatan</li>
-                    <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> +62 21 7890 1234</li>
+                    <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> 081295911911</li>
                     <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> info@zowzow.com</li>
                     <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: +62 812 9999 0000</li>
                 </ul>

@@ -92,7 +92,7 @@
                             </div>
                             <div>
                                 <p class="font-medium text-carob-800">{{ __('messages.phone') }}</p>
-                                <p class="text-carob-600 text-sm">+62 21 7719 8888</p>
+                                <p class="text-carob-600 text-sm">081295911911</p>
                             </div>
                         </div>
 
