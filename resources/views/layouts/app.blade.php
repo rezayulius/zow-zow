@@ -68,6 +68,22 @@
                     <li>Kejadian terkait keselamatan atau keamanan.</li>
                     <li>Permasalahan operasional mendesak di luar jam kerja.</li>
                   </ul>
+                  <div class="border-t pt-4 mt-4">
+                    <p class="text-gray-700 mb-3 font-medium">Syarat dan Ketentuan Emergency Call:</p>
+                    <ul class="list-disc list-inside text-gray-600 text-xs mb-4 space-y-1">
+                      <li>Saya memahami bahwa layanan emergency call dikenakan biaya tambahan sesuai tarif yang berlaku.</li>
+                      <li>Saya menyatakan bahwa kondisi hewan peliharaan saya memerlukan penanganan darurat segera.</li>
+                      <li>Saya bersedia memberikan informasi lengkap mengenai kondisi hewan saat dihubungi.</li>
+                      <li>Saya memahami bahwa dokter hewan akan menentukan tindakan yang diperlukan berdasarkan kondisi hewan.</li>
+                      <li>Saya bersedia mengikuti instruksi dan saran yang diberikan oleh dokter hewan.</li>
+                    </ul>
+                    <div class="flex items-start space-x-2">
+                      <input type="checkbox" id="emergencyTermsCheckbox" class="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded">
+                      <label for="emergencyTermsCheckbox" class="text-xs text-gray-700 cursor-pointer">
+                        Saya telah membaca dan menyetujui syarat dan ketentuan emergency call di atas
+                      </label>
+                    </div>
+                  </div>
                 </div>
               `,
               showCancelButton: true,
@@ -75,9 +91,39 @@
               cancelButtonText: 'Tutup',
               confirmButtonColor: '#f43f5e', // rose-500
               cancelButtonColor: '#e5e7eb', // gray-200
+              didOpen: () => {
+                const confirmButton = Swal.getConfirmButton();
+                const checkbox = document.getElementById('emergencyTermsCheckbox');
+                
+                // Disable button initially
+                confirmButton.disabled = true;
+                confirmButton.style.opacity = '0.5';
+                confirmButton.style.cursor = 'not-allowed';
+                
+                // Enable/disable button based on checkbox
+                checkbox.addEventListener('change', function() {
+                  if (this.checked) {
+                    confirmButton.disabled = false;
+                    confirmButton.style.opacity = '1';
+                    confirmButton.style.cursor = 'pointer';
+                  } else {
+                    confirmButton.disabled = true;
+                    confirmButton.style.opacity = '0.5';
+                    confirmButton.style.cursor = 'not-allowed';
+                  }
+                });
+              },
+              preConfirm: () => {
+                const checkbox = document.getElementById('emergencyTermsCheckbox');
+                if (!checkbox.checked) {
+                  Swal.showValidationMessage('Anda harus menyetujui syarat dan ketentuan terlebih dahulu');
+                  return false;
+                }
+                return true;
+              }
             }).then((result) => {
               if (result.isConfirmed) {
-                window.location.href = 'tel:+6281234567890';
+                window.location.href = 'tel:+6281219088899';
               }
             });
           });
