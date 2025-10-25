@@ -46,7 +46,7 @@
                     $color = $colors[$index % 3];
                     $badges = ['POPULAR', 'ESSENTIAL', 'PREMIUM'];
                     $badge = $badges[$index % 3];
-                    
+
                     // Default image berdasarkan kategori Health
                     $defaultImages = [
                         'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', // Konsultasi
@@ -54,10 +54,10 @@
                         'https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'  // Medical
                     ];
                     $defaultImage = $defaultImages[$index % 3];
-                    
+
                     // Features dari database atau fallback ke default
                     $features = $service->features ?? [];
-                    
+
                     // Fallback jika features kosong
                     if (empty($features)) {
                         if (str_contains(strtolower($service->title), 'konsultasi')) {
@@ -69,12 +69,15 @@
                         }
                     }
                 @endphp
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full {{ $index > 0 ? 'border border-' . $color . '-100' : '' }}">
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full {{ $index > 0 ? 'border border-' . $color . '-100' : '' }}">
                     <div class="relative h-48 overflow-hidden">
                         <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}"
                             alt="{{ $service->title }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/{{ $index === 0 ? '80' : '70' }} to-{{ $color }}-600/{{ $index === 0 ? '80' : '70' }}"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/{{ $index === 0 ? '80' : '70' }} to-{{ $color }}-600/{{ $index === 0 ? '80' : '70' }}">
+                        </div>
                         <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
                             <span class="text-white text-xs font-medium">{{ $badge }}</span>
                         </div>
@@ -84,14 +87,16 @@
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-carob-900 mb-1">{{ $service->title }}</h3>
-                        <p class="text-chai-700 font-semibold text-sm mb-2">Rp {{ number_format($service->price, 0, ',', '.') }}</p>
+                        <p class="text-chai-700 font-semibold text-sm mb-2">Rp
+                            {{ number_format($service->price, 0, ',', '.') }}</p>
                         <p class="text-carob-600 text-sm mb-4 leading-relaxed">
                             {{ $service->description }}
                         </p>
                         <ul class="space-y-2 mb-6 flex-grow">
                             @foreach($features as $feature)
                                 <li class="flex items-center text-sm text-carob-600">
-                                    <span class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
+                                    <span
+                                        class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
                                         <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
                                     </span>
                                     {{ $feature }}
@@ -162,7 +167,7 @@
                     $color = $colors[$index % 3];
                     $badges = ['TRENDING', 'PREMIUM', 'RELAXING'];
                     $badge = $badges[$index % 3];
-                    
+
                     // Default image berdasarkan kategori Wellness
                     $defaultImages = [
                         'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', // Grooming
@@ -170,10 +175,10 @@
                         'https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'  // Cafe
                     ];
                     $defaultImage = $defaultImages[$index % 3];
-                    
+
                     // Features dari database atau fallback ke default
                     $features = $service->features ?? [];
-                    
+
                     // Fallback jika features kosong
                     if (empty($features)) {
                         if (str_contains(strtolower($service->title), 'grooming') || str_contains(strtolower($service->title), 'salon')) {
@@ -187,12 +192,14 @@
                         }
                     }
                 @endphp
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
                     <div class="relative h-48 overflow-hidden">
                         <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}"
                             alt="{{ $service->title }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                        <div class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/80 to-{{ $color }}-600/80"></div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-{{ $color }}-400/80 to-{{ $color }}-600/80">
+                        </div>
                         <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
                             <span class="text-white text-xs font-medium">{{ $badge }}</span>
                         </div>
@@ -202,14 +209,16 @@
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-carob-900 mb-1">{{ $service->title }}</h3>
-                        <p class="text-chai-700 font-semibold text-sm mb-2">Rp {{ number_format($service->price, 0, ',', '.') }}</p>
+                        <p class="text-chai-700 font-semibold text-sm mb-2">Rp
+                            {{ number_format($service->price, 0, ',', '.') }}</p>
                         <p class="text-carob-600 text-sm mb-4 leading-relaxed">
                             {{ $service->description }}
                         </p>
                         <ul class="space-y-2 mb-6 flex-grow">
                             @foreach($features as $feature)
                                 <li class="flex items-center text-sm text-carob-600">
-                                    <span class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
+                                    <span
+                                        class="w-4 h-4 bg-{{ $color }}-500 rounded-full mr-3 flex items-center justify-center">
                                         <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
                                     </span>
                                     {{ $feature }}
@@ -517,10 +526,15 @@
         <!-- Booking Section -->
         <div id="booking" class="bg-gradient-to-br from-matcha-50 via-white to-chai-50 rounded-2xl p-8 mt-4">
             <div class="relative text-center mb-10">
-                <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.12),transparent_60%)] blur-md -z-10"></div>
-                <div class="absolute -bottom-6 -right-8 w-44 h-44 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(234,179,8,0.14),transparent_60%)] blur-md -z-10"></div>
+                <div
+                    class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.12),transparent_60%)] blur-md -z-10">
+                </div>
+                <div
+                    class="absolute -bottom-6 -right-8 w-44 h-44 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(234,179,8,0.14),transparent_60%)] blur-md -z-10">
+                </div>
 
-                <div class="inline-flex items-center bg-chai-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-sm mb-5">
+                <div
+                    class="inline-flex items-center bg-chai-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-sm mb-5">
                     <i data-lucide="calendar-plus" class="w-5 h-5 mr-2"></i>
                     Quick Booking
                 </div>
@@ -531,17 +545,398 @@
                     Jadwalkan appointment dengan cepat, bayar mudah, dan dukungan WhatsApp.
                 </p>
                 <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
-                    <span class="inline-flex items-center bg-almond-50 text-carob-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-carob-200">
+                    <span
+                        class="inline-flex items-center bg-almond-50 text-carob-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-carob-200">
                         <i data-lucide="zap" class="w-4 h-4 mr-2"></i> Cepat
                     </span>
-                    <span class="inline-flex items-center bg-matcha-50 text-matcha-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-matcha-200">
+                    <span
+                        class="inline-flex items-center bg-matcha-50 text-matcha-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-matcha-200">
                         <i data-lucide="layout-panel-top" class="w-4 h-4 mr-2"></i> Multi-step
                     </span>
-                    <span class="inline-flex items-center bg-chai-50 text-chai-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-chai-200">
+                    <span
+                        class="inline-flex items-center bg-chai-50 text-chai-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-chai-200">
                         <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> WhatsApp
                     </span>
                 </div>
             </div>
+
+            <!-- Doctor Gallery Section -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-matcha-100 mb-6">
+                <!-- Header -->
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                        <i data-lucide="user-check" class="text-white w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-carob-900">Tim Dokter Profesional</h4>
+                        <p class="text-carob-600 text-sm">Pilih dokter dan lihat jadwal ketersediaan mereka</p>
+                    </div>
+                </div>
+
+                <!-- Doctors Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Doctor 1 -->
+                    <div class="doctor-card group">
+                        <div class="bg-gradient-to-br from-matcha-50 to-matcha-100 rounded-2xl p-5 border border-matcha-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+                             onclick="openDoctorModal('doctor1')">
+                            <!-- Profile Image -->
+                            <div class="relative mb-4">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-matcha-400 to-matcha-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i data-lucide="check" class="text-white w-3 h-3"></i>
+                                </div>
+                            </div>
+                            <!-- Doctor Info -->
+                            <div class="text-center">
+                                <h5 class="font-bold text-carob-900 mb-1">Dr. Sarah Wijaya</h5>
+                                <p class="text-matcha-700 text-sm font-medium mb-2">Spesialis Hewan Kecil</p>
+                                <div class="flex items-center justify-center text-xs text-matcha-600 mb-3">
+                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
+                                    <span class="font-semibold">4.9</span>
+                                    <span class="mx-1">•</span>
+                                    <span>150+ pasien</span>
+                                </div>
+                                <div class="flex items-center justify-center text-xs text-matcha-600">
+                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                                    <span>Lihat Jadwal Lengkap</span>
+                                    <i data-lucide="calendar" class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor 2 -->
+                    <div class="doctor-card group">
+                        <div class="bg-gradient-to-br from-chai-50 to-chai-100 rounded-2xl p-5 border border-chai-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+                             onclick="openDoctorModal('doctor2')">
+                            <!-- Profile Image -->
+                            <div class="relative mb-4">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-chai-400 to-chai-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i data-lucide="check" class="text-white w-3 h-3"></i>
+                                </div>
+                            </div>
+                            <!-- Doctor Info -->
+                            <div class="text-center">
+                                <h5 class="font-bold text-carob-900 mb-1">Dr. Ahmad Rizki</h5>
+                                <p class="text-chai-700 text-sm font-medium mb-2">Spesialis Bedah</p>
+                                <div class="flex items-center justify-center text-xs text-chai-600 mb-3">
+                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
+                                    <span class="font-semibold">4.8</span>
+                                    <span class="mx-1">•</span>
+                                    <span>200+ operasi</span>
+                                </div>
+                                <div class="flex items-center justify-center text-xs text-chai-600">
+                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                                    <span>Lihat Jadwal Lengkap</span>
+                                    <i data-lucide="calendar" class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor 3 -->
+                    <div class="doctor-card group">
+                        <div class="bg-gradient-to-br from-pistache-50 to-pistache-100 rounded-2xl p-5 border border-pistache-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+                             onclick="openDoctorModal('doctor3')">
+                            <!-- Profile Image -->
+                            <div class="relative mb-4">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-pistache-400 to-pistache-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i data-lucide="check" class="text-white w-3 h-3"></i>
+                                </div>
+                            </div>
+                            <!-- Doctor Info -->
+                            <div class="text-center">
+                                <h5 class="font-bold text-carob-900 mb-1">Dr. Maya Sari</h5>
+                                <p class="text-pistache-700 text-sm font-medium mb-2">Spesialis Eksotis</p>
+                                <div class="flex items-center justify-center text-xs text-pistache-600 mb-3">
+                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
+                                    <span class="font-semibold">4.9</span>
+                                    <span class="mx-1">•</span>
+                                    <span>120+ kasus</span>
+                                </div>
+                                <div class="flex items-center justify-center text-xs text-pistache-600">
+                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                                    <span>Lihat Jadwal Lengkap</span>
+                                    <i data-lucide="calendar" class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Doctor 4 -->
+                    <div class="doctor-card group">
+                        <div class="bg-gradient-to-br from-carob-50 to-carob-100 rounded-2xl p-5 border border-carob-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+                             onclick="openDoctorModal('doctor4')">
+                            <!-- Profile Image -->
+                            <div class="relative mb-4">
+                                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-carob-400 to-carob-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
+                                </div>
+                                <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-yellow-500 rounded-full border-2 border-white flex items-center justify-center">
+                                    <i data-lucide="clock" class="text-white w-3 h-3"></i>
+                                </div>
+                            </div>
+                            <!-- Doctor Info -->
+                            <div class="text-center">
+                                <h5 class="font-bold text-carob-900 mb-1">Dr. Budi Santoso</h5>
+                                <p class="text-carob-700 text-sm font-medium mb-2">Spesialis Hewan Besar</p>
+                                <div class="flex items-center justify-center text-xs text-carob-600 mb-3">
+                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
+                                    <span class="font-semibold">4.7</span>
+                                    <span class="mx-1">•</span>
+                                    <span>80+ kasus</span>
+                                </div>
+                                <div class="flex items-center justify-center text-xs text-carob-600">
+                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                                    <span>Lihat Jadwal Lengkap</span>
+                                    <i data-lucide="calendar" class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Schedule Modal -->
+            <div id="doctorModal" class="fixed inset-0 z-50 hidden">
+                <!-- Backdrop with blur effect -->
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDoctorModal()"></div>
+                
+                <!-- Modal Content -->
+                <div class="relative flex items-center justify-center min-h-screen p-4">
+                    <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden transform transition-all duration-300 scale-95 opacity-0" id="modalContent">
+                        <!-- Modal Header -->
+                        <div class="bg-gradient-to-r from-matcha-500 to-chai-600 text-white p-6 relative">
+                            <button onclick="closeDoctorModal()" class="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i data-lucide="user" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold" id="modalDoctorName">Dr. Ahmad Rizki</h3>
+                                    <p class="text-white/80" id="modalDoctorSpecialty">Spesialis Bedah</p>
+                                    <div class="flex items-center mt-2">
+                                        <i data-lucide="star" class="w-4 h-4 mr-1 fill-current"></i>
+                                        <span class="font-semibold" id="modalDoctorRating">4.8</span>
+                                        <span class="mx-2">•</span>
+                                        <span id="modalDoctorExperience">200+ operasi</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="p-6 max-h-[60vh] overflow-y-auto">
+                            <div class="mb-6">
+                                <h4 class="text-lg font-bold text-carob-900 mb-2">Jadwal Minggu Ini</h4>
+                                <p class="text-gray-600 text-sm">21 - 27 Januari 2024</p>
+                            </div>
+
+                            <!-- Weekly Schedule -->
+                            <div class="space-y-4" id="weeklySchedule">
+                                <!-- Monday -->
+                                <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-matcha-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
+                                                <span class="text-sm font-bold text-carob-900">SEN</span>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-carob-900">Senin, 22 Januari</h5>
+                                                <p class="text-sm text-gray-600">Hari ini</p>
+                                            </div>
+                                        </div>
+                                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Tersedia</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">08:00 - 10:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">10:00 - 12:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-red-50 border border-red-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-red-800">13:00 - 15:00</div>
+                                            <div class="text-xs text-red-600">Operasi</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">15:00 - 17:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tuesday -->
+                                <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-chai-100 to-matcha-100 rounded-lg flex items-center justify-center mr-3">
+                                                <span class="text-sm font-bold text-carob-900">SEL</span>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-carob-900">Selasa, 23 Januari</h5>
+                                                <p class="text-sm text-gray-600">Besok</p>
+                                            </div>
+                                        </div>
+                                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Tersedia</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">09:00 - 11:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">11:00 - 13:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">14:00 - 16:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">16:00 - 18:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Wednesday -->
+                                <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-pistache-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
+                                                <span class="text-sm font-bold text-carob-900">RAB</span>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-carob-900">Rabu, 24 Januari</h5>
+                                                <p class="text-sm text-gray-600">2 hari lagi</p>
+                                            </div>
+                                        </div>
+                                        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">Terbatas</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <div class="bg-red-50 border border-red-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-red-800">08:00 - 12:00</div>
+                                            <div class="text-xs text-red-600">Seminar</div>
+                                        </div>
+                                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-yellow-800">14:00 - 16:00</div>
+                                            <div class="text-xs text-yellow-600">Terbatas</div>
+                                        </div>
+                                        <div class="bg-red-50 border border-red-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-red-800">16:00 - 18:00</div>
+                                            <div class="text-xs text-red-600">Penuh</div>
+                                        </div>
+                                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-gray-800">-</div>
+                                            <div class="text-xs text-gray-600">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Thursday -->
+                                <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-carob-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
+                                                <span class="text-sm font-bold text-carob-900">KAM</span>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-carob-900">Kamis, 25 Januari</h5>
+                                                <p class="text-sm text-gray-600">3 hari lagi</p>
+                                            </div>
+                                        </div>
+                                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Tersedia</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">08:00 - 10:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">10:00 - 12:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">13:00 - 15:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-2 text-center">
+                                            <div class="text-sm font-medium text-green-800">15:00 - 17:00</div>
+                                            <div class="text-xs text-green-600">Tersedia</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Friday -->
+                                <div class="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-orange-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
+                                                <span class="text-sm font-bold text-carob-900">JUM</span>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-semibold text-carob-900">Jumat, 26 Januari</h5>
+                                                <p class="text-sm text-gray-600">4 hari lagi</p>
+                                            </div>
+                                        </div>
+                                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">Libur</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-gray-800">-</div>
+                                            <div class="text-xs text-gray-600">Libur</div>
+                                        </div>
+                                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-gray-800">-</div>
+                                            <div class="text-xs text-gray-600">Libur</div>
+                                        </div>
+                                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-gray-800">-</div>
+                                            <div class="text-xs text-gray-600">Libur</div>
+                                        </div>
+                                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center opacity-50">
+                                            <div class="text-sm font-medium text-gray-800">-</div>
+                                            <div class="text-xs text-gray-600">Libur</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Footer -->
+                        <div class="bg-gray-50 px-6 py-4 flex justify-between items-center">
+                            <div class="text-sm text-gray-600">
+                                <i data-lucide="info" class="w-4 h-4 inline mr-1"></i>
+                                Klik slot waktu untuk membuat janji temu
+                            </div>
+                            <div class="flex space-x-3">
+                                <button onclick="closeDoctorModal()" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                                    Tutup
+                                </button>
+                                <button class="px-6 py-2 bg-gradient-to-r from-matcha-500 to-chai-600 text-white rounded-lg hover:from-matcha-600 hover:to-chai-700 transition-all duration-300 font-medium">
+                                    Buat Janji Temu
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Quick Booking Services -->
             <div class="bg-white rounded-2xl p-5 shadow-lg border border-chai-100">
                 <!-- Header -->
@@ -588,7 +983,8 @@
                         <p class="text-matcha-700 font-semibold text-sm mb-2">Rp 150.000</p>
                         <button
                             class="quick-book-btn w-full bg-matcha-500 text-white py-2 rounded-lg text-sm hover:bg-matcha-600 transition-colors font-medium"
-                            data-service="konsultasi" aria-label="Book Konsultasi Dokter" title="Book Konsultasi Dokter">
+                            data-service="konsultasi" aria-label="Book Konsultasi Dokter"
+                            title="Book Konsultasi Dokter">
                             Book Now
                         </button>
                     </div>
@@ -634,533 +1030,546 @@
                 </div>
 
                 <!-- Modal Booking Form -->
-                <div id="bookingModal" class="hidden fixed inset-0 z-50 flex items-start sm:items-center justify-center px-8 xl:px-16 pb-6 sm:pb-6 pt-4 sm:pt-4" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" tabindex="-1">
-                    <div id="bookingBackdrop" class="absolute inset-0 bg-carob-900/30 backdrop-blur-sm" aria-hidden="true"></div>
+                <div id="bookingModal"
+                    class="hidden fixed inset-0 z-50 flex items-start sm:items-center justify-center px-8 xl:px-16 pb-6 sm:pb-6 pt-4 sm:pt-4"
+                    role="dialog" aria-modal="true" aria-labelledby="bookingTitle" tabindex="-1">
+                    <div id="bookingBackdrop" class="absolute inset-0 bg-carob-900/30 backdrop-blur-sm"
+                        aria-hidden="true"></div>
                     <div id="bookingForm"
-                    class="hidden mt-0 sm:mt-0 bg-white rounded-xl sm:rounded-3xl shadow-2xl border border-chai-100 ring-1 ring-chai-200 transform transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:transform-none opacity-0 translate-y-4 backdrop-blur-sm h-full overflow-y-auto overscroll-contain sm:min-h-[85vh] sm:max-h-[90vh] flex flex-col mx-0 w-full mb-6 sm:mb-8 sm:max-w-[500px] md:max-w-[540px] lg:max-w-[580px] xl:max-w-[600px] 2xl:max-w-[640px] sm:mx-auto">
-                    <!-- Form Header -->
-                    <div class="sticky top-0 z-10 bg-white text-center mb-2 sm:mb-6 p-2 sm:p-6 pb-0 flex-shrink-0">
-                        <div
-                            class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-chai-500 to-chai-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-4 shadow-lg">
-                            <i data-lucide="calendar-plus" class="text-white w-5 h-5 sm:w-8 sm:h-8"></i>
-                        </div>
-                        <h2 id="bookingTitle" class="text-lg sm:text-2xl font-bold text-carob-900 mb-1 sm:mb-2">Buat Appointment</h2>
-                        <p class="text-xs sm:text-base text-carob-600">Jadwalkan layanan terbaik untuk hewan peliharaan
-                            Anda</p>
-                    </div>
-
-                    <!-- Progress Bar -->
-                    <div class="mb-2 sm:mb-6 px-2 sm:px-8 flex-shrink-0">
-                        <div class="flex items-center justify-between mb-2 sm:mb-4">
-                            <span class="text-xs font-semibold text-carob-700 bg-carob-50 px-2 py-1 rounded-full">
-                                Step <span id="currentStep">1</span> of 3
-                            </span>
-                            <button id="closeForm" type="button" aria-label="Tutup modal" title="Tutup modal"
-                                class="text-carob-400 hover:text-carob-600 transition-all duration-200 hover:scale-110 hover:bg-carob-50 p-1 sm:p-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chai-400">
-                                <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                            </button>
-                        </div>
-                        <div
-                            class="w-full bg-gradient-to-r from-carob-100 to-carob-50 rounded-full h-1.5 sm:h-3 shadow-inner">
-                            <div id="progressBar"
-                                class="bg-gradient-to-r from-chai-500 via-chai-600 to-matcha-500 h-1.5 sm:h-3 rounded-full transition-all duration-700 ease-out shadow-sm"
-                                style="width: 33.33%"></div>
-                        </div>
-                        <!-- Progress Steps Indicator -->
-                        <div class="flex justify-between mt-1 sm:mt-3 text-xs">
-                            <span class="text-chai-600 font-medium">Pet & Layanan</span>
-                            <span class="text-carob-400">Jadwal</span>
-                            <span class="text-carob-400">Konfirmasi</span>
-                        </div>
-                    </div>
-
-                    <!-- Form Content Area - Scrollable -->
-                    <div class="flex-1 overflow-x-hidden overflow-y-visible px-2 sm:px-8 pb-28 sm:pb-6 min-h-0 scrollbar-thin scrollbar-thumb-carob-300 scrollbar-track-carob-100"
-                        style="scrollbar-width: thin; scrollbar-color: #d1d5db #f3f4f6; -webkit-overflow-scrolling: touch;">
-
-                        <!-- Step 1: Pet & Service Selection -->
-                        <div id="step1" class="step-content pb-4">
+                        class="hidden mt-0 sm:mt-0 bg-white rounded-xl sm:rounded-3xl shadow-2xl border border-chai-100 ring-1 ring-chai-200 transform transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:transform-none opacity-0 translate-y-4 backdrop-blur-sm h-full overflow-y-auto overscroll-contain sm:min-h-[85vh] sm:max-h-[90vh] flex flex-col mx-0 w-full mb-6 sm:mb-8 sm:max-w-[500px] md:max-w-[540px] lg:max-w-[580px] xl:max-w-[600px] 2xl:max-w-[640px] sm:mx-auto">
+                        <!-- Form Header -->
+                        <div class="sticky top-0 z-10 bg-white text-center mb-2 sm:mb-6 p-2 sm:p-6 pb-0 flex-shrink-0">
                             <div
-                                class="bg-gradient-to-br from-matcha-50 to-pistache-50 rounded-xl sm:rounded-2xl p-3 sm:p-6 mb-3 sm:mb-6">
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center">
-                                        <i data-lucide="heart"
-                                            class="w-4 h-4 sm:w-6 sm:h-6 text-matcha-600 mr-2 sm:mr-3 flex-shrink-0"></i>
-                                        <h3 class="text-base sm:text-xl font-bold text-carob-900 truncate">Biodata Hewan
-                                            Peliharaan</h3>
+                                class="w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-chai-500 to-chai-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-2 sm:mb-4 shadow-lg">
+                                <i data-lucide="calendar-plus" class="text-white w-5 h-5 sm:w-8 sm:h-8"></i>
+                            </div>
+                            <h2 id="bookingTitle" class="text-lg sm:text-2xl font-bold text-carob-900 mb-1 sm:mb-2">Buat
+                                Appointment</h2>
+                            <p class="text-xs sm:text-base text-carob-600">Jadwalkan layanan terbaik untuk hewan
+                                peliharaan
+                                Anda</p>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="mb-2 sm:mb-6 px-2 sm:px-8 flex-shrink-0">
+                            <div class="flex items-center justify-between mb-2 sm:mb-4">
+                                <span class="text-xs font-semibold text-carob-700 bg-carob-50 px-2 py-1 rounded-full">
+                                    Step <span id="currentStep">1</span> of 3
+                                </span>
+                                <button id="closeForm" type="button" aria-label="Tutup modal" title="Tutup modal"
+                                    class="text-carob-400 hover:text-carob-600 transition-all duration-200 hover:scale-110 hover:bg-carob-50 p-1 sm:p-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chai-400">
+                                    <i data-lucide="x" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                                </button>
+                            </div>
+                            <div
+                                class="w-full bg-gradient-to-r from-carob-100 to-carob-50 rounded-full h-1.5 sm:h-3 shadow-inner">
+                                <div id="progressBar"
+                                    class="bg-gradient-to-r from-chai-500 via-chai-600 to-matcha-500 h-1.5 sm:h-3 rounded-full transition-all duration-700 ease-out shadow-sm"
+                                    style="width: 33.33%"></div>
+                            </div>
+                            <!-- Progress Steps Indicator -->
+                            <div class="flex justify-between mt-1 sm:mt-3 text-xs">
+                                <span class="text-chai-600 font-medium">Pet & Layanan</span>
+                                <span class="text-carob-400">Jadwal</span>
+                                <span class="text-carob-400">Konfirmasi</span>
+                            </div>
+                        </div>
+
+                        <!-- Form Content Area - Scrollable -->
+                        <div class="flex-1 overflow-x-hidden overflow-y-visible px-2 sm:px-8 pb-28 sm:pb-6 min-h-0 scrollbar-thin scrollbar-thumb-carob-300 scrollbar-track-carob-100"
+                            style="scrollbar-width: thin; scrollbar-color: #d1d5db #f3f4f6; -webkit-overflow-scrolling: touch;">
+
+                            <!-- Step 1: Pet & Service Selection -->
+                            <div id="step1" class="step-content pb-4">
+                                <div
+                                    class="bg-gradient-to-br from-matcha-50 to-pistache-50 rounded-xl sm:rounded-2xl p-3 sm:p-6 mb-3 sm:mb-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center">
+                                            <i data-lucide="heart"
+                                                class="w-4 h-4 sm:w-6 sm:h-6 text-matcha-600 mr-2 sm:mr-3 flex-shrink-0"></i>
+                                            <h3 class="text-base sm:text-xl font-bold text-carob-900 truncate">Biodata
+                                                Hewan
+                                                Peliharaan</h3>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span id="petCounter"
+                                                class="text-xs sm:text-sm font-semibold text-matcha-600 bg-matcha-100 px-2 py-1 rounded-full">Pet
+                                                1 dari 1</span>
+                                            <button type="button" id="addPetBtn"
+                                                class="bg-gradient-to-r from-chai-500 to-chai-600 text-white p-1.5 sm:p-2 rounded-lg hover:from-chai-600 hover:to-chai-700 transition-all duration-300 shadow-md hover:shadow-lg">
+                                                <i data-lucide="plus" class="w-3 h-3 sm:w-4 sm:h-4"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center gap-2">
-                                        <span id="petCounter"
-                                            class="text-xs sm:text-sm font-semibold text-matcha-600 bg-matcha-100 px-2 py-1 rounded-full">Pet
-                                            1 dari 1</span>
-                                        <button type="button" id="addPetBtn"
-                                            class="bg-gradient-to-r from-chai-500 to-chai-600 text-white p-1.5 sm:p-2 rounded-lg hover:from-chai-600 hover:to-chai-700 transition-all duration-300 shadow-md hover:shadow-lg">
-                                            <i data-lucide="plus" class="w-3 h-3 sm:w-4 sm:h-4"></i>
-                                        </button>
-                                    </div>
+                                    <p class="text-carob-600 text-xs sm:text-sm">Berikan informasi lengkap tentang hewan
+                                        peliharaan Anda</p>
                                 </div>
-                                <p class="text-carob-600 text-xs sm:text-sm">Berikan informasi lengkap tentang hewan
-                                    peliharaan Anda</p>
-                            </div>
 
-                            <!-- Pet Navigation -->
-                            <div id="petNavigation" class="flex items-center justify-center gap-2 mb-4 hidden overflow-x-auto whitespace-nowrap px-2">
-                                <button type="button" id="prevPetBtn"
-                                    class="p-2 text-carob-400 hover:text-chai-600 hover:bg-chai-50 rounded-lg transition-all duration-300">
-                                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                </button>
-                                <div id="petTabs" class="inline-flex gap-1"></div>
-                                <button type="button" id="nextPetBtn"
-                                    class="p-2 text-carob-400 hover:text-chai-600 hover:bg-chai-50 rounded-lg transition-all duration-300">
-                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                                </button>
-                            </div>
+                                <!-- Pet Navigation -->
+                                <div id="petNavigation"
+                                    class="flex items-center justify-center gap-2 mb-4 hidden overflow-x-auto whitespace-nowrap px-2">
+                                    <button type="button" id="prevPetBtn"
+                                        class="p-2 text-carob-400 hover:text-chai-600 hover:bg-chai-50 rounded-lg transition-all duration-300">
+                                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                                    </button>
+                                    <div id="petTabs" class="inline-flex gap-1"></div>
+                                    <button type="button" id="nextPetBtn"
+                                        class="p-2 text-carob-400 hover:text-chai-600 hover:bg-chai-50 rounded-lg transition-all duration-300">
+                                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
 
-                            <!-- Pet Forms Container -->
-                            <div id="petFormsContainer"></div>
+                                <!-- Pet Forms Container -->
+                                <div id="petFormsContainer"></div>
 
-                            <!-- Template for Pet Form (hidden) -->
-                            <template id="petFormTemplate">
-                                <div class="pet-form-wrapper" data-pet-index="0">
-                                    <div class="flex items-center justify-between mb-3">
-                                        <h4 class="text-sm sm:text-lg font-semibold text-carob-800 flex items-center">
-                                            <i data-lucide="paw-print" class="w-4 h-4 mr-2 text-matcha-600"></i>
-                                            <span class="pet-title">Hewan Peliharaan #1</span>
-                                        </h4>
-                                        <button type="button"
-                                            class="remove-pet-btn hidden bg-red-500 text-white p-1.5 rounded-lg hover:bg-red-600 transition-all duration-300 shadow-md">
-                                            <i data-lucide="trash-2" class="w-3 h-3"></i>
-                                        </button>
-                                    </div>
-
-                                    <!-- Service Selection for this Pet -->
-                                    <div class="mb-4 sm:mb-6">
-                                        <label
-                                            class="block text-xs sm:text-sm font-semibold text-carob-700 mb-2 flex items-center">
-                                            <i data-lucide="heart-handshake"
-                                                class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-chai-600 flex-shrink-0"></i>
-                                            <span>Pilih Layanan</span>
-                                        </label>
-                                        <div class="grid gap-2 sm:gap-3">
-                                            <label
-                                                class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-chai-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-chai-50">
-                                                <input type="radio" name="petService_0" value="grooming"
-                                                    class="mr-2 sm:mr-3 text-chai-500 scale-110 flex-shrink-0">
-                                                <div class="flex items-center flex-1 min-w-0">
-                                                    <div
-                                                        class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-chai-400 to-chai-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
-                                                        <i data-lucide="sparkles"
-                                                            class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
-                                                    </div>
-                                                    <div class="flex-1 min-w-0">
-                                                        <div
-                                                            class="font-bold text-carob-900 text-xs sm:text-sm truncate">
-                                                            Grooming Premium</div>
-                                                        <div class="text-chai-600 font-bold text-xs sm:text-sm">Rp
-                                                            100.000</div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                            <label
-                                                class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-matcha-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-matcha-50">
-                                                <input type="radio" name="petService_0" value="konsultasi"
-                                                    class="mr-2 sm:mr-3 text-matcha-500 scale-110 flex-shrink-0">
-                                                <div class="flex items-center flex-1 min-w-0">
-                                                    <div
-                                                        class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
-                                                        <i data-lucide="stethoscope"
-                                                            class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
-                                                    </div>
-                                                    <div class="flex-1 min-w-0">
-                                                        <div
-                                                            class="font-bold text-carob-900 text-xs sm:text-sm truncate">
-                                                            Konsultasi Dokter</div>
-                                                        <div class="text-matcha-600 font-bold text-xs sm:text-sm">Rp
-                                                            150.000</div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                            <label
-                                                class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-pistache-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-pistache-50">
-                                                <input type="radio" name="petService_0" value="vaksinasi"
-                                                    class="mr-2 sm:mr-3 text-pistache-500 scale-110 flex-shrink-0">
-                                                <div class="flex items-center flex-1 min-w-0">
-                                                    <div
-                                                        class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-pistache-400 to-pistache-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
-                                                        <i data-lucide="syringe"
-                                                            class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
-                                                    </div>
-                                                    <div class="flex-1 min-w-0">
-                                                        <div
-                                                            class="font-bold text-carob-900 text-xs sm:text-sm truncate">
-                                                            Vaksinasi Lengkap</div>
-                                                        <div class="text-pistache-600 font-bold text-xs sm:text-sm">Rp
-                                                            200.000</div>
-                                                    </div>
-                                                </div>
-                                            </label>
-                                            <label
-                                                class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-carob-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-carob-50">
-                                                <input type="radio" name="petService_0" value="checkup"
-                                                    class="mr-2 sm:mr-3 text-carob-500 scale-110 flex-shrink-0">
-                                                <div class="flex items-center flex-1 min-w-0">
-                                                    <div
-                                                        class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-carob-400 to-carob-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
-                                                        <i data-lucide="search"
-                                                            class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
-                                                    </div>
-                                                    <div class="flex-1 min-w-0">
-                                                        <div
-                                                            class="font-bold text-carob-900 text-xs sm:text-sm truncate">
-                                                            Health Check-up</div>
-                                                        <div class="text-carob-600 font-bold text-xs sm:text-sm">Rp
-                                                            250.000</div>
-                                                    </div>
-                                                </div>
-                                            </label>
+                                <!-- Template for Pet Form (hidden) -->
+                                <template id="petFormTemplate">
+                                    <div class="pet-form-wrapper" data-pet-index="0">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h4
+                                                class="text-sm sm:text-lg font-semibold text-carob-800 flex items-center">
+                                                <i data-lucide="paw-print" class="w-4 h-4 mr-2 text-matcha-600"></i>
+                                                <span class="pet-title">Hewan Peliharaan #1</span>
+                                            </h4>
+                                            <button type="button"
+                                                class="remove-pet-btn hidden bg-red-500 text-white p-1.5 rounded-lg hover:bg-red-600 transition-all duration-300 shadow-md">
+                                                <i data-lucide="trash-2" class="w-3 h-3"></i>
+                                            </button>
                                         </div>
-                                    </div>
 
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
-                                        <div class="space-y-1 sm:space-y-2">
+                                        <!-- Service Selection for this Pet -->
+                                        <div class="mb-4 sm:mb-6">
                                             <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="tag"
+                                                class="block text-xs sm:text-sm font-semibold text-carob-700 mb-2 flex items-center">
+                                                <i data-lucide="heart-handshake"
                                                     class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-chai-600 flex-shrink-0"></i>
-                                                <span>Nama Pet</span>
+                                                <span>Pilih Layanan</span>
                                             </label>
-                                            <input type="text" id="petName_0" name="petName_0"
-                                                class="pet-name w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
-                                                placeholder="Contoh: Fluffy, Max, Bella">
-                                        </div>
-                                        <div class="space-y-1 sm:space-y-2">
-                                            <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="paw-print"
-                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-matcha-600 flex-shrink-0"></i>
-                                                <span>Jenis Hewan</span>
-                                            </label>
-                                            <select id="petType_0" name="petType_0"
-                                                class="pet-type w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base">
-                                                <option value="">Pilih jenis hewan</option>
-                                                <option value="anjing">🐕 Anjing</option>
-                                                <option value="kucing">🐱 Kucing</option>
-                                                <option value="kelinci">🐰 Kelinci</option>
-                                                <option value="hamster">🐹 Hamster</option>
-                                                <option value="burung">🐦 Burung</option>
-                                            </select>
-                                        </div>
-                                        <div class="space-y-1 sm:space-y-2">
-                                            <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="dna"
-                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-pistache-600 flex-shrink-0"></i>
-                                                <span>Ras</span>
-                                            </label>
-                                            <input type="text" id="petBreed"
-                                                class="w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
-                                                placeholder="Contoh: Golden Retriever, Persian">
-                                        </div>
-                                        <div class="space-y-1 sm:space-y-2">
-                                            <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="calendar"
-                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-carob-600 flex-shrink-0"></i>
-                                                <span>Umur</span>
-                                            </label>
-                                            <input type="text" id="petAge_0" name="petAge_0"
-                                                class="pet-age w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
-                                                placeholder="Contoh: 2 tahun, 6 bulan">
-                                        </div>
-                                        <div class="space-y-1 sm:space-y-2">
-                                            <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="user"
-                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-matcha-600 flex-shrink-0"></i>
-                                                <span>Jenis Kelamin</span>
-                                            </label>
-                                            <div class="flex gap-3 sm:gap-4">
-                                                <label class="flex items-center cursor-pointer group">
-                                                    <input type="radio" name="petGender_0" value="jantan"
-                                                        class="mr-1 sm:mr-2 text-chai-500 scale-110 sm:scale-125">
-                                                    <span
-                                                        class="text-xs sm:text-sm text-carob-700 group-hover:text-chai-600 transition-colors">♂️
-                                                        Jantan</span>
+                                            <div class="grid gap-2 sm:gap-3">
+                                                <label
+                                                    class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-chai-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-chai-50">
+                                                    <input type="radio" name="petService_0" value="grooming"
+                                                        class="mr-2 sm:mr-3 text-chai-500 scale-110 flex-shrink-0">
+                                                    <div class="flex items-center flex-1 min-w-0">
+                                                        <div
+                                                            class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-chai-400 to-chai-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
+                                                            <i data-lucide="sparkles"
+                                                                class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
+                                                        </div>
+                                                        <div class="flex-1 min-w-0">
+                                                            <div
+                                                                class="font-bold text-carob-900 text-xs sm:text-sm truncate">
+                                                                Grooming Premium</div>
+                                                            <div class="text-chai-600 font-bold text-xs sm:text-sm">Rp
+                                                                100.000</div>
+                                                        </div>
+                                                    </div>
                                                 </label>
-                                                <label class="flex items-center cursor-pointer group">
-                                                    <input type="radio" name="petGender_0" value="betina"
-                                                        class="mr-1 sm:mr-2 text-chai-500 scale-110 sm:scale-125">
-                                                    <span
-                                                        class="text-xs sm:text-sm text-carob-700 group-hover:text-chai-600 transition-colors">♀️
-                                                        Betina</span>
+                                                <label
+                                                    class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-matcha-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-matcha-50">
+                                                    <input type="radio" name="petService_0" value="konsultasi"
+                                                        class="mr-2 sm:mr-3 text-matcha-500 scale-110 flex-shrink-0">
+                                                    <div class="flex items-center flex-1 min-w-0">
+                                                        <div
+                                                            class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
+                                                            <i data-lucide="stethoscope"
+                                                                class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
+                                                        </div>
+                                                        <div class="flex-1 min-w-0">
+                                                            <div
+                                                                class="font-bold text-carob-900 text-xs sm:text-sm truncate">
+                                                                Konsultasi Dokter</div>
+                                                            <div class="text-matcha-600 font-bold text-xs sm:text-sm">Rp
+                                                                150.000</div>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <label
+                                                    class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-pistache-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-pistache-50">
+                                                    <input type="radio" name="petService_0" value="vaksinasi"
+                                                        class="mr-2 sm:mr-3 text-pistache-500 scale-110 flex-shrink-0">
+                                                    <div class="flex items-center flex-1 min-w-0">
+                                                        <div
+                                                            class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-pistache-400 to-pistache-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
+                                                            <i data-lucide="syringe"
+                                                                class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
+                                                        </div>
+                                                        <div class="flex-1 min-w-0">
+                                                            <div
+                                                                class="font-bold text-carob-900 text-xs sm:text-sm truncate">
+                                                                Vaksinasi Lengkap</div>
+                                                            <div class="text-pistache-600 font-bold text-xs sm:text-sm">
+                                                                Rp
+                                                                200.000</div>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                <label
+                                                    class="group flex items-center p-2 sm:p-3 border-2 border-carob-100 rounded-lg sm:rounded-xl hover:border-carob-400 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-gradient-to-r hover:from-white hover:to-carob-50">
+                                                    <input type="radio" name="petService_0" value="checkup"
+                                                        class="mr-2 sm:mr-3 text-carob-500 scale-110 flex-shrink-0">
+                                                    <div class="flex items-center flex-1 min-w-0">
+                                                        <div
+                                                            class="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-carob-400 to-carob-600 rounded-lg flex items-center justify-center mr-2 sm:mr-3 shadow-md flex-shrink-0">
+                                                            <i data-lucide="search"
+                                                                class="text-white w-3 h-3 sm:w-4 sm:h-4"></i>
+                                                        </div>
+                                                        <div class="flex-1 min-w-0">
+                                                            <div
+                                                                class="font-bold text-carob-900 text-xs sm:text-sm truncate">
+                                                                Health Check-up</div>
+                                                            <div class="text-carob-600 font-bold text-xs sm:text-sm">Rp
+                                                                250.000</div>
+                                                        </div>
+                                                    </div>
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="space-y-1 sm:space-y-2">
-                                            <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="palette"
-                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-pistache-600 flex-shrink-0"></i>
-                                                <span>Warna</span>
-                                            </label>
-                                            <input type="text" id="petColor_0" name="petColor_0"
-                                                class="pet-color w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
-                                                placeholder="Contoh: Coklat, Putih, Hitam belang">
-                                        </div>
-                                        <div class="sm:col-span-2 space-y-1 sm:space-y-2">
-                                            <label
-                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                                <i data-lucide="file-text"
-                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-chai-600 flex-shrink-0"></i>
-                                                <span>Catatan Khusus / Keluhan</span>
-                                            </label>
-                                            <textarea id="petNotes_0" name="petNotes_0"
-                                                class="pet-notes w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md resize-none text-sm sm:text-base"
-                                                rows="2"
-                                                placeholder="Ceritakan kondisi khusus, alergi, atau hal penting lainnya tentang hewan peliharaan Anda..."></textarea>
+
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+                                            <div class="space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="tag"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-chai-600 flex-shrink-0"></i>
+                                                    <span>Nama Pet</span>
+                                                </label>
+                                                <input type="text" id="petName_0" name="petName_0"
+                                                    class="pet-name w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
+                                                    placeholder="Contoh: Fluffy, Max, Bella">
+                                            </div>
+                                            <div class="space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="paw-print"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-matcha-600 flex-shrink-0"></i>
+                                                    <span>Jenis Hewan</span>
+                                                </label>
+                                                <select id="petType_0" name="petType_0"
+                                                    class="pet-type w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base">
+                                                    <option value="">Pilih jenis hewan</option>
+                                                    <option value="anjing">🐕 Anjing</option>
+                                                    <option value="kucing">🐱 Kucing</option>
+                                                    <option value="kelinci">🐰 Kelinci</option>
+                                                    <option value="hamster">🐹 Hamster</option>
+                                                    <option value="burung">🐦 Burung</option>
+                                                </select>
+                                            </div>
+                                            <div class="space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="dna"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-pistache-600 flex-shrink-0"></i>
+                                                    <span>Ras</span>
+                                                </label>
+                                                <input type="text" id="petBreed"
+                                                    class="w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
+                                                    placeholder="Contoh: Golden Retriever, Persian">
+                                            </div>
+                                            <div class="space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="calendar"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-carob-600 flex-shrink-0"></i>
+                                                    <span>Umur</span>
+                                                </label>
+                                                <input type="text" id="petAge_0" name="petAge_0"
+                                                    class="pet-age w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
+                                                    placeholder="Contoh: 2 tahun, 6 bulan">
+                                            </div>
+                                            <div class="space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="user"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-matcha-600 flex-shrink-0"></i>
+                                                    <span>Jenis Kelamin</span>
+                                                </label>
+                                                <div class="flex gap-3 sm:gap-4">
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="petGender_0" value="jantan"
+                                                            class="mr-1 sm:mr-2 text-chai-500 scale-110 sm:scale-125">
+                                                        <span
+                                                            class="text-xs sm:text-sm text-carob-700 group-hover:text-chai-600 transition-colors">♂️
+                                                            Jantan</span>
+                                                    </label>
+                                                    <label class="flex items-center cursor-pointer group">
+                                                        <input type="radio" name="petGender_0" value="betina"
+                                                            class="mr-1 sm:mr-2 text-chai-500 scale-110 sm:scale-125">
+                                                        <span
+                                                            class="text-xs sm:text-sm text-carob-700 group-hover:text-chai-600 transition-colors">♀️
+                                                            Betina</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="palette"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-pistache-600 flex-shrink-0"></i>
+                                                    <span>Warna</span>
+                                                </label>
+                                                <input type="text" id="petColor_0" name="petColor_0"
+                                                    class="pet-color w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
+                                                    placeholder="Contoh: Coklat, Putih, Hitam belang">
+                                            </div>
+                                            <div class="sm:col-span-2 space-y-1 sm:space-y-2">
+                                                <label
+                                                    class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                    <i data-lucide="file-text"
+                                                        class="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-chai-600 flex-shrink-0"></i>
+                                                    <span>Catatan Khusus / Keluhan</span>
+                                                </label>
+                                                <textarea id="petNotes_0" name="petNotes_0"
+                                                    class="pet-notes w-full p-2 sm:p-4 border-2 border-carob-100 rounded-lg sm:rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md resize-none text-sm sm:text-base"
+                                                    rows="2"
+                                                    placeholder="Ceritakan kondisi khusus, alergi, atau hal penting lainnya tentang hewan peliharaan Anda..."></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </template>
-                        </div>
-
-                        <!-- Step 2: Pemilihan Waktu & Dokter -->
-                        <div id="step2" class="step-content hidden pb-4">
-                            <div
-                                class="bg-gradient-to-br from-chai-50 to-matcha-50 rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
-                                <h3 class="text-lg sm:text-xl font-bold text-carob-900 mb-2 flex items-center">
-                                    <i data-lucide="calendar-clock"
-                                        class="w-5 h-5 sm:w-6 sm:h-6 text-chai-600 mr-2 sm:mr-3 flex-shrink-0"></i>
-                                    <span class="truncate">Pemilihan Waktu & Dokter</span>
-                                </h3>
-                                <p class="text-carob-600 text-xs sm:text-sm">Tentukan waktu yang paling sesuai dan pilih
-                                    dokter terbaik untuk hewan peliharaan Anda</p>
-                            </div>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                                <div class="space-y-2">
-                                    <label
-                                        class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                        <i data-lucide="calendar-days"
-                                            class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-chai-600 flex-shrink-0"></i>
-                                        <span>Tanggal Appointment</span>
-                                    </label>
-                                    <input type="date" id="appointmentDate"
-                                        class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base">
-                                </div>
-                                <div class="space-y-2">
-                                    <label
-                                        class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                        <i data-lucide="clock"
-                                            class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-matcha-600 flex-shrink-0"></i>
-                                        <span>Waktu</span>
-                                    </label>
-                                    <select id="appointmentTime"
-                                        class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base">
-                                        <option value="">Pilih waktu</option>
-                                        <option value="09:00">🌅 09:00 WIB - Pagi</option>
-                                        <option value="10:00">☀️ 10:00 WIB - Pagi</option>
-                                        <option value="11:00">☀️ 11:00 WIB - Pagi</option>
-                                        <option value="13:00">🌞 13:00 WIB - Siang</option>
-                                        <option value="14:00">🌞 14:00 WIB - Siang</option>
-                                        <option value="15:00">🌞 15:00 WIB - Siang</option>
-                                        <option value="16:00">🌅 16:00 WIB - Sore</option>
-                                    </select>
-                                </div>
-                                <div class="sm:col-span-2 space-y-3">
-                                    <label
-                                        class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                        <i data-lucide="user-check"
-                                            class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-pistache-600 flex-shrink-0"></i>
-                                        <span>Pilih Dokter untuk Setiap Hewan</span>
-                                    </label>
-                                    <div id="doctorSelectionContainer">
-                                        <!-- Doctor selections will be dynamically generated here -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Ringkasan Booking -->
-                        <div id="step3" class="step-content hidden pb-4">
-                            <div
-                                class="bg-gradient-to-br from-pistache-50 to-chai-50 rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
-                                <h3 class="text-lg sm:text-xl font-bold text-carob-900 mb-2 flex items-center">
-                                    <i data-lucide="clipboard-check"
-                                        class="w-5 h-5 sm:w-6 sm:h-6 text-pistache-600 mr-2 sm:mr-3 flex-shrink-0"></i>
-                                    <span class="truncate">Ringkasan Booking</span>
-                                </h3>
-                                <p class="text-carob-600 text-xs sm:text-sm">Periksa kembali detail booking Anda sebelum
-                                    melanjutkan ke konfirmasi</p>
+                                </template>
                             </div>
 
-                            <!-- Pet Summary -->
-                            <div
-                                class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm mb-4 sm:mb-6">
-                                <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
-                                    <i data-lucide="heart"
-                                        class="w-4 h-4 sm:w-5 sm:h-5 text-chai-600 mr-2 flex-shrink-0"></i>
-                                    <span>Data Hewan Peliharaan</span>
-                                </h4>
-                                <div id="petSummary" class="space-y-4">
-                                    <!-- Pet summary will be populated by JavaScript -->
+                            <!-- Step 2: Pemilihan Waktu & Dokter -->
+                            <div id="step2" class="step-content hidden pb-4">
+                                <div
+                                    class="bg-gradient-to-br from-chai-50 to-matcha-50 rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+                                    <h3 class="text-lg sm:text-xl font-bold text-carob-900 mb-2 flex items-center">
+                                        <i data-lucide="calendar-clock"
+                                            class="w-5 h-5 sm:w-6 sm:h-6 text-chai-600 mr-2 sm:mr-3 flex-shrink-0"></i>
+                                        <span class="truncate">Pemilihan Waktu & Dokter</span>
+                                    </h3>
+                                    <p class="text-carob-600 text-xs sm:text-sm">Tentukan waktu yang paling sesuai dan
+                                        pilih
+                                        dokter terbaik untuk hewan peliharaan Anda</p>
                                 </div>
-                            </div>
-
-                            <!-- Appointment Summary -->
-                            <div
-                                class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm mb-4 sm:mb-6">
-                                <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
-                                    <i data-lucide="calendar-clock"
-                                        class="w-4 h-4 sm:w-5 sm:h-5 text-matcha-600 mr-2 flex-shrink-0"></i>
-                                    <span>Detail Appointment</span>
-                                </h4>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    <div
-                                        class="bg-gradient-to-br from-chai-50 to-white p-4 rounded-xl border border-chai-200">
-                                        <div class="flex items-center mb-2">
-                                            <i data-lucide="calendar-days" class="w-4 h-4 text-chai-600 mr-2"></i>
-                                            <span class="text-xs font-semibold text-carob-700">Tanggal</span>
-                                        </div>
-                                        <div id="summaryDate" class="text-sm font-bold text-carob-900">-</div>
-                                    </div>
-                                    <div
-                                        class="bg-gradient-to-br from-matcha-50 to-white p-4 rounded-xl border border-matcha-200">
-                                        <div class="flex items-center mb-2">
-                                            <i data-lucide="clock" class="w-4 h-4 text-matcha-600 mr-2"></i>
-                                            <span class="text-xs font-semibold text-carob-700">Waktu</span>
-                                        </div>
-                                        <div id="summaryTime" class="text-sm font-bold text-carob-900">-</div>
-                                    </div>
-                                    <div
-                                        class="bg-gradient-to-br from-pistache-50 to-white p-4 rounded-xl border border-pistache-200">
-                                        <div class="flex items-center mb-2">
-                                            <i data-lucide="user-check" class="w-4 h-4 text-pistache-600 mr-2"></i>
-                                            <span class="text-xs font-semibold text-carob-700">Dokter</span>
-                                        </div>
-                                        <div id="summaryDoctor" class="text-sm font-bold text-carob-900">-</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Customer Information -->
-                            <div
-                                class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm mb-4 sm:mb-6">
-                                <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
-                                    <i data-lucide="user"
-                                        class="w-4 h-4 sm:w-5 sm:h-5 text-chai-600 mr-2 flex-shrink-0"></i>
-                                    <span>Informasi Pelanggan</span>
-                                </h4>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                                     <div class="space-y-2">
                                         <label
                                             class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                            <i data-lucide="user-circle"
+                                            <i data-lucide="calendar-days"
                                                 class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-chai-600 flex-shrink-0"></i>
-                                            <span>Nama Lengkap</span>
+                                            <span>Tanggal Appointment</span>
                                         </label>
-                                        <input type="text" id="customerName"
-                                            class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
-                                            placeholder="Masukkan nama lengkap Anda" required>
+                                        <input type="date" id="appointmentDate"
+                                            class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base">
                                     </div>
                                     <div class="space-y-2">
                                         <label
                                             class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
-                                            <i data-lucide="phone"
+                                            <i data-lucide="clock"
                                                 class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-matcha-600 flex-shrink-0"></i>
-                                            <span>Nomor WhatsApp</span>
+                                            <span>Waktu</span>
                                         </label>
-                                        <input type="tel" id="customerWhatsapp"
-                                            class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
-                                            placeholder="Contoh: 08123456789" required>
+                                        <select id="appointmentTime"
+                                            class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base">
+                                            <option value="">Pilih waktu</option>
+                                            <option value="09:00">🌅 09:00 WIB - Pagi</option>
+                                            <option value="10:00">☀️ 10:00 WIB - Pagi</option>
+                                            <option value="11:00">☀️ 11:00 WIB - Pagi</option>
+                                            <option value="13:00">🌞 13:00 WIB - Siang</option>
+                                            <option value="14:00">🌞 14:00 WIB - Siang</option>
+                                            <option value="15:00">🌞 15:00 WIB - Siang</option>
+                                            <option value="16:00">🌅 16:00 WIB - Sore</option>
+                                        </select>
+                                    </div>
+                                    <div class="sm:col-span-2 space-y-3">
+                                        <label
+                                            class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                            <i data-lucide="user-check"
+                                                class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-pistache-600 flex-shrink-0"></i>
+                                            <span>Pilih Dokter untuk Setiap Hewan</span>
+                                        </label>
+                                        <div id="doctorSelectionContainer">
+                                            <!-- Doctor selections will be dynamically generated here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Ringkasan Booking -->
+                            <div id="step3" class="step-content hidden pb-4">
+                                <div
+                                    class="bg-gradient-to-br from-pistache-50 to-chai-50 rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+                                    <h3 class="text-lg sm:text-xl font-bold text-carob-900 mb-2 flex items-center">
+                                        <i data-lucide="clipboard-check"
+                                            class="w-5 h-5 sm:w-6 sm:h-6 text-pistache-600 mr-2 sm:mr-3 flex-shrink-0"></i>
+                                        <span class="truncate">Ringkasan Booking</span>
+                                    </h3>
+                                    <p class="text-carob-600 text-xs sm:text-sm">Periksa kembali detail booking Anda
+                                        sebelum
+                                        melanjutkan ke konfirmasi</p>
+                                </div>
+
+                                <!-- Pet Summary -->
+                                <div
+                                    class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm mb-4 sm:mb-6">
+                                    <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
+                                        <i data-lucide="heart"
+                                            class="w-4 h-4 sm:w-5 sm:h-5 text-chai-600 mr-2 flex-shrink-0"></i>
+                                        <span>Data Hewan Peliharaan</span>
+                                    </h4>
+                                    <div id="petSummary" class="space-y-4">
+                                        <!-- Pet summary will be populated by JavaScript -->
                                     </div>
                                 </div>
 
-                                <!-- Terms and Conditions -->
+                                <!-- Appointment Summary -->
                                 <div
-                                    class="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-chai-50 to-matcha-50 rounded-xl border border-chai-200">
-                                    <label class="flex items-start cursor-pointer">
-                                        <input type="checkbox" id="agreeTerms"
-                                            class="mt-1 mr-2 sm:mr-3 text-chai-500 scale-110 sm:scale-125 flex-shrink-0"
-                                            required>
-                                        <span class="text-xs sm:text-sm text-carob-700">
-                                            Saya setuju dengan <a href="#"
-                                                class="text-chai-600 font-semibold hover:underline">syarat dan
-                                                ketentuan</a> yang berlaku dan memahami bahwa informasi booking akan
-                                            dikirimkan melalui WhatsApp.
-                                        </span>
-                                    </label>
+                                    class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm mb-4 sm:mb-6">
+                                    <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
+                                        <i data-lucide="calendar-clock"
+                                            class="w-4 h-4 sm:w-5 sm:h-5 text-matcha-600 mr-2 flex-shrink-0"></i>
+                                        <span>Detail Appointment</span>
+                                    </h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                        <div
+                                            class="bg-gradient-to-br from-chai-50 to-white p-4 rounded-xl border border-chai-200">
+                                            <div class="flex items-center mb-2">
+                                                <i data-lucide="calendar-days" class="w-4 h-4 text-chai-600 mr-2"></i>
+                                                <span class="text-xs font-semibold text-carob-700">Tanggal</span>
+                                            </div>
+                                            <div id="summaryDate" class="text-sm font-bold text-carob-900">-</div>
+                                        </div>
+                                        <div
+                                            class="bg-gradient-to-br from-matcha-50 to-white p-4 rounded-xl border border-matcha-200">
+                                            <div class="flex items-center mb-2">
+                                                <i data-lucide="clock" class="w-4 h-4 text-matcha-600 mr-2"></i>
+                                                <span class="text-xs font-semibold text-carob-700">Waktu</span>
+                                            </div>
+                                            <div id="summaryTime" class="text-sm font-bold text-carob-900">-</div>
+                                        </div>
+                                        <div
+                                            class="bg-gradient-to-br from-pistache-50 to-white p-4 rounded-xl border border-pistache-200">
+                                            <div class="flex items-center mb-2">
+                                                <i data-lucide="user-check" class="w-4 h-4 text-pistache-600 mr-2"></i>
+                                                <span class="text-xs font-semibold text-carob-700">Dokter</span>
+                                            </div>
+                                            <div id="summaryDoctor" class="text-sm font-bold text-carob-900">-</div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- Clinic Responsibility Terms -->
+                                <!-- Customer Information -->
                                 <div
-                                    class="mt-3 sm:mt-4 p-3 sm:p-4 bg-gradient-to-r from-pistache-50 to-chai-50 rounded-xl border border-pistache-200">
-                                    <label class="flex items-start cursor-pointer">
-                                        <input type="checkbox" id="agreeResponsibility"
-                                            class="mt-1 mr-2 sm:mr-3 text-pistache-500 scale-110 sm:scale-125 flex-shrink-0"
-                                            required>
-                                        <span class="text-xs sm:text-sm text-carob-700">
-                                            Saya memahami bahwa <strong>klinik bertanggung jawab berdasarkan data yang
-                                                saya isi pada formulir</strong> dan telah memberikan informasi yang
-                                            akurat mengenai hewan peliharaan saya.
-                                        </span>
-                                    </label>
+                                    class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm mb-4 sm:mb-6">
+                                    <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
+                                        <i data-lucide="user"
+                                            class="w-4 h-4 sm:w-5 sm:h-5 text-chai-600 mr-2 flex-shrink-0"></i>
+                                        <span>Informasi Pelanggan</span>
+                                    </h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                        <div class="space-y-2">
+                                            <label
+                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                <i data-lucide="user-circle"
+                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-chai-600 flex-shrink-0"></i>
+                                                <span>Nama Lengkap</span>
+                                            </label>
+                                            <input type="text" id="customerName"
+                                                class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
+                                                placeholder="Masukkan nama lengkap Anda" required>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label
+                                                class="block text-xs sm:text-sm font-semibold text-carob-700 flex items-center">
+                                                <i data-lucide="phone"
+                                                    class="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-matcha-600 flex-shrink-0"></i>
+                                                <span>Nomor WhatsApp</span>
+                                            </label>
+                                            <input type="tel" id="customerWhatsapp"
+                                                class="w-full p-3 sm:p-4 border-2 border-carob-100 rounded-xl focus:border-chai-500 focus:ring-4 focus:ring-chai-100 transition-all duration-300 bg-white shadow-sm hover:shadow-md text-sm sm:text-base"
+                                                placeholder="Contoh: 08123456789" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Terms and Conditions -->
+                                    <div
+                                        class="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-chai-50 to-matcha-50 rounded-xl border border-chai-200">
+                                        <label class="flex items-start cursor-pointer">
+                                            <input type="checkbox" id="agreeTerms"
+                                                class="mt-1 mr-2 sm:mr-3 text-chai-500 scale-110 sm:scale-125 flex-shrink-0"
+                                                required>
+                                            <span class="text-xs sm:text-sm text-carob-700">
+                                                Saya setuju dengan <a href="#"
+                                                    class="text-chai-600 font-semibold hover:underline">syarat dan
+                                                    ketentuan</a> yang berlaku dan memahami bahwa informasi booking akan
+                                                dikirimkan melalui WhatsApp.
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Clinic Responsibility Terms -->
+                                    <div
+                                        class="mt-3 sm:mt-4 p-3 sm:p-4 bg-gradient-to-r from-pistache-50 to-chai-50 rounded-xl border border-pistache-200">
+                                        <label class="flex items-start cursor-pointer">
+                                            <input type="checkbox" id="agreeResponsibility"
+                                                class="mt-1 mr-2 sm:mr-3 text-pistache-500 scale-110 sm:scale-125 flex-shrink-0"
+                                                required>
+                                            <span class="text-xs sm:text-sm text-carob-700">
+                                                Saya memahami bahwa <strong>klinik bertanggung jawab berdasarkan data
+                                                    yang
+                                                    saya isi pada formulir</strong> dan telah memberikan informasi yang
+                                                akurat mengenai hewan peliharaan saya.
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Service Summary -->
+                                <div class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm">
+                                    <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
+                                        <i data-lucide="scissors"
+                                            class="w-4 h-4 sm:w-5 sm:h-5 text-chai-600 mr-2 flex-shrink-0"></i>
+                                        <span>Layanan yang Dipilih</span>
+                                    </h4>
+                                    <div id="serviceSummary" class="space-y-3">
+                                        <!-- Service summary will be populated by JavaScript -->
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Service Summary -->
-                            <div class="bg-white rounded-2xl p-4 sm:p-6 border-2 border-carob-100 shadow-sm">
-                                <h4 class="font-bold text-carob-900 mb-4 flex items-center text-base sm:text-lg">
-                                    <i data-lucide="scissors"
-                                        class="w-4 h-4 sm:w-5 sm:h-5 text-chai-600 mr-2 flex-shrink-0"></i>
-                                    <span>Layanan yang Dipilih</span>
-                                </h4>
-                                <div id="serviceSummary" class="space-y-3">
-                                    <!-- Service summary will be populated by JavaScript -->
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Navigation Buttons -->
-                        <div
-                             class="flex justify-between px-2 sm:px-8 pt-3 sm:pt-6 pb-3 sm:pb-4 pb-[env(safe-area-inset-bottom)] border-t border-carob-100 flex-shrink-0 bg-white sticky bottom-0 z-10">
-                            <button id="prevBtn"
-                                class="hidden px-3 sm:px-6 py-2 sm:py-3 bg-carob-100 text-carob-700 rounded-xl hover:bg-carob-200 transition-all duration-300 font-medium text-sm sm:text-base min-w-[80px] sm:min-w-[120px]">
-                                <span class="hidden sm:inline">← Sebelumnya</span>
-                                <span class="sm:hidden">← Prev</span>
-                            </button>
-                            <div class="flex-1"></div>
-                            <button id="nextBtn"
-                                class="px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-chai-500 to-chai-600 text-white rounded-xl hover:from-chai-600 hover:to-chai-700 hover:shadow-lg transition-all duration-300 font-medium text-sm sm:text-base min-w-[80px] sm:min-w-[120px]">
-                                <span class="hidden sm:inline">Selanjutnya →</span>
-                                <span class="sm:hidden">Next →</span>
-                            </button>
-                            <button id="submitBtn"
-                                class="hidden px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-matcha-500 to-matcha-600 text-white rounded-xl hover:from-matcha-600 hover:to-matcha-700 hover:shadow-lg transition-all duration-300 font-medium text-sm sm:text-base min-w-[80px] sm:min-w-[120px]">
-                                <span class="hidden sm:inline">Konfirmasi Booking</span>
-                                <span class="sm:hidden">Konfirmasi</span>
-                            </button>
-                        </div>
-
-                        <!-- Success Message -->
-                        <div id="successMessage"
-                            class="hidden mx-4 sm:mx-8 mb-3 sm:mb-4 p-4 sm:p-6 bg-gradient-to-r from-matcha-50 to-matcha-100 border border-matcha-200 rounded-xl text-center flex-shrink-0">
+                            <!-- Navigation Buttons -->
                             <div
-                                class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-matcha-500 to-matcha-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                                <i data-lucide="check" class="text-white w-6 h-6 sm:w-8 sm:h-8"></i>
+                                class="flex justify-between px-2 sm:px-8 pt-3 sm:pt-6 pb-3 sm:pb-4 pb-[env(safe-area-inset-bottom)] border-t border-carob-100 flex-shrink-0 bg-white sticky bottom-0 z-10">
+                                <button id="prevBtn"
+                                    class="hidden px-3 sm:px-6 py-2 sm:py-3 bg-carob-100 text-carob-700 rounded-xl hover:bg-carob-200 transition-all duration-300 font-medium text-sm sm:text-base min-w-[80px] sm:min-w-[120px]">
+                                    <span class="hidden sm:inline">← Sebelumnya</span>
+                                    <span class="sm:hidden">← Prev</span>
+                                </button>
+                                <div class="flex-1"></div>
+                                <button id="nextBtn"
+                                    class="px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-chai-500 to-chai-600 text-white rounded-xl hover:from-chai-600 hover:to-chai-700 hover:shadow-lg transition-all duration-300 font-medium text-sm sm:text-base min-w-[80px] sm:min-w-[120px]">
+                                    <span class="hidden sm:inline">Selanjutnya →</span>
+                                    <span class="sm:hidden">Next →</span>
+                                </button>
+                                <button id="submitBtn"
+                                    class="hidden px-3 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-matcha-500 to-matcha-600 text-white rounded-xl hover:from-matcha-600 hover:to-matcha-700 hover:shadow-lg transition-all duration-300 font-medium text-sm sm:text-base min-w-[80px] sm:min-w-[120px]">
+                                    <span class="hidden sm:inline">Konfirmasi Booking</span>
+                                    <span class="sm:hidden">Konfirmasi</span>
+                                </button>
                             </div>
-                            <h4 class="text-lg sm:text-xl font-bold text-matcha-800 mb-2">Booking Berhasil!</h4>
-                            <p class="text-matcha-700 mb-3 sm:mb-4 text-sm sm:text-base">Appointment Anda telah berhasil
-                                dijadwalkan. Kami akan mengirimkan konfirmasi melalui WhatsApp.</p>
-                            <button id="newBookingBtn"
-                                class="px-4 sm:px-6 py-2 sm:py-3 bg-matcha-500 text-white rounded-xl hover:bg-matcha-600 transition-all duration-300 font-medium text-sm sm:text-base">
-                                <span class="hidden sm:inline">Buat Booking Baru</span>
-                                <span class="sm:hidden">Booking Baru</span>
-                            </button>
+
+                            <!-- Success Message -->
+                            <div id="successMessage"
+                                class="hidden mx-4 sm:mx-8 mb-3 sm:mb-4 p-4 sm:p-6 bg-gradient-to-r from-matcha-50 to-matcha-100 border border-matcha-200 rounded-xl text-center flex-shrink-0">
+                                <div
+                                    class="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-matcha-500 to-matcha-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                    <i data-lucide="check" class="text-white w-6 h-6 sm:w-8 sm:h-8"></i>
+                                </div>
+                                <h4 class="text-lg sm:text-xl font-bold text-matcha-800 mb-2">Booking Berhasil!</h4>
+                                <p class="text-matcha-700 mb-3 sm:mb-4 text-sm sm:text-base">Appointment Anda telah
+                                    berhasil
+                                    dijadwalkan. Kami akan mengirimkan konfirmasi melalui WhatsApp.</p>
+                                <button id="newBookingBtn"
+                                    class="px-4 sm:px-6 py-2 sm:py-3 bg-matcha-500 text-white rounded-xl hover:bg-matcha-600 transition-all duration-300 font-medium text-sm sm:text-base">
+                                    <span class="hidden sm:inline">Buat Booking Baru</span>
+                                    <span class="sm:hidden">Booking Baru</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 </section>
 
@@ -2070,8 +2479,8 @@
                 const tab = document.createElement('button');
                 tab.type = 'button';
                 tab.className = `px-3 py-1 rounded-lg text-xs font-medium transition-all duration-300 ${index === currentPetIndex
-                        ? 'bg-chai-500 text-white'
-                        : 'bg-carob-100 text-carob-600 hover:bg-chai-100'
+                    ? 'bg-chai-500 text-white'
+                    : 'bg-carob-100 text-carob-600 hover:bg-chai-100'
                     }`;
                 tab.textContent = index + 1;
                 tab.addEventListener('click', () => {
@@ -2206,5 +2615,78 @@
             updatePetsSummary();
         };
 
+    });
+
+    // Doctor Modal Functionality
+    const doctorData = {
+        doctor1: {
+            name: "Dr. Ahmad Rizki",
+            specialty: "Spesialis Bedah",
+            rating: "4.8",
+            experience: "200+ operasi"
+        },
+        doctor2: {
+            name: "Dr. Sarah Wijaya",
+            specialty: "Spesialis Hewan Kecil",
+            rating: "4.9",
+            experience: "150+ pasien"
+        },
+        doctor3: {
+            name: "Dr. Budi Santoso",
+            specialty: "Spesialis Hewan Besar",
+            rating: "4.7",
+            experience: "300+ kasus"
+        },
+        doctor4: {
+            name: "Dr. Lisa Chen",
+            specialty: "Spesialis Dermatologi",
+            rating: "4.9",
+            experience: "180+ treatment"
+        }
+    };
+
+    function openDoctorModal(doctorId) {
+        const modal = document.getElementById('doctorModal');
+        const modalContent = document.getElementById('modalContent');
+        const doctor = doctorData[doctorId];
+        
+        if (!doctor) return;
+        
+        // Update modal content with doctor data
+        document.getElementById('modalDoctorName').textContent = doctor.name;
+        document.getElementById('modalDoctorSpecialty').textContent = doctor.specialty;
+        document.getElementById('modalDoctorRating').textContent = doctor.rating;
+        document.getElementById('modalDoctorExperience').textContent = doctor.experience;
+        
+        // Show modal
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Animate modal appearance
+        setTimeout(() => {
+            modalContent.style.transform = 'scale(1)';
+            modalContent.style.opacity = '1';
+        }, 10);
+    }
+
+    function closeDoctorModal() {
+        const modal = document.getElementById('doctorModal');
+        const modalContent = document.getElementById('modalContent');
+        
+        // Animate modal disappearance
+        modalContent.style.transform = 'scale(0.95)';
+        modalContent.style.opacity = '0';
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeDoctorModal();
+        }
     });
 </script>
