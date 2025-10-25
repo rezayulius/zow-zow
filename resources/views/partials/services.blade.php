@@ -103,10 +103,10 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <button
-                            class="w-full bg-{{ $color }}-500 text-white py-3 rounded-xl hover:bg-{{ $color }}-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                        <a href="#booking"
+                            class="w-full bg-{{ $color }}-500 text-white py-3 rounded-xl hover:bg-{{ $color }}-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg text-center block scroll-smooth">
                             Pesan Sekarang
-                        </button>
+                        </a>
                     </div>
                 </div>
             @empty
@@ -225,10 +225,10 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <button
-                            class="w-full bg-{{ $color }}-500 text-white py-3 rounded-xl hover:bg-{{ $color }}-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                        <a href="#booking"
+                            class="w-full bg-{{ $color }}-500 text-white py-3 rounded-xl hover:bg-{{ $color }}-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg text-center block scroll-smooth">
                             Pesan Sekarang
-                        </button>
+                        </a>
                     </div>
                 </div>
             @empty

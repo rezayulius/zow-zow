@@ -6,11 +6,11 @@
         <!-- Progress Bar -->
         <!-- Track (always visible) -->
         <div
-            class="absolute top-px left-2 right-2 sm:left-4 sm:right-4 lg:left-6 lg:right-6 h-1 bg-almond-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0"></div>
+            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-almond-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0"></div>
         <!-- Fill (animated) -->
         <div id="scrollProgress"
-            class="absolute top-px left-2 right-2 sm:left-4 sm:right-4 lg:left-6 lg:right-6 h-1 bg-gradient-to-r from-matcha-500 to-matcha-600 rounded-full shadow-inner pointer-events-none z-10"
-            style="width: 0%; transition: width 200ms ease-out; will-change: width;"></div>
+            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-gradient-to-r from-matcha-500 to-matcha-600 rounded-full shadow-inner pointer-events-none z-10 overflow-hidden"
+            style="width: 0%; max-width: 100%; transition: width 200ms ease-out; will-change: width;"></div>
         <nav class="flex items-center justify-between py-2.5 px-2 sm:px-4 lg:px-6">
             <!-- Logo (Left) -->
             <div class="flex items-center space-x-2.5 flex-shrink-0">

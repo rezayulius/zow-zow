@@ -16,9 +16,7 @@ class Pricing extends Model
         'features',
         'is_popular',
         'is_active',
-        'sort_order',
-        'button_text',
-        'button_link'
+        'sort_order'
     ];
 
     protected $casts = [

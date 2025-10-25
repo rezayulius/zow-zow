@@ -82,10 +82,10 @@
                                 </ul>
                             @endif
 
-                            <a href="{{ $package->button_link ?? '#' }}"
-                               class="w-full {{ $colors['button'] }} text-white py-3 rounded-xl transition-colors font-medium mt-auto text-center block">
+                            <a href="#booking"
+                               class="w-full {{ $colors['button'] }} text-white py-3 rounded-xl transition-colors font-medium mt-auto text-center block scroll-smooth">
                                 <i data-lucide="calendar" class="w-4 h-4 mr-2 inline"></i>
-                                {{ $package->button_text ?? 'Book Now' }}
+                                Pilih Paket
                             </a>
                         </div>
                     </div>
@@ -133,10 +133,10 @@
                 </div>
             </div>
 
-            <button
-                class="bg-carob-600 text-white px-8 py-3 rounded-xl hover:bg-carob-700 transition-colors font-semibold">
+            <a href="#keanggotaan"
+                class="bg-carob-600 text-white px-8 py-3 rounded-xl hover:bg-carob-700 transition-colors font-semibold scroll-smooth inline-block">
                 View Membership Plans
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -449,11 +449,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     teknologi canggih kami
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        class="bg-carob-600 text-white px-8 py-3 rounded-xl hover:bg-carob-700 transition-colors font-semibold flex items-center justify-center">
+                    <a href="#booking"
+                        class="bg-carob-600 text-white px-8 py-3 rounded-xl hover:bg-carob-700 transition-colors font-semibold flex items-center justify-center scroll-smooth">
                         <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
                         Booking Sekarang
-                    </button>
+                    </a>
                     <button
                         class="bg-white text-carob-700 px-8 py-3 rounded-xl hover:bg-carob-50 transition-colors font-semibold flex items-center justify-center border border-carob-200">
                         <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>

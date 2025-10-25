@@ -22,10 +22,10 @@
                                     Discover our comprehensive pet wellness services including veterinary care, grooming, boarding, and a cozy cafe.
                                 </p>
                                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <button class="btn-primary relative overflow-hidden bg-[#8B7355] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-[#8B7355]/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base">
+                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-[#8B7355] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-[#8B7355]/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
                                         <i data-lucide="calendar" class="mr-2 w-4 h-4"></i>
                                         Book Appointment
-                                    </button>
+                                    </a>
                                     <a href="https://wa.me/6281234567890" class="bg-white text-carob-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-carob-200 hover:border-carob-400 text-sm sm:text-base">
                                         <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
                                         Chat WhatsApp
@@ -94,10 +94,10 @@
                                     Our emergency veterinary services are available round the clock to ensure your pet gets immediate care when needed.
                                 </p>
                                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <button class="btn-primary relative overflow-hidden bg-matcha-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base">
+                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-matcha-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
                                         <i data-lucide="calendar" class="mr-2 w-4 h-4"></i>
                                         Book Appointment
-                                    </button>
+                                    </a>
                                     <a href="https://wa.me/6281234567890" class="bg-white text-matcha-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-matcha-200 hover:border-matcha-400 text-sm sm:text-base">
                                         <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
                                         Chat WhatsApp
@@ -166,10 +166,10 @@
                                     Premium grooming and spa treatments to keep your pets looking and feeling their absolute best with our luxury services.
                                 </p>
                                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <button class="btn-primary relative overflow-hidden bg-chai-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base">
+                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-chai-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
                                         <span class="mr-2">📅</span>
                                         Book Appointment
-                                    </button>
+                                    </a>
                                     <a href="https://wa.me/6281234567890" class="bg-white text-chai-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-chai-200 hover:border-chai-400 text-sm sm:text-base">
                                         <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
                                         Chat WhatsApp
@@ -238,10 +238,10 @@
                                     Join our exclusive membership program and enjoy special discounts, priority booking, and premium services for your beloved pets.
                                 </p>
                                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <button class="btn-primary relative overflow-hidden bg-vanilla-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-vanilla-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base">
+                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-vanilla-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-vanilla-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
                                         <span class="mr-2">📅</span>
                                         Book Appointment
-                                    </button>
+                                    </a>
                                     <a href="https://wa.me/6281234567890" class="bg-white text-vanilla-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-vanilla-200 hover:border-vanilla-400 text-sm sm:text-base">
                                         <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
                                         Chat WhatsApp

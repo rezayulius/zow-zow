@@ -74,24 +74,7 @@ class PricingForm
                             ]),
                     ]),
 
-                Section::make('Tombol & Link')
-                    ->description('Pengaturan tombol dan link paket')
-                    ->schema([
-                        TextInput::make('button_text')
-                            ->label('Teks Tombol')
-                            ->required()
-                            ->maxLength(50)
-                            ->default('Pilih Paket')
-                            ->placeholder('Pilih Paket'),
 
-                        TextInput::make('button_link')
-                            ->label('Link Tombol')
-                            ->required()
-                            ->url()
-                            ->default('#')
-                            ->placeholder('https://example.com/order')
-                            ->helperText('URL tujuan ketika tombol diklik'),
-                    ]),
 
                 Section::make('Pengaturan Tampilan')
                     ->description('Pengaturan status dan urutan tampil')

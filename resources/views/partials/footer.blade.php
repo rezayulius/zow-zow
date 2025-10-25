@@ -40,55 +40,54 @@
             <div>
                 <h4 class="text-lg font-semibold mb-4">Layanan</h4>
                 <ul class="space-y-2 text-almond-300">
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Pemeriksaan
-                            Umum</a></li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Vaksinasi</a>
+                    <li><a href="#health"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
+                            Kesehatan</a></li>
+                    <li><a href="#wellness"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
+                            Wellness</a></li>
+                    <li><a href="#pricing"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Paket
+                            Harga</a></li>
+                    <li><a href="#keanggotaan"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Keanggotaan</a>
                     </li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Operasi</a>
-                    </li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Grooming</a>
-                    </li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Emergency</a>
-                    </li>
+                    <li><a href="#booking"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Booking
+                            Online</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-lg font-semibold mb-4">Informasi</h4>
+                <h4 class="text-lg font-semibold mb-4">Navigasi</h4>
                 <ul class="space-y-2 text-almond-300">
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Tentang
+                    <li><a href="#hero"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Beranda</a></li>
+                    <li><a href="#services"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
                             Kami</a></li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Tim
-                            Dokter</a></li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Karir</a>
+                    <li><a href="#testimonials"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Testimoni</a>
                     </li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">Blog</a>
-                    </li>
-                    <li><a href="#"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1">FAQ</a>
-                    </li>
+                    <li><a href="#lokasi"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Lokasi
+                            & Kontak</a></li>
+                    <li><a href="#membership"
+                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Program
+                            Member</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-semibold mb-4">Kontak</h4>
                 <ul class="space-y-2 text-almond-300">
-                    <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Sudirman No. 123, Jakarta</li>
-                    <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> +62 812 3456 7890</li>
-                    <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> info@petwellnesshub.com</li>
-                    <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: 162 21 1234 9999</li>
+                    <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Raya Kemang No. 88, Jakarta Selatan</li>
+                    <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> +62 21 7890 1234</li>
+                    <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> info@zowzow.com</li>
+                    <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: +62 812 9999 0000</li>
                 </ul>
             </div>
         </div>
         <div class="border-t border-carob-700 mt-8 pt-8 text-center text-almond-300">
-            <p>&copy; 2024 PetWellness Hub. All rights reserved.</p>
+            <p>&copy; 2025 Zow Zow - Pet Wellness Hub. All rights reserved.</p>
         </div>
     </div>
 </footer>

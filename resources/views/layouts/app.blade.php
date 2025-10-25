@@ -34,7 +34,7 @@
     @yield('content')
     
     <!-- Cekat.AI Live Chat Widget -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         window.mychat = window.mychat || {};
         window.mychat.server = 'https://live.cekat.ai/widget.js';
         window.mychat.iframeWidth = '400px';
@@ -48,7 +48,7 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(mychat, s);
         })();
-    </script> -->
+    </script>
     
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

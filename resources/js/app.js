@@ -61,12 +61,19 @@ function initHeaderScrollEffect() {
                 }
             }
 
-            // Progress bar animation (optimized calculation)
+            // Progress bar animation (optimized calculation with overflow protection)
             if (scrollProgress) {
                 const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 
                 if (scrollHeight > 0) {
-                    const scrollPercentage = Math.min(100, Math.max(0, (scrollY / scrollHeight) * 100));
+                    // Calculate scroll percentage with improved precision
+                    let scrollPercentage = (scrollY / scrollHeight) * 100;
+                    
+                    // Apply strict bounds with proper padding margin (95% max to leave space)
+                    scrollPercentage = Math.min(95, Math.max(0, scrollPercentage));
+                    
+                    // Round to prevent floating point precision issues
+                    scrollPercentage = Math.round(scrollPercentage * 10) / 10;
                     
                     // Update width to reflect scroll progress with a smooth transition
                     scrollProgress.style.width = `${scrollPercentage}%`;
