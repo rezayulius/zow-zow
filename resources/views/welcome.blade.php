@@ -12,6 +12,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Heroicons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/outline/index.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
@@ -449,7 +453,7 @@
                 <div class="flex items-center space-x-2.5 flex-shrink-0">
                     <div
                         class="w-10 h-10 bg-gradient-to-br from-matcha-500 to-matcha-600 rounded-xl flex items-center justify-center shadow-md">
-                        <span class="text-white text-lg font-bold">🐾</span>
+                        <i data-lucide="heart" class="text-white w-5 h-5"></i>
                     </div>
                     <span class="text-xl font-bold text-carob-800 font-heading tracking-tight">Zow Zow</span>
                 </div>
@@ -481,12 +485,12 @@
                     <div class="flex items-center space-x-0.5">
                         <a href="tel:+6281234567890"
                             class="bg-matcha-500 text-white px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-1 font-medium text-xs shadow-lg hover:shadow-xl">
-                            <span>📞</span>
+                            <i data-lucide="phone" class="w-3 h-3"></i>
                             <span class="hidden xl:inline">{{ __('messages.call') }}</span>
                         </a>
                         <a href="https://wa.me/6281234567890"
                             class="bg-matcha-500 text-white px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-1 font-medium text-xs shadow-lg hover:shadow-xl">
-                            <span>💬</span>
+                            <i data-lucide="message-circle" class="w-3 h-3"></i>
                             <span class="hidden xl:inline">{{ __('messages.whatsapp') }}</span>
                         </a>
                     </div>
@@ -550,12 +554,12 @@
                         <div class="flex justify-center gap-2 mb-4">
                             <a href="tel:+6281234567890"
                                 class="bg-matcha-500 text-white px-4 py-2 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
-                                <span>📞</span>
+                                <i data-lucide="phone" class="w-4 h-4"></i>
                                 <span>{{ __('messages.call') }}</span>
                             </a>
                             <a href="https://wa.me/6281234567890"
                                 class="bg-matcha-500 text-white px-4 py-2 rounded-lg hover:bg-matcha-600 transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
-                                <span>💬</span>
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
                                 <span>{{ __('messages.whatsapp') }}</span>
                             </a>
                         </div>
@@ -602,11 +606,11 @@
                                 </p>
                                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
                                     <button class="btn-primary relative overflow-hidden bg-[#8B7355] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-[#8B7355]/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base">
-                                        <span class="mr-2">📅</span>
+                                        <i data-lucide="calendar" class="mr-2 w-4 h-4"></i>
                                         Book Appointment
                                     </button>
                                     <button class="bg-white text-carob-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-carob-200 hover:border-carob-400 text-sm sm:text-base">
-                                        <span class="mr-2">📞</span>
+                                        <i data-lucide="phone" class="mr-2 w-4 h-4"></i>
                                         Call Now
                                     </button>
                                 </div>
@@ -659,7 +663,7 @@
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                             <div class="slide-content-left">
                                 <div class="slide-badge inline-flex items-center bg-matcha-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
-                                    <span class="mr-2">🚨</span>
+                                    <i data-lucide="alert-triangle" class="mr-2 w-4 h-4"></i>
                                     <span>Emergency Ready!</span>
                                     <span class="ml-2 bg-white/20 px-2 py-1 rounded text-xs">Always Available</span>
                                 </div>
@@ -674,11 +678,11 @@
                                 </p>
                                 <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
                                     <button class="btn-primary relative overflow-hidden bg-matcha-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base">
-                                        <span class="mr-2">📅</span>
+                                        <i data-lucide="calendar" class="mr-2 w-4 h-4"></i>
                                         Book Appointment
                                     </button>
                                     <button class="bg-white text-matcha-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-matcha-200 hover:border-matcha-400 text-sm sm:text-base">
-                                        <span class="mr-2">📞</span>
+                                        <i data-lucide="phone" class="mr-2 w-4 h-4"></i>
                                         Call Now
                                     </button>
                                 </div>
@@ -704,13 +708,13 @@
                                     <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
                                         <div class="flex items-center text-chai-500">
                                             <span class="text-sm font-bold mr-1">4.9/5</span>
-                                            <span>⭐</span>
+                                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                         </div>
                                         <div class="text-xs text-carob-500 text-center">Rating</div>
                                     </div>
                                     <div class="absolute bottom-4 left-4 bg-carob-700 text-white px-4 py-2 rounded-lg">
                                         <div class="flex items-center">
-                                            <span class="mr-2">⏰</span>
+                                            <i data-lucide="clock" class="mr-2 w-4 h-4"></i>
                                             <div>
                                                 <div class="font-semibold text-sm">Emergency Care</div>
                                                 <div class="text-xs opacity-90">Immediate response guaranteed</div>
@@ -731,7 +735,7 @@
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
                             <div class="slide-content-left">
                                 <div class="slide-badge inline-flex items-center bg-chai-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
-                                    <span class="mr-2">✨</span>
+                                    <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i>
                                     <span>Luxury Package!</span>
                                     <span class="ml-2 bg-white/20 px-2 py-1 rounded text-xs">VIP Treatment</span>
                                 </div>
@@ -848,13 +852,13 @@
                                     <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
                                         <div class="flex items-center text-chai-500">
                                             <span class="text-sm font-bold mr-1">4.9/5</span>
-                                            <span>⭐</span>
+                                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                         </div>
                                         <div class="text-xs text-carob-500 text-center">Rating</div>
                                     </div>
                                     <div class="absolute bottom-4 left-4 bg-chai-600 text-white px-4 py-2 rounded-lg">
                                         <div class="flex items-center">
-                                            <span class="mr-2">👑</span>
+                                            <i data-lucide="crown" class="mr-2 w-4 h-4"></i>
                                             <div>
                                                 <div class="font-semibold text-sm">VIP Member</div>
                                                 <div class="text-xs opacity-90">Exclusive perks & priority</div>
@@ -919,71 +923,379 @@
             </div>
         </section>
 
-        <!-- Layanan Section -->
+        <!-- Layanan Kami Section -->
         <section id="layanan" class="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-almond-50 via-vanilla-50 to-chai-50">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-16 lg:mb-20">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-carob-900 mb-6 font-heading leading-tight tracking-tight">Layanan
-                        Kami</h2>
-                    <p class="text-lg lg:text-xl text-carob-600 max-w-3xl mx-auto leading-relaxed">
-                        Kami menyediakan berbagai layanan kesehatan hewan dengan standar internasional dan teknologi
-                        terdepan.
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Premium Services Badge -->
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center bg-chai-500 text-white px-6 py-2 rounded-full text-sm font-medium mb-6">
+                        <i data-lucide="trophy" class="text-lg mr-2 w-5 h-5"></i>
+                        Premium Services
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight tracking-tight">
+                        Layanan Kami
+                    </h2>
+                    <p class="text-lg text-carob-600 max-w-2xl mx-auto leading-relaxed mb-12">
+                        Kami menyediakan perawatan dan layanan komprehensif untuk hewan kesayangan Anda, 
+                        memastikan kesehatan, kebahagiaan, dan kesejahteraan mereka.
                     </p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-almond-100 hover:border-matcha-200 transform will-change-transform hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-matcha-500 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6 hover:scale-110">
-                            <span class="text-white text-xl">🩺</span>
+
+                <!-- Service Highlights Cards -->
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <!-- Quick Service Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-chai-100">
+                        <div class="w-16 h-16 bg-gradient-to-br from-chai-400 to-chai-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="zap" class="text-white text-2xl w-8 h-8"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-900 mb-3">Pemeriksaan Umum</h3>
-                        <p class="text-carob-600 text-sm leading-relaxed">Pemeriksaan kesehatan rutin dan diagnosis
-                            komprehensif untuk menjaga kesehatan hewan peliharaan Anda.</p>
+                        <h3 class="text-lg font-semibold text-carob-900 mb-2 group-hover:text-chai-600 transition-colors duration-300">Quick Service</h3>
+                        <p class="text-carob-600 text-sm">Same day appointments</p>
+                        <div class="mt-4 h-1 bg-gradient-to-r from-chai-400 to-chai-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-almond-100 hover:border-pistache-200 hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-pistache-500 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6 hover:scale-110">
-                            <span class="text-white text-xl">💉</span>
+                    
+                    <!-- Guaranteed Safety Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-matcha-100">
+                        <div class="w-16 h-16 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="shield-check" class="text-white text-2xl w-8 h-8"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-900 mb-3">Vaksinasi</h3>
-                        <p class="text-carob-600 text-sm leading-relaxed">Program vaksinasi lengkap untuk melindungi
-                            hewan peliharaan dari berbagai penyakit berbahaya.</p>
+                        <h3 class="text-lg font-semibold text-carob-900 mb-2 group-hover:text-matcha-600 transition-colors duration-300">Guaranteed Safety</h3>
+                        <p class="text-carob-600 text-sm">Certified professionals</p>
+                        <div class="mt-4 h-1 bg-gradient-to-r from-matcha-400 to-matcha-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-almond-100 hover:border-chai-200 hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-chai-500 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6 hover:scale-110">
-                            <span class="text-white text-xl">🏥</span>
+                    
+                    <!-- Award Winning Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-carob-100">
+                        <div class="w-16 h-16 bg-gradient-to-br from-carob-400 to-carob-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="trophy" class="text-white text-2xl w-8 h-8"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-900 mb-3">Operasi</h3>
-                        <p class="text-carob-600 text-sm leading-relaxed">Layanan bedah dengan teknologi modern dan tim
-                            dokter berpengalaman untuk berbagai kondisi medis.</p>
+                        <h3 class="text-lg font-semibold text-carob-900 mb-2 group-hover:text-carob-600 transition-colors duration-300">Award Winning</h3>
+                        <p class="text-carob-600 text-sm">Best pet care 2024</p>
+                        <div class="mt-4 h-1 bg-gradient-to-r from-carob-400 to-carob-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-almond-100 hover:border-matcha-200 hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-matcha-500 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6 hover:scale-110">
-                            <span class="text-white text-xl">🦷</span>
+                </div>
+
+                <!-- Main Service Cards -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                    <!-- Klinik Hewan -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Klinik Hewan" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-matcha-400/80 to-matcha-600/80"></div>
+                            <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span class="text-white text-xs font-medium">POPULAR</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                <i data-lucide="heart" class="text-white text-sm w-4 h-4"></i>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-900 mb-3">Perawatan Gigi</h3>
-                        <p class="text-carob-600 text-sm leading-relaxed">Pembersihan gigi, scaling, dan perawatan
-                            dental untuk menjaga kesehatan mulut hewan peliharaan.</p>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-carob-900 mb-3">Klinik Hewan</h3>
+                            <p class="text-carob-600 text-sm mb-4 leading-relaxed">
+                                Perawatan dokter hewan profesional dengan fasilitas modern.
+                            </p>
+                            <ul class="space-y-2 mb-6 flex-grow">
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
+                                        <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
+                                    </span>
+                                    Pemeriksaan kesehatan
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
+                                        <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
+                                    </span>
+                                    Vaksinasi lengkap
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
+                                        <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
+                                    </span>
+                                    Operasi
+                                </li>
+                            </ul>
+                            <button class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                                Pesan Sekarang
+                            </button>
+                        </div>
                     </div>
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-almond-100 hover:border-pistache-200 hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-pistache-500 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6 hover:scale-110">
-                            <span class="text-white text-xl">🛁</span>
+
+                    <!-- Salon Hewan -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Salon Hewan" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-chai-400/80 to-chai-600/80"></div>
+                            <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span class="text-white text-xs font-medium">QUICK & EASY</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                <i data-lucide="sparkles" class="text-white text-sm w-4 h-4"></i>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-900 mb-3">Grooming</h3>
-                        <p class="text-carob-600 text-sm leading-relaxed">Layanan perawatan bulu, kuku, dan kebersihan
-                            untuk menjaga penampilan dan kesehatan hewan.</p>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-carob-900 mb-3">Salon Hewan</h3>
+                            <p class="text-carob-600 text-sm mb-4 leading-relaxed">
+                                Layanan grooming profesional untuk kebersihan hewan Anda.
+                            </p>
+                            <ul class="space-y-2 mb-6 flex-grow">
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Grooming lengkap
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Potong kuku
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-chai-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Mandi
+                                </li>
+                            </ul>
+                            <button class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                                Pesan Sekarang
+                            </button>
+                        </div>
                     </div>
-                    <div
-                        class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-almond-100 hover:border-chai-200 hover:-translate-y-1">
-                        <div class="w-12 h-12 bg-chai-600 rounded-lg flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6 hover:scale-110">
-                            <span class="text-white text-xl">🚨</span>
+
+                    <!-- Hotel Hewan -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Hotel Hewan" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-carob-400/80 to-carob-600/80"></div>
+                            <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span class="text-white text-xs font-medium">SAFE & COZY</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                <span class="text-white text-sm">🛏️</span>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-900 mb-3">Emergency 24/7</h3>
-                        <p class="text-carob-600 text-sm leading-relaxed">Layanan darurat 24 jam dengan tim siaga untuk
-                            menangani kondisi kritis hewan peliharaan Anda.</p>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-carob-900 mb-3">Hotel Hewan</h3>
+                            <p class="text-carob-600 text-sm mb-4 leading-relaxed">
+                                Penginapan yang aman dan nyaman untuk hewan Anda.
+                            </p>
+                            <ul class="space-y-2 mb-6 flex-grow">
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-carob-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Pengawasan 24/7
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-carob-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Kamar ber-AC
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-carob-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Layanan Makan
+                                </li>
+                            </ul>
+                            <button class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kafe Hewan -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group flex flex-col h-full">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Kafe Hewan" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-br from-pistache-400/80 to-pistache-600/80"></div>
+                            <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
+                                <span class="text-white text-xs font-medium">RELAX & ENJOY</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                                <span class="text-white text-sm">🐾</span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold text-carob-900 mb-3">Kafe Hewan</h3>
+                            <p class="text-carob-600 text-sm mb-4 leading-relaxed">
+                                Bersantai dengan hewan Anda sambil menikmati kopi.
+                            </p>
+                            <ul class="space-y-2 mb-6 flex-grow">
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Menu Spesial Hewan
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    Tempat Bermain
+                                </li>
+                                <li class="flex items-center text-sm text-carob-600">
+                                    <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
+                                        <span class="text-white text-xs">✓</span>
+                                    </span>
+                                    WiFi Gratis
+                                </li>
+                            </ul>
+                            <button class="w-full bg-pistache-500 text-white py-3 rounded-xl hover:bg-pistache-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Care Plan Section -->
+                <div class="bg-gradient-to-r from-carob-600 to-carob-700 rounded-2xl p-8 text-center text-white">
+                    <h3 class="text-2xl font-bold mb-4">Need a Custom Care Plan?</h3>
+                    <p class="text-carob-100 mb-6 max-w-2xl mx-auto">
+                        Let our experts create a personalized wellness program for your pet
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <button class="relative overflow-hidden bg-white text-carob-700 px-8 py-3 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg">
+                            <span class="mr-2">📅</span>
+                            Schedule Consultation
+                        </button>
+                        <button class="relative overflow-hidden flex items-center space-x-2 text-carob-100 hover:text-white transition-all duration-300 bg-transparent border border-carob-100 hover:border-white px-8 py-3 rounded-xl hover:bg-carob-100/10 hover:-translate-y-1 hover:shadow-xl font-semibold shadow-lg">
+                            <span class="text-sm">📞</span>
+                            <span class="text-sm">Call us: (021) 123-4567</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Booking Section -->
+                <div class="bg-gradient-to-br from-matcha-50 via-white to-chai-50 rounded-2xl p-8 mt-16">
+                    <div class="text-center mb-12">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-carob-900 mb-4">
+                            Mudah Booking untuk Pet Kesayangan
+                        </h3>
+                        <p class="text-carob-600 max-w-2xl mx-auto">
+                            Jadwalkan appointment dengan cepat, bayar dengan mudah, atau hubungi kami langsung untuk kebutuhan darurat pet Anda
+                        </p>
+                    </div>
+
+                    <!-- Booking Options -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                        <!-- Appointment -->
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-chai-100">
+                            <div class="w-16 h-16 bg-gradient-to-br from-chai-400 to-chai-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="calendar" class="text-white text-2xl w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-carob-900 mb-2">Appointment</h4>
+                            <p class="text-carob-600 text-sm mb-4">Jadwalkan appointment lengkap</p>
+                            <button class="w-full bg-chai-500 text-white py-3 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                Buat Appointment
+                            </button>
+                        </div>
+
+                        <!-- Quick Payment -->
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-carob-100">
+                            <div class="w-16 h-16 bg-gradient-to-br from-carob-400 to-carob-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="credit-card" class="text-white text-2xl w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-carob-900 mb-2">Quick Payment</h4>
+                            <p class="text-carob-600 text-sm mb-4">Bayar layanan dengan cepat</p>
+                            <button class="w-full bg-carob-500 text-white py-3 rounded-xl hover:bg-carob-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                Bayar Express
+                            </button>
+                        </div>
+
+                        <!-- Emergency -->
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-red-100">
+                            <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="alert-triangle" class="text-white text-2xl w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-carob-900 mb-2">Emergency</h4>
+                            <p class="text-carob-600 text-sm mb-4">Hubungi untuk darurat</p>
+                            <button class="w-full bg-red-500 text-white py-3 rounded-xl hover:bg-red-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                Call Now
+                            </button>
+                        </div>
+
+                        <!-- Chat Support -->
+                        <div class="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-matcha-100">
+                            <div class="w-16 h-16 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <i data-lucide="message-circle" class="text-white text-2xl w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-carob-900 mb-2">Chat Support</h4>
+                            <p class="text-carob-600 text-sm mb-4">Tanya ZOW AI atau Admin</p>
+                            <button class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                Chat WhatsApp
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Booking Services -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <i data-lucide="zap" class="text-2xl mr-3 w-6 h-6"></i>
+                            <h4 class="text-xl font-bold text-carob-900">Quick Booking Services</h4>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <!-- Konsultasi Dokter -->
+                            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-chai-50 to-chai-100 rounded-xl hover:shadow-md transition-all duration-300 group">
+                                <div class="flex items-center">
+                                    <i data-lucide="stethoscope" class="text-2xl mr-3 w-6 h-6"></i>
+                                    <div>
+                                        <h5 class="font-semibold text-carob-900">Konsultasi Dokter</h5>
+                                        <p class="text-chai-600 text-sm">Rp 150.000</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
+                                    <button class="bg-chai-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                        Book Now
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Vaksinasi Lengkap -->
+                            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-matcha-50 to-matcha-100 rounded-xl hover:shadow-md transition-all duration-300 group">
+                                <div class="flex items-center">
+                                    <i data-lucide="syringe" class="text-2xl mr-3 w-6 h-6"></i>
+                                    <div>
+                                        <h5 class="font-semibold text-carob-900">Vaksinasi Lengkap</h5>
+                                        <p class="text-matcha-600 text-sm">Rp 200.000</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
+                                    <button class="bg-matcha-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                        Book Now
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Health Check-up -->
+                            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-carob-50 to-carob-100 rounded-xl hover:shadow-md transition-all duration-300 group">
+                                <div class="flex items-center">
+                                    <i data-lucide="search" class="text-2xl mr-3 w-6 h-6"></i>
+                                    <div>
+                                        <h5 class="font-semibold text-carob-900">Health Check-up</h5>
+                                        <p class="text-carob-600 text-sm">Rp 250.000</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
+                                    <button class="bg-carob-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-carob-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold shadow-lg">
+                                        Book Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1006,7 +1318,7 @@
                         <div class="text-center">
                             <div
                                 class="w-10 h-10 bg-matcha-100 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                                <span class="text-matcha-600 text-lg">🩺</span>
+                                <i data-lucide="stethoscope" class="text-matcha-600 text-lg w-5 h-5"></i>
                             </div>
                             <h3 class="text-sm font-semibold text-carob-900 mb-2">Konsultasi Umum</h3>
                             <div class="text-lg font-bold text-matcha-600 mb-1">Rp 150K</div>
@@ -1289,7 +1601,7 @@
                             <h3 class="text-2xl font-bold text-carob-800 mb-6">Informasi Kontak</h3>
                             <div class="space-y-4">
                                 <div class="flex items-start space-x-4">
-                                    <span class="text-matcha-500 text-xl">📍</span>
+                                    <i data-lucide="map-pin" class="text-matcha-500 text-xl w-5 h-5 mt-1"></i>
                                     <div>
                                         <h4 class="font-semibold text-carob-800">Alamat</h4>
                                         <p class="text-carob-600">Jl. Sudirman No. 123, Menteng<br>Jakarta Pusat 10310
@@ -1297,7 +1609,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-4">
-                                    <span class="text-matcha-500 text-xl">📞</span>
+                                    <i data-lucide="phone" class="text-matcha-500 text-xl w-5 h-5 mt-1"></i>
                                     <div>
                                         <h4 class="font-semibold text-carob-800">Telepon</h4>
                                         <p class="text-carob-600">+62 812 3456 7890</p>
@@ -1305,14 +1617,14 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-4">
-                                    <span class="text-matcha-500 text-xl">✉️</span>
+                                    <i data-lucide="mail" class="text-matcha-500 text-xl w-5 h-5 mt-1"></i>
                                     <div>
                                         <h4 class="font-semibold text-carob-800">Email</h4>
                                         <p class="text-carob-600">info@petwellnesshub.com</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-4">
-                                    <span class="text-matcha-500 text-xl">🕒</span>
+                                    <i data-lucide="clock" class="text-matcha-500 text-xl w-5 h-5 mt-1"></i>
                                     <div>
                                         <h4 class="font-semibold text-carob-800">Jam Operasional</h4>
                                         <p class="text-carob-600">Senin - Jumat: 08:00 - 20:00</p>
@@ -1326,7 +1638,7 @@
                     <div>
                         <div class="bg-almond-200 rounded-lg h-96 flex items-center justify-center">
                             <div class="text-center">
-                                <span class="text-6xl mb-4 block">🗺️</span>
+                                <i data-lucide="map" class="text-6xl mb-4 block w-16 h-16 mx-auto"></i>
                                 <p class="text-carob-600">Interactive Map</p>
                                 <p class="text-sm text-carob-500">Google Maps integration would be here</p>
                             </div>
@@ -1354,7 +1666,7 @@
                 <div>
                     <div class="flex items-center space-x-2.5 mb-4">
                         <div class="w-10 h-10 bg-matcha-500 rounded-lg shadow-md flex items-center justify-center">
-                            <span class="text-white text-lg font-bold">🐾</span>
+                            <i data-lucide="heart" class="text-white text-lg w-5 h-5"></i>
                         </div>
                         <span class="text-xl font-bold font-heading">Zow Zow</span>
                     </div>
@@ -1364,15 +1676,15 @@
                     <div class="flex space-x-3">
                         <a href="#"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
-                            <span class="text-white text-sm">📘</span>
+                            <i data-lucide="facebook" class="text-white text-sm w-4 h-4"></i>
                         </a>
                         <a href="#"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
-                            <span class="text-white text-sm">📷</span>
+                            <i data-lucide="instagram" class="text-white text-sm w-4 h-4"></i>
                         </a>
                         <a href="#"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
-                            <span class="text-white text-sm">🐦</span>
+                            <i data-lucide="twitter" class="text-white text-sm w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
@@ -1419,10 +1731,10 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Kontak</h4>
                     <ul class="space-y-2 text-almond-300">
-                        <li>📍 Jl. Sudirman No. 123, Jakarta</li>
-                        <li>📞 +62 812 3456 7890</li>
-                        <li>✉️ info@petwellnesshub.com</li>
-                        <li class="text-chai-400 font-semibold">🚨 Emergency: 162 21 1234 9999</li>
+                        <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Sudirman No. 123, Jakarta</li>
+                        <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> +62 812 3456 7890</li>
+                        <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> info@petwellnesshub.com</li>
+                        <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: 162 21 1234 9999</li>
                     </ul>
                 </div>
             </div>
@@ -1432,277 +1744,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Language switcher now uses direct links, no JavaScript needed
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // Header scroll effect & Progress bar (Optimized with throttling)
-        let headerScrollTicking = false;
-        const header = document.querySelector('header');
-        const headerDiv = header.querySelector('div');
-        const scrollProgress = document.getElementById('scrollProgress');
-        
-        function updateHeaderAndProgress() {
-            try {
-                const scrollY = window.scrollY;
-                
-                // Header scale effect
-                if (scrollY > 100) {
-                    header.classList.add('scale-95');
-                    headerDiv.classList.add('shadow-xl');
-                    headerDiv.classList.remove('shadow-lg');
-                } else {
-                    header.classList.remove('scale-95');
-                    headerDiv.classList.add('shadow-lg');
-                    headerDiv.classList.remove('shadow-xl');
-                }
-
-                // Progress bar animation (optimized calculation)
-                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                
-                if (scrollHeight > 0) {
-                    const scrollPercentage = Math.min(100, Math.max(0, (scrollY / scrollHeight) * 100));
-                    const scaleValue = scrollPercentage / 100;
-                    
-                    // Use transform instead of width for better performance
-                    if (scrollProgress) {
-                        scrollProgress.style.transform = `scaleX(${scaleValue})`;
-                    }
-                }
-            } catch (error) {
-                console.warn('Progress bar update error:', error);
-            } finally {
-                headerScrollTicking = false;
-            }
-        }
-        
-        function requestHeaderScrollTick() {
-            if (!headerScrollTicking) {
-                requestAnimationFrame(updateHeaderAndProgress);
-                headerScrollTicking = true;
-            }
-        }
-        
-        window.addEventListener('scroll', requestHeaderScrollTick, { passive: true });
-
-        // Hero Slider Functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('.slide');
-
-            let currentSlide = 0;
-            let slideInterval;
-            const slideDuration = 5000; // 5 seconds per slide
-
-            function updateSlide(index) {
-                // Add exiting class to current slide for exit animation
-                if (slides[currentSlide]) {
-                    slides[currentSlide].classList.add('exiting');
-                }
-
-                // Wait for exit animation to complete, then switch slides
-                setTimeout(() => {
-                    // Remove active and exiting class from all slides
-                    slides.forEach((slide, i) => {
-                        slide.classList.remove('active', 'prev', 'exiting');
-                        if (i < index) {
-                            slide.classList.add('prev');
-                        }
-                    });
-                    // Add active class to new slide
-                    slides[index].classList.add('active');
-
-                    // Update progress indicators
-                    updateProgressIndicators(index);
-
-                    // Update navigation buttons
-                    updateNavigationButtons(index);
-
-                    currentSlide = index;
-                }, 600); // Wait for exit animation to complete (0.5s + buffer)
-            }
-
-            function updateProgressIndicators(activeIndex) {
-                const progressIndicators = document.querySelectorAll('.progress-indicator');
-                
-                progressIndicators.forEach((indicator, index) => {
-                    const progressFill = indicator.querySelector('.progress-bar-fill');
-                    
-                    if (index === activeIndex) {
-                        indicator.classList.add('active');
-                        if (progressFill) {
-                            // Reset progress bar immediately without transition
-                            progressFill.style.transition = 'none';
-                            progressFill.style.width = '0%';
-                            progressFill.offsetHeight; // Trigger reflow
-                            
-                            // Start animation after a small delay
-                            setTimeout(() => {
-                                progressFill.style.transition = 'width 5s linear';
-                                progressFill.style.width = '100%';
-                            }, 50);
-                        }
-                    } else {
-                        indicator.classList.remove('active');
-                        if (progressFill) {
-                            // Reset non-active progress bars immediately
-                            progressFill.style.transition = 'none';
-                            progressFill.style.width = '0%';
-                        }
-                    }
-                });
-            }
-
-            function updateNavigationButtons(activeIndex) {
-                const navButtons = document.querySelectorAll('.slide-nav-btn');
-                
-                navButtons.forEach((button, index) => {
-                    if (index === activeIndex) {
-                        button.classList.add('active');
-                    } else {
-                        button.classList.remove('active');
-                    }
-                });
-            }
-
-            function goToSlide(index) {
-                if (index !== currentSlide && index >= 0 && index < slides.length) {
-                    updateSlide(index);
-                    restartSlider();
-                }
-            }
-
-            function nextSlide() {
-                const next = (currentSlide + 1) % slides.length;
-                updateSlide(next);
-                restartSlider();
-            }
-
-
-
-            function startSlider() {
-                slideInterval = setInterval(() => {
-                    nextSlide();
-                }, slideDuration);
-            }
-
-            function stopSlider() {
-                clearInterval(slideInterval);
-            }
-
-            function restartSlider() {
-                stopSlider();
-                startSlider();
-            }
-
-            // Initialize slider
-            updateSlide(0);
-            startSlider();
-
-            // Add event listeners for navigation buttons
-            const navButtons = document.querySelectorAll('.slide-nav-btn');
-            navButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    goToSlide(index);
-                });
-            });
-
-            // Initialize progress indicators
-            updateProgressIndicators(0);
-            updateNavigationButtons(0);
-
-            // Pause slider on hover
-            const heroSlider = document.querySelector('.hero-slider');
-            if (heroSlider) {
-                heroSlider.addEventListener('mouseenter', () => {
-                    stopSlider();
-                });
-
-                heroSlider.addEventListener('mouseleave', () => {
-                    startSlider();
-                });
-            }
-        });
-
-        // Initialize progress bar on page load (optimized)
-        document.addEventListener('DOMContentLoaded', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
-            scrollProgress.style.transform = 'scaleX(0)';
-            scrollProgress.style.transformOrigin = 'left';
-            
-            // Initial call to set proper state
-            updateHeaderAndProgress();
-        });
-
-        // Parallax Scrolling Effect
-        function initParallax() {
-            const parallaxElements = document.querySelectorAll('.parallax-element');
-            
-            function updateParallax() {
-                const scrollTop = window.pageYOffset;
-                const windowHeight = window.innerHeight;
-                
-                parallaxElements.forEach(element => {
-                    const rect = element.getBoundingClientRect();
-                    const elementTop = rect.top + scrollTop;
-                    const elementHeight = rect.height;
-                    
-                    // Check if element is in viewport
-                    if (rect.bottom >= 0 && rect.top <= windowHeight) {
-                        const speed = element.dataset.parallaxSpeed || 0.5;
-                        const yPos = -(scrollTop - elementTop) * speed;
-                        
-                        if (element.classList.contains('parallax-slow')) {
-                            element.style.setProperty('--parallax-offset-slow', `${yPos * 0.3}px`);
-                        } else if (element.classList.contains('parallax-medium')) {
-                            element.style.setProperty('--parallax-offset-medium', `${yPos * 0.5}px`);
-                        } else if (element.classList.contains('parallax-fast')) {
-                            element.style.setProperty('--parallax-offset-fast', `${yPos * 0.8}px`);
-                        }
-                    }
-                });
-            }
-            
-            // Throttle scroll events for better performance
-            let ticking = false;
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                    setTimeout(() => { ticking = false; }, 16);
-                }
-            }
-            
-            window.addEventListener('scroll', requestTick);
-            updateParallax(); // Initial call
-        }
-        
-        // Initialize parallax when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initParallax);
-    </script>
 </body>
 
 </html>

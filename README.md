@@ -7,10 +7,11 @@
 [![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Filament](https://img.shields.io/badge/Filament-3.x-F59E0B?style=for-the-badge&logo=laravel&logoColor=white)](https://filamentphp.com)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-*A robust and scalable web application built with Laravel 12, featuring modern UI/UX design and best practices.*
+*A robust and scalable web application built with Laravel 12, featuring modern UI/UX design, powerful Filament admin panel, and best practices.*
 
 [🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🛠️ Features](#️-features) • [🤝 Contributing](#-contributing)
 
@@ -20,11 +21,12 @@
 
 ## 📖 About
 
-Zow Zow is a modern web application built with Laravel 12, PostgreSQL, and Tailwind CSS. It follows industry best practices and provides a solid foundation for scalable web development.
+Zow Zow is a modern web application built with Laravel 12, PostgreSQL, Tailwind CSS, and Filament admin panel. It follows industry best practices and provides a solid foundation for scalable web development with a powerful content management system.
 
 ### ✨ Key Highlights
 
-- 🎯 **Modern Stack**: Laravel 12 + PostgreSQL + Tailwind CSS
+- 🎯 **Modern Stack**: Laravel 12 + PostgreSQL + Filament + Tailwind CSS
+- 🛡️ **Admin Panel**: Powerful Filament admin with complete CRUD operations
 - 🔒 **Secure**: Built-in authentication with Laravel Sanctum
 - 🎨 **Responsive**: Mobile-first design approach
 - ⚡ **Fast**: Optimized performance with Vite build tool
@@ -109,6 +111,47 @@ Ensure your system meets these requirements:
 
 🎉 **Success!** Your application is now running at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+## 🛡️ Filament Admin Panel
+
+Zow Zow includes a powerful admin panel built with Filament PHP, providing a modern and intuitive interface for content management.
+
+### 🚀 Admin Access
+
+Access the admin panel at: **[http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)**
+
+**Default Admin Credentials:**
+- **Email**: `admin@gmail.com`
+- **Password**: `password`
+
+### 📊 Admin Features
+
+| Resource | Description | Features |
+|----------|-------------|----------|
+| **🔧 Services** | Service management | Create, edit, delete services with categories, pricing, and media |
+| **💰 Pricing** | Pricing plans | Manage pricing packages with features and billing cycles |
+| **👥 Memberships** | Member management | Handle membership tiers and user subscriptions |
+| **📰 Articles** | Content management | Full-featured article editor with media support |
+| **📺 News** | News management | Publish and manage news content |
+| **🏷️ Testimonials** | Customer feedback | Manage customer testimonials and reviews |
+| **🎯 Promos** | Promotional content | Create and manage promotional campaigns |
+
+### 🎨 Admin Interface
+
+- **📱 Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **🌙 Dark Mode**: Built-in dark/light theme switching
+- **🔍 Advanced Filtering**: Powerful search and filter capabilities
+- **📊 Data Tables**: Sortable, searchable, and paginated data tables
+- **📝 Rich Forms**: Comprehensive form components with validation
+- **🖼️ Media Management**: File upload and image management
+- **🏗️ Organized Navigation**: Grouped navigation with intuitive icons
+
+### 🔐 Admin Security
+
+- **🔒 Authentication**: Secure login system
+- **🛡️ Authorization**: Role-based access control
+- **🔑 Session Management**: Secure session handling
+- **📝 Activity Logging**: Track admin activities
+
 ## 🛠️ Features
 
 ### 🔧 Backend Stack
@@ -116,6 +159,7 @@ Ensure your system meets these requirements:
 | Component | Technology | Description |
 |-----------|------------|-------------|
 | **Framework** | Laravel 12 | Modern PHP framework with elegant syntax |
+| **Admin Panel** | Filament 3.x | Modern admin panel with rich UI components |
 | **Database** | PostgreSQL | Robust relational database |
 | **Authentication** | Laravel Sanctum | API token authentication |
 | **Caching** | Redis/File | High-performance caching system |
@@ -145,6 +189,15 @@ Ensure your system meets these requirements:
 ```
 zow-zow/
 ├── 📂 app/
+│   ├── 📂 Filament/
+│   │   └── 📂 Resources/       # Filament Admin Resources
+│   │       ├── 📂 Articles/    # Article Resource
+│   │       ├── 📂 Memberships/ # Membership Resource
+│   │       ├── 📂 News/        # News Resource
+│   │       ├── 📂 Pricing/     # Pricing Resource
+│   │       ├── 📂 Promo/       # Promo Resource
+│   │       ├── 📂 Services/    # Service Resource
+│   │       └── 📂 Testimonials/ # Testimonial Resource
 │   ├── 📂 Http/
 │   │   ├── 📂 Controllers/     # HTTP Controllers
 │   │   ├── 📂 Middleware/      # Custom Middleware
@@ -201,6 +254,11 @@ php artisan optimize:clear
 # 🔄 Generate IDE helper files
 php artisan ide-helper:generate
 php artisan ide-helper:models
+
+# 🛡️ Filament Commands
+php artisan make:filament-resource ModelName  # Create new Filament resource
+php artisan filament:user                     # Create admin user
+php artisan filament:upgrade                  # Upgrade Filament
 
 # 👀 Watch for frontend changes
 npm run dev
@@ -274,6 +332,9 @@ We welcome contributions! Please follow these steps:
 | **Database connection error** | Check `.env` database credentials and ensure PostgreSQL is running |
 | **Permission denied** | Run `chmod -R 775 storage bootstrap/cache` |
 | **Key not found** | Run `php artisan key:generate` |
+| **Filament admin not accessible** | Run `php artisan filament:user` to create admin user |
+| **Filament navigation icons missing** | Clear cache with `php artisan cache:clear` |
+| **Filament resource not showing** | Check model relationships and run `php artisan migrate` |
 
 ### Getting Help
 
@@ -289,6 +350,7 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 ## 🙏 Acknowledgments
 
 - [Laravel Team](https://laravel.com/team) for the amazing framework
+- [Filament Team](https://filamentphp.com/) for the powerful admin panel
 - [Tailwind Labs](https://tailwindlabs.com/) for the utility-first CSS framework
 - [PostgreSQL Global Development Group](https://www.postgresql.org/) for the robust database
 - All [contributors](https://github.com/your-username/zow-zow/contributors) who helped build this project

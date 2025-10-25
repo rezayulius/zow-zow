@@ -4,6 +4,9 @@ return [
     'welcome' => 'Selamat Datang',
     'home' => 'Beranda',
     'services' => 'Layanan',
+    'health' => 'Kesehatan',
+    'wellness' => 'Kebugaran',
+    'booking' => 'Booking',
     'pricing' => 'Harga',
     'membership' => 'Keanggotaan',
     'testimonials' => 'Testimoni',
@@ -34,4 +37,6 @@ return [
     'all_rights_reserved' => 'Hak Cipta Dilindungi',
     'login' => 'Masuk',
     'register' => 'Daftar',
+    'location_title' => 'Kunjungi Lokasi Kami',
+    'location_subtitle' => 'Temukan kami di Jantung Kembang Jakarta Selatan',
 ];

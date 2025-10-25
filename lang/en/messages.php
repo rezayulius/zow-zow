@@ -4,6 +4,9 @@ return [
     'welcome' => 'Welcome',
     'home' => 'Home',
     'services' => 'Services',
+    'health' => 'Health',
+    'wellness' => 'Wellness',
+    'booking' => 'Booking',
     'pricing' => 'Pricing',
     'membership' => 'Membership',
     'testimonials' => 'Testimonials',
@@ -34,4 +37,6 @@ return [
     'all_rights_reserved' => 'All Rights Reserved',
     'login' => 'Login',
     'register' => 'Register',
+    'location_title' => 'Visit Our Location',
+    'location_subtitle' => 'Find us in the Heart of Kembang, South Jakarta',
 ];
