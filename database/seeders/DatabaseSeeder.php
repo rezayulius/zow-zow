@@ -71,9 +71,7 @@ class DatabaseSeeder extends Seeder
             'features' => ['Konsultasi 2x', 'Grooming 1x', 'Vitamin'],
             'is_popular' => false,
             'is_active' => true,
-            'sort_order' => 1,
-            'button_text' => 'Pilih Paket',
-            'button_link' => '#'
+            'sort_order' => 1
         ]);
 
         Pricing::create([
@@ -84,9 +82,7 @@ class DatabaseSeeder extends Seeder
             'features' => ['Konsultasi unlimited', 'Grooming 2x', 'Vaksinasi', 'Emergency call'],
             'is_popular' => true,
             'is_active' => true,
-            'sort_order' => 2,
-            'button_text' => 'Pilih Paket',
-            'button_link' => '#'
+            'sort_order' => 2
         ]);
 
         // Seed Memberships
