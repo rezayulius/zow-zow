@@ -20,210 +20,69 @@
 
         <!-- Membership Cards -->
         <div class="grid md:grid-cols-3 gap-8 mb-20">
-            <!-- Silver Member -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-almond-200 relative">
-                <div class="text-center mb-6">
+            @forelse($memberships as $index => $membership)
+                @php
+                    // Define color schemes for different membership types
+                    $colorSchemes = [
+                        'basic' => ['bg' => 'almond', 'icon' => 'carob', 'button' => 'carob'],
+                        'premium' => ['bg' => 'matcha', 'icon' => 'matcha', 'button' => 'matcha'],
+                        'vip' => ['bg' => 'chai', 'icon' => 'chai', 'button' => 'chai'],
+                        'platinum' => ['bg' => 'chai', 'icon' => 'chai', 'button' => 'chai'],
+                        'diamond' => ['bg' => 'vanilla', 'icon' => 'carob', 'button' => 'carob']
+                    ];
+                    
+                    $colors = $colorSchemes[$membership->type] ?? $colorSchemes['basic'];
+                    $isFeatured = $membership->is_featured;
+                @endphp
+                
+                <!-- {{ $membership->title }} -->
+                <div class="bg-white rounded-2xl {{ $isFeatured ? 'shadow-xl hover:shadow-2xl border-2 border-' . $colors['bg'] . '-400 transform scale-105' : 'shadow-lg hover:shadow-xl border border-' . $colors['bg'] . '-200' }} transition-all duration-300 p-8 relative">
+                    @if($isFeatured)
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-{{ $colors['button'] }}-500 text-white px-4 py-2 rounded-full text-sm font-bold">TERPOPULER</span>
+                        </div>
+                    @endif
+                    
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-{{ $colors['bg'] }}-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-{{ $colors['icon'] }}-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-carob-900 mb-2 font-heading">{{ $membership->title }}</h3>
+                        <div class="text-3xl font-bold text-carob-900 mb-1">{{ $membership->formatted_price }}</div>
+                        <div class="text-carob-500">/{{ $membership->duration }}</div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        @if($membership->benefits && is_array($membership->benefits))
+                            @foreach($membership->benefits as $benefit)
+                                <li class="flex items-center text-carob-700">
+                                    <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    {{ $benefit }}
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
+                    
+                    <button class="w-full bg-{{ $colors['button'] }}-600 hover:bg-{{ $colors['button'] }}-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+                        Bergabung {{ $membership->title }}
+                    </button>
+                </div>
+            @empty
+                <!-- Fallback content when no memberships are available -->
+                <div class="col-span-full text-center py-12">
                     <div class="w-16 h-16 bg-almond-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-carob-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        <svg class="w-8 h-8 text-carob-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-carob-900 mb-2 font-heading">Silver Member</h3>
-                    <div class="text-3xl font-bold text-carob-900 mb-1">Rp 200.000</div>
-                    <div class="text-carob-500">/bulan</div>
+                    <h3 class="text-xl font-bold text-carob-900 mb-2">Program Keanggotaan Segera Hadir</h3>
+                    <p class="text-carob-600">Program keanggotaan eksklusif kami sedang dalam persiapan. Nantikan informasi lebih lanjut!</p>
                 </div>
-                
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Diskon 10% untuk semua layanan
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Akses booking prioritas
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Cek kesehatan gratis bulanan
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Bonus voucher gratis
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Customer support prioritas
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Cashback transaksi digital
-                    </li>
-                </ul>
-                
-                <button class="w-full bg-carob-600 hover:bg-carob-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-                    Bergabung Silver Member
-                </button>
-            </div>
-
-            <!-- Gold Member (Featured) -->
-            <div class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 border-2 border-matcha-400 relative transform scale-105">
-                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span class="bg-matcha-500 text-white px-4 py-2 rounded-full text-sm font-bold">TERPOPULER</span>
-                </div>
-                
-                <div class="text-center mb-6">
-                    <div class="w-16 h-16 bg-matcha-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-matcha-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-carob-900 mb-2 font-heading">Gold Member</h3>
-                    <div class="text-3xl font-bold text-carob-900 mb-1">Rp 350.000</div>
-                    <div class="text-carob-500">/bulan</div>
-                </div>
-                
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Diskon 20% untuk semua layanan
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Booking prioritas ke slot utama
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Cek kesehatan gratis 2 minggu sekali
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Akses layanan khusus
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Bonus voucher gratis premium
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Akses semua area premium
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Konsultasi gratis
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Poin premium setiap transaksi
-                    </li>
-                </ul>
-                
-                <button class="w-full bg-matcha-500 hover:bg-matcha-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-                    Bergabung Gold Member
-                </button>
-            </div>
-
-            <!-- Platinum Member -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-almond-200 relative">
-                <div class="text-center mb-6">
-                    <div class="w-16 h-16 bg-chai-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-chai-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-carob-900 mb-2 font-heading">Platinum Member</h3>
-                    <div class="text-3xl font-bold text-carob-900 mb-1">Rp 500.000</div>
-                    <div class="text-carob-500">/bulan</div>
-                </div>
-                
-                <ul class="space-y-3 mb-8">
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Diskon 30% untuk semua layanan
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Akses booking prioritas
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Cek kesehatan gratis mingguan
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Akses semua layanan premium
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Personal trainer 24/7
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Konsultasi unlimited
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Reward unlimited personal
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Akses grup klub eksklusif
-                    </li>
-                    <li class="flex items-center text-carob-700">
-                        <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                        </svg>
-                        Layanan konsierge khusus
-                    </li>
-                </ul>
-                
-                <button class="w-full bg-chai-600 hover:bg-chai-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-                    Bergabung Platinum Member
-                </button>
-            </div>
+            @endforelse
         </div>
 
         <!-- Why Choose Our Membership Section -->
