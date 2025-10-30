@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'digitail' => [
+        'access_token' => env('DIGITAIL_ACCESS_TOKEN'),
+        'api_base' => env('DIGITAIL_API_BASE', 'https://developer.digitail.io/api/v1'),
+        'timeout' => env('DIGITAIL_TIMEOUT', 20),
+        'default_clinic_id' => env('DIGITAIL_DEFAULT_CLINIC_ID', 562),
+    ],
+
 ];
