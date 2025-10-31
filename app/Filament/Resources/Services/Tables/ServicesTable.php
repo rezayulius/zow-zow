@@ -31,7 +31,22 @@ class ServicesTable
                     ->label('Nama Service')
                     ->searchable()
                     ->sortable()
-                    ->weight('bold'),
+                    ->weight('bold')
+                    ->formatStateUsing(function ($record) {
+                        // Show Digitail name if available, otherwise show title
+                        return $record->name ?? $record->title;
+                    }),
+
+                BadgeColumn::make('digitail_id')
+                    ->label('Source')
+                    ->formatStateUsing(function ($state) {
+                        return $state ? 'Digitail' : 'Local';
+                    })
+                    ->colors([
+                        'success' => fn ($state): bool => (bool) $state,
+                        'gray' => fn ($state): bool => !$state,
+                    ])
+                    ->sortable(),
 
                 BadgeColumn::make('category')
                     ->label('Kategori')
@@ -85,6 +100,28 @@ class ServicesTable
                     ->sortable()
                     ->placeholder('Gratis'),
 
+                TextColumn::make('unit_price')
+                    ->label('Unit Price')
+                    ->money('USD')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->placeholder('-'),
+
+                TextColumn::make('client_name')
+                    ->label('Client')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->placeholder('-'),
+
+                BadgeColumn::make('status')
+                    ->label('Digitail Status')
+                    ->colors([
+                        'success' => 'enabled',
+                        'danger' => 'disabled',
+                    ])
+                    ->toggleable(isToggledHiddenByDefault: true),
+
                 ToggleColumn::make('is_active')
                     ->label('Status')
                     ->sortable(),
@@ -113,6 +150,29 @@ class ServicesTable
                     ->placeholder('Semua Status')
                     ->trueLabel('Aktif')
                     ->falseLabel('Tidak Aktif'),
+
+                TernaryFilter::make('digitail_id')
+                    ->label('Sumber Data')
+                    ->placeholder('Semua Sumber')
+                    ->trueLabel('Digitail')
+                    ->falseLabel('Lokal')
+                    ->queries(
+                        true: fn ($query) => $query->whereNotNull('digitail_id'),
+                        false: fn ($query) => $query->whereNull('digitail_id'),
+                    ),
+
+                SelectFilter::make('status')
+                    ->label('Status Digitail')
+                    ->options([
+                        'enabled' => 'Enabled',
+                        'disabled' => 'Disabled',
+                    ])
+                    ->query(function ($query, $data) {
+                        if ($data['value']) {
+                            return $query->where('status', $data['value']);
+                        }
+                        return $query;
+                    }),
             ])
             ->recordActions([
                 EditAction::make(),

@@ -112,6 +112,25 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Get service packages list with pagination and clinic filter
+     */
+    public function getServicePackages(Request $request)
+    {
+        try {
+            $queryParams = [
+                'page' => $request->get('page', 1),
+                'per_page' => $request->get('per_page', 15),
+                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId)
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . '/service-packages', $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/service-packages');
+        }
+    }
+
+    /**
      * Generic API proxy method for other endpoints
      */
     public function proxyRequest(Request $request, $endpoint)

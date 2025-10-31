@@ -62,6 +62,30 @@ class DigitailController extends Controller
                         ]
                     ]
                 ]
+            ],
+            [
+                'title' => 'Service Packages',
+                'description' => 'Operations related to service packages and pricing management',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/service-packages',
+                        'name' => 'List all Service Packages',
+                        'description' => 'Retrieve a paginated list of all service packages filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ]
+                        ]
+                    ]
+                ]
             ]
         ];
 
