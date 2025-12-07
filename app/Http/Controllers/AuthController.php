@@ -36,10 +36,14 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
+            $user = Auth::user();
+            $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+
             return response()->json([
                 'success' => true,
                 'message' => 'Login berhasil!',
-                'user' => Auth::user()
+                'user' => $user,
+                'redirect_url' => $redirectUrl
             ]);
         }
 
@@ -73,6 +77,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'role' => 'user', // Default role
             ]);
 
             // Generate OTP
@@ -137,10 +142,13 @@ class AuthController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
+            $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+
             return response()->json([
                 'success' => true,
                 'message' => 'Email berhasil diverifikasi! Anda sekarang sudah login.',
-                'user' => $user
+                'user' => $user,
+                'redirect_url' => $redirectUrl
             ]);
         }
 

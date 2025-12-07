@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     timer: 1500,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.reload();
+                    window.location.href = data.redirect_url || '/';
                 });
             } else {
                 showError(errorDiv, data.message || 'Login failed');
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     timer: 2000,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.reload();
+                    window.location.href = data.redirect_url || '/';
                 });
             } else {
                 showError(errorDiv, data.message || 'Verification failed');

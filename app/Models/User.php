@@ -18,6 +18,7 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'google_id',
         'avatar',
+        'role',
     ];
 
     protected $hidden = [
@@ -38,10 +39,30 @@ class User extends Authenticatable implements FilamentUser
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        // sementara izinkan semua user login
-        return true;
+        return $this->role === 'admin';
+    }
 
-        // kalau nanti ada kolom is_admin, ubah jadi:
-        // return (bool) $this->is_admin;
+    /**
+     * Check if user is admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is regular user
+     */
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+    /**
+     * Get the OTP verifications for the user.
+     */
+    public function otpVerifications()
+    {
+        return $this->hasMany(OtpVerification::class, 'email', 'email');
     }
 }

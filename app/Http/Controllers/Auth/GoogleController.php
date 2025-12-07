@@ -33,7 +33,8 @@ class GoogleController extends Controller
             if ($user) {
                 // User exists, login
                 Auth::login($user);
-                return redirect('/')->with('success', 'Berhasil login dengan Google!');
+                $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+                return redirect($redirectUrl)->with('success', 'Berhasil login dengan Google!');
             }
 
             // Check if user exists with this email
@@ -48,7 +49,8 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user);
-                return redirect('/')->with('success', 'Akun Google berhasil dihubungkan!');
+                $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+                return redirect($redirectUrl)->with('success', 'Akun Google berhasil dihubungkan!');
             }
 
             // Create new user
@@ -59,6 +61,7 @@ class GoogleController extends Controller
                 'avatar' => $googleUser->avatar,
                 'password' => Hash::make(uniqid()), // Random password
                 'email_verified_at' => now(), // Auto verify email from Google
+                'role' => 'user', // Default role
             ]);
 
             Auth::login($user);
