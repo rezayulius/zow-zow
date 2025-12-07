@@ -147,6 +147,113 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Pets Information -->
+                        <div class="mt-6 pt-6 border-t border-almond-200">
+                            <h3 class="text-xl font-bold text-carob-900 mb-4 flex items-center">
+                                <i data-lucide="paw-print" class="w-5 h-5 mr-2 text-matcha-600"></i>
+                                Hewan Peliharaan
+                                <span class="ml-2 text-sm font-normal text-carob-600">({{ count($pets) }} hewan)</span>
+                            </h3>
+
+                            @if(count($pets) > 0)
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    @foreach($pets as $pet)
+                                        @php
+                                            $colorSchemes = [
+                                                ['from' => 'matcha', 'to' => 'matcha', 'icon' => 'dog'],
+                                                ['from' => 'chai', 'to' => 'chai', 'icon' => 'cat'],
+                                                ['from' => 'pistache', 'to' => 'pistache', 'icon' => 'rabbit'],
+                                                ['from' => 'vanilla', 'to' => 'almond', 'icon' => 'bird']
+                                            ];
+                                            $scheme = $colorSchemes[$loop->index % 4];
+                                            $fromColor = $scheme['from'];
+                                            $toColor = $scheme['to'];
+                                        @endphp
+
+                                        <div class="bg-gradient-to-br from-{{ $fromColor }}-50 to-{{ $toColor }}-100 rounded-xl p-5 border border-{{ $fromColor }}-200 hover:shadow-lg transition-all duration-300">
+                                            <div class="flex items-start space-x-4">
+                                                <!-- Pet Image -->
+                                                <div class="flex-shrink-0">
+                                                    @if($pet['profile_picture'] && $pet['profile_picture'] !== 'https://developer.digitail.io/images/petpic.png')
+                                                        <img src="{{ $pet['profile_picture'] }}" alt="{{ $pet['nickname'] }}" class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-md">
+                                                    @else
+                                                        <div class="w-20 h-20 bg-gradient-to-br from-{{ $fromColor }}-400 to-{{ $toColor }}-600 rounded-full flex items-center justify-center border-2 border-white shadow-md">
+                                                            <i data-lucide="paw-print" class="text-white w-10 h-10"></i>
+                                                        </div>
+                                                    @endif
+                                                </div>
+
+                                                <!-- Pet Details -->
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="flex items-start justify-between mb-2">
+                                                        <div>
+                                                            <h4 class="text-lg font-bold text-carob-900">{{ $pet['nickname'] }}</h4>
+                                                            <p class="text-xs text-{{ $fromColor }}-700 font-medium">Patient #{{ $pet['patientNumber'] }}</p>
+                                                        </div>
+                                                        @if($pet['gender'])
+                                                            <div class="flex-shrink-0 ml-2">
+                                                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $pet['gender'] === 'male' ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700' }}">
+                                                                    <i data-lucide="{{ $pet['gender'] === 'male' ? 'mars' : 'venus' }}" class="w-3 h-3 mr-1"></i>
+                                                                    {{ $pet['gender_translated'] }}
+                                                                </span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="space-y-1 text-sm">
+                                                        @if($pet['age'])
+                                                            <div class="flex items-center text-carob-700">
+                                                                <i data-lucide="calendar" class="w-4 h-4 mr-2 text-{{ $fromColor }}-600"></i>
+                                                                <span>{{ $pet['age'] }}</span>
+                                                            </div>
+                                                        @endif
+
+                                                        @if($pet['color'])
+                                                            <div class="flex items-center text-carob-700">
+                                                                <i data-lucide="palette" class="w-4 h-4 mr-2 text-{{ $fromColor }}-600"></i>
+                                                                <span>{{ $pet['color'] }}</span>
+                                                            </div>
+                                                        @endif
+
+                                                        @if($pet['weight'])
+                                                            <div class="flex items-center text-carob-700">
+                                                                <i data-lucide="weight" class="w-4 h-4 mr-2 text-{{ $fromColor }}-600"></i>
+                                                                <span>{{ $pet['weight'] }} kg</span>
+                                                            </div>
+                                                        @endif
+
+                                                        @if($pet['blood_type'])
+                                                            <div class="flex items-center text-carob-700">
+                                                                <i data-lucide="droplet" class="w-4 h-4 mr-2 text-{{ $fromColor }}-600"></i>
+                                                                <span>{{ $pet['blood_type'] }}</span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+
+                                                    @if($pet['microchip'] || $pet['chip_number'])
+                                                        <div class="mt-3 pt-3 border-t border-{{ $fromColor }}-200">
+                                                            <div class="flex items-center text-xs text-{{ $fromColor }}-700">
+                                                                <i data-lucide="cpu" class="w-3 h-3 mr-1"></i>
+                                                                <span>Microchip: {{ $pet['chip_number'] ?? 'Terdaftar' }}</span>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="bg-almond-50 rounded-xl p-8 text-center">
+                                    <div class="w-16 h-16 bg-almond-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i data-lucide="paw-print" class="w-8 h-8 text-carob-400"></i>
+                                    </div>
+                                    <p class="text-carob-600 font-medium">Belum ada hewan peliharaan terdaftar</p>
+                                    <p class="text-sm text-carob-500 mt-2">Hubungi klinik untuk mendaftarkan hewan peliharaan Anda</p>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             @else

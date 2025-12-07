@@ -19,9 +19,16 @@ class ProfileController extends Controller
         // Fetch pet parent data from Digitail API
         $petParentData = $this->fetchPetParentByEmail($user->email);
 
+        // Fetch pets data if pet parent is registered
+        $petsData = [];
+        if ($petParentData) {
+            $petsData = $this->fetchPetsByOwnerId($petParentData['id']);
+        }
+
         return view('profile.index', [
             'user' => $user,
             'petParent' => $petParentData,
+            'pets' => $petsData,
             'isRegistered' => !is_null($petParentData)
         ]);
     }
@@ -66,6 +73,46 @@ class ProfileController extends Controller
         } catch (\Exception $e) {
             Log::error('Error fetching pet parents from Digitail API: ' . $e->getMessage());
             return null;
+        }
+    }
+
+    /**
+     * Fetch pets data from Digitail API by owner ID
+     */
+    private function fetchPetsByOwnerId(int $ownerId)
+    {
+        try {
+            $baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
+            $accessToken = env('DIGITAIL_ACCESS_TOKEN');
+            $clinicId = env('DIGITAIL_DEFAULT_CLINIC_ID', 562);
+
+            $response = Http::timeout(10)
+                ->withHeaders([
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $accessToken,
+                ])
+                ->get($baseUrl . '/pets', [
+                    'filter[clinic_id]' => $clinicId,
+                    'filter[owner_id]' => $ownerId,
+                    'page' => 1,
+                    'per_page' => 50
+                ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                return $data['data'] ?? [];
+            }
+
+            Log::warning('Failed to fetch pets from Digitail API', [
+                'status' => $response->status(),
+                'response' => $response->body()
+            ]);
+
+            return [];
+        } catch (\Exception $e) {
+            Log::error('Error fetching pets from Digitail API: ' . $e->getMessage());
+            return [];
         }
     }
 }

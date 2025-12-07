@@ -112,6 +112,35 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Get pets by owner ID
+     */
+    public function getPetsByOwner(Request $request)
+    {
+        try {
+            $ownerId = $request->get('owner_id');
+
+            if (!$ownerId) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Owner ID is required'
+                ], 400);
+            }
+
+            $queryParams = [
+                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
+                'filter[owner_id]' => $ownerId,
+                'page' => $request->get('page', 1),
+                'per_page' => $request->get('per_page', 15)
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . '/pets', $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/pets (by owner)');
+        }
+    }
+
+    /**
      * Get service packages list with pagination and clinic filter
      */
     public function getServicePackages(Request $request)
