@@ -578,147 +578,87 @@
 
                 <!-- Doctors Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Doctor 1 -->
-                    <div class="doctor-card group">
-                        <div class="bg-gradient-to-br from-matcha-50 to-matcha-100 rounded-2xl p-5 border border-matcha-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
-                            onclick="openDoctorModal('doctor1')">
-                            <!-- Profile Image -->
-                            <div class="relative mb-4">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-matcha-400 to-matcha-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
+                    @php
+                        $colorSchemes = [
+                            ['from' => 'matcha', 'to' => 'matcha'],
+                            ['from' => 'chai', 'to' => 'chai'],
+                            ['from' => 'pistache', 'to' => 'pistache'],
+                            ['from' => 'carob', 'to' => 'carob']
+                        ];
+                    @endphp
+
+                    @forelse($vets ?? [] as $index => $vet)
+                        @php
+                            $scheme = $colorSchemes[$index % 4];
+                            $fromColor = $scheme['from'];
+                            $toColor = $scheme['to'];
+                            $isAvailable = $vet['is_available_for_appointments'] ?? false;
+                        @endphp
+
+                        <!-- Doctor Card -->
+                        <div class="doctor-card group">
+                            <div class="bg-gradient-to-br from-{{ $fromColor }}-50 to-{{ $toColor }}-100 rounded-2xl p-5 border border-{{ $fromColor }}-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+                                onclick="window.open('{{ $vet['public_appointment_link'] ?? '#' }}', '_blank')">
+                                <!-- Profile Image -->
+                                <div class="relative mb-4">
+                                    @if(!empty($vet['avatar']) && $vet['avatar'] !== 'https://developer.digitail.io/images/profilepic.jpg')
+                                        <img src="{{ $vet['avatar'] }}" alt="{{ $vet['full_name'] ?? 'Doctor' }}"
+                                            class="w-20 h-20 mx-auto rounded-full object-cover shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-white">
+                                    @else
+                                        <div
+                                            class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-{{ $fromColor }}-400 to-{{ $toColor }}-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                            <i data-lucide="user" class="text-white w-10 h-10"></i>
+                                        </div>
+                                    @endif
+
+                                    <!-- Availability Badge -->
+                                    <div
+                                        class="absolute -bottom-1 -right-1 w-6 h-6 bg-{{ $isAvailable ? 'green' : 'yellow' }}-500 rounded-full border-2 border-white flex items-center justify-center">
+                                        <i data-lucide="{{ $isAvailable ? 'check' : 'clock' }}"
+                                            class="text-white w-3 h-3"></i>
+                                    </div>
                                 </div>
-                                <div
-                                    class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
-                                    <i data-lucide="check" class="text-white w-3 h-3"></i>
-                                </div>
-                            </div>
-                            <!-- Doctor Info -->
-                            <div class="text-center">
-                                <h5 class="font-bold text-carob-900 mb-1">Dr. Sarah Wijaya</h5>
-                                <p class="text-matcha-700 text-sm font-medium mb-2">Spesialis Hewan Kecil</p>
-                                <div class="flex items-center justify-center text-xs text-matcha-600 mb-3">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
-                                    <span class="font-semibold">4.9</span>
-                                    <span class="mx-1">•</span>
-                                    <span>150+ pasien</span>
-                                </div>
-                                <div class="flex items-center justify-center text-xs text-matcha-600">
-                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
-                                    <span>Lihat Jadwal Lengkap</span>
-                                    <i data-lucide="calendar"
-                                        class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
+
+                                <!-- Doctor Info -->
+                                <div class="text-center">
+                                    <h5 class="font-bold text-carob-900 mb-1">
+                                        {{ $vet['name_with_title'] ?? $vet['full_name'] ?? 'Dokter' }}
+                                    </h5>
+                                    <p class="text-{{ $fromColor }}-700 text-sm font-medium mb-3">
+                                        {{ $vet['job_title'] ?? 'Veterinarian' }}
+                                        @if(!empty($vet['type']))
+                                            <span class="text-xs">({{ ucfirst($vet['type']) }})</span>
+                                        @endif
+                                    </p>
+
+                                    <div class="flex items-center justify-center text-xs text-{{ $fromColor }}-600 mb-3">
+                                        <i data-lucide="calendar-check" class="w-3 h-3 mr-1"></i>
+                                        <span>{{ $isAvailable ? 'Tersedia untuk Appointment' : 'Jadwal Terbatas' }}</span>
+                                    </div>
+
+                                    @if(!empty($vet['public_appointment_link']))
+                                        <div class="mt-3 pt-3 border-t border-{{ $fromColor }}-200">
+                                            <div
+                                                class="flex items-center justify-center text-xs text-{{ $fromColor }}-700 font-medium">
+                                                <i data-lucide="external-link" class="w-3 h-3 mr-1"></i>
+                                                <span>Klik untuk Booking Online</span>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Doctor 2 -->
-                    <div class="doctor-card group">
-                        <div class="bg-gradient-to-br from-chai-50 to-chai-100 rounded-2xl p-5 border border-chai-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
-                            onclick="openDoctorModal('doctor2')">
-                            <!-- Profile Image -->
-                            <div class="relative mb-4">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-chai-400 to-chai-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
-                                </div>
-                                <div
-                                    class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
-                                    <i data-lucide="check" class="text-white w-3 h-3"></i>
-                                </div>
+                    @empty
+                        <!-- Fallback if no vets data -->
+                        <div class="col-span-full text-center py-8">
+                            <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="user-x" class="text-gray-400 w-8 h-8"></i>
                             </div>
-                            <!-- Doctor Info -->
-                            <div class="text-center">
-                                <h5 class="font-bold text-carob-900 mb-1">Dr. Ahmad Rizki</h5>
-                                <p class="text-chai-700 text-sm font-medium mb-2">Spesialis Bedah</p>
-                                <div class="flex items-center justify-center text-xs text-chai-600 mb-3">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
-                                    <span class="font-semibold">4.8</span>
-                                    <span class="mx-1">•</span>
-                                    <span>200+ operasi</span>
-                                </div>
-                                <div class="flex items-center justify-center text-xs text-chai-600">
-                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
-                                    <span>Lihat Jadwal Lengkap</span>
-                                    <i data-lucide="calendar"
-                                        class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
-                                </div>
-                            </div>
+                            <p class="text-gray-500">Data dokter sedang dimuat...</p>
+                            <p class="text-sm text-gray-400 mt-2">Silakan refresh halaman atau hubungi kami untuk informasi
+                                lebih lanjut</p>
                         </div>
-                    </div>
-
-                    <!-- Doctor 3 -->
-                    <div class="doctor-card group">
-                        <div class="bg-gradient-to-br from-pistache-50 to-pistache-100 rounded-2xl p-5 border border-pistache-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
-                            onclick="openDoctorModal('doctor3')">
-                            <!-- Profile Image -->
-                            <div class="relative mb-4">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-pistache-400 to-pistache-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
-                                </div>
-                                <div
-                                    class="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
-                                    <i data-lucide="check" class="text-white w-3 h-3"></i>
-                                </div>
-                            </div>
-                            <!-- Doctor Info -->
-                            <div class="text-center">
-                                <h5 class="font-bold text-carob-900 mb-1">Dr. Maya Sari</h5>
-                                <p class="text-pistache-700 text-sm font-medium mb-2">Spesialis Eksotis</p>
-                                <div class="flex items-center justify-center text-xs text-pistache-600 mb-3">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
-                                    <span class="font-semibold">4.9</span>
-                                    <span class="mx-1">•</span>
-                                    <span>120+ kasus</span>
-                                </div>
-                                <div class="flex items-center justify-center text-xs text-pistache-600">
-                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
-                                    <span>Lihat Jadwal Lengkap</span>
-                                    <i data-lucide="calendar"
-                                        class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Doctor 4 -->
-                    <div class="doctor-card group">
-                        <div class="bg-gradient-to-br from-carob-50 to-carob-100 rounded-2xl p-5 border border-carob-200 hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
-                            onclick="openDoctorModal('doctor4')">
-                            <!-- Profile Image -->
-                            <div class="relative mb-4">
-                                <div
-                                    class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-carob-400 to-carob-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                    <i data-lucide="user" class="text-white w-10 h-10"></i>
-                                </div>
-                                <div
-                                    class="absolute -bottom-1 -right-1 w-6 h-6 bg-yellow-500 rounded-full border-2 border-white flex items-center justify-center">
-                                    <i data-lucide="clock" class="text-white w-3 h-3"></i>
-                                </div>
-                            </div>
-                            <!-- Doctor Info -->
-                            <div class="text-center">
-                                <h5 class="font-bold text-carob-900 mb-1">Dr. Budi Santoso</h5>
-                                <p class="text-carob-700 text-sm font-medium mb-2">Spesialis Hewan Besar</p>
-                                <div class="flex items-center justify-center text-xs text-carob-600 mb-3">
-                                    <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
-                                    <span class="font-semibold">4.7</span>
-                                    <span class="mx-1">•</span>
-                                    <span>80+ kasus</span>
-                                </div>
-                                <div class="flex items-center justify-center text-xs text-carob-600">
-                                    <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
-                                    <span>Lihat Jadwal Lengkap</span>
-                                    <i data-lucide="calendar"
-                                        class="w-4 h-4 ml-2 group-hover:scale-110 transition-transform duration-300"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    @endforelse
                 </div>
             </div>
 
