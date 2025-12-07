@@ -86,6 +86,30 @@ class DigitailController extends Controller
                         ]
                     ]
                 ]
+            ],
+            [
+                'title' => 'Veterinarians',
+                'description' => 'Operations related to veterinarians and staff management',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/vets',
+                        'name' => 'List all Vets',
+                        'description' => 'Retrieve a paginated list of all veterinarians filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ]
+                        ]
+                    ]
+                ]
             ]
         ];
 

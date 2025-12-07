@@ -53,7 +53,7 @@ class DigitailApiController extends Controller
     private function handleError(\Exception $e, string $endpoint)
     {
         Log::error("Digitail API {$endpoint} error: " . $e->getMessage());
-        
+
         return response()->json([
             'success' => false,
             'error' => 'API request failed',
@@ -127,6 +127,25 @@ class DigitailApiController extends Controller
             return $this->formatResponse($response);
         } catch (\Exception $e) {
             return $this->handleError($e, '/service-packages');
+        }
+    }
+
+    /**
+     * Get vets list with pagination and clinic filter
+     */
+    public function getVets(Request $request)
+    {
+        try {
+            $queryParams = [
+                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
+                'page' => $request->get('page', 1),
+                'per_page' => $request->get('per_page', 15)
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . '/vets', $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/vets');
         }
     }
 

@@ -32,7 +32,8 @@ Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
     Route::get('/pets', [DigitailApiController::class, 'getPets'])->name('pets');
     Route::get('/pet-parents', [DigitailApiController::class, 'getPetParents'])->name('pet-parents');
     Route::get('/service-packages', [DigitailApiController::class, 'getServicePackages'])->name('service-packages');
-    
+    Route::get('/vets', [DigitailApiController::class, 'getVets'])->name('vets');
+
     // Generic proxy for other endpoints
     Route::any('/{endpoint}', [DigitailApiController::class, 'proxyRequest'])
         ->where('endpoint', '.*')
