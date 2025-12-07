@@ -39,6 +39,34 @@ class DigitailController extends Controller
                                 'name' => 'page',
                                 'type' => 'integer',
                                 'description' => 'Page number for pagination (default: 1)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ]
+                        ]
+                    ],
+                    [
+                        'method' => 'GET',
+                        'path' => '/pets-by-owner',
+                        'name' => 'Get Pets by Owner',
+                        'description' => 'Retrieve all pets owned by a specific pet parent',
+                        'parameters' => [
+                            [
+                                'name' => 'owner_id',
+                                'type' => 'integer',
+                                'description' => 'Pet parent ID (required)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ],
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
                             ]
                         ]
                     ]
@@ -54,6 +82,48 @@ class DigitailController extends Controller
                         'name' => 'List all Pet Parents',
                         'description' => 'Retrieve a paginated list of all pet parents from the clinic',
                         'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ]
+                        ]
+                    ],
+                    [
+                        'method' => 'GET',
+                        'path' => '/pet-parent-by-email',
+                        'name' => 'Get Pet Parent by Email',
+                        'description' => 'Find a specific pet parent by their email address',
+                        'parameters' => [
+                            [
+                                'name' => 'email',
+                                'type' => 'string',
+                                'description' => 'Pet parent email address (required)'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Medical Records',
+                'description' => 'Operations related to medical records and visit history',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/records-by-pet',
+                        'name' => 'Get Records by Pet',
+                        'description' => 'Retrieve all medical records for a specific pet',
+                        'parameters' => [
+                            [
+                                'name' => 'pet_id',
+                                'type' => 'integer',
+                                'description' => 'Pet ID (required)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ],
                             [
                                 'name' => 'page',
                                 'type' => 'integer',

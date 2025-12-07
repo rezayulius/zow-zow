@@ -141,6 +141,64 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Get pet parent by email
+     */
+    public function getPetParentByEmail(Request $request)
+    {
+        try {
+            $email = $request->get('email');
+
+            if (!$email) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Email is required'
+                ], 400);
+            }
+
+            // Fetch all pet parents
+            $queryParams = [
+                'page' => 1,
+                'per_page' => 100 // Get more records to search through
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . '/pet-parents', $queryParams);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                $petParents = $data['data'] ?? [];
+
+                // Find pet parent by email (case-insensitive)
+                $foundParent = null;
+                foreach ($petParents as $parent) {
+                    if (strtolower($parent['email']) === strtolower($email)) {
+                        $foundParent = $parent;
+                        break;
+                    }
+                }
+
+                if ($foundParent) {
+                    return response()->json([
+                        'success' => true,
+                        'status' => 200,
+                        'data' => $foundParent,
+                        'message' => 'Pet parent found'
+                    ]);
+                } else {
+                    return response()->json([
+                        'success' => false,
+                        'status' => 404,
+                        'message' => 'Pet parent not found with email: ' . $email
+                    ], 404);
+                }
+            }
+
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/pet-parents (by email)');
+        }
+    }
+
+    /**
      * Get service packages list with pagination and clinic filter
      */
     public function getServicePackages(Request $request)

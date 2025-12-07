@@ -52,6 +52,7 @@ Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
     Route::get('/auth/me', [DigitailApiController::class, 'getMe'])->name('auth.me');
     Route::get('/pets', [DigitailApiController::class, 'getPets'])->name('pets');
     Route::get('/pet-parents', [DigitailApiController::class, 'getPetParents'])->name('pet-parents');
+    Route::get('/pet-parent-by-email', [DigitailApiController::class, 'getPetParentByEmail'])->name('pet-parent-by-email');
     Route::get('/pets-by-owner', [DigitailApiController::class, 'getPetsByOwner'])->name('pets-by-owner');
     Route::get('/service-packages', [DigitailApiController::class, 'getServicePackages'])->name('service-packages');
     Route::get('/vets', [DigitailApiController::class, 'getVets'])->name('vets');

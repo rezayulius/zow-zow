@@ -70,11 +70,11 @@
                                     <!-- Method Badge -->
                                     <div class="flex items-center justify-between mb-3">
                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold text-white
-                                            @if($endpoint['method'] === 'GET') bg-gradient-to-r from-green-500 to-green-600
-                                            @elseif($endpoint['method'] === 'POST') bg-gradient-to-r from-blue-500 to-blue-600
-                                            @elseif($endpoint['method'] === 'PUT') bg-gradient-to-r from-yellow-500 to-yellow-600
-                                            @elseif($endpoint['method'] === 'DELETE') bg-gradient-to-r from-red-500 to-red-600
-                                            @endif">
+                                                                    @if($endpoint['method'] === 'GET') bg-gradient-to-r from-green-500 to-green-600
+                                                                    @elseif($endpoint['method'] === 'POST') bg-gradient-to-r from-blue-500 to-blue-600
+                                                                    @elseif($endpoint['method'] === 'PUT') bg-gradient-to-r from-yellow-500 to-yellow-600
+                                                                    @elseif($endpoint['method'] === 'DELETE') bg-gradient-to-r from-red-500 to-red-600
+                                                                    @endif">
                                             {{ $endpoint['method'] }}
                                         </span>
                                     </div>
@@ -84,6 +84,40 @@
                                     <p class="text-xs text-gray-500 mb-3">{{ $endpoint['description'] }}</p>
                                     <code
                                         class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded block mb-4">{{ $endpoint['path'] }}</code>
+
+                                    <!-- Input Fields for Required Parameters -->
+                                    @if($endpoint['path'] === '/pets-by-owner')
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">Owner ID (required)</label>
+                                            <input type="number" id="owner-id-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                placeholder="e.g., 11566"
+                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                value="11566">
+                                            <p class="text-xs text-gray-500 mt-1">Enter pet parent ID to fetch their pets</p>
+                                        </div>
+                                    @endif
+
+                                    @if($endpoint['path'] === '/records-by-pet')
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">Pet ID (required)</label>
+                                            <input type="number" id="pet-id-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                placeholder="e.g., 11521"
+                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                value="11521">
+                                            <p class="text-xs text-gray-500 mt-1">Enter pet ID to fetch medical records</p>
+                                        </div>
+                                    @endif
+
+                                    @if($endpoint['path'] === '/pet-parent-by-email')
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">Email (required)</label>
+                                            <input type="email" id="email-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                placeholder="e.g., petowner@gmail.com"
+                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                value="petowner@gmail.com">
+                                            <p class="text-xs text-gray-500 mt-1">Enter email address to find pet parent</p>
+                                        </div>
+                                    @endif
 
                                     <!-- Action Button -->
                                     <div class="flex space-x-3">
@@ -126,7 +160,8 @@
                 <h3 class="text-lg font-bold mb-2">📊 Total Endpoints</h3>
                 <p class="text-3xl font-bold">
                     {{ collect($endpointGroups)->sum(function ($group) {
-    return count($group['endpoints']); }) }}</p>
+    return count($group['endpoints']); }) }}
+                </p>
                 <p class="text-blue-100 text-sm">Ready for real testing</p>
             </div>
             <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 text-white">
@@ -176,7 +211,70 @@
 
                 // Add default parameters based on endpoint
                 const urlParams = new URLSearchParams();
-                if (path.includes('/pets')) {
+
+                // Handle pets-by-owner endpoint
+                if (path === '/pets-by-owner') {
+                    const ownerIdInput = document.getElementById(`owner-id-${responseId}`);
+                    const ownerId = ownerIdInput ? ownerIdInput.value : '';
+
+                    if (!ownerId) {
+                        resultContent.innerHTML = `
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <span class="text-red-800 font-semibold">Error: Owner ID is required</span>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    urlParams.append('owner_id', ownerId);
+                    urlParams.append('clinic_id', DEFAULT_CLINIC_ID);
+                    urlParams.append('page', '1');
+                }
+                // Handle records-by-pet endpoint
+                else if (path === '/records-by-pet') {
+                    const petIdInput = document.getElementById(`pet-id-${responseId}`);
+                    const petId = petIdInput ? petIdInput.value : '';
+
+                    if (!petId) {
+                        resultContent.innerHTML = `
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <span class="text-red-800 font-semibold">Error: Pet ID is required</span>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    urlParams.append('pet_id', petId);
+                    urlParams.append('clinic_id', DEFAULT_CLINIC_ID);
+                    urlParams.append('page', '1');
+                }
+                // Handle pet-parent-by-email endpoint
+                else if (path === '/pet-parent-by-email') {
+                    const emailInput = document.getElementById(`email-${responseId}`);
+                    const email = emailInput ? emailInput.value : '';
+
+                    if (!email) {
+                        resultContent.innerHTML = `
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <span class="text-red-800 font-semibold">Error: Email is required</span>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    urlParams.append('email', email);
+                }
+                // Handle other endpoints
+                else if (path.includes('/pets')) {
                     urlParams.append('page', '1');
                     urlParams.append('clinic_id', DEFAULT_CLINIC_ID);
                 } else if (path.includes('/pet-parents')) {
