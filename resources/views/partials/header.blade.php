@@ -112,7 +112,7 @@
                                 <i data-lucide="user" class="w-4 h-4"></i>
                                 <span class="text-sm">Profile</span>
                             </a>
-                            <a href="#"
+                            <a href="{{ route('history') }}"
                                 class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-almond-50 transition-all duration-200 text-carob-700 hover:text-matcha-600">
                                 <i data-lucide="history" class="w-4 h-4"></i>
                                 <span class="text-sm">Riwayat</span>
@@ -221,7 +221,7 @@
                                     <i data-lucide="user" class="w-4 h-4"></i>
                                     <span class="text-sm">Profile</span>
                                 </a>
-                                <a href="{{ route('profile') }}"
+                                <a href="{{ route('history') }}"
                                     class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
                                     <i data-lucide="history" class="w-4 h-4"></i>
                                     <span class="text-sm">Riwayat</span>

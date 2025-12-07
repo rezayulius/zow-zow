@@ -29,9 +29,10 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 });
 
-// Profile Route (Protected)
+// Profile & History Routes (Protected)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
 });
 
 // Digitail Dynamic Dashboard Route
@@ -54,6 +55,7 @@ Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
     Route::get('/pets-by-owner', [DigitailApiController::class, 'getPetsByOwner'])->name('pets-by-owner');
     Route::get('/service-packages', [DigitailApiController::class, 'getServicePackages'])->name('service-packages');
     Route::get('/vets', [DigitailApiController::class, 'getVets'])->name('vets');
+    Route::get('/records-by-pet', [DigitailApiController::class, 'getRecordsByPet'])->name('records-by-pet');
 
     // Generic proxy for other endpoints
     Route::any('/{endpoint}', [DigitailApiController::class, 'proxyRequest'])

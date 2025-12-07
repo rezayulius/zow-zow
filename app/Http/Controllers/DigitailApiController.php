@@ -179,6 +179,35 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Get medical records by pet ID
+     */
+    public function getRecordsByPet(Request $request)
+    {
+        try {
+            $petId = $request->get('pet_id');
+
+            if (!$petId) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Pet ID is required'
+                ], 400);
+            }
+
+            $queryParams = [
+                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
+                'filter[pet_id]' => $petId,
+                'page' => $request->get('page', 1),
+                'per_page' => $request->get('per_page', 50)
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . '/records', $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/records (by pet)');
+        }
+    }
+
+    /**
      * Generic API proxy method for other endpoints
      */
     public function proxyRequest(Request $request, $endpoint)
