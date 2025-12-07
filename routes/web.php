@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DigitailController;
 use App\Http\Controllers\DigitailApiController;
 use App\Http\Controllers\DigitailSyncController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -13,6 +15,19 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/set-locale/{locale}', [LocaleController::class, 'setLocale'])
     ->name('locale.set')
     ->where('locale', '[a-zA-Z]{2}');
+
+// Authentication Routes
+Route::prefix('auth')->name('auth.')->group(function () {
+    Route::post('/signin', [AuthController::class, 'signIn'])->name('signin');
+    Route::post('/signup', [AuthController::class, 'signUp'])->name('signup');
+    Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify-otp');
+    Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('resend-otp');
+    Route::post('/signout', [AuthController::class, 'signOut'])->name('signout');
+
+    // Google OAuth
+    Route::get('/google', [GoogleController::class, 'redirectToGoogle'])->name('google');
+    Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+});
 
 // Digitail Dynamic Dashboard Route
 Route::prefix('digitail')->name('digitail.')->group(function () {

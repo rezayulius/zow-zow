@@ -6,7 +6,8 @@
         <!-- Progress Bar -->
         <!-- Track (always visible) -->
         <div
-            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-almond-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0"></div>
+            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-almond-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0">
+        </div>
         <!-- Fill (animated) -->
         <div id="scrollProgress"
             class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-gradient-to-r from-matcha-500 to-matcha-600 rounded-full shadow-inner pointer-events-none z-10 overflow-hidden"
@@ -29,15 +30,21 @@
                     <button
                         class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap inline-flex items-center">
                         {{ __('messages.services') }}
-                        <svg class="ml-1 w-3 h-3 text-carob-500 group-hover:text-matcha-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        <svg class="ml-1 w-3 h-3 text-carob-500 group-hover:text-matcha-600 transition-colors"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
                         </svg>
                     </button>
-                    <div class="absolute left-0 top-full mt-0 bg-white rounded-xl shadow-xl border border-almond-200 p-2 min-w-[160px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                        <a href="#health" class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.health') }}</a>
-                        <a href="#wellness" class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.wellness') }}</a>
+                    <div
+                        class="absolute left-0 top-full mt-0 bg-white rounded-xl shadow-xl border border-almond-200 p-2 min-w-[160px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                        <a href="#health"
+                            class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.health') }}</a>
+                        <a href="#wellness"
+                            class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.wellness') }}</a>
                         <!-- Added Booking submenu item -->
-                        <a href="#booking" class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.booking') }}</a>
+                        <a href="#booking"
+                            class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.booking') }}</a>
                     </div>
                 </div>
                 <a href="#harga"
@@ -68,21 +75,78 @@
 
                 <div class="h-5 w-px bg-almond-200"></div>
 
-                <!-- Auth Buttons -->
-                <div class="flex items-center space-x-0.5">
-                    <button
-                        class="text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 hover:bg-almond-50 rounded-lg whitespace-nowrap">{{ __('messages.login') }}</button>
-                    <button
-                        class="bg-chai-500 text-white px-1.5 xl:px-3 py-1.5 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium text-xs xl:text-sm shadow-lg hover:shadow-xl whitespace-nowrap">{{ __('messages.register') }}</button>
-                </div>
+                <!-- Auth Buttons / User Menu -->
+                @auth
+                    <!-- User Dropdown Menu -->
+                    <div class="relative group">
+                        <button
+                            class="flex items-center space-x-2 px-2 xl:px-3 py-1.5 rounded-lg hover:bg-almond-50 transition-all duration-200">
+                            <div
+                                class="w-8 h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center">
+                                @if(auth()->user()->avatar)
+                                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
+                                        class="w-8 h-8 rounded-full object-cover">
+                                @else
+                                    <span
+                                        class="text-white font-semibold text-xs">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                @endif
+                            </div>
+                            <span
+                                class="text-carob-700 font-medium text-xs xl:text-sm hidden xl:block">{{ auth()->user()->name }}</span>
+                            <svg class="w-4 h-4 text-carob-500 group-hover:text-matcha-600 transition-colors" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div
+                            class="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-xl border border-almond-200 p-2 min-w-[200px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                            <div class="px-3 py-2 border-b border-almond-200 mb-2">
+                                <p class="text-sm font-semibold text-carob-900">{{ auth()->user()->name }}</p>
+                                <p class="text-xs text-carob-500">{{ auth()->user()->email }}</p>
+                            </div>
+                            <a href="#"
+                                class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-almond-50 transition-all duration-200 text-carob-700 hover:text-matcha-600">
+                                <i data-lucide="user" class="w-4 h-4"></i>
+                                <span class="text-sm">Profile</span>
+                            </a>
+                            <a href="#"
+                                class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-almond-50 transition-all duration-200 text-carob-700 hover:text-matcha-600">
+                                <i data-lucide="history" class="w-4 h-4"></i>
+                                <span class="text-sm">Riwayat</span>
+                            </a>
+                            <div class="border-t border-almond-200 my-2"></div>
+                            <form action="{{ route('auth.signout') }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="w-full flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-50 transition-all duration-200 text-red-600 hover:text-red-700">
+                                    <i data-lucide="log-out" class="w-4 h-4"></i>
+                                    <span class="text-sm">Sign Out</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                    <!-- Auth Buttons -->
+                    <div class="flex items-center space-x-0.5">
+                        <button data-open-signin
+                            class="text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 hover:bg-almond-50 rounded-lg whitespace-nowrap">Sign
+                            In</button>
+                        <button data-open-signup
+                            class="bg-chai-500 text-white px-1.5 xl:px-3 py-1.5 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium text-xs xl:text-sm shadow-lg hover:shadow-xl whitespace-nowrap">Sign
+                            Up</button>
+                    </div>
+                @endauth
             </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn"
                 class="lg:hidden p-2 rounded-lg hover:bg-almond-100 transition-all duration-200 text-carob-600">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
         </nav>
@@ -97,7 +161,8 @@
                     <a href="#beranda"
                         class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.home') }}</a>
                     <div class="space-y-1">
-                        <div class="block text-carob-700 font-medium py-3 px-4 rounded-lg">{{ __('messages.services') }}</div>
+                        <div class="block text-carob-700 font-medium py-3 px-4 rounded-lg">{{ __('messages.services') }}
+                        </div>
                         <a href="#health"
                             class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.health') }}</a>
                         <a href="#wellness"
@@ -118,24 +183,64 @@
 
                 <div class="border-t border-almond-200 pt-4 mt-4">
                     <!-- Language Switcher -->
-                    <x-lang-switch :locales="['id', 'en']" class="flex items-center justify-center space-x-1 mb-4 bg-almond-100 rounded-lg p-1" />
+                    <x-lang-switch :locales="['id', 'en']"
+                        class="flex items-center justify-center space-x-1 mb-4 bg-almond-100 rounded-lg p-1" />
 
                     <!-- Contact Buttons -->
                     <div class="flex justify-center mb-4">
-                        <button id="emergency-call-mobile" 
+                        <button id="emergency-call-mobile"
                             class="bg-red-400 hover:bg-red-500 text-white px-6 py-3 rounded-lg transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
                             <i data-lucide="phone-call" class="w-4 h-4"></i>
                             <span>Emergency Call</span>
                         </button>
                     </div>
 
-                    <!-- Auth Buttons -->
-                    <div class="flex space-x-3">
-                        <button
-                            class="text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium px-4 py-2 hover:bg-almond-50 rounded-lg flex-1 border border-almond-200">{{ __('messages.login') }}</button>
-                        <button
-                            class="bg-chai-500 text-white px-4 py-2 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium flex-1 shadow-lg hover:shadow-xl">{{ __('messages.register') }}</button>
-                    </div>
+                    <!-- Auth Buttons / User Menu -->
+                    @auth
+                        <!-- User Info -->
+                        <div class="bg-gradient-to-br from-matcha-50 to-matcha-100 rounded-xl p-4 mb-4">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div class="w-12 h-12 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center">
+                                    @if(auth()->user()->avatar)
+                                        <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}" class="w-12 h-12 rounded-full object-cover">
+                                    @else
+                                        <span class="text-white font-semibold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                    @endif
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-semibold text-carob-900">{{ auth()->user()->name }}</p>
+                                    <p class="text-xs text-carob-600">{{ auth()->user()->email }}</p>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
+                                    <i data-lucide="user" class="w-4 h-4"></i>
+                                    <span class="text-sm">Profile</span>
+                                </a>
+                                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
+                                    <i data-lucide="history" class="w-4 h-4"></i>
+                                    <span class="text-sm">Riwayat</span>
+                                </a>
+                                <form action="{{ route('auth.signout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-50 transition-all duration-200 text-red-600">
+                                        <i data-lucide="log-out" class="w-4 h-4"></i>
+                                        <span class="text-sm">Sign Out</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @else
+                        <!-- Auth Buttons -->
+                        <div class="flex space-x-3">
+                            <button data-open-signin
+                                class="text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium px-4 py-2 hover:bg-almond-50 rounded-lg flex-1 border border-almond-200">Sign
+                                In</button>
+                            <button data-open-signup
+                                class="bg-chai-500 text-white px-4 py-2 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium flex-1 shadow-lg hover:shadow-xl">Sign
+                                Up</button>
+                        </div>
+                    @endauth
                 </div>
             </div>
         </div>
