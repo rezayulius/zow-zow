@@ -29,6 +29,11 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 });
 
+// Profile Route (Protected)
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+});
+
 // Digitail Dynamic Dashboard Route
 Route::prefix('digitail')->name('digitail.')->group(function () {
     Route::get('/', [DigitailController::class, 'dashboard'])->name('dashboard');

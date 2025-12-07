@@ -107,7 +107,7 @@
                                 <p class="text-sm font-semibold text-carob-900">{{ auth()->user()->name }}</p>
                                 <p class="text-xs text-carob-500">{{ auth()->user()->email }}</p>
                             </div>
-                            <a href="#"
+                            <a href="{{ route('profile') }}"
                                 class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-almond-50 transition-all duration-200 text-carob-700 hover:text-matcha-600">
                                 <i data-lucide="user" class="w-4 h-4"></i>
                                 <span class="text-sm">Profile</span>
@@ -200,11 +200,14 @@
                         <!-- User Info -->
                         <div class="bg-gradient-to-br from-matcha-50 to-matcha-100 rounded-xl p-4 mb-4">
                             <div class="flex items-center space-x-3 mb-3">
-                                <div class="w-12 h-12 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center">
                                     @if(auth()->user()->avatar)
-                                        <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}" class="w-12 h-12 rounded-full object-cover">
+                                        <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
+                                            class="w-12 h-12 rounded-full object-cover">
                                     @else
-                                        <span class="text-white font-semibold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                        <span
+                                            class="text-white font-semibold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
                                     @endif
                                 </div>
                                 <div class="flex-1">
@@ -213,17 +216,20 @@
                                 </div>
                             </div>
                             <div class="space-y-2">
-                                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
+                                <a href="{{ route('profile') }}"
+                                    class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
                                     <i data-lucide="user" class="w-4 h-4"></i>
                                     <span class="text-sm">Profile</span>
                                 </a>
-                                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
+                                <a href="{{ route('profile') }}"
+                                    class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
                                     <i data-lucide="history" class="w-4 h-4"></i>
                                     <span class="text-sm">Riwayat</span>
                                 </a>
                                 <form action="{{ route('auth.signout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="w-full flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-50 transition-all duration-200 text-red-600">
+                                    <button type="submit"
+                                        class="w-full flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-50 transition-all duration-200 text-red-600">
                                         <i data-lucide="log-out" class="w-4 h-4"></i>
                                         <span class="text-sm">Sign Out</span>
                                     </button>
