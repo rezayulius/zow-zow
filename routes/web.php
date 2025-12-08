@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
+// Doc
 // Language switcher routes
 Route::get('/set-locale/{locale}', [LocaleController::class, 'setLocale'])
     ->name('locale.set')
