@@ -17,7 +17,7 @@
                     <div class="w-10 h-10 bg-matcha-500 rounded-lg shadow-md flex items-center justify-center">
                         <i data-lucide="heart" class="text-white text-lg w-5 h-5"></i>
                     </div>
-                    <span class="text-xl font-bold font-heading">Zow Zow</span>
+                    <span class="text-xl font-bold font-heading">Zow Vetique</span>
                 </div>
                 <p class="text-almond-400 mb-4 text-sm leading-relaxed">
                     Klinik hewan terpercaya dengan layanan terbaik untuk sahabat berbulu Anda.
@@ -81,13 +81,13 @@
                 <ul class="space-y-2 text-almond-300">
                     <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Raya Kemang No. 88, Jakarta Selatan</li>
                     <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> 081295911911</li>
-                    <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> info@zowzow.com</li>
+                    <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> support@zowvetique.com</li>
                     <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: +62 812 9999 0000</li>
                 </ul>
             </div>
         </div>
         <div class="border-t border-carob-700 mt-8 pt-8 text-center text-almond-300">
-            <p>&copy; 2025 Zow Zow - Pet Wellness Hub. All rights reserved.</p>
+            <p>&copy; 2025 Zow Vetique - Pet Wellness Hub. All rights reserved.</p>
         </div>
     </div>
 </footer>

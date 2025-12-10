@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌟 Zow Zow
+# 🌟 Zow Vetique
 
 **Modern Laravel Web Application**
 
@@ -21,7 +21,7 @@
 
 ## 📖 About
 
-Zow Zow is a modern web application built with Laravel 12, PostgreSQL, Tailwind CSS, and Filament admin panel. It follows industry best practices and provides a solid foundation for scalable web development with a powerful content management system.
+Zow Vetique is a modern web application built with Laravel 12, PostgreSQL, Tailwind CSS, and Filament admin panel. It follows industry best practices and provides a solid foundation for scalable web development with a powerful content management system.
 
 ### ✨ Key Highlights
 
@@ -113,7 +113,7 @@ Ensure your system meets these requirements:
 
 ## 🛡️ Filament Admin Panel
 
-Zow Zow includes a powerful admin panel built with Filament PHP, providing a modern and intuitive interface for content management.
+Zow Vetique includes a powerful admin panel built with Filament PHP, providing a modern and intuitive interface for content management.
 
 ### 🚀 Admin Access
 
@@ -276,7 +276,7 @@ Key environment variables in `.env`:
 
 ```env
 # Application
-APP_NAME="Zow Zow"
+APP_NAME="Zow Vetique"
 APP_ENV=local
 APP_DEBUG=true
 APP_TIMEZONE=Asia/Jakarta
@@ -359,7 +359,7 @@ This project is licensed under the [MIT License](LICENSE) - see the LICENSE file
 
 <div align="center">
 
-**Made with ❤️ by the Zow Zow Team**
+**Made with ❤️ by the Zow Vetique Team**
 
 [![GitHub stars](https://img.shields.io/github/stars/your-username/zow-zow?style=social)](https://github.com/your-username/zow-zow/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/your-username/zow-zow?style=social)](https://github.com/your-username/zow-zow/network/members)

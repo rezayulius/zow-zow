@@ -84,7 +84,6 @@
                       <li>Saya menyatakan bahwa kondisi hewan peliharaan saya memerlukan penanganan darurat segera.</li>
                       <li>Saya bersedia memberikan informasi lengkap mengenai kondisi hewan saat dihubungi.</li>
                       <li>Saya memahami bahwa dokter hewan akan menentukan tindakan yang diperlukan berdasarkan kondisi hewan.</li>
-                      <li>Saya bersedia mengikuti instruksi dan saran yang diberikan oleh dokter hewan.</li>
                     </ul>
                     <div class="flex items-start space-x-2">
                       <input type="checkbox" id="emergencyTermsCheckbox" class="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Zow Zow - Pet Wellness Hub')
+@section('title', 'Zow Vetique - Pet Wellness Hub')
 
 @section('content')
     @include('partials.header')

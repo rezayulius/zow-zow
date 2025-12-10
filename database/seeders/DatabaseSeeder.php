@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Sarah Johnson',
             'position' => 'Pet Owner',
             'company' => 'Jakarta',
-            'content' => 'Pelayanan di Zow Zow sangat memuaskan. Dokter hewannya sangat berpengalaman dan ramah.',
+            'content' => 'Pelayanan di Zow Vetique sangat memuaskan. Dokter hewannya sangat berpengalaman dan ramah.',
             'avatar' => 'testimonials/sarah.jpg',
             'rating' => 5,
             'pet_name' => 'Milo',
@@ -147,12 +147,12 @@ class DatabaseSeeder extends Seeder
 
         // Seed News
         News::create([
-            'title' => 'Pembukaan Cabang Baru Zow Zow di Surabaya',
+            'title' => 'Pembukaan Cabang Baru Zow Vetique di Surabaya',
             'slug' => 'pembukaan-cabang-baru-surabaya',
-            'excerpt' => 'Zow Zow membuka cabang baru di Surabaya untuk melayani pet lovers di Jawa Timur',
+            'excerpt' => 'Zow Vetique membuka cabang baru di Surabaya untuk melayani pet lovers di Jawa Timur',
             'content' => 'Kami dengan bangga mengumumkan pembukaan cabang baru...',
             'featured_image' => 'news/new-branch.jpg',
-            'author' => 'Tim Zow Zow',
+            'author' => 'Tim Zow Vetique',
             'category' => 'Company News',
             'tags' => ['pembukaan', 'cabang baru', 'surabaya'],
             'status' => 'published',

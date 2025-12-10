@@ -455,7 +455,7 @@
                         class="w-10 h-10 bg-gradient-to-br from-matcha-500 to-matcha-600 rounded-xl flex items-center justify-center shadow-md">
                         <i data-lucide="heart" class="text-white w-5 h-5"></i>
                     </div>
-                    <span class="text-xl font-bold text-carob-800 font-heading tracking-tight">Zow Zow</span>
+                    <span class="text-xl font-bold text-carob-800 font-heading tracking-tight">Zow Vetique</span>
                 </div>
 
                 <!-- Desktop Navigation (Center) -->
@@ -1668,7 +1668,7 @@
                         <div class="w-10 h-10 bg-matcha-500 rounded-lg shadow-md flex items-center justify-center">
                             <i data-lucide="heart" class="text-white text-lg w-5 h-5"></i>
                         </div>
-                        <span class="text-xl font-bold font-heading">Zow Zow</span>
+                        <span class="text-xl font-bold font-heading">Zow Vetique</span>
                     </div>
                     <p class="text-almond-400 mb-4 text-sm leading-relaxed">
                         Klinik hewan terpercaya dengan layanan terbaik untuk sahabat berbulu Anda.
