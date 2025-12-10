@@ -11,6 +11,11 @@ use App\Http\Controllers\Auth\GoogleController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Redirect default auth middleware target to home
+Route::get('/login', function () {
+    return redirect('/');
+})->name('login');
+
 // Doc
 // Language switcher routes
 Route::get('/set-locale/{locale}', [LocaleController::class, 'setLocale'])

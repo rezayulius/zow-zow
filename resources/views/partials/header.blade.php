@@ -6,17 +6,17 @@
         <!-- Progress Bar -->
         <!-- Track (always visible) -->
         <div
-            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-almond-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0">
+            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-soft-linen-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0">
         </div>
         <!-- Fill (animated) -->
         <div id="scrollProgress"
-            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-gradient-to-r from-matcha-500 to-matcha-600 rounded-full shadow-inner pointer-events-none z-10 overflow-hidden"
+            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600 rounded-full shadow-inner pointer-events-none z-10 overflow-hidden"
             style="width: 0%; max-width: 100%; transition: width 200ms ease-out; will-change: width;"></div>
         <nav class="flex items-center justify-between py-2.5 px-2 sm:px-4 lg:px-6">
             <!-- Logo (Left) -->
             <div class="flex items-center space-x-2.5 flex-shrink-0">
                 <div
-                    class="w-10 h-10 bg-gradient-to-br from-matcha-500 to-matcha-600 rounded-xl flex items-center justify-center shadow-md">
+                    class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-500 to-forest-moss-green-600 rounded-xl flex items-center justify-center shadow-md">
                     <i data-lucide="heart" class="text-white w-5 h-5"></i>
                 </div>
                 <span class="text-xl font-bold text-carob-800 font-heading tracking-tight">Zow Vetique</span>
@@ -25,36 +25,36 @@
             <!-- Desktop Navigation (Center) -->
             <div class="hidden lg:flex items-center space-x-1 xl:space-x-3 flex-1 justify-center ml-1 xl:ml-4">
                 <a href="#beranda"
-                    class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.home') }}</a>
+                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.home') }}</a>
                 <div class="relative group">
                     <button
-                        class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap inline-flex items-center">
+                        class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap inline-flex items-center">
                         {{ __('messages.services') }}
-                        <svg class="ml-1 w-3 h-3 text-carob-500 group-hover:text-matcha-600 transition-colors"
+                        <svg class="ml-1 w-3 h-3 text-carob-500 group-hover:text-forest-moss-green-600 transition-colors"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                             </path>
                         </svg>
                     </button>
                     <div
-                        class="absolute left-0 top-full mt-0 bg-white rounded-xl shadow-xl border border-almond-200 p-2 min-w-[160px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                        class="absolute left-0 top-full mt-0 bg-white rounded-xl shadow-xl border border-soft-linen-200 p-2 min-w-[160px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
                         <a href="#health"
-                            class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.health') }}</a>
+                            class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-soft-linen-50">{{ __('messages.health') }}</a>
                         <a href="#wellness"
-                            class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.wellness') }}</a>
+                            class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-soft-linen-50">{{ __('messages.wellness') }}</a>
                         <!-- Added Booking submenu item -->
                         <a href="#booking"
-                            class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-almond-50">{{ __('messages.booking') }}</a>
+                            class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-soft-linen-50">{{ __('messages.booking') }}</a>
                     </div>
                 </div>
                 <a href="#harga"
-                    class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.pricing') }}</a>
+                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.pricing') }}</a>
                 <a href="#keanggotaan"
-                    class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.membership') }}</a>
+                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.membership') }}</a>
                 <a href="#testimoni"
-                    class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.testimonials') }}</a>
+                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.testimonials') }}</a>
                 <a href="#lokasi"
-                    class="text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-almond-50 whitespace-nowrap">{{ __('messages.location') }}</a>
+                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.location') }}</a>
             </div>
 
             <!-- Language Switch & Action Buttons (Right) -->
@@ -82,7 +82,7 @@
                         <button
                             class="flex items-center space-x-2 px-2 xl:px-3 py-1.5 rounded-lg hover:bg-almond-50 transition-all duration-200">
                             <div
-                                class="w-8 h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center">
+                                class="w-8 h-8 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center">
                                 @if(auth()->user()->avatar)
                                     <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
                                         class="w-8 h-8 rounded-full object-cover">
@@ -93,7 +93,7 @@
                             </div>
                             <span
                                 class="text-carob-700 font-medium text-xs xl:text-sm hidden xl:block">{{ auth()->user()->name }}</span>
-                            <svg class="w-4 h-4 text-carob-500 group-hover:text-matcha-600 transition-colors" fill="none"
+                            <svg class="w-4 h-4 text-carob-500 group-hover:text-forest-moss-green-600 transition-colors" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
                                 </path>
@@ -132,7 +132,7 @@
                     <!-- Auth Buttons -->
                     <div class="flex items-center space-x-0.5">
                         <button data-open-signin
-                            class="text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 hover:bg-almond-50 rounded-lg whitespace-nowrap">Sign
+                            class="text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 hover:bg-soft-linen-50 rounded-lg whitespace-nowrap">Sign
                             In</button>
                         <button data-open-signup
                             class="bg-chai-500 text-white px-1.5 xl:px-3 py-1.5 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium text-xs xl:text-sm shadow-lg hover:shadow-xl whitespace-nowrap">Sign
@@ -143,7 +143,7 @@
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn"
-                class="lg:hidden p-2 rounded-lg hover:bg-almond-100 transition-all duration-200 text-carob-600">
+                class="lg:hidden p-2 rounded-lg hover:bg-soft-linen-100 transition-all duration-200 text-carob-600">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
@@ -159,32 +159,32 @@
                 <!-- Navigation Links - Vertical Layout -->
                 <div class="space-y-2 py-3">
                     <a href="#beranda"
-                        class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.home') }}</a>
+                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.home') }}</a>
                     <div class="space-y-1">
                         <div class="block text-carob-700 font-medium py-3 px-4 rounded-lg">{{ __('messages.services') }}
                         </div>
                         <a href="#health"
-                            class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.health') }}</a>
+                            class="block text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-soft-linen-50 text-sm">{{ __('messages.health') }}</a>
                         <a href="#wellness"
-                            class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.wellness') }}</a>
+                            class="block text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-soft-linen-50 text-sm">{{ __('messages.wellness') }}</a>
                         <!-- Added Booking submenu item (mobile) -->
                         <a href="#booking"
-                            class="block text-carob-600 hover:text-matcha-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-almond-50 text-sm">{{ __('messages.booking') }}</a>
+                            class="block text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-soft-linen-50 text-sm">{{ __('messages.booking') }}</a>
                     </div>
                     <a href="#harga"
-                        class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.pricing') }}</a>
+                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.pricing') }}</a>
                     <a href="#keanggotaan"
-                        class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.membership') }}</a>
+                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.membership') }}</a>
                     <a href="#testimoni"
-                        class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.testimonials') }}</a>
+                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.testimonials') }}</a>
                     <a href="#lokasi"
-                        class="block text-carob-700 hover:text-matcha-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-almond-50">{{ __('messages.location') }}</a>
+                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.location') }}</a>
                 </div>
 
                 <div class="border-t border-almond-200 pt-4 mt-4">
                     <!-- Language Switcher -->
                     <x-lang-switch :locales="['id', 'en']"
-                        class="flex items-center justify-center space-x-1 mb-4 bg-almond-100 rounded-lg p-1" />
+                        class="flex items-center justify-center space-x-1 mb-4 bg-soft-linen-100 rounded-lg p-1" />
 
                     <!-- Contact Buttons -->
                     <div class="flex justify-center mb-4">
@@ -198,10 +198,10 @@
                     <!-- Auth Buttons / User Menu -->
                     @auth
                         <!-- User Info -->
-                        <div class="bg-gradient-to-br from-matcha-50 to-matcha-100 rounded-xl p-4 mb-4">
+                        <div class="bg-gradient-to-br from-forest-moss-green-50 to-forest-moss-green-100 rounded-xl p-4 mb-4">
                             <div class="flex items-center space-x-3 mb-3">
                                 <div
-                                    class="w-12 h-12 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center">
+                                    class="w-12 h-12 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center">
                                     @if(auth()->user()->avatar)
                                         <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
                                             class="w-12 h-12 rounded-full object-cover">
@@ -240,7 +240,7 @@
                         <!-- Auth Buttons -->
                         <div class="flex space-x-3">
                             <button data-open-signin
-                                class="text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium px-4 py-2 hover:bg-almond-50 rounded-lg flex-1 border border-almond-200">Sign
+                                class="text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 font-medium px-4 py-2 hover:bg-soft-linen-50 rounded-lg flex-1 border border-soft-linen-200">Sign
                                 In</button>
                             <button data-open-signup
                                 class="bg-chai-500 text-white px-4 py-2 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium flex-1 shadow-lg hover:shadow-xl">Sign

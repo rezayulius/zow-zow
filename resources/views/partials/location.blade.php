@@ -1,9 +1,20 @@
 {{-- Location Section --}}
-<section id="lokasi" class="relative py-20 overflow-hidden">
+<section id="lokasi" class="relative py-20 overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-6 left-1/3 -rotate-3 opacity-10">
+            <svg class="w-24 h-10 text-forest-moss-green-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     {{-- Background with gradient and blur effects --}}
-    <div class="absolute inset-0 bg-gradient-to-br from-matcha-50 via-chai-50 to-matcha-100"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-soft-linen-50/20 via-vanilla-50/20 to-forest-moss-green-100/30"></div>
     <div class="absolute top-10 left-10 w-72 h-72 bg-chai-200/30 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-matcha-200/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-96 h-96 bg-forest-moss-green-200/20 rounded-full blur-3xl"></div>
     <div class="absolute inset-0 backdrop-blur-sm"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 z-10">
@@ -21,6 +32,20 @@
             <p class="text-xl text-carob-600 max-w-2xl mx-auto">
                 {{ __('messages.location_subtitle') }}
             </p>
+            <div class="mt-6 flex flex-wrap justify-center gap-3">
+                <a href="tel:+6281299990000" class="inline-flex items-center bg-forest-moss-green-500 text-white px-4 py-2 rounded-lg hover:bg-forest-moss-green-600 transition-all duration-200">
+                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+                    Telepon
+                </a>
+                <a href="https://wa.me/6281299990000" class="inline-flex items-center bg-white text-forest-moss-green-700 px-4 py-2 rounded-lg border border-forest-moss-green-200 hover:bg-soft-linen-50 transition-all duration-200">
+                    <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
+                    WhatsApp
+                </a>
+                <a href="https://maps.google.com/?q=Jl.+Raya+Kemang+No.+88" target="_blank" class="inline-flex items-center bg-vanilla-100 text-carob-800 px-4 py-2 rounded-lg border border-vanilla-200 hover:bg-vanilla-200 transition-all duration-200">
+                    <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                    Buka di Maps
+                </a>
+            </div>
         </div>
 
         {{-- Main Content Grid --}}
@@ -60,7 +85,7 @@
                 {{-- Contact Card --}}
                 <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-r from-matcha-400 to-matcha-500 rounded-full flex items-center justify-center mr-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-500 rounded-full flex items-center justify-center mr-3">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
@@ -71,8 +96,8 @@
                     <div class="space-y-4">
                         {{-- Address --}}
                         <div class="flex items-start">
-                            <div class="w-8 h-8 bg-matcha-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                                <svg class="w-4 h-4 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-8 h-8 bg-forest-moss-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                 </svg>
@@ -85,8 +110,8 @@
 
                         {{-- Phone --}}
                         <div class="flex items-start">
-                            <div class="w-8 h-8 bg-matcha-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                                <svg class="w-4 h-4 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-8 h-8 bg-forest-moss-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                 </svg>
                             </div>
@@ -98,8 +123,8 @@
 
                         {{-- Hours --}}
                         <div class="flex items-start">
-                            <div class="w-8 h-8 bg-matcha-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                                <svg class="w-4 h-4 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-8 h-8 bg-forest-moss-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
@@ -112,7 +137,7 @@
                     </div>
 
                     {{-- Call Button --}}
-                    <button class="w-full mt-6 bg-gradient-to-r from-matcha-500 to-matcha-600 text-white py-3 rounded-xl font-semibold hover:from-matcha-600 hover:to-matcha-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <button class="w-full mt-6 bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600 text-white py-3 rounded-xl font-semibold hover:from-forest-moss-green-600 hover:to-forest-moss-green-700 transition-all duration-300 shadow-lg hover:shadow-xl">
                         <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
@@ -127,7 +152,7 @@
             {{-- Facilities --}}
             <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
                 <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-r from-matcha-400 to-matcha-500 rounded-full flex items-center justify-center mr-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-500 rounded-full flex items-center justify-center mr-4">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                         </svg>
@@ -172,9 +197,9 @@
                         <span class="text-sm font-medium text-carob-700">Kafe Ramah Hewan</span>
                     </div>
 
-                    <div class="flex items-center p-3 bg-matcha-50 rounded-xl col-span-2">
-                        <div class="w-8 h-8 bg-matcha-200 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center p-3 bg-forest-moss-green-50 rounded-xl col-span-2">
+                        <div class="w-8 h-8 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
                             </svg>
                         </div>
@@ -186,22 +211,22 @@
                 </div>
             </div>
 
-            {{-- Nearby Locations --}}
-            <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-r from-matcha-400 to-matcha-500 rounded-full flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    {{-- Nearby Locations --}}
+                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
+                    <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-500 rounded-full flex items-center justify-center mr-4">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-carob-800">Tempat Terdekat</h3>
                 </div>
 
                 <div class="space-y-4">
-                    <div class="flex items-center p-4 bg-matcha-50 rounded-xl">
-                        <div class="w-10 h-10 bg-matcha-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-matcha-600">5</span>
+                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
+                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-sm font-bold text-forest-moss-green-600">5</span>
                         </div>
                         <div class="flex-1">
                             <p class="font-medium text-carob-800">Kemang Village Mall</p>
@@ -209,9 +234,9 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center p-4 bg-matcha-50 rounded-xl">
-                        <div class="w-10 h-10 bg-matcha-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-matcha-600">3</span>
+                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
+                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-sm font-bold text-forest-moss-green-600">3</span>
                         </div>
                         <div class="flex-1">
                             <p class="font-medium text-carob-800">Kemang Icon</p>
@@ -219,9 +244,9 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center p-4 bg-matcha-50 rounded-xl">
-                        <div class="w-10 h-10 bg-matcha-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-matcha-600">10</span>
+                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
+                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-sm font-bold text-forest-moss-green-600">10</span>
                         </div>
                         <div class="flex-1">
                             <p class="font-medium text-carob-800">Taman Botani Bangka</p>
@@ -229,9 +254,9 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center p-4 bg-matcha-50 rounded-xl">
-                        <div class="w-10 h-10 bg-matcha-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-matcha-600">8</span>
+                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
+                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-sm font-bold text-forest-moss-green-600">8</span>
                         </div>
                         <div class="flex-1">
                             <p class="font-medium text-carob-800">Pasar Cipete</p>
@@ -244,7 +269,7 @@
 
         {{-- CTA Section --}}
         <div class="mt-16 text-center">
-            <div class="bg-gradient-to-r from-chai-500 to-matcha-500 rounded-3xl p-8 text-white">
+            <div class="bg-gradient-to-r from-chai-500 to-forest-moss-green-500 rounded-3xl p-8 text-white">
                 <div class="flex items-center justify-center mb-4">
                     <svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -255,7 +280,7 @@
                 <p class="text-lg mb-6 opacity-90">Rasakan layanan perawatan hewan terbaik di area Kemang dengan staf profesional dan fasilitas modern</p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#lokasi" class="bg-white text-chai-600 px-8 py-3 rounded-xl font-semibold hover:bg-almond-50 transition-colors shadow-lg scroll-smooth inline-block">
+                    <a href="#lokasi" class="bg-white text-chai-600 px-8 py-3 rounded-xl font-semibold hover:bg-soft-linen-50 transition-colors shadow-lg scroll-smooth inline-block">
                         <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7"></path>
                         </svg>
@@ -273,11 +298,11 @@
 
         {{-- Operating Hours Notice --}}
         <div class="mt-8 flex items-center justify-center">
-            <div class="bg-matcha-100 border border-matcha-200 rounded-xl px-6 py-3 flex items-center">
-                <svg class="w-5 h-5 text-matcha-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-forest-moss-green-100 border border-forest-moss-green-200 rounded-xl px-6 py-3 flex items-center">
+                <svg class="w-5 h-5 text-forest-moss-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <span class="text-matcha-800 font-medium">Kami buka setiap hari dengan jam operasional fleksibel sesuai jadwal Anda</span>
+                <span class="text-forest-moss-green-800 font-medium">Kami buka setiap hari dengan jam operasional fleksibel sesuai jadwal Anda</span>
             </div>
         </div>
     </div>

@@ -1,5 +1,25 @@
 <!-- Pricing Section -->
-<section id="harga" class="py-16 bg-gradient-to-br from-chai-25 to-matcha-25">
+<section id="harga" class="relative py-16 overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-10 -left-10 rotate-12 opacity-10">
+            <svg class="w-24 h-10 text-forest-moss-green-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+        <div class="absolute bottom-6 right-6 -rotate-12 opacity-10">
+            <svg class="w-20 h-8 text-forest-moss-green-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     <div class="max-w-7xl mx-auto px-6">
         <!-- Header -->
         <div class="text-center mb-12">
@@ -22,10 +42,10 @@
                         // Define color schemes for variety
                         $colorSchemes = [
                             ['border' => 'border-chai-100', 'price' => 'text-chai-600', 'button' => 'bg-chai-500 hover:bg-chai-600', 'popular' => 'bg-chai-500', 'feature' => 'text-chai-600'],
-                            ['border' => 'border-matcha-100', 'price' => 'text-matcha-600', 'button' => 'bg-matcha-500 hover:bg-matcha-600', 'popular' => 'bg-matcha-500', 'feature' => 'text-matcha-600'],
+                            ['border' => 'border-forest-moss-green-100', 'price' => 'text-forest-moss-green-600', 'button' => 'bg-forest-moss-green-500 hover:bg-forest-moss-green-600', 'popular' => 'bg-forest-moss-green-500', 'feature' => 'text-forest-moss-green-600'],
                             ['border' => 'border-vanilla-200', 'price' => 'text-vanilla-600', 'button' => 'bg-vanilla-500 hover:bg-vanilla-600', 'popular' => 'bg-vanilla-500', 'feature' => 'text-vanilla-600'],
                             ['border' => 'border-carob-100', 'price' => 'text-carob-600', 'button' => 'bg-carob-500 hover:bg-carob-600', 'popular' => 'bg-carob-500', 'feature' => 'text-carob-600'],
-                            ['border' => 'border-pistache-200', 'price' => 'text-pistache-600', 'button' => 'bg-pistache-600 hover:bg-pistache-700', 'popular' => 'bg-pistache-600', 'feature' => 'text-pistache-600']
+                            ['border' => 'border-forest-moss-green-200', 'price' => 'text-forest-moss-green-600', 'button' => 'bg-forest-moss-green-600 hover:bg-forest-moss-green-700', 'popular' => 'bg-forest-moss-green-600', 'feature' => 'text-forest-moss-green-600']
                         ];
                         $colors = $colorSchemes[$index % count($colorSchemes)];
                     @endphp
@@ -55,7 +75,7 @@
                                 <ul class="space-y-2 mb-6 flex-1" data-features-container>
                                     @foreach(array_slice($package->features, 0, 3) as $feature)
                                         <li class="flex items-center text-sm text-carob-700">
-                                            <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                                            <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-500 mr-2"></i>
                                             {{ $feature }}
                                         </li>
                                     @endforeach
@@ -65,7 +85,7 @@
                                         <div class="hidden-features" style="display: none;">
                                             @foreach(array_slice($package->features, 3) as $feature)
                                                 <li class="flex items-center text-sm text-carob-700">
-                                                    <i data-lucide="check" class="w-4 h-4 text-matcha-500 mr-2"></i>
+                                                    <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-500 mr-2"></i>
                                                     {{ $feature }}
                                                 </li>
                                             @endforeach
@@ -121,7 +141,7 @@
                 </div>
                 <div class="bg-white rounded-xl p-4 shadow-md">
                     <div class="flex items-center justify-center mb-2">
-                        <i data-lucide="clock" class="w-6 h-6 text-matcha-500"></i>
+                        <i data-lucide="clock" class="w-6 h-6 text-forest-moss-green-500"></i>
                     </div>
                     <h4 class="font-semibold text-carob-900 mb-1">24/7 Emergency Support</h4>
                 </div>
@@ -233,7 +253,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Technology Section -->
-<section class="py-16 bg-gradient-to-br from-carob-50 to-chai-50">
+<section class="relative py-16 overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-8 left-1/2 -translate-x-1/2 rotate-6 opacity-10">
+            <svg class="w-24 h-10 text-chai-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     <div class="max-w-7xl mx-auto px-6">
 
         <!-- Header -->
@@ -264,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Appointment Sukses -->
             <div class="bg-white rounded-2xl p-6 shadow-lg border border-carob-100 text-center">
                 <div class="flex items-center justify-center mb-4">
-                    <i data-lucide="calendar-check" class="w-8 h-8 text-matcha-600"></i>
+                    <i data-lucide="calendar-check" class="w-8 h-8 text-forest-moss-green-600"></i>
                 </div>
                 <div class="text-3xl font-bold text-carob-900 mb-2">15,000+</div>
                 <div class="text-carob-600 text-sm">Appointment Sukses</div>
@@ -294,32 +325,32 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Appointment Real-time -->
             <div class="bg-white rounded-2xl p-8 shadow-lg border border-carob-100">
                 <div class="flex items-start mb-6">
-                    <div class="bg-matcha-100 rounded-2xl p-3 mr-4">
-                        <i data-lucide="calendar" class="w-8 h-8 text-matcha-600"></i>
+                    <div class="bg-forest-moss-green-100 rounded-2xl p-3 mr-4">
+                        <i data-lucide="calendar" class="w-8 h-8 text-forest-moss-green-600"></i>
                     </div>
                     <div class="flex-1">
                         <div class="flex items-center mb-2">
                             <h3 class="text-xl font-bold text-carob-900">Appointment Real-time</h3>
                             <span
-                                class="bg-matcha-100 text-matcha-800 text-xs px-2 py-1 rounded-full font-medium ml-3">NEW</span>
+                                class="bg-forest-moss-green-100 text-forest-moss-green-800 text-xs px-2 py-1 rounded-full font-medium ml-3">NEW</span>
                         </div>
                         <p class="text-carob-600 mb-4">Sistem booking appointment canggih dengan konfirmasi langsung
                             untuk pet Anda</p>
                         <ul class="space-y-2">
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-matcha-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Cek jadwal dokter real-time
                             </li>
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-matcha-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Pilihan dokter spesialis pet
                             </li>
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-matcha-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Konfirmasi instan
                             </li>
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-matcha-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Integrasi kalender pribadi
                             </li>
                         </ul>
@@ -402,32 +433,32 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Konfirmasi Booking Otomatis -->
             <div class="bg-white rounded-2xl p-8 shadow-lg border border-carob-100">
                 <div class="flex items-start mb-6">
-                    <div class="bg-pistache-100 rounded-2xl p-3 mr-4">
-                        <i data-lucide="smartphone" class="w-8 h-8 text-pistache-600"></i>
+                    <div class="bg-forest-moss-green-100 rounded-2xl p-3 mr-4">
+                        <i data-lucide="smartphone" class="w-8 h-8 text-forest-moss-green-600"></i>
                     </div>
                     <div class="flex-1">
                         <div class="flex items-center mb-2">
                             <h3 class="text-xl font-bold text-carob-900">Konfirmasi Booking Otomatis</h3>
                             <span
-                                class="bg-pistache-100 text-pistache-800 text-xs px-2 py-1 rounded-full font-medium ml-3">NEW</span>
+                                class="bg-forest-moss-green-100 text-forest-moss-green-800 text-xs px-2 py-1 rounded-full font-medium ml-3">NEW</span>
                         </div>
                         <p class="text-carob-600 mb-4">Sistem konfirmasi otomatis dengan notifikasi WhatsApp untuk
                             setiap appointment pet</p>
                         <ul class="space-y-2">
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-pistache-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Notifikasi WhatsApp langsung
                             </li>
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-pistache-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Tracking ID booking mudah
                             </li>
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-pistache-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Update status real-time
                             </li>
                             <li class="flex items-center text-sm text-carob-700">
-                                <i data-lucide="check" class="w-4 h-4 text-pistache-600 mr-2"></i>
+                                <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-600 mr-2"></i>
                                 Receipt digital otomatis
                             </li>
                         </ul>
@@ -438,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <!-- Call to Action -->
         <div class="text-center">
-            <div class="bg-gradient-to-r from-matcha-500 to-chai-600 rounded-3xl p-12 text-center">
+            <div class="bg-gradient-to-r from-forest-moss-green-500 to-chai-600 rounded-3xl p-12 text-center">
                 <div class="flex items-center justify-center mb-4">
                     <i data-lucide="zap" class="w-8 h-8 text-carob-800 mr-2"></i>
                 </div>

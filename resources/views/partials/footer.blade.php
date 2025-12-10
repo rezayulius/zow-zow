@@ -1,92 +1,92 @@
 <!-- Footer with Parallax -->
-<footer class="bg-carob-900 text-white py-12 relative overflow-hidden">
+<footer class="bg-deep-cocoa-brown-900 text-white py-12 relative overflow-hidden">
     <!-- Parallax Background Elements -->
     <div class="absolute inset-0 parallax-element parallax-slow" data-parallax-speed="0.3">
-        <div class="absolute top-10 left-10 w-32 h-32 bg-matcha-500/10 rounded-full blur-xl"></div>
+        <div class="absolute top-10 left-10 w-32 h-32 bg-forest-moss-green-500/10 rounded-full blur-xl"></div>
         <div class="absolute top-20 right-20 w-24 h-24 bg-vanilla-500/10 rounded-full blur-lg"></div>
-        <div class="absolute bottom-10 left-1/4 w-40 h-40 bg-carob-700/20 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-10 left-1/4 w-40 h-40 bg-deep-cocoa-brown-700/20 rounded-full blur-2xl"></div>
     </div>
     <div class="absolute inset-0 parallax-element parallax-medium" data-parallax-speed="0.5">
-        <div class="absolute top-1/3 right-10 w-16 h-16 bg-matcha-400/15 rounded-full blur-md"></div>
+        <div class="absolute top-1/3 right-10 w-16 h-16 bg-forest-moss-green-400/15 rounded-full blur-md"></div>
         <div class="absolute bottom-1/4 right-1/3 w-28 h-28 bg-vanilla-400/10 rounded-full blur-lg"></div>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-6">
             <div>
                 <div class="flex items-center space-x-2.5 mb-4">
-                    <div class="w-10 h-10 bg-matcha-500 rounded-lg shadow-md flex items-center justify-center">
+                    <div class="w-10 h-10 bg-forest-moss-green-500 rounded-lg shadow-md flex items-center justify-center">
                         <i data-lucide="heart" class="text-white text-lg w-5 h-5"></i>
                     </div>
                     <span class="text-xl font-bold font-heading">Zow Vetique</span>
                 </div>
-                <p class="text-almond-400 mb-4 text-sm leading-relaxed">
+                <p class="text-soft-linen-400 mb-4 text-sm leading-relaxed">
                     Klinik hewan terpercaya dengan layanan terbaik untuk sahabat berbulu Anda.
                 </p>
                 <div class="flex space-x-3">
                     <a href="#"
-                        class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
+                        class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-forest-moss-green-500 transition-all duration-200 hover:scale-105">
                         <i data-lucide="facebook" class="text-white text-sm w-4 h-4"></i>
                     </a>
                     <a href="#"
-                        class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
+                        class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-forest-moss-green-500 transition-all duration-200 hover:scale-105">
                         <i data-lucide="instagram" class="text-white text-sm w-4 h-4"></i>
                     </a>
                     <a href="#"
-                        class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
+                        class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-forest-moss-green-500 transition-all duration-200 hover:scale-105">
                         <i data-lucide="twitter" class="text-white text-sm w-4 h-4"></i>
                     </a>
                 </div>
             </div>
             <div>
                 <h4 class="text-lg font-semibold mb-4">Layanan</h4>
-                <ul class="space-y-2 text-almond-300">
+                <ul class="space-y-2 text-soft-linen-300">
                     <li><a href="#health"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
                             Kesehatan</a></li>
                     <li><a href="#wellness"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
                             Wellness</a></li>
                     <li><a href="#pricing"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Paket
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Paket
                             Harga</a></li>
                     <li><a href="#keanggotaan"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Keanggotaan</a>
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Keanggotaan</a>
                     </li>
                     <li><a href="#booking"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Booking
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Booking
                             Online</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-semibold mb-4">Navigasi</h4>
-                <ul class="space-y-2 text-almond-300">
+                <ul class="space-y-2 text-soft-linen-300">
                     <li><a href="#hero"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Beranda</a></li>
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Beranda</a></li>
                     <li><a href="#services"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Layanan
                             Kami</a></li>
                     <li><a href="#testimonials"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Testimoni</a>
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Testimoni</a>
                     </li>
                     <li><a href="#lokasi"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Lokasi
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Lokasi
                             & Kontak</a></li>
                     <li><a href="#membership"
-                            class="hover:text-matcha-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Program
+                            class="hover:text-forest-moss-green-400 transition-all duration-200 hover:translate-x-1 scroll-smooth">Program
                             Member</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-semibold mb-4">Kontak</h4>
-                <ul class="space-y-2 text-almond-300">
+                <ul class="space-y-2 text-soft-linen-300">
                     <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Raya Kemang No. 88, Jakarta Selatan</li>
                     <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> 081295911911</li>
                     <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> support@zowvetique.com</li>
-                    <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: +62 812 9999 0000</li>
+                    <li class="text-rusty-caramel-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: +62 812 9999 0000</li>
                 </ul>
             </div>
         </div>
-        <div class="border-t border-carob-700 mt-8 pt-8 text-center text-almond-300">
+        <div class="border-t border-deep-cocoa-brown-700 mt-8 pt-8 text-center text-soft-linen-300">
             <p>&copy; 2025 Zow Vetique - Pet Wellness Hub. All rights reserved.</p>
         </div>
     </div>

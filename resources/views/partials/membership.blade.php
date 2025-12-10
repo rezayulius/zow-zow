@@ -1,9 +1,20 @@
 <!-- Membership Section -->
-<section id="keanggotaan" class="py-20 relative overflow-hidden bg-gradient-to-br from-almond-50 to-vanilla-50">
+<section id="keanggotaan" class="py-20 relative overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-6 right-10 rotate-3 opacity-10">
+            <svg class="w-24 h-10 text-chai-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <!-- Header Section -->
         <div class="text-center mb-16">
-            <div class="inline-flex items-center bg-matcha-100 text-matcha-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div class="inline-flex items-center bg-forest-moss-green-100 text-forest-moss-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
@@ -24,8 +35,8 @@
                 @php
                     // Define color schemes for different membership types
                     $colorSchemes = [
-                        'basic' => ['bg' => 'almond', 'icon' => 'carob', 'button' => 'carob'],
-                        'premium' => ['bg' => 'matcha', 'icon' => 'matcha', 'button' => 'matcha'],
+                        'basic' => ['bg' => 'soft-linen', 'icon' => 'carob', 'button' => 'carob'],
+                        'premium' => ['bg' => 'forest-moss-green', 'icon' => 'forest-moss-green', 'button' => 'forest-moss-green'],
                         'vip' => ['bg' => 'chai', 'icon' => 'chai', 'button' => 'chai'],
                         'platinum' => ['bg' => 'chai', 'icon' => 'chai', 'button' => 'chai'],
                         'diamond' => ['bg' => 'vanilla', 'icon' => 'carob', 'button' => 'carob']
@@ -58,7 +69,7 @@
                         @if($membership->benefits && is_array($membership->benefits))
                             @foreach($membership->benefits as $benefit)
                                 <li class="flex items-center text-carob-700">
-                                    <svg class="w-5 h-5 text-matcha-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-5 h-5 text-forest-moss-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                     </svg>
                                     {{ $benefit }}
@@ -74,7 +85,7 @@
             @empty
                 <!-- Fallback content when no memberships are available -->
                 <div class="col-span-full text-center py-12">
-                    <div class="w-16 h-16 bg-almond-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-16 h-16 bg-soft-linen-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <svg class="w-8 h-8 text-carob-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
@@ -93,9 +104,9 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             <!-- Booking Prioritas -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-matcha-100 text-center">
-                <div class="w-16 h-16 bg-matcha-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-forest-moss-green-100 text-center">
+                <div class="w-16 h-16 bg-forest-moss-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                 </div>
@@ -115,9 +126,9 @@
             </div>
 
             <!-- Dukungan Premium -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-almond-100 text-center">
-                <div class="w-16 h-16 bg-almond-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-almond-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-soft-linen-100 text-center">
+                <div class="w-16 h-16 bg-soft-linen-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-soft-linen-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                 </div>
@@ -138,7 +149,7 @@
         </div>
 
         <!-- Call to Action Section -->
-        <div class="bg-gradient-to-r from-matcha-500 to-chai-600 rounded-3xl p-12 text-center">
+        <div class="bg-gradient-to-r from-forest-moss-green-500 to-chai-600 rounded-3xl p-12 text-center">
             <div class="max-w-3xl mx-auto">
                 <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,13 +164,13 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#keanggotaan" class="bg-white text-matcha-600 hover:bg-almond-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center justify-center shadow-lg scroll-smooth">
+                    <a href="#keanggotaan" class="bg-white text-forest-moss-green-600 hover:bg-soft-linen-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center justify-center shadow-lg scroll-smooth">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
                         </svg>
                         Menjadi Member
                     </a>
-                    <a href="#lokasi" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-matcha-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center justify-center scroll-smooth">
+                    <a href="#lokasi" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-forest-moss-green-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center justify-center scroll-smooth">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                         </svg>

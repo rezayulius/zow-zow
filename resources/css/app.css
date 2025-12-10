@@ -11,46 +11,98 @@ html {
 }
 
 @theme {
-    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Helvetica', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-display: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-heading: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Baskerville', ui-serif;
+    --font-heading: 'Baskerville', ui-serif;
 
-    /* Matcha → #809671 */
-    --color-matcha-50: #f6f8f4;
-    --color-matcha-100: #edf2e7;
-    --color-matcha-200: #d9e5ce;
-    --color-matcha-300: #c4d8b5;
-    --color-matcha-400: #a8c68f;
-    --color-matcha-500: #809671;
-    --color-matcha-600: #6d8c4f;
-    --color-matcha-700: #5a7342;
-    --color-matcha-800: #475a35;
-    --color-matcha-900: #344028;
+    /* Soft Linen → #EAE2D8 */
+    --color-soft-linen-50: #fefcf9;
+    --color-soft-linen-100: #fdf8f0;
+    --color-soft-linen-200: #faf0e1;
+    --color-soft-linen-300: #f5e6d3;
+    --color-soft-linen-400: #eed9c4;
+    --color-soft-linen-500: #EAE2D8;
+    --color-soft-linen-600: #d2c7b8;
+    --color-soft-linen-700: #b7a58d;
+    --color-soft-linen-800: #9e8b6e;
+    --color-soft-linen-900: #725c3a;
 
-    /* Almond → #E5E0D8 */
-    --color-almond-50: #fefcf9;
-    --color-almond-100: #fdf8f0;
-    --color-almond-200: #faf0e1;
-    --color-almond-300: #f5e6d3;
-    --color-almond-400: #eed9c4;
-    --color-almond-500: #e5e0d8;
-    --color-almond-600: #d2c7b8;
-    --color-almond-700: #b7a58d;
-    --color-almond-800: #9e8b6e;
-    --color-almond-900: #725c3a;
+    /* Deep Cocoa Brown → #553822 */
+    --color-deep-cocoa-brown-50: #f9f6f4;
+    --color-deep-cocoa-brown-100: #f3ece9;
+    --color-deep-cocoa-brown-200: #e6d8d3;
+    --color-deep-cocoa-brown-300: #d9c4bd;
+    --color-deep-cocoa-brown-400: #cdb0a7;
+    --color-deep-cocoa-brown-500: #553822;
+    --color-deep-cocoa-brown-600: #4a3220;
+    --color-deep-cocoa-brown-700: #3f2c1c;
+    --color-deep-cocoa-brown-800: #342618;
+    --color-deep-cocoa-brown-900: #291f14;
 
-    /* Pistache → #B3B792 */
-    --color-pistache-50: #f7f8f5;
-    --color-pistache-100: #eff1ea;
-    --color-pistache-200: #d7dccb;
-    --color-pistache-300: #bfc7ac;
-    --color-pistache-400: #c6cfa4;
-    --color-pistache-500: #b3b792;
-    --color-pistache-600: #a1a583;
-    --color-pistache-700: #86896d;
-    --color-pistache-800: #6b6e57;
-    --color-pistache-900: #575a47;
+    /* Forest Moss Green → #364E2C */
+    --color-forest-moss-green-50: #f4f7f3;
+    --color-forest-moss-green-100: #e9efe7;
+    --color-forest-moss-green-200: #d3dfcf;
+    --color-forest-moss-green-300: #bdcfb7;
+    --color-forest-moss-green-400: #a7bf9f;
+    --color-forest-moss-green-500: #364E2C;
+    --color-forest-moss-green-600: #2f4426;
+    --color-forest-moss-green-700: #283a20;
+    --color-forest-moss-green-800: #21301a;
+    --color-forest-moss-green-900: #1a2614;
+
+    /* Rusty Caramel → #A7662B */
+    --color-rusty-caramel-50: #fdf8f5;
+    --color-rusty-caramel-100: #fbf1ea;
+    --color-rusty-caramel-200: #f7e3d3;
+    --color-rusty-caramel-300: #f3d5bd;
+    --color-rusty-caramel-400: #efc7a7;
+    --color-rusty-caramel-500: #A7662B;
+    --color-rusty-caramel-600: #955c26;
+    --color-rusty-caramel-700: #835221;
+    --color-rusty-caramel-800: #71481c;
+    --color-rusty-caramel-900: #5f3e17;
+
+    /* Muted Olive Beige → #B6A77C */
+    --color-muted-olive-beige-50: #f9f8f5;
+    --color-muted-olive-beige-100: #f3f1ea;
+    --color-muted-olive-beige-200: #e6e3d3;
+    --color-muted-olive-beige-300: #d9d5bd;
+    --color-muted-olive-beige-400: #cdc7a7;
+    --color-muted-olive-beige-500: #B6A77C;
+    --color-muted-olive-beige-600: #a29b6f;
+    --color-muted-olive-beige-700: #8e8f62;
+    --color-muted-olive-beige-800: #7a8355;
+    --color-muted-olive-beige-900: #666748;
+
+    /* Old Mustard Yellow → #CCBD5F */
+    --color-old-mustard-yellow-50: #fdfcf5;
+    --color-old-mustard-yellow-100: #fbf8ea;
+    --color-old-mustard-yellow-200: #f7f1d3;
+    --color-old-mustard-yellow-300: #f3e9bd;
+    --color-old-mustard-yellow-400: #efdfa7;
+    --color-old-mustard-yellow-500: #CCBD5F;
+    --color-old-mustard-yellow-600: #b3a653;
+    --color-old-mustard-yellow-700: #9a8f47;
+    --color-old-mustard-yellow-800: #81783b;
+    --color-old-mustard-yellow-900: #68512f;
+
+    /* Soft Blush Pink → #FFB7B8 */
+    --color-soft-blush-pink-50: #fff9f9;
+    --color-soft-blush-pink-100: #fff3f3;
+    --color-soft-blush-pink-200: #ffe6e6;
+    --color-soft-blush-pink-300: #ffd9d9;
+    --color-soft-blush-pink-400: #ffcccc;
+    --color-soft-blush-pink-500: #FFB7B8;
+    --color-soft-blush-pink-600: #e6a5a6;
+    --color-soft-blush-pink-700: #cc9394;
+    --color-soft-blush-pink-800: #b38182;
+    --color-soft-blush-pink-900: #996f70;
+
+
+
+
 
     /* Chai → #D2AB80 */
     --color-chai-50: #faf8f5;

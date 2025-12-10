@@ -1,16 +1,16 @@
 <!-- Health Section -->
-<section id="health" class="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-matcha-50 via-white to-chai-50">
+<section id="health" class="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-transparent">
     <div class="max-w-7xl mx-auto px-3 sm:px-6">
         <div class="relative text-center mb-10">
             <div
-                class="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(56,178,88,0.25),transparent_60%)] blur-md -z-10">
+                class="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(54,78,44,0.25),transparent_60%)] blur-md -z-10">
             </div>
             <div
-                class="absolute -bottom-6 -right-8 w-40 h-40 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,119,6,0.18),transparent_60%)] blur-md -z-10">
+                class="absolute -bottom-6 -right-8 w-40 h-40 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(167,102,43,0.18),transparent_60%)] blur-md -z-10">
             </div>
 
             <div
-                class="inline-flex items-center bg-matcha-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-5 shadow-sm">
+                class="inline-flex items-center bg-forest-moss-green-600 text-white px-6 py-2 rounded-full text-sm font-medium mb-5 shadow-sm">
                 <i data-lucide="stethoscope" class="text-lg mr-2 w-5 h-5"></i>
                 Comprehensive Veterinary Care
             </div>
@@ -24,15 +24,15 @@
 
             <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
                 <span
-                    class="inline-flex items-center bg-matcha-50 text-matcha-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-matcha-200">
+                    class="inline-flex items-center bg-forest-moss-green-50 text-forest-moss-green-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-forest-moss-green-200">
                     <i data-lucide="zap" class="w-4 h-4 mr-2"></i> Same-day care
                 </span>
                 <span
-                    class="inline-flex items-center bg-chai-50 text-chai-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-chai-200">
+                    class="inline-flex items-center bg-chai-50 text-rusty-caramel-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-chai-200">
                     <i data-lucide="shield-check" class="w-4 h-4 mr-2"></i> Certified vets
                 </span>
                 <span
-                    class="inline-flex items-center bg-pistache-50 text-pistache-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-pistache-200">
+                    class="inline-flex items-center bg-forest-moss-green-50 text-forest-moss-green-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-forest-moss-green-200">
                     <i data-lucide="flask-conical" class="w-4 h-4 mr-2"></i> Modern lab
                 </span>
             </div>
@@ -42,7 +42,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             @forelse($healthServices as $index => $service)
                 @php
-                    $colors = ['matcha', 'chai', 'pistache'];
+                    $colors = ['forest-moss-green', 'rusty-caramel', 'deep-cocoa-brown'];
                     $color = $colors[$index % 3];
                     $badges = ['POPULAR', 'ESSENTIAL', 'PREMIUM'];
                     $badge = $badges[$index % 3];
@@ -121,7 +121,18 @@
 </section>
 
 <!-- Wellness Section -->
-<section id="wellness" class="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-almond-50 via-vanilla-50 to-chai-50">
+<section id="wellness" class="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -bottom-8 left-10 -rotate-6 opacity-10">
+            <svg class="w-24 h-10 text-forest-moss-green-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     <div class="max-w-7xl mx-auto px-6">
         <div class="relative text-center mb-10">
             <div
@@ -150,7 +161,7 @@
                     <i data-lucide="wand" class="w-4 h-4 mr-2"></i> Grooming premium
                 </span>
                 <span
-                    class="inline-flex items-center bg-almond-50 text-carob-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-carob-200">
+                    class="inline-flex items-center bg-soft-linen-50 text-carob-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-soft-linen-200">
                     <i data-lucide="bed" class="w-4 h-4 mr-2"></i> Hotel & daycare
                 </span>
                 <span
@@ -164,7 +175,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
             @forelse($wellnessServices as $index => $service)
                 @php
-                    $colors = ['chai', 'carob', 'pistache'];
+                    $colors = ['chai', 'carob', 'forest-moss-green'];
                     $color = $colors[$index % 3];
                     $badges = ['TRENDING', 'PREMIUM', 'RELAXING'];
                     $badge = $badges[$index % 3];
@@ -244,7 +255,18 @@
 </section>
 
 <!-- Layanan Kami Section -->
-<section id="layanan" class="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-almond-50 via-vanilla-50 to-chai-50">
+<section id="layanan" class="relative py-16 md:py-24 lg:py-32 overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-6 right-12 rotate-12 opacity-10">
+            <svg class="w-20 h-8 text-chai-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     <div class="max-w-7xl mx-auto px-6">
         <!-- Premium Services Badge -->
         <div class="text-center mb-8 hidden">
@@ -283,17 +305,17 @@
 
             <!-- Guaranteed Safety Card -->
             <div
-                class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-matcha-100">
+                class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group border border-forest-moss-green-100">
                 <div
-                    class="w-16 h-16 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    class="w-16 h-16 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <i data-lucide="shield-check" class="text-white text-2xl w-8 h-8"></i>
                 </div>
                 <h3
-                    class="text-lg font-semibold text-carob-900 mb-2 group-hover:text-matcha-600 transition-colors duration-300">
+                    class="text-lg font-semibold text-carob-900 mb-2 group-hover:text-forest-moss-green-600 transition-colors duration-300">
                     Guaranteed Safety</h3>
                 <p class="text-carob-600 text-sm">Certified professionals</p>
                 <div
-                    class="mt-4 h-1 bg-gradient-to-r from-matcha-400 to-matcha-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    class="mt-4 h-1 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 </div>
             </div>
 
@@ -323,7 +345,7 @@
                     <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="Klinik Hewan"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-matcha-400/80 to-matcha-600/80"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-forest-moss-green-400/80 to-forest-moss-green-600/80"></div>
                     <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
                         <span class="text-white text-xs font-medium">POPULAR</span>
                     </div>
@@ -338,26 +360,26 @@
                     </p>
                     <ul class="space-y-2 mb-6 flex-grow">
                         <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
+                            <span class="w-4 h-4 bg-forest-moss-green-500 rounded-full mr-3 flex items-center justify-center">
                                 <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
                             </span>
                             Pemeriksaan kesehatan
                         </li>
                         <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
+                            <span class="w-4 h-4 bg-forest-moss-green-500 rounded-full mr-3 flex items-center justify-center">
                                 <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
                             </span>
                             Vaksinasi lengkap
                         </li>
                         <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-matcha-500 rounded-full mr-3 flex items-center justify-center">
+                            <span class="w-4 h-4 bg-forest-moss-green-500 rounded-full mr-3 flex items-center justify-center">
                                 <i data-lucide="check" class="text-white text-xs w-3 h-3"></i>
                             </span>
                             Operasi
                         </li>
                     </ul>
                     <button
-                        class="w-full bg-matcha-500 text-white py-3 rounded-xl hover:bg-matcha-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                        class="w-full bg-forest-moss-green-500 text-white py-3 rounded-xl hover:bg-forest-moss-green-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
                         Pesan Sekarang
                     </button>
                 </div>
@@ -464,7 +486,7 @@
                     <img src="https://images.unsplash.com/photo-1574144611937-0df059b5ef3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="Kafe Hewan"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-br from-pistache-400/80 to-pistache-600/80"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-forest-moss-green-400/80 to-forest-moss-green-600/80"></div>
                     <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
                         <span class="text-white text-xs font-medium">RELAX & ENJOY</span>
                     </div>
@@ -479,26 +501,26 @@
                     </p>
                     <ul class="space-y-2 mb-6 flex-grow">
                         <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
+                            <span class="w-4 h-4 bg-forest-moss-green-500 rounded-full mr-3 flex items-center justify-center">
                                 <span class="text-white text-xs">✓</span>
                             </span>
                             Menu Spesial Hewan
                         </li>
                         <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
+                            <span class="w-4 h-4 bg-forest-moss-green-500 rounded-full mr-3 flex items-center justify-center">
                                 <span class="text-white text-xs">✓</span>
                             </span>
                             Tempat Bermain
                         </li>
                         <li class="flex items-center text-sm text-carob-600">
-                            <span class="w-4 h-4 bg-pistache-500 rounded-full mr-3 flex items-center justify-center">
+                            <span class="w-4 h-4 bg-forest-moss-green-500 rounded-full mr-3 flex items-center justify-center">
                                 <span class="text-white text-xs">✓</span>
                             </span>
                             WiFi Gratis
                         </li>
                     </ul>
                     <button
-                        class="w-full bg-pistache-500 text-white py-3 rounded-xl hover:bg-pistache-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
+                        class="w-full bg-forest-moss-green-500 text-white py-3 rounded-xl hover:bg-forest-moss-green-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold mt-auto shadow-lg">
                         Pesan Sekarang
                     </button>
                 </div>
@@ -513,7 +535,7 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button
-                    class="relative overflow-hidden bg-white text-carob-700 px-8 py-3 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg">
+                    class="relative overflow-hidden bg-white text-carob-700 px-8 py-3 rounded-xl hover:bg-soft-linen-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg">
                     <span class="mr-2">📅</span>
                     Schedule Consultation
                 </button>
@@ -526,13 +548,13 @@
         </div>
 
         <!-- Booking Section -->
-        <div id="booking" class="bg-gradient-to-br from-matcha-50 via-white to-chai-50 rounded-2xl p-8 mt-4">
+        <div id="booking" class="bg-gradient-to-br from-forest-moss-green-50 via-white to-chai-50 rounded-2xl p-8 mt-4">
             <div class="relative text-center mb-10">
                 <div
-                    class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.12),transparent_60%)] blur-md -z-10">
+                    class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(54,78,44,0.12),transparent_60%)] blur-md -z-10">
                 </div>
                 <div
-                    class="absolute -bottom-6 -right-8 w-44 h-44 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(234,179,8,0.14),transparent_60%)] blur-md -z-10">
+                    class="absolute -bottom-6 -right-8 w-44 h-44 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(167,102,43,0.14),transparent_60%)] blur-md -z-10">
                 </div>
 
                 <div
@@ -548,11 +570,11 @@
                 </p>
                 <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
                     <span
-                        class="inline-flex items-center bg-almond-50 text-carob-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-carob-200">
+                        class="inline-flex items-center bg-soft-linen-50 text-carob-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-soft-linen-200">
                         <i data-lucide="zap" class="w-4 h-4 mr-2"></i> Cepat
                     </span>
                     <span
-                        class="inline-flex items-center bg-matcha-50 text-matcha-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-matcha-200">
+                        class="inline-flex items-center bg-forest-moss-green-50 text-forest-moss-green-700 px-3 py-1.5 rounded-full text-xs font-semibold border border-forest-moss-green-200">
                         <i data-lucide="layout-panel-top" class="w-4 h-4 mr-2"></i> Multi-step
                     </span>
                     <span
@@ -563,11 +585,11 @@
             </div>
 
             <!-- Doctor Gallery Section -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-matcha-100 mb-6">
+            <div class="bg-white rounded-2xl p-6 shadow-lg border border-forest-moss-green-100 mb-6">
                 <!-- Header -->
                 <div class="flex items-center mb-6">
                     <div
-                        class="w-12 h-12 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                        class="w-12 h-12 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-xl flex items-center justify-center mr-4 shadow-lg">
                         <i data-lucide="user-check" class="text-white w-6 h-6"></i>
                     </div>
                     <div>
@@ -580,9 +602,9 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     @php
                         $colorSchemes = [
-                            ['from' => 'matcha', 'to' => 'matcha'],
+                            ['from' => 'forest-moss-green', 'to' => 'forest-moss-green'],
                             ['from' => 'chai', 'to' => 'chai'],
-                            ['from' => 'pistache', 'to' => 'pistache'],
+                            ['from' => 'forest-moss-green', 'to' => 'forest-moss-green'],
                             ['from' => 'carob', 'to' => 'carob']
                         ];
                     @endphp
@@ -672,7 +694,7 @@
                     <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden transform transition-all duration-300 scale-95 opacity-0"
                         id="modalContent">
                         <!-- Modal Header -->
-                        <div class="bg-gradient-to-r from-matcha-500 to-chai-600 text-white p-6 relative">
+                        <div class="bg-gradient-to-r from-forest-moss-green-500 to-chai-600 text-white p-6 relative">
                             <button onclick="closeDoctorModal()"
                                 class="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
                                 <i data-lucide="x" class="w-5 h-5"></i>
@@ -708,7 +730,7 @@
                                     <div class="flex items-center justify-between mb-3">
                                         <div class="flex items-center">
                                             <div
-                                                class="w-12 h-12 bg-gradient-to-br from-matcha-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
+                                                class="w-12 h-12 bg-gradient-to-br from-forest-moss-green-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
                                                 <span class="text-sm font-bold text-carob-900">SEN</span>
                                             </div>
                                             <div>
@@ -745,7 +767,7 @@
                                     <div class="flex items-center justify-between mb-3">
                                         <div class="flex items-center">
                                             <div
-                                                class="w-12 h-12 bg-gradient-to-br from-chai-100 to-matcha-100 rounded-lg flex items-center justify-center mr-3">
+                                                class="w-12 h-12 bg-gradient-to-br from-chai-100 to-forest-moss-green-100 rounded-lg flex items-center justify-center mr-3">
                                                 <span class="text-sm font-bold text-carob-900">SEL</span>
                                             </div>
                                             <div>
@@ -781,7 +803,7 @@
                                     <div class="flex items-center justify-between mb-3">
                                         <div class="flex items-center">
                                             <div
-                                                class="w-12 h-12 bg-gradient-to-br from-pistache-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
+                                                class="w-12 h-12 bg-gradient-to-br from-forest-moss-green-100 to-chai-100 rounded-lg flex items-center justify-center mr-3">
                                                 <span class="text-sm font-bold text-carob-900">RAB</span>
                                             </div>
                                             <div>
@@ -905,7 +927,7 @@
                                     Tutup
                                 </button>
                                 <button
-                                    class="px-6 py-2 bg-gradient-to-r from-matcha-500 to-chai-600 text-white rounded-lg hover:from-matcha-600 hover:to-chai-700 transition-all duration-300 font-medium">
+                                    class="px-6 py-2 bg-gradient-to-r from-forest-moss-green-500 to-chai-600 text-white rounded-lg hover:from-forest-moss-green-600 hover:to-chai-700 transition-all duration-300 font-medium">
                                     Buat Janji Temu
                                 </button>
                             </div>
@@ -919,7 +941,7 @@
                 <!-- Header -->
                 <div class="flex items-center mb-5">
                     <div
-                        class="w-10 h-10 bg-gradient-to-br from-matcha-400 to-chai-500 rounded-xl flex items-center justify-center mr-3">
+                        class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-400 to-chai-500 rounded-xl flex items-center justify-center mr-3">
                         <i data-lucide="zap" class="text-white w-5 h-5"></i>
                     </div>
                     <h4 class="text-xl font-bold text-carob-900">Quick Booking Services</h4>
@@ -947,19 +969,19 @@
                     </div>
 
                     <!-- Konsultasi Dokter -->
-                    <div class="bg-gradient-to-r from-matcha-50 to-matcha-100 rounded-xl p-4 border border-matcha-200">
+                    <div class="bg-gradient-to-r from-forest-moss-green-50 to-forest-moss-green-100 rounded-xl p-4 border border-forest-moss-green-200">
                         <div class="flex items-center justify-between mb-2">
                             <div
-                                class="w-8 h-8 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-lg flex items-center justify-center">
+                                class="w-8 h-8 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-lg flex items-center justify-center">
                                 <i data-lucide="stethoscope" class="text-white w-4 h-4"></i>
                             </div>
                             <span
-                                class="bg-matcha-600 text-white text-xs px-2 py-1 rounded-full font-medium">Popular</span>
+                                class="bg-forest-moss-green-600 text-white text-xs px-2 py-1 rounded-full font-medium">Popular</span>
                         </div>
                         <h5 class="font-bold text-carob-900 mb-1">Konsultasi Dokter</h5>
-                        <p class="text-matcha-700 font-semibold text-sm mb-2">Rp 150.000</p>
+                        <p class="text-forest-moss-green-700 font-semibold text-sm mb-2">Rp 150.000</p>
                         <button
-                            class="quick-book-btn w-full bg-matcha-500 text-white py-2 rounded-lg text-sm hover:bg-matcha-600 transition-colors font-medium"
+                            class="quick-book-btn w-full bg-forest-moss-green-500 text-white py-2 rounded-lg text-sm hover:bg-forest-moss-green-600 transition-colors font-medium"
                             data-service="konsultasi" aria-label="Book Konsultasi Dokter"
                             title="Book Konsultasi Dokter">
                             Book Now
@@ -968,19 +990,19 @@
 
                     <!-- Vaksinasi Lengkap -->
                     <div
-                        class="bg-gradient-to-r from-pistache-50 to-pistache-100 rounded-xl p-4 border border-pistache-200">
+                        class="bg-gradient-to-r from-forest-moss-green-50 to-forest-moss-green-100 rounded-xl p-4 border border-forest-moss-green-200">
                         <div class="flex items-center justify-between mb-2">
                             <div
-                                class="w-8 h-8 bg-gradient-to-br from-pistache-400 to-pistache-600 rounded-lg flex items-center justify-center">
+                                class="w-8 h-8 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-lg flex items-center justify-center">
                                 <i data-lucide="syringe" class="text-white w-4 h-4"></i>
                             </div>
                             <span
-                                class="bg-pistache-600 text-white text-xs px-2 py-1 rounded-full font-medium">Essential</span>
+                                class="bg-forest-moss-green-600 text-white text-xs px-2 py-1 rounded-full font-medium">Essential</span>
                         </div>
                         <h5 class="font-bold text-carob-900 mb-1">Vaksinasi Lengkap</h5>
-                        <p class="text-pistache-700 font-semibold text-sm mb-2">Rp 200.000</p>
+                        <p class="text-forest-moss-green-700 font-semibold text-sm mb-2">Rp 200.000</p>
                         <button
-                            class="quick-book-btn w-full bg-pistache-500 text-white py-2 rounded-lg text-sm hover:bg-pistache-600 transition-colors font-medium"
+                            class="quick-book-btn w-full bg-forest-moss-green-500 text-white py-2 rounded-lg text-sm hover:bg-forest-moss-green-600 transition-colors font-medium"
                             data-service="vaksinasi" aria-label="Book Vaksinasi Lengkap" title="Book Vaksinasi Lengkap">
                             Book Now
                         </button>
@@ -1016,7 +1038,7 @@
                         class="hidden mt-0 sm:mt-0 bg-white rounded-xl sm:rounded-3xl shadow-2xl border border-chai-100 ring-1 ring-chai-200 transform transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:transform-none opacity-0 translate-y-4 backdrop-blur-sm overflow-hidden mx-0 w-full mb-6 sm:mb-8 sm:max-w-[500px] md:max-w-[540px] lg:max-w-[600px] sm:mx-auto">
                         <!-- Form Header -->
                         <div
-                            class="bg-gradient-to-br from-chai-50 to-matcha-50 text-center p-6 sm:p-8 border-b border-chai-100">
+                            class="bg-gradient-to-br from-chai-50 to-forest-moss-green-50 text-center p-6 sm:p-8 border-b border-chai-100">
                             <div class="flex justify-end mb-4">
                                 <button id="closeForm" type="button" aria-label="Tutup modal" title="Tutup modal"
                                     class="text-carob-400 hover:text-carob-600 transition-all duration-200 hover:scale-110 hover:bg-white/50 p-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-chai-400">
@@ -1040,7 +1062,7 @@
                                 class="bg-gradient-to-br from-white to-chai-50 rounded-2xl p-6 sm:p-8 border-2 border-chai-200 mb-6">
                                 <div class="flex items-start mb-4">
                                     <div
-                                        class="w-10 h-10 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                        class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
                                         <i data-lucide="info" class="text-white w-5 h-5"></i>
                                     </div>
                                     <div>
@@ -1053,31 +1075,31 @@
                                 <div class="space-y-3 mb-6">
                                     <div class="flex items-center text-sm text-carob-700">
                                         <i data-lucide="check-circle"
-                                            class="w-5 h-5 text-matcha-600 mr-3 flex-shrink-0"></i>
+                                            class="w-5 h-5 text-forest-moss-green-600 mr-3 flex-shrink-0"></i>
                                         <span>Pilih layanan yang Anda butuhkan</span>
                                     </div>
                                     <div class="flex items-center text-sm text-carob-700">
                                         <i data-lucide="check-circle"
-                                            class="w-5 h-5 text-matcha-600 mr-3 flex-shrink-0"></i>
+                                            class="w-5 h-5 text-forest-moss-green-600 mr-3 flex-shrink-0"></i>
                                         <span>Tentukan waktu yang sesuai</span>
                                     </div>
                                     <div class="flex items-center text-sm text-carob-700">
                                         <i data-lucide="check-circle"
-                                            class="w-5 h-5 text-matcha-600 mr-3 flex-shrink-0"></i>
+                                            class="w-5 h-5 text-forest-moss-green-600 mr-3 flex-shrink-0"></i>
                                         <span>Isi data hewan peliharaan Anda</span>
                                     </div>
                                     <div class="flex items-center text-sm text-carob-700">
                                         <i data-lucide="check-circle"
-                                            class="w-5 h-5 text-matcha-600 mr-3 flex-shrink-0"></i>
+                                            class="w-5 h-5 text-forest-moss-green-600 mr-3 flex-shrink-0"></i>
                                         <span>Dapatkan konfirmasi langsung</span>
                                     </div>
                                 </div>
 
                                 <div
-                                    class="bg-gradient-to-r from-pistache-50 to-chai-50 rounded-xl p-4 border border-pistache-200">
+                                    class="bg-gradient-to-r from-forest-moss-green-50 to-chai-50 rounded-xl p-4 border border-forest-moss-green-200">
                                     <div class="flex items-start">
                                         <i data-lucide="shield-check"
-                                            class="w-5 h-5 text-pistache-600 mr-2 flex-shrink-0 mt-0.5"></i>
+                                            class="w-5 h-5 text-forest-moss-green-600 mr-2 flex-shrink-0 mt-0.5"></i>
                                         <p class="text-xs text-carob-600">
                                             <strong class="text-carob-800">Aman & Terpercaya:</strong> Data Anda
                                             dilindungi dengan enkripsi tingkat tinggi
@@ -1596,9 +1618,9 @@
                     servicesUsed.add(serviceData.name);
 
                     petsSummaryHTML += `
-                            <div class="bg-gradient-to-r from-pistache-50 to-chai-50 rounded-xl p-4 border border-pistache-200">
+                            <div class="bg-gradient-to-r from-forest-moss-green-50 to-chai-50 rounded-xl p-4 border border-forest-moss-green-200">
                                 <h5 class="font-bold text-carob-900 mb-3 flex items-center text-sm">
-                                    <i data-lucide="heart" class="w-4 h-4 mr-2 text-pistache-600 flex-shrink-0"></i>
+                                    <i data-lucide="heart" class="w-4 h-4 mr-2 text-forest-moss-green-600 flex-shrink-0"></i>
                                     <span>${pet.name}</span>
                                 </h5>
                                 <div class="grid grid-cols-2 gap-2 text-xs">
@@ -1618,7 +1640,7 @@
                                         <span class="text-carob-600">Warna:</span>
                                         <span class="font-semibold text-carob-900">${pet.color}</span>
                                     </div>
-                                    <div class="col-span-2 flex justify-between pt-2 border-t border-pistache-200">
+                                    <div class="col-span-2 flex justify-between pt-2 border-t border-forest-moss-green-200">
                                         <span class="text-carob-600">Layanan:</span>
                                         <span class="font-semibold text-chai-600">${serviceData.name}</span>
                                     </div>
@@ -1675,7 +1697,7 @@
                                 <i data-lucide="scissors" class="w-4 h-4 text-chai-600 mr-2"></i>
                                 <span class="font-semibold text-carob-900 text-sm">${serviceName}</span>
                             </div>
-                            <i data-lucide="check-circle" class="w-4 h-4 text-matcha-600"></i>
+                            <i data-lucide="check-circle" class="w-4 h-4 text-forest-moss-green-600"></i>
                         </div>
                     `;
             });
@@ -2065,10 +2087,10 @@
                 const petColor = document.querySelector(`[name="petColor_${index}"]`)?.value || '-';
 
                 const petSummary = document.createElement('div');
-                petSummary.className = 'mb-3 p-3 bg-gradient-to-r from-matcha-50 to-pistache-50 rounded-xl border border-matcha-200';
+                petSummary.className = 'mb-3 p-3 bg-gradient-to-r from-forest-moss-green-50 to-forest-moss-green-50 rounded-xl border border-forest-moss-green-200';
                 petSummary.innerHTML = `
                         <h5 class="font-semibold text-carob-800 mb-2 flex items-center text-sm">
-                            <i data-lucide="paw-print" class="w-3 h-3 mr-2 text-matcha-600"></i>
+                            <i data-lucide="paw-print" class="w-3 h-3 mr-2 text-forest-moss-green-600"></i>
                             Hewan Peliharaan #${index + 1}
                         </h5>
                         <div class="grid grid-cols-2 gap-2 text-xs">
@@ -2116,22 +2138,22 @@
                     const serviceData = servicePrices[petService.value];
 
                     doctorHTML += `
-                            <div class="mb-6 p-4 bg-gradient-to-r from-pistache-50 to-chai-50 rounded-xl border border-pistache-200">
+                            <div class="mb-6 p-4 bg-gradient-to-r from-forest-moss-green-50 to-chai-50 rounded-xl border border-forest-moss-green-200">
                                 <h4 class="font-bold text-carob-900 mb-3 flex items-center text-sm">
-                                    <i data-lucide="heart" class="w-4 h-4 mr-2 text-pistache-600"></i>
+                                    <i data-lucide="heart" class="w-4 h-4 mr-2 text-forest-moss-green-600"></i>
                                     ${pet.name} - ${serviceData.name}
                                 </h4>
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-                                    <label class="group flex items-center p-3 border-2 border-carob-100 rounded-xl hover:border-matcha-500 cursor-pointer transition-all duration-300 hover:shadow-lg hover:bg-gradient-to-br hover:from-matcha-50 hover:to-white">
-                                        <input type="radio" name="doctor_${index}" value="dr-sarah" class="mr-3 text-matcha-500 scale-110 flex-shrink-0">
+                                    <label class="group flex items-center p-3 border-2 border-carob-100 rounded-xl hover:border-forest-moss-green-500 cursor-pointer transition-all duration-300 hover:shadow-lg hover:bg-gradient-to-br hover:from-forest-moss-green-50 hover:to-white">
+                                        <input type="radio" name="doctor_${index}" value="dr-sarah" class="mr-3 text-forest-moss-green-500 scale-110 flex-shrink-0">
                                         <div class="flex items-center flex-1 min-w-0">
-                                            <div class="w-10 h-10 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center mr-3 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+                                            <div class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center mr-3 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
                                                 <i data-lucide="stethoscope" class="text-white w-5 h-5"></i>
                                             </div>
                                             <div class="flex-1 min-w-0">
                                                 <div class="font-bold text-carob-900 text-sm truncate">Dr. Sarah Wijaya</div>
                                                 <div class="text-xs text-carob-600 font-medium truncate">🐱 Spesialis Hewan Kecil</div>
-                                                <div class="text-xs text-matcha-600 truncate">⭐ 4.9 Rating</div>
+                                                <div class="text-xs text-forest-moss-green-600 truncate">⭐ 4.9 Rating</div>
                                             </div>
                                         </div>
                                     </label>

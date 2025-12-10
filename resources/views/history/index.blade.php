@@ -6,7 +6,7 @@
     @include('partials.header')
 
     <!-- History Page -->
-    <div class="min-h-screen bg-gradient-to-br from-almond-50 via-vanilla-50 to-matcha-50 pt-32 pb-16 px-4">
+    <div class="min-h-screen bg-gradient-to-br from-soft-linen-50 via-vanilla-50 to-forest-moss-green-50 pt-32 pb-16 px-4">
         <div class="max-w-6xl mx-auto">
             <!-- Page Header -->
             <div class="text-center mb-8">
@@ -16,14 +16,14 @@
 
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-matcha-500">
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-forest-moss-green-500">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-sm text-carob-600 font-medium">Total Hewan</p>
                             <p class="text-3xl font-bold text-carob-900">{{ count($pets) }}</p>
                         </div>
-                        <div class="w-12 h-12 bg-matcha-100 rounded-full flex items-center justify-center">
-                            <i data-lucide="paw-print" class="w-6 h-6 text-matcha-600"></i>
+                        <div class="w-12 h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="paw-print" class="w-6 h-6 text-forest-moss-green-600"></i>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-pistache-500">
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-forest-moss-green-500">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-sm text-carob-600 font-medium">Kunjungan Terakhir</p>
@@ -52,8 +52,8 @@
                                 @endif
                             </p>
                         </div>
-                        <div class="w-12 h-12 bg-pistache-100 rounded-full flex items-center justify-center">
-                            <i data-lucide="calendar" class="w-6 h-6 text-pistache-600"></i>
+                        <div class="w-12 h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-6 h-6 text-forest-moss-green-600"></i>
                         </div>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
                                         <!-- Pet Avatar -->
                                         <div class="flex-shrink-0">
                                             @if($record['pet_info']['profile_picture'] && $record['pet_info']['profile_picture'] !== 'https://developer.digitail.io/images/petpic.png')
-                                                <img src="{{ $record['pet_info']['profile_picture'] }}" alt="{{ $record['pet_info']['nickname'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-matcha-200">
+                                                <img src="{{ $record['pet_info']['profile_picture'] }}" alt="{{ $record['pet_info']['nickname'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-forest-moss-green-200">
                                             @else
-                                                <div class="w-16 h-16 bg-gradient-to-br from-matcha-400 to-matcha-600 rounded-full flex items-center justify-center border-2 border-matcha-200">
+                                                <div class="w-16 h-16 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center border-2 border-forest-moss-green-200">
                                                     <i data-lucide="paw-print" class="text-white w-8 h-8"></i>
                                                 </div>
                                             @endif
@@ -98,15 +98,15 @@
                                             </div>
                                             <div class="flex flex-wrap gap-3 text-sm text-carob-600">
                                                 <div class="flex items-center">
-                                                    <i data-lucide="hash" class="w-4 h-4 mr-1 text-matcha-600"></i>
+                                                    <i data-lucide="hash" class="w-4 h-4 mr-1 text-forest-moss-green-600"></i>
                                                     <span>Record #{{ $record['number'] }}</span>
                                                 </div>
                                                 <div class="flex items-center">
-                                                    <i data-lucide="calendar" class="w-4 h-4 mr-1 text-matcha-600"></i>
+                                                    <i data-lucide="calendar" class="w-4 h-4 mr-1 text-forest-moss-green-600"></i>
                                                     <span>{{ \Carbon\Carbon::parse($record['date'])->format('d F Y') }}</span>
                                                 </div>
                                                 <div class="flex items-center">
-                                                    <i data-lucide="user" class="w-4 h-4 mr-1 text-matcha-600"></i>
+                                                    <i data-lucide="user" class="w-4 h-4 mr-1 text-forest-moss-green-600"></i>
                                                     <span>Patient #{{ $record['pet_info']['patientNumber'] }}</span>
                                                 </div>
                                             </div>
@@ -122,9 +122,9 @@
                                 </div>
 
                                 <!-- Record Details -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 pt-4 border-t border-almond-200">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 pt-4 border-t border-soft-linen-200">
                                     @if($record['reason'])
-                                        <div class="bg-almond-50 rounded-lg p-4">
+                                        <div class="bg-soft-linen-50 rounded-lg p-4">
                                             <label class="text-xs text-carob-600 font-medium flex items-center mb-2">
                                                 <i data-lucide="clipboard" class="w-4 h-4 mr-1"></i>
                                                 Alasan Kunjungan
@@ -134,7 +134,7 @@
                                     @endif
 
                                     @if($record['presumptive_diagnosis'])
-                                        <div class="bg-almond-50 rounded-lg p-4">
+                                        <div class="bg-soft-linen-50 rounded-lg p-4">
                                             <label class="text-xs text-carob-600 font-medium flex items-center mb-2">
                                                 <i data-lucide="stethoscope" class="w-4 h-4 mr-1"></i>
                                                 Diagnosis Awal
@@ -144,7 +144,7 @@
                                     @endif
 
                                     @if($record['diagnosis'])
-                                        <div class="bg-almond-50 rounded-lg p-4">
+                                        <div class="bg-soft-linen-50 rounded-lg p-4">
                                             <label class="text-xs text-carob-600 font-medium flex items-center mb-2">
                                                 <i data-lucide="activity" class="w-4 h-4 mr-1"></i>
                                                 Diagnosis
@@ -154,7 +154,7 @@
                                     @endif
 
                                     @if($record['treatment'])
-                                        <div class="bg-almond-50 rounded-lg p-4">
+                                        <div class="bg-soft-linen-50 rounded-lg p-4">
                                             <label class="text-xs text-carob-600 font-medium flex items-center mb-2">
                                                 <i data-lucide="pill" class="w-4 h-4 mr-1"></i>
                                                 Perawatan
@@ -166,10 +166,10 @@
 
                                 <!-- Comments & Recommendations -->
                                 @if($record['comments'] || $record['recommendations'])
-                                    <div class="mt-4 pt-4 border-t border-almond-200 space-y-3">
+                                    <div class="mt-4 pt-4 border-t border-soft-linen-200 space-y-3">
                                         @if($record['comments'])
-                                            <div class="bg-gradient-to-r from-matcha-50 to-matcha-100 rounded-lg p-4">
-                                                <label class="text-xs text-matcha-700 font-medium flex items-center mb-2">
+                                            <div class="bg-gradient-to-r from-forest-moss-green-50 to-forest-moss-green-100 rounded-lg p-4">
+                                                <label class="text-xs text-forest-moss-green-700 font-medium flex items-center mb-2">
                                                     <i data-lucide="message-square" class="w-4 h-4 mr-1"></i>
                                                     Catatan Dokter
                                                 </label>
@@ -190,7 +190,7 @@
                                 @endif
 
                                 <!-- Record Timestamps -->
-                                <div class="mt-4 pt-4 border-t border-almond-200">
+                                <div class="mt-4 pt-4 border-t border-soft-linen-200">
                                     <div class="flex flex-wrap gap-4 text-xs text-carob-500">
                                         @if($record['opened_at'])
                                             <div class="flex items-center">
@@ -213,14 +213,14 @@
             @else
                 <!-- Empty State -->
                 <div class="bg-white rounded-2xl shadow-xl p-12 text-center">
-                    <div class="w-24 h-24 bg-gradient-to-br from-almond-200 to-almond-300 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div class="w-24 h-24 bg-gradient-to-br from-soft-linen-200 to-soft-linen-300 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i data-lucide="file-text" class="w-12 h-12 text-carob-400"></i>
                     </div>
                     <h2 class="text-2xl font-bold text-carob-900 mb-4">Belum Ada Riwayat Medical Records</h2>
                     <p class="text-carob-600 mb-6 max-w-2xl mx-auto">
                         Belum ada catatan kunjungan untuk hewan peliharaan Anda. Riwayat akan muncul setelah Anda melakukan kunjungan ke klinik.
                     </p>
-                    <a href="/#booking" class="inline-flex items-center px-6 py-3 bg-matcha-500 text-white rounded-lg hover:bg-matcha-600 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl">
+                    <a href="/#booking" class="inline-flex items-center px-6 py-3 bg-forest-moss-green-500 text-white rounded-lg hover:bg-forest-moss-green-600 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl">
                         <i data-lucide="calendar-plus" class="w-5 h-5 mr-2"></i>
                         Buat Appointment
                     </a>
@@ -229,7 +229,7 @@
 
             <!-- Back to Profile Button -->
             <div class="text-center mt-8">
-                <a href="{{ route('profile') }}" class="inline-flex items-center text-carob-600 hover:text-matcha-600 transition-all duration-200 font-medium">
+                <a href="{{ route('profile') }}" class="inline-flex items-center text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 font-medium">
                     <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
                     Kembali ke Profile
                 </a>

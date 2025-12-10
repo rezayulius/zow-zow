@@ -1,14 +1,34 @@
 {{-- Testimonials, Articles, News & Promo Section --}}
-<section id="testimoni" class="relative py-20 overflow-hidden">
+<section id="testimoni" class="relative py-20 overflow-hidden bg-transparent">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-6 left-6 rotate-6 opacity-10">
+            <svg class="w-16 h-6 text-forest-moss-green-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+        <div class="absolute bottom-8 right-8 -rotate-6 opacity-10">
+            <svg class="w-16 h-6 text-chai-200" viewBox="0 0 100 40" fill="currentColor">
+                <circle cx="10" cy="10" r="8"></circle>
+                <circle cx="10" cy="30" r="8"></circle>
+                <circle cx="90" cy="10" r="8"></circle>
+                <circle cx="90" cy="30" r="8"></circle>
+                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+            </svg>
+        </div>
+    </div>
     
     {{-- Background with blur effect --}}
-    <div class="absolute inset-0 bg-gradient-to-br from-matcha-50/30 via-chai-50/20 to-almond-50/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-soft-linen-50/20 via-vanilla-50/20 to-forest-moss-green-50/30"></div>
     <div class="absolute inset-0 backdrop-blur-sm"></div>
     
     {{-- Decorative elements --}}
-    <div class="absolute top-10 left-10 w-32 h-32 bg-matcha-200/20 rounded-full blur-xl"></div>
+    <div class="absolute top-10 left-10 w-32 h-32 bg-forest-moss-green-200/20 rounded-full blur-xl"></div>
     <div class="absolute bottom-10 right-10 w-40 h-40 bg-chai-200/20 rounded-full blur-xl"></div>
-    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-almond-200/20 rounded-full blur-lg"></div>
+    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-soft-linen-200/20 rounded-full blur-lg"></div>
     
     <div class="relative max-w-7xl mx-auto px-6 z-10">
         
@@ -36,7 +56,7 @@
         <div id="testimonials-content" class="tab-content active">
             {{-- Section Header --}}
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-matcha-800 mb-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-forest-moss-green-800 mb-4">
                     What Our Clients Say
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -49,25 +69,25 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
                 {{-- Happy Clients --}}
                 <div class="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                    <div class="text-3xl md:text-4xl font-bold text-matcha-600 mb-2">500+</div>
+                    <div class="text-3xl md:text-4xl font-bold text-forest-moss-green-600 mb-2">500+</div>
                     <div class="text-gray-600 font-medium">Happy Clients</div>
                 </div>
                 
                 {{-- Pets Served --}}
                 <div class="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                    <div class="text-3xl md:text-4xl font-bold text-matcha-600 mb-2">1,200+</div>
+                    <div class="text-3xl md:text-4xl font-bold text-forest-moss-green-600 mb-2">1,200+</div>
                     <div class="text-gray-600 font-medium">Pets Served</div>
                 </div>
                 
                 {{-- Average Rating --}}
                 <div class="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                    <div class="text-3xl md:text-4xl font-bold text-matcha-600 mb-2">4.9/5</div>
+                    <div class="text-3xl md:text-4xl font-bold text-forest-moss-green-600 mb-2">4.9/5</div>
                     <div class="text-gray-600 font-medium">Average Rating</div>
                 </div>
                 
                 {{-- Years Experience --}}
                 <div class="text-center bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
-                    <div class="text-3xl md:text-4xl font-bold text-matcha-600 mb-2">5+</div>
+                    <div class="text-3xl md:text-4xl font-bold text-forest-moss-green-600 mb-2">5+</div>
                     <div class="text-gray-600 font-medium">Years Experience</div>
                 </div>
             </div>
@@ -79,7 +99,7 @@
                         @if($testimonials->count() > 0)
                             @php
                                 $chunks = $testimonials->chunk(3);
-                                $colors = ['matcha', 'chai', 'almond', 'vanilla'];
+                                $colors = ['forest-moss-green', 'chai', 'soft-linen', 'vanilla'];
                             @endphp
                             @foreach($chunks as $chunkIndex => $testimonialChunk)
                                 <div class="testimonial-slide w-full flex-shrink-0">
@@ -147,7 +167,7 @@
                 @if($testimonials->count() > 3)
                 <div class="flex justify-center mt-8 space-x-4">
                     <button class="testimonial-prev bg-white/60 backdrop-blur-sm hover:bg-white/80 rounded-full p-3 shadow-lg border border-white/20 transition-all duration-300">
-                        <svg class="w-6 h-6 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
@@ -156,11 +176,11 @@
                             $totalSlides = ceil($testimonials->count() / 3);
                         @endphp
                         @for($i = 0; $i < $totalSlides; $i++)
-                            <div class="testimonial-indicator w-3 h-3 rounded-full {{ $i === 0 ? 'bg-matcha-600' : 'bg-matcha-300' }} transition-all duration-300" data-slide="{{ $i }}"></div>
+                            <div class="testimonial-indicator w-3 h-3 rounded-full {{ $i === 0 ? 'bg-forest-moss-green-600' : 'bg-forest-moss-green-300' }} transition-all duration-300" data-slide="{{ $i }}"></div>
                         @endfor
                     </div>
                     <button class="testimonial-next bg-white/60 backdrop-blur-sm hover:bg-white/80 rounded-full p-3 shadow-lg border border-white/20 transition-all duration-300">
-                        <svg class="w-6 h-6 text-matcha-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
@@ -172,7 +192,7 @@
         {{-- Articles Tab Content --}}
         <div id="articles-content" class="tab-content hidden">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-matcha-800 mb-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-forest-moss-green-800 mb-4">
                     Pet Care Articles
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -183,7 +203,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @if($articles->count() > 0)
                     @php
-                        $colors = ['matcha', 'chai', 'almond', 'vanilla'];
+                        $colors = ['forest-moss-green', 'chai', 'soft-linen', 'vanilla'];
                         $categories = ['Pet Health', 'Grooming', 'Training', 'Nutrition', 'Behavior', 'Care'];
                     @endphp
                     @foreach($articles as $index => $article)
@@ -234,7 +254,7 @@
         {{-- News Tab Content --}}
         <div id="news-content" class="tab-content hidden">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-matcha-800 mb-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-forest-moss-green-800 mb-4">
                     Latest News
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -245,7 +265,7 @@
             <div class="space-y-8">
                 @if($news->count() > 0)
                     @php
-                        $colors = ['matcha', 'chai', 'almond', 'vanilla'];
+                        $colors = ['forest-moss-green', 'chai', 'soft-linen', 'vanilla'];
                         $categories = ['Clinic Update', 'Community', 'Achievement', 'Health', 'Service', 'Event'];
                     @endphp
                     @foreach($news as $index => $newsItem)
@@ -299,7 +319,7 @@
         {{-- Promo Tab Content --}}
         <div id="promo-content" class="tab-content hidden">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-matcha-800 mb-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-forest-moss-green-800 mb-4">
                     Special Offers
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -310,7 +330,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @if($promos->count() > 0)
                     @php
-                        $colors = ['matcha', 'chai', 'almond', 'vanilla'];
+                        $colors = ['forest-moss-green', 'chai', 'soft-linen', 'vanilla'];
                         $badgeColors = ['red', 'orange', 'green', 'blue', 'purple'];
                     @endphp
                     @foreach($promos as $index => $promo)
@@ -456,7 +476,7 @@
 <!-- Article Modals -->
 @if(isset($articles) && $articles->count() > 0)
     @php
-        $modalColors = ['matcha', 'chai', 'almond', 'vanilla'];
+        $modalColors = ['forest-moss-green', 'chai', 'soft-linen', 'vanilla'];
     @endphp
     @foreach($articles as $index => $article)
         @php
@@ -561,7 +581,7 @@
 <!-- News Modals -->
 @if(isset($news) && $news->count() > 0)
     @php
-        $newsColors = ['chai', 'matcha', 'vanilla', 'almond'];
+        $newsColors = ['chai', 'forest-moss-green', 'vanilla', 'soft-linen'];
     @endphp
     @foreach($news as $index => $newsItem)
         @php
@@ -742,11 +762,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update indicators
         indicators.forEach((indicator, index) => {
             if (index === currentSlide) {
-                indicator.classList.remove('bg-matcha-300');
-                indicator.classList.add('bg-matcha-600');
+                indicator.classList.remove('bg-forest-moss-green-300');
+                indicator.classList.add('bg-forest-moss-green-600');
             } else {
-                indicator.classList.remove('bg-matcha-600');
-                indicator.classList.add('bg-matcha-300');
+                indicator.classList.remove('bg-forest-moss-green-600');
+                indicator.classList.add('bg-forest-moss-green-300');
             }
         });
     }
