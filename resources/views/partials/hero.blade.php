@@ -1,341 +1,263 @@
-<section id="beranda" class="relative overflow-hidden bg-transparent">
-            <div class="relative overflow-hidden min-h-[100svh] sm:min-h-screen max-h-none">
+<section id="beranda" class="relative overflow-hidden bg-transparent min-h-[100svh] sm:min-h-screen group/slider">
+    <!-- Background Gradient (Fixed) -->
+    <div class="absolute inset-0 bg-gradient-to-b from-soft-linen-50 via-vanilla-50/50 to-soft-linen-100 z-0"></div>
+
+    <!-- Decorative Blobs (Fixed Background) -->
+    <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-forest-moss-green-100/20 to-forest-moss-green-200/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-soft-blush-pink-100/30 to-chai-100/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
+
+    <!-- Slides Container -->
+    <div class="relative w-full h-full min-h-screen">
+        
+        @forelse($heroSlides as $index => $slide)
+            @php
+                $isActive = $index === 0 ? 'active' : '';
+                $themeColor = $slide->theme_color ?? 'forest-moss-green';
                 
-                <!-- Slide 1: Complete Care -->
-                <div class="slide active absolute inset-0 w-full h-full z-10" data-slide="0">
-                    <div class="absolute inset-0 bg-gradient-to-r from-carob-600/10 to-forest-moss-green-500/10"></div>
-                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
-                        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-                            <div class="slide-content-left">
-                                <div class="slide-badge inline-flex items-center bg-carob-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
-                                    <span class="mr-2">🎁</span>
-                                    <span>Special Promo!</span>
-                                    <span class="ml-2 bg-white/20 px-2 py-1 rounded text-xs">Limited Time</span>
+                // Color mapping
+                $colors = [
+                    'forest-moss-green' => [
+                        'bg' => 'bg-forest-moss-green-500',
+                        'text' => 'text-forest-moss-green-600',
+                        'text_dark' => 'text-deep-cocoa-brown-800',
+                        'badge_ping' => 'bg-forest-moss-green-400',
+                        'badge_dot' => 'bg-forest-moss-green-500',
+                        'btn_bg' => 'bg-forest-moss-green-600',
+                        'btn_shadow' => 'shadow-forest-moss-green-600/20',
+                        'btn_hover_shadow' => 'shadow-forest-moss-green-600/30',
+                        'gradient_from' => 'from-forest-moss-green-500',
+                        'gradient_to' => 'to-forest-moss-green-700',
+                        'icon_color' => 'text-forest-moss-green-600',
+                        'border_hover' => 'hover:border-forest-moss-green-300',
+                        'secondary_blob_shadow' => 'shadow-forest-moss-green-900/10',
+                        'highlight_underline' => 'text-soft-blush-pink-300',
+                    ],
+                    'chai' => [
+                        'bg' => 'bg-chai-500',
+                        'text' => 'text-chai-600',
+                        'text_dark' => 'text-deep-cocoa-brown-800',
+                        'badge_ping' => 'bg-chai-400',
+                        'badge_dot' => 'bg-chai-500',
+                        'btn_bg' => 'bg-chai-500',
+                        'btn_shadow' => 'shadow-chai-500/20',
+                        'btn_hover_shadow' => 'shadow-chai-500/30',
+                        'gradient_from' => 'from-chai-400',
+                        'gradient_to' => 'to-chai-600',
+                        'icon_color' => 'text-chai-500',
+                        'border_hover' => 'hover:border-chai-300',
+                        'secondary_blob_shadow' => 'shadow-chai-900/10',
+                        'highlight_underline' => 'text-forest-moss-green-200',
+                    ],
+                    'soft-blush-pink' => [
+                        'bg' => 'bg-soft-blush-pink-500',
+                        'text' => 'text-soft-blush-pink-600',
+                        'text_dark' => 'text-deep-cocoa-brown-800',
+                        'badge_ping' => 'bg-soft-blush-pink-400',
+                        'badge_dot' => 'bg-soft-blush-pink-500',
+                        'btn_bg' => 'bg-soft-blush-pink-500',
+                        'btn_shadow' => 'shadow-soft-blush-pink-500/20',
+                        'btn_hover_shadow' => 'shadow-soft-blush-pink-500/30',
+                        'gradient_from' => 'from-soft-blush-pink-400',
+                        'gradient_to' => 'to-soft-blush-pink-600',
+                        'icon_color' => 'text-soft-blush-pink-500',
+                        'border_hover' => 'hover:border-soft-blush-pink-300',
+                        'secondary_blob_shadow' => 'shadow-soft-blush-pink-900/10',
+                        'highlight_underline' => 'text-chai-200',
+                    ],
+                    'deep-cocoa-brown' => [
+                        'bg' => 'bg-deep-cocoa-brown-500',
+                        'text' => 'text-deep-cocoa-brown-600',
+                        'text_dark' => 'text-deep-cocoa-brown-800',
+                        'badge_ping' => 'bg-deep-cocoa-brown-400',
+                        'badge_dot' => 'bg-deep-cocoa-brown-500',
+                        'btn_bg' => 'bg-deep-cocoa-brown-600',
+                        'btn_shadow' => 'shadow-deep-cocoa-brown-600/20',
+                        'btn_hover_shadow' => 'shadow-deep-cocoa-brown-600/30',
+                        'gradient_from' => 'from-deep-cocoa-brown-500',
+                        'gradient_to' => 'to-deep-cocoa-brown-700',
+                        'icon_color' => 'text-deep-cocoa-brown-600',
+                        'border_hover' => 'hover:border-deep-cocoa-brown-300',
+                        'secondary_blob_shadow' => 'shadow-deep-cocoa-brown-900/10',
+                        'highlight_underline' => 'text-forest-moss-green-200',
+                    ],
+                ];
+
+                $c = $colors[$themeColor] ?? $colors['forest-moss-green'];
+                
+                // Handle image paths
+                $mainImage = $slide->main_image;
+                if (!Str::startsWith($mainImage, 'http')) {
+                    $mainImage = asset('storage/' . $mainImage);
+                }
+                
+                $secondaryImage = null;
+                if ($slide->secondary_image) {
+                    $secondaryImage = $slide->secondary_image;
+                    if (!Str::startsWith($secondaryImage, 'http')) {
+                        $secondaryImage = asset('storage/' . $secondaryImage);
+                    }
+                }
+            @endphp
+
+            <div class="slide {{ $isActive }} absolute inset-0 w-full h-full z-10 transition-all duration-700 ease-in-out" data-slide="{{ $index }}">
+                <div class="w-full h-full flex items-center pt-24 sm:pt-28 pb-12 sm:pb-16 lg:pt-32 lg:pb-24">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                            <!-- Left Column -->
+                            <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+                                @if($slide->badge_text)
+                                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-soft-linen-200 shadow-sm shadow-deep-cocoa-brown-900/5 cursor-default">
+                                    <span class="flex h-2 w-2 relative">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full {{ $c['badge_ping'] }} opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 {{ $c['badge_dot'] }}"></span>
+                                    </span>
+                                    <span class="text-xs sm:text-sm font-medium text-deep-cocoa-brown-600 tracking-wide uppercase">{{ $slide->badge_text }}</span>
                                 </div>
-                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-carob-700 mb-2 sm:mb-3 md:mb-4 leading-tight tracking-tight">
-                                    Complete Care
-                                </h1>
-                                <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold gradient-text mb-3 sm:mb-4 md:mb-6 leading-relaxed">
-                                    for Your Beloved Pets
-                                </h2>
-                                <p class="text-sm sm:text-base lg:text-lg text-carob-600 mb-4 sm:mb-6 md:mb-8 leading-relaxed tracking-wide max-w-2xl">
-                                    Discover our comprehensive pet wellness services including veterinary care, grooming, boarding, and a cozy cafe.
-                                </p>
-                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-carob-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-carob-700 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
-                                        <i data-lucide="calendar" class="mr-2 w-4 h-4"></i>
-                                        Book Appointment
-                                    </a>
-                                    <a href="https://wa.me/6281219088899" class="bg-white text-carob-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-soft-linen-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-carob-200 hover:border-carob-400 text-sm sm:text-base">
-                                        <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
-                                        Chat WhatsApp
-                                    </a>
+                                @endif
+
+                                <div class="space-y-4 max-w-2xl">
+                                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold {{ $c['text_dark'] }} leading-[1.1] tracking-tight">
+                                        {{ $slide->title }} <br>
+                                        @if($slide->highlight_text)
+                                        <span class="{{ str_replace('text-', 'text-', $c['text']) }} relative inline-block">
+                                            {{ $slide->highlight_text }}
+                                            <svg class="absolute w-full h-3 -bottom-1 left-0 {{ $c['highlight_underline'] }} -z-10" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7201 5.20448 132.856 2.00006 198.001 3.50002" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                                        </span>
+                                        @endif
+                                    </h1>
+                                    <p class="text-lg sm:text-xl text-deep-cocoa-brown-600 leading-relaxed font-light">
+                                        {{ $slide->description }}
+                                    </p>
                                 </div>
-                                <div class="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-6 md:space-x-8 text-center">
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-carob-700">500+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Happy Pets</div>
+
+                                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                                    @if($slide->primary_cta_text)
+                                    <a href="{{ $slide->primary_cta_url ?? '#' }}" class="group relative overflow-hidden {{ $c['btn_bg'] }} text-white px-8 py-4 rounded-2xl font-medium text-base shadow-xl {{ $c['btn_shadow'] }} hover:{{ $c['btn_hover_shadow'] }} hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2">
+                                        <span class="relative z-10">{{ $slide->primary_cta_text }}</span>
+                                        <i data-lucide="arrow-right" class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300"></i>
+                                        <div class="absolute inset-0 bg-gradient-to-r {{ $c['gradient_from'] }} {{ $c['gradient_to'] }} opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </a>
+                                    @endif
+
+                                    @if($slide->secondary_cta_text)
+                                    <a href="{{ $slide->secondary_cta_url ?? '#' }}" class="group bg-white/80 backdrop-blur-sm text-deep-cocoa-brown-700 px-8 py-4 rounded-2xl font-medium text-base border border-soft-linen-200 {{ $c['border_hover'] }} hover:bg-white shadow-lg shadow-deep-cocoa-brown-900/5 hover:shadow-deep-cocoa-brown-900/10 hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2">
+                                        <i data-lucide="message-circle" class="w-5 h-5 {{ $c['icon_color'] }} group-hover:scale-110 transition-transform duration-300"></i>
+                                        <span>{{ $slide->secondary_cta_text }}</span>
+                                    </a>
+                                    @endif
+                                </div>
+
+                                <!-- Trust Indicators -->
+                                <div class="pt-4 flex items-center gap-6 sm:gap-8 text-deep-cocoa-brown-500/80">
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex -space-x-3">
+                                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=100&h=100&fit=crop" alt="User">
+                                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User">
+                                            <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="User">
+                                        </div>
+                                        <div class="flex flex-col text-xs leading-tight">
+                                            <span class="font-bold text-deep-cocoa-brown-700">500+</span>
+                                            <span>Happy Owners</span>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-carob-700">5+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Years Experience</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-carob-700">24/7</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Support</div>
+                                    <div class="w-px h-8 bg-deep-cocoa-brown-200/50"></div>
+                                    <div class="flex flex-col text-xs leading-tight">
+                                        <span class="font-bold text-deep-cocoa-brown-700 text-base">4.9/5</span>
+                                        <span class="flex items-center gap-0.5">
+                                            <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
+                                            Top Rated
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="slide-content-right relative mt-6 sm:mt-8 lg:mt-0">
-                                <div class="parallax-element parallax-slow relative bg-white rounded-2xl shadow-2xl overflow-hidden transform will-change-transform">
-                                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                                         alt="Complete Care" class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover">
-                                    <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
-                                        <div class="flex items-center text-chai-500">
-                                            <span class="text-sm font-bold mr-1">4.9/5</span>
-                                            <span>⭐</span>
-                                        </div>
-                                        <div class="text-xs text-carob-500 text-center">Rating</div>
-                                    </div>
-                                    <div class="absolute bottom-4 left-4 bg-forest-moss-green-500 text-white px-4 py-2 rounded-lg">
-                                        <div class="flex items-center">
-                                            <span class="mr-2">😊</span>
+
+                            <!-- Right Column -->
+                            <div class="relative hidden lg:block h-full min-h-[500px] w-full perspective-1000 group">
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-deep-cocoa-brown-900/10 rotate-[-3deg] transition-all duration-700 group-hover:rotate-0 border-[6px] border-white z-10">
+                                    <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700">
+                                    
+                                    <!-- Floating Card (Dynamic Content based on theme/index could be added here, currently static style) -->
+                                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-soft-linen-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                                        <div class="flex items-center justify-between">
                                             <div>
-                                                <div class="font-semibold text-sm">Premium Care</div>
-                                                <div class="text-xs opacity-90">Professional veterinary services</div>
-                                                <div class="bg-white/20 text-xs px-2 py-1 rounded mt-1 inline-block">Trusted by 500+ pets</div>
+                                                <p class="text-xs font-semibold text-deep-cocoa-brown-400 uppercase tracking-wider mb-1">Wellness Status</p>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-2 h-2 rounded-full {{ $c['badge_dot'] }} animate-pulse"></div>
+                                                    <p class="text-sm font-bold text-deep-cocoa-brown-700">Healthy & Happy</p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-soft-linen-50 p-2 rounded-lg">
+                                                <i data-lucide="heart" class="w-5 h-5 {{ $c['icon_color'] }} fill-current"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Slide 2: Emergency Care -->
-                <div class="slide absolute inset-0 w-full h-full z-[1]" data-slide="1">
-                    <div class="absolute inset-0 bg-gradient-to-r from-forest-moss-green-500/10 to-carob-700/10"></div>
-                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
-                        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-                            <div class="slide-content-left">
-                                <div class="slide-badge inline-flex items-center bg-forest-moss-green-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
-                                    <i data-lucide="alert-triangle" class="mr-2 w-4 h-4"></i>
-                                    <span>Emergency Ready!</span>
-                                    <span class="ml-2 bg-white/20 px-2 py-1 rounded text-xs">Always Available</span>
+                                @if($secondaryImage)
+                                <div class="absolute top-[10%] right-[5%] w-[60%] aspect-square rounded-[2rem] overflow-hidden shadow-xl {{ $c['secondary_blob_shadow'] }} rotate-[6deg] opacity-90 transition-all duration-700 group-hover:rotate-[3deg] group-hover:translate-x-4 border-[6px] border-white z-0">
+                                     <img src="{{ $secondaryImage }}" alt="Detail" class="w-full h-full object-cover">
                                 </div>
-                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-forest-moss-green-600 mb-2 sm:mb-3 md:mb-4 leading-tight tracking-tight">
-                                    Emergency Care
-                                </h1>
-                                <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-carob-700 mb-3 sm:mb-4 md:mb-6 leading-relaxed">
-                                    24/7 Always Ready
-                                </h2>
-                                <p class="text-sm sm:text-base lg:text-lg text-carob-600 mb-4 sm:mb-6 md:mb-8 leading-relaxed tracking-wide max-w-2xl">
-                                    Our emergency veterinary services are available round the clock to ensure your pet gets immediate care when needed.
-                                </p>
-                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-forest-moss-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-forest-moss-green-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
-                                        <i data-lucide="calendar" class="mr-2 w-4 h-4"></i>
-                                        Book Appointment
-                                    </a>
-                                    <a href="https://wa.me/6281219088899" class="bg-white text-forest-moss-green-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-soft-linen-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-forest-moss-green-200 hover:border-forest-moss-green-400 text-sm sm:text-base">
-                                        <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
-                                        Chat WhatsApp
-                                    </a>
-                                </div>
-                                <div class="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-6 md:space-x-8 text-center">
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-forest-moss-green-600">500+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Happy Pets</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-forest-moss-green-600">5+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Years Experience</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-forest-moss-green-600">24/7</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Support</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-content-right relative mt-6 sm:mt-8 lg:mt-0">
-                                <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                                         alt="Emergency Care" class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover">
-                                    <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
-                                        <div class="flex items-center text-chai-500">
-                                            <span class="text-sm font-bold mr-1">4.9/5</span>
-                                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                        </div>
-                                        <div class="text-xs text-carob-500 text-center">Rating</div>
-                                    </div>
-                                    <div class="absolute bottom-4 left-4 bg-carob-700 text-white px-4 py-2 rounded-lg">
-                                        <div class="flex items-center">
-                                            <i data-lucide="clock" class="mr-2 w-4 h-4"></i>
-                                            <div>
-                                                <div class="font-semibold text-sm">Emergency Care</div>
-                                                <div class="text-xs opacity-90">Immediate response guaranteed</div>
-                                                <div class="bg-white/20 text-xs px-2 py-1 rounded mt-1 inline-block">5-minute response time</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                @endif
 
-                <!-- Slide 3: Luxury Spa -->
-                <div class="slide absolute inset-0 w-full h-full z-[1]" data-slide="2">
-                    <div class="absolute inset-0 bg-gradient-to-r from-chai-500/10 to-carob-700/10"></div>
-                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
-                        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-                            <div class="slide-content-left">
-                                <div class="slide-badge inline-flex items-center bg-chai-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
-                                    <i data-lucide="sparkles" class="mr-2 w-4 h-4"></i>
-                                    <span>Luxury Package!</span>
-                                    <span class="ml-2 bg-white/20 px-2 py-1 rounded text-xs">VIP Treatment</span>
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-chai-600 mb-2 sm:mb-3 md:mb-4 leading-tight tracking-tight">
-                                    Luxury Spa
-                                </h1>
-                                <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-carob-700 mb-3 sm:mb-4 md:mb-6 leading-relaxed">
-                                    & Grooming Services
-                                </h2>
-                                <p class="text-sm sm:text-base lg:text-lg text-carob-600 mb-4 sm:mb-6 md:mb-8 leading-relaxed tracking-wide max-w-2xl">
-                                    Premium grooming and spa treatments to keep your pets looking and feeling their absolute best with our luxury services.
-                                </p>
-                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-chai-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-chai-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
-                                        <span class="mr-2">📅</span>
-                                        Book Appointment
-                                    </a>
-                                    <a href="https://wa.me/6281219088899" class="bg-white text-chai-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-almond-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-chai-200 hover:border-chai-400 text-sm sm:text-base">
-                                        <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
-                                        Chat WhatsApp
-                                    </a>
-                                </div>
-                                <div class="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-6 md:space-x-8 text-center">
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-chai-600">500+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Happy Pets</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-chai-600">5+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Years Experience</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-chai-600">24/7</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Support</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-content-right relative mt-6 sm:mt-8 lg:mt-0">
-                                <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                                         alt="Luxury Spa" class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover">
-                                    <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
-                                        <div class="flex items-center text-chai-500">
-                                            <span class="text-sm font-bold mr-1">4.9/5</span>
-                                            <span>⭐</span>
-                                        </div>
-                                        <div class="text-xs text-carob-500 text-center">Rating</div>
-                                    </div>
-                                    <div class="absolute bottom-4 left-4 bg-carob-700 text-white px-4 py-2 rounded-lg">
-                                        <div class="flex items-center">
-                                            <span class="mr-2">✨</span>
-                                            <div>
-                                                <div class="font-semibold text-sm">Luxury Spa</div>
-                                                <div class="text-xs opacity-90">5-star grooming experience</div>
-                                                <div class="bg-white/20 text-xs px-2 py-1 rounded mt-1 inline-block">Award-winning service</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="absolute -top-4 left-[10%] bg-white p-3 rounded-2xl shadow-xl rotate-[-10deg] animate-float-slow z-20">
+                                    <span class="text-2xl">🐾</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Slide 4: Membership -->
-                <div class="slide absolute inset-0 w-full h-full z-[1]" data-slide="3">
-                    <div class="absolute inset-0 bg-gradient-to-r from-soft-blush-pink-300/10 to-soft-blush-pink-600/10"></div>
-                    <div class="max-w-7xl mx-auto px-6 h-full flex items-center pt-20 pb-20 sm:pt-24 sm:pb-24 md:pt-20 md:pb-20 lg:pt-16 lg:pb-16 xl:pt-12 xl:pb-12">
-                        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-                            <div class="slide-content-left">
-                                <div class="slide-badge inline-flex items-center bg-soft-blush-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
-                                    <span class="mr-2">👑</span>
-                                    <span>VIP Membership!</span>
-                                    <span class="ml-2 bg-white/20 px-2 py-1 rounded text-xs">Exclusive Access</span>
-                                </div>
-                                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-soft-blush-pink-600 mb-2 sm:mb-3 md:mb-4 leading-tight tracking-tight">
-                                    Membership
-                                </h1>
-                                <h2 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-soft-blush-pink-700 mb-3 sm:mb-4 md:mb-6 leading-relaxed">
-                                    Exclusive Benefits
-                                </h2>
-                                <p class="text-sm sm:text-base lg:text-lg text-carob-600 mb-4 sm:mb-6 md:mb-8 leading-relaxed tracking-wide max-w-2xl">
-                                    Join our exclusive membership program and enjoy special discounts, priority booking, and premium services for your beloved pets.
-                                </p>
-                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8">
-                                    <a href="#booking" class="btn-primary relative overflow-hidden bg-soft-blush-pink-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-soft-blush-pink-600 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold shadow-lg text-sm sm:text-base scroll-smooth">
-                                        <span class="mr-2">📅</span>
-                                        Book Appointment
-                                    </a>
-                                    <a href="https://wa.me/6281219088899" class="bg-white text-soft-blush-pink-600 px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-soft-linen-50 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center font-semibold border-2 border-soft-blush-pink-200 hover:border-soft-blush-pink-400 text-sm sm:text-base">
-                                        <i data-lucide="message-circle" class="mr-2 w-4 h-4"></i>
-                                        Chat WhatsApp
-                                    </a>
-                                </div>
-                                <div class="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-6 md:space-x-8 text-center">
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-soft-blush-pink-600">500+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Happy Pets</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-soft-blush-pink-600">5+</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Years Experience</div>
-                                    </div>
-                                    <div>
-                                        <div class="text-lg sm:text-xl md:text-2xl font-bold text-soft-blush-pink-600">24/7</div>
-                                        <div class="text-xs sm:text-sm text-carob-600">Support</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-content-right relative mt-6 sm:mt-8 lg:mt-0">
-                                <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                                         alt="Membership" class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover">
-                                    <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
-                                        <div class="flex items-center text-soft-blush-pink-500">
-                                            <span class="text-sm font-bold mr-1">4.9/5</span>
-                                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                        </div>
-                                        <div class="text-xs text-carob-500 text-center">Rating</div>
-                                    </div>
-                                    <div class="absolute bottom-4 left-4 bg-soft-blush-pink-600 text-white px-4 py-2 rounded-lg">
-                                        <div class="flex items-center">
-                                            <i data-lucide="crown" class="mr-2 w-4 h-4"></i>
-                                            <div>
-                                                <div class="font-semibold text-sm">VIP Member</div>
-                                                <div class="text-xs opacity-90">Exclusive perks & priority</div>
-                                                <div class="bg-white/20 text-xs px-2 py-1 rounded mt-1 inline-block">Join 1000+ happy members</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-            
-            <!-- Slider Progress Bar & Navigation -->
-            <div class="absolute bottom-8 sm:bottom-10 md:bottom-12 left-1/2 transform -translate-x-1/2 z-20 pb-4 sm:pb-0">
-                <div class="flex flex-col items-center space-y-3 sm:space-y-4">
-                    <!-- Progress Bar -->
-                    <div class="flex space-x-1 sm:space-x-2">
-                        <div class="progress-indicator active" data-slide="0">
-                            <div class="w-12 sm:w-16 h-1 bg-white/30 rounded-full overflow-hidden">
-                                <div class="progress-bar-fill h-full w-0 rounded-full transition-all duration-300"></div>
-                            </div>
-                        </div>
-                        <div class="progress-indicator" data-slide="1">
-                            <div class="w-12 sm:w-16 h-1 bg-white/30 rounded-full overflow-hidden">
-                                <div class="progress-bar-fill h-full w-0 rounded-full transition-all duration-300"></div>
-                            </div>
-                        </div>
-                        <div class="progress-indicator" data-slide="2">
-                            <div class="w-12 sm:w-16 h-1 bg-white/30 rounded-full overflow-hidden">
-                                <div class="progress-bar-fill h-full w-0 rounded-full transition-all duration-300"></div>
-                            </div>
-                        </div>
-                        <div class="progress-indicator" data-slide="3">
-                            <div class="w-12 sm:w-16 h-1 bg-white/30 rounded-full overflow-hidden">
-                                <div class="progress-bar-fill h-full w-0 rounded-full transition-all duration-300"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Navigation Buttons -->
-                    <div class="flex space-x-2 sm:space-x-3">
-                        <button class="slide-nav-btn" data-slide="0" aria-label="Go to slide 1">
-                            <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 hover:scale-125"></div>
-                        </button>
-                        <button class="slide-nav-btn" data-slide="1" aria-label="Go to slide 2">
-                            <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 hover:scale-125"></div>
-                        </button>
-                        <button class="slide-nav-btn" data-slide="2" aria-label="Go to slide 3">
-                            <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 hover:scale-125"></div>
-                        </button>
-                        <button class="slide-nav-btn" data-slide="3" aria-label="Go to slide 4">
-                            <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-300 hover:scale-125"></div>
-                        </button>
                     </div>
                 </div>
             </div>
-        </section>
+        @empty
+            <!-- Fallback if no slides -->
+            <div class="slide active absolute inset-0 w-full h-full z-10 flex items-center justify-center">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold text-deep-cocoa-brown-800">Welcome to Zow Vetique</h1>
+                    <p class="text-xl text-deep-cocoa-brown-600 mt-4">A Second Home for Your Pet</p>
+                </div>
+            </div>
+        @endforelse
+    </div>
+    
+    <!-- Slider Navigation (Bottom Center) -->
+    @if(count($heroSlides) > 1)
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-4">
+        <!-- Dots -->
+        <div class="flex items-center gap-3">
+            @foreach($heroSlides as $index => $slide)
+                <button class="slide-nav-btn w-3 h-3 rounded-full bg-deep-cocoa-brown-300 hover:bg-forest-moss-green-600 transition-all duration-300" data-slide="{{ $index }}" aria-label="Slide {{ $index + 1 }}"></button>
+            @endforeach
+        </div>
+    </div>
+    @endif
+</section>
+
+<style>
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0) rotate(-10deg); }
+        50% { transform: translateY(-10px) rotate(-8deg); }
+    }
+    @keyframes float-medium {
+        0%, 100% { transform: translateY(0) rotate(12deg); }
+        50% { transform: translateY(-15px) rotate(15deg); }
+    }
+    .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+    .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
+    
+    /* Slider Transitions */
+    .slide {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.05);
+        pointer-events: none;
+    }
+    .slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+    .slide-nav-btn.active {
+        background-color: #364E2C; /* forest-moss-green-500 */
+        transform: scale(1.2);
+    }
+</style>

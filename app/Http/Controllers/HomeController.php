@@ -10,6 +10,7 @@ use App\Models\Testimonial;
 use App\Models\Article;
 use App\Models\News;
 use App\Models\Promo;
+use App\Models\HeroSlide;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -18,6 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         // Fetch dynamic data from database
+        $heroSlides = HeroSlide::where('is_active', true)->orderBy('sort_order')->get();
         $services = Service::active()->ordered()->get();
         $healthServices = Service::active()->where('category', 'Health')->ordered()->get();
         $wellnessServices = Service::active()->where('category', 'Wellness')->ordered()->get();
@@ -32,6 +34,7 @@ class HomeController extends Controller
         $vets = $this->fetchVetsFromDigitail();
 
         return view('home', compact(
+            'heroSlides',
             'services',
             'healthServices',
             'wellnessServices',
