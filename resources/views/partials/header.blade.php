@@ -1,253 +1,235 @@
 <!-- Header -->
 <header id="header"
-    class="fixed top-3 left-1/2 transform -translate-x-1/2 w-full max-w-[98vw] xl:max-w-7xl mx-auto px-1 sm:px-2 z-50 transition-all duration-300">
+    class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 pointer-events-none">
     <div
-        class="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/40 mx-0.5 sm:mx-1 ring-1 ring-black/10 relative overflow-visible header-container">
+        class="pointer-events-auto max-w-7xl mx-auto bg-soft-linen-50/90 backdrop-blur-xl rounded-2xl shadow-lg shadow-deep-cocoa-brown-900/5 border border-white/50 ring-1 ring-deep-cocoa-brown-900/5 relative transition-all duration-300">
+        
         <!-- Progress Bar -->
-        <!-- Track (always visible) -->
-        <div
-            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-soft-linen-200 opacity-60 rounded-full shadow-inner pointer-events-none z-0">
+        <div class="absolute bottom-0 left-2 right-2 h-[2px] bg-soft-linen-200/50 rounded-full overflow-hidden">
+            <div id="scrollProgress"
+                class="h-full bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-600 rounded-full transition-all duration-150 ease-out w-0">
+            </div>
         </div>
-        <!-- Fill (animated) -->
-        <div id="scrollProgress"
-            class="absolute top-px left-4 right-4 sm:left-6 sm:right-6 lg:left-8 lg:right-8 h-1 bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600 rounded-full shadow-inner pointer-events-none z-10 overflow-hidden"
-            style="width: 0%; max-width: 100%; transition: width 200ms ease-out; will-change: width;"></div>
-        <nav class="flex items-center justify-between py-2.5 px-2 sm:px-4 lg:px-6">
+
+        <nav class="flex items-center w-full py-2 px-4 sm:px-6 gap-2 lg:gap-4">
             <!-- Logo (Left) -->
-            <div class="flex items-center space-x-2.5 flex-shrink-0">
+            <div class="flex-shrink-0 flex items-center gap-3 group">
                 <div
-                    class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-500 to-forest-moss-green-600 rounded-xl flex items-center justify-center shadow-md">
-                    <i data-lucide="heart" class="text-white w-5 h-5"></i>
+                    class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-500 to-forest-moss-green-700 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-forest-moss-green-500/20 transition-all duration-300">
+                    <i data-lucide="heart" class="text-soft-linen-50 w-5 h-5 fill-current"></i>
                 </div>
-                <span class="text-xl font-bold text-carob-800 font-heading tracking-tight">Zow Vetique</span>
+                <div class="flex flex-col">
+                    <span class="text-lg font-bold text-deep-cocoa-brown-800 font-heading leading-tight tracking-tight group-hover:text-forest-moss-green-800 transition-colors">Zow Vetique</span>
+                    <span class="text-[0.65rem] font-medium text-deep-cocoa-brown-500 uppercase tracking-widest">Pet Wellness Hub</span>
+                </div>
             </div>
 
             <!-- Desktop Navigation (Center) -->
-            <div class="hidden lg:flex items-center space-x-1 xl:space-x-3 flex-1 justify-center ml-1 xl:ml-4">
+            <div class="hidden lg:flex flex-1 items-center justify-center gap-1">
                 <a href="#beranda"
-                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.home') }}</a>
+                    class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.home') }}</a>
+                
                 <div class="relative group">
                     <button
-                        class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap inline-flex items-center">
+                        class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200 inline-flex items-center gap-1">
                         {{ __('messages.services') }}
-                        <svg class="ml-1 w-3 h-3 text-carob-500 group-hover:text-forest-moss-green-600 transition-colors"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
+                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-deep-cocoa-brown-400 group-hover:text-forest-moss-green-600 transition-transform duration-200 group-hover:rotate-180"></i>
                     </button>
+                    
+                    <!-- Dropdown -->
                     <div
-                        class="absolute left-0 top-full mt-0 bg-white rounded-xl shadow-xl border border-soft-linen-200 p-2 min-w-[160px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                        class="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl shadow-deep-cocoa-brown-900/10 border border-soft-linen-100 p-1.5 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
                         <a href="#health"
-                            class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-soft-linen-50">{{ __('messages.health') }}</a>
+                            class="flex items-center gap-2 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 font-medium text-sm px-3 py-2.5 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
+                            {{ __('messages.health') }}
+                        </a>
                         <a href="#wellness"
-                            class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-soft-linen-50">{{ __('messages.wellness') }}</a>
-                        <!-- Added Booking submenu item -->
+                            class="flex items-center gap-2 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 font-medium text-sm px-3 py-2.5 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
+                            {{ __('messages.wellness') }}
+                        </a>
                         <a href="#booking"
-                            class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg hover:bg-soft-linen-50">{{ __('messages.booking') }}</a>
+                            class="flex items-center gap-2 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 font-medium text-sm px-3 py-2.5 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
+                            {{ __('messages.booking') }}
+                        </a>
                     </div>
                 </div>
+
                 <a href="#harga"
-                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.pricing') }}</a>
+                    class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.pricing') }}</a>
                 <a href="#keanggotaan"
-                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.membership') }}</a>
+                    class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.membership') }}</a>
                 <a href="#testimoni"
-                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.testimonials') }}</a>
+                    class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.testimonials') }}</a>
                 <a href="#lokasi"
-                    class="text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-soft-linen-50 whitespace-nowrap">{{ __('messages.location') }}</a>
+                    class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.location') }}</a>
             </div>
 
-            <!-- Language Switch & Action Buttons (Right) -->
-            <div class="hidden lg:flex items-center space-x-1 xl:space-x-2 flex-shrink-0 header-right">
+            <!-- Right Actions -->
+            <div class="hidden lg:flex flex-shrink-0 items-center gap-3">
                 <!-- Language Switcher -->
                 <x-lang-switch :locales="['id', 'en']" />
 
-                <div class="h-5 w-px bg-almond-200"></div>
+                <div class="h-6 w-px bg-deep-cocoa-brown-100"></div>
 
-                <!-- Contact Buttons -->
-                <div class="flex items-center">
-                    <button id="btnEmergencyCall"
-                        class="bg-rose-400 text-white px-1.5 xl:px-2.5 py-1.5 rounded-lg hover:bg-rose-500 transition-all duration-200 flex items-center space-x-1 font-medium text-xs shadow-lg hover:shadow-xl">
-                        <i data-lucide="alert-triangle" class="w-3 h-3"></i>
-                        <span class="hidden xl:inline">Emergency Call</span>
-                    </button>
-                </div>
+                <!-- Emergency Button -->
+                <button id="btnEmergencyCall"
+                    class="bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600 text-white px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 font-medium text-sm shadow-lg shadow-soft-blush-pink-500/20 hover:shadow-soft-blush-pink-500/30 transform hover:-translate-y-0.5">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 fill-current"></i>
+                    <span>Emergency</span>
+                </button>
 
-                <div class="h-5 w-px bg-almond-200"></div>
-
-                <!-- Auth Buttons / User Menu -->
+                <!-- Auth -->
                 @auth
-                    <!-- User Dropdown Menu -->
-                    <div class="relative group">
+                    <div class="relative group ml-1">
                         <button
-                            class="flex items-center space-x-2 px-2 xl:px-3 py-1.5 rounded-lg hover:bg-almond-50 transition-all duration-200">
+                            class="flex items-center gap-2.5 pl-2 pr-1 py-1 rounded-full hover:bg-soft-linen-100 transition-all duration-200 border border-transparent hover:border-soft-linen-200">
+                            <span class="text-deep-cocoa-brown-700 font-medium text-sm hidden xl:block">{{ auth()->user()->name }}</span>
                             <div
-                                class="w-8 h-8 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center">
+                                class="w-9 h-9 bg-gradient-to-br from-forest-moss-green-100 to-forest-moss-green-200 rounded-full flex items-center justify-center border-2 border-white shadow-sm overflow-hidden">
                                 @if(auth()->user()->avatar)
                                     <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
-                                        class="w-8 h-8 rounded-full object-cover">
+                                        class="w-full h-full object-cover">
                                 @else
-                                    <span
-                                        class="text-white font-semibold text-xs">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                    <span class="text-forest-moss-green-700 font-bold text-xs">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
                                 @endif
                             </div>
-                            <span
-                                class="text-carob-700 font-medium text-xs xl:text-sm hidden xl:block">{{ auth()->user()->name }}</span>
-                            <svg class="w-4 h-4 text-carob-500 group-hover:text-forest-moss-green-600 transition-colors" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                                </path>
-                            </svg>
                         </button>
 
-                        <!-- Dropdown Menu -->
+                        <!-- Dropdown -->
                         <div
-                            class="absolute right-0 top-full mt-2 bg-white rounded-xl shadow-xl border border-almond-200 p-2 min-w-[200px] opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                            <div class="px-3 py-2 border-b border-almond-200 mb-2">
-                                <p class="text-sm font-semibold text-carob-900">{{ auth()->user()->name }}</p>
-                                <p class="text-xs text-carob-500">{{ auth()->user()->email }}</p>
+                            class="absolute right-0 top-full mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl shadow-deep-cocoa-brown-900/10 border border-soft-linen-100 p-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                            <div class="px-3 py-2 border-b border-soft-linen-100 mb-1">
+                                <p class="text-sm font-semibold text-deep-cocoa-brown-800 truncate">{{ auth()->user()->name }}</p>
+                                <p class="text-xs text-deep-cocoa-brown-500 truncate">{{ auth()->user()->email }}</p>
                             </div>
                             <a href="{{ route('profile') }}"
-                                class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-almond-50 transition-all duration-200 text-carob-700 hover:text-matcha-600">
+                                class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 text-sm">
                                 <i data-lucide="user" class="w-4 h-4"></i>
-                                <span class="text-sm">Profile</span>
+                                <span>Profile</span>
                             </a>
                             <a href="{{ route('history') }}"
-                                class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-almond-50 transition-all duration-200 text-carob-700 hover:text-matcha-600">
+                                class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 text-sm">
                                 <i data-lucide="history" class="w-4 h-4"></i>
-                                <span class="text-sm">Riwayat</span>
+                                <span>History</span>
                             </a>
-                            <div class="border-t border-almond-200 my-2"></div>
+                            <div class="border-t border-soft-linen-100 my-1"></div>
                             <form action="{{ route('auth.signout') }}" method="POST">
                                 @csrf
                                 <button type="submit"
-                                    class="w-full flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-50 transition-all duration-200 text-red-600 hover:text-red-700">
+                                    class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-red-50 transition-all duration-200 text-red-600 hover:text-red-700 text-sm">
                                     <i data-lucide="log-out" class="w-4 h-4"></i>
-                                    <span class="text-sm">Sign Out</span>
+                                    <span>Sign Out</span>
                                 </button>
                             </form>
                         </div>
                     </div>
                 @else
-                    <!-- Auth Buttons -->
-                    <div class="flex items-center space-x-0.5">
+                    <div class="flex items-center gap-2 ml-1">
                         <button data-open-signin
-                            class="text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 font-medium text-xs xl:text-sm px-1.5 xl:px-2.5 py-1.5 hover:bg-soft-linen-50 rounded-lg whitespace-nowrap">Sign
-                            In</button>
+                            class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 font-medium text-sm px-4 py-2 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">
+                            Sign In
+                        </button>
                         <button data-open-signup
-                            class="bg-chai-500 text-white px-1.5 xl:px-3 py-1.5 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium text-xs xl:text-sm shadow-lg hover:shadow-xl whitespace-nowrap">Sign
-                            Up</button>
+                            class="bg-forest-moss-green-600 hover:bg-forest-moss-green-700 text-white px-5 py-2 rounded-xl transition-all duration-200 font-medium text-sm shadow-lg shadow-forest-moss-green-600/20 hover:shadow-forest-moss-green-600/30 transform hover:-translate-y-0.5">
+                            Sign Up
+                        </button>
                     </div>
                 @endauth
             </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn"
-                class="lg:hidden p-2 rounded-lg hover:bg-soft-linen-100 transition-all duration-200 text-carob-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
+                class="lg:hidden p-2.5 rounded-xl text-deep-cocoa-brown-600 hover:bg-soft-linen-100 transition-all duration-200 justify-self-end">
+                <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </nav>
 
-        <!-- Emergency modal dipindahkan ke layout global -->
-
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden pb-4">
-            <div class="px-6">
-                <!-- Navigation Links - Vertical Layout -->
-                <div class="space-y-2 py-3">
-                    <a href="#beranda"
-                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.home') }}</a>
-                    <div class="space-y-1">
-                        <div class="block text-carob-700 font-medium py-3 px-4 rounded-lg">{{ __('messages.services') }}
-                        </div>
-                        <a href="#health"
-                            class="block text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-soft-linen-50 text-sm">{{ __('messages.health') }}</a>
-                        <a href="#wellness"
-                            class="block text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-soft-linen-50 text-sm">{{ __('messages.wellness') }}</a>
-                        <!-- Added Booking submenu item (mobile) -->
-                        <a href="#booking"
-                            class="block text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 py-2 px-6 rounded-lg hover:bg-soft-linen-50 text-sm">{{ __('messages.booking') }}</a>
-                    </div>
-                    <a href="#harga"
-                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.pricing') }}</a>
-                    <a href="#keanggotaan"
-                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.membership') }}</a>
-                    <a href="#testimoni"
-                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.testimonials') }}</a>
-                    <a href="#lokasi"
-                        class="block text-carob-700 hover:text-forest-moss-green-600 transition-all duration-200 font-medium py-3 px-4 rounded-lg hover:bg-soft-linen-50">{{ __('messages.location') }}</a>
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-soft-linen-100">
+            <div class="p-4 space-y-1">
+                <a href="#beranda"
+                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.home') }}</a>
+                
+                <div class="space-y-1 py-1">
+                    <div class="px-4 py-2 text-xs font-semibold text-deep-cocoa-brown-400 uppercase tracking-wider">{{ __('messages.services') }}</div>
+                    <a href="#health"
+                        class="block text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-6 rounded-xl hover:bg-soft-linen-100 transition-all duration-200 text-sm border-l-2 border-transparent hover:border-forest-moss-green-300">
+                        {{ __('messages.health') }}
+                    </a>
+                    <a href="#wellness"
+                        class="block text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-6 rounded-xl hover:bg-soft-linen-100 transition-all duration-200 text-sm border-l-2 border-transparent hover:border-forest-moss-green-300">
+                        {{ __('messages.wellness') }}
+                    </a>
+                    <a href="#booking"
+                        class="block text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-6 rounded-xl hover:bg-soft-linen-100 transition-all duration-200 text-sm border-l-2 border-transparent hover:border-forest-moss-green-300">
+                        {{ __('messages.booking') }}
+                    </a>
                 </div>
 
-                <div class="border-t border-almond-200 pt-4 mt-4">
-                    <!-- Language Switcher -->
-                    <x-lang-switch :locales="['id', 'en']"
-                        class="flex items-center justify-center space-x-1 mb-4 bg-soft-linen-100 rounded-lg p-1" />
+                <a href="#harga"
+                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.pricing') }}</a>
+                <a href="#keanggotaan"
+                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.membership') }}</a>
+                <a href="#testimoni"
+                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.testimonials') }}</a>
+                <a href="#lokasi"
+                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.location') }}</a>
+            </div>
 
-                    <!-- Contact Buttons -->
-                    <div class="flex justify-center mb-4">
-                        <button id="emergency-call-mobile"
-                            class="bg-red-400 hover:bg-red-500 text-white px-6 py-3 rounded-lg transition-all duration-200 flex items-center space-x-2 font-medium text-sm shadow-lg hover:shadow-xl">
-                            <i data-lucide="phone-call" class="w-4 h-4"></i>
-                            <span>Emergency Call</span>
+            <div class="p-4 border-t border-soft-linen-100 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-sm font-medium text-deep-cocoa-brown-600">Language</span>
+                    <x-lang-switch :locales="['id', 'en']" />
+                </div>
+
+                <button id="emergency-call-mobile"
+                    class="w-full bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600 text-white px-4 py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-medium shadow-md">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span>Emergency Call</span>
+                </button>
+
+                @auth
+                    <div class="pt-2 border-t border-soft-linen-100">
+                        <div class="flex items-center gap-3 mb-3 px-2">
+                            <div class="w-10 h-10 bg-forest-moss-green-100 rounded-full flex items-center justify-center overflow-hidden">
+                                @if(auth()->user()->avatar)
+                                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover">
+                                @else
+                                    <span class="text-forest-moss-green-700 font-bold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                @endif
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-deep-cocoa-brown-800">{{ auth()->user()->name }}</p>
+                                <p class="text-xs text-deep-cocoa-brown-500">{{ auth()->user()->email }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="{{ route('profile') }}" class="flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-soft-linen-50 text-deep-cocoa-brown-600 text-sm font-medium">
+                                <i data-lucide="user" class="w-4 h-4"></i> Profile
+                            </a>
+                            <form action="{{ route('auth.signout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-50 text-red-600 text-sm font-medium">
+                                    <i data-lucide="log-out" class="w-4 h-4"></i> Sign Out
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                    <div class="grid grid-cols-2 gap-3">
+                        <button data-open-signin
+                            class="w-full text-deep-cocoa-brown-700 font-medium text-sm px-4 py-3 rounded-xl bg-soft-linen-100 hover:bg-soft-linen-200 transition-all duration-200">
+                            Sign In
+                        </button>
+                        <button data-open-signup
+                            class="w-full bg-forest-moss-green-600 hover:bg-forest-moss-green-700 text-white px-4 py-3 rounded-xl transition-all duration-200 font-medium text-sm shadow-md">
+                            Sign Up
                         </button>
                     </div>
-
-                    <!-- Auth Buttons / User Menu -->
-                    @auth
-                        <!-- User Info -->
-                        <div class="bg-gradient-to-br from-forest-moss-green-50 to-forest-moss-green-100 rounded-xl p-4 mb-4">
-                            <div class="flex items-center space-x-3 mb-3">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-full flex items-center justify-center">
-                                    @if(auth()->user()->avatar)
-                                        <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
-                                            class="w-12 h-12 rounded-full object-cover">
-                                    @else
-                                        <span
-                                            class="text-white font-semibold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
-                                    @endif
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-semibold text-carob-900">{{ auth()->user()->name }}</p>
-                                    <p class="text-xs text-carob-600">{{ auth()->user()->email }}</p>
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <a href="{{ route('profile') }}"
-                                    class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
-                                    <i data-lucide="user" class="w-4 h-4"></i>
-                                    <span class="text-sm">Profile</span>
-                                </a>
-                                <a href="{{ route('history') }}"
-                                    class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-white transition-all duration-200 text-carob-700">
-                                    <i data-lucide="history" class="w-4 h-4"></i>
-                                    <span class="text-sm">Riwayat</span>
-                                </a>
-                                <form action="{{ route('auth.signout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit"
-                                        class="w-full flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-50 transition-all duration-200 text-red-600">
-                                        <i data-lucide="log-out" class="w-4 h-4"></i>
-                                        <span class="text-sm">Sign Out</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    @else
-                        <!-- Auth Buttons -->
-                        <div class="flex space-x-3">
-                            <button data-open-signin
-                                class="text-carob-600 hover:text-forest-moss-green-600 transition-all duration-200 font-medium px-4 py-2 hover:bg-soft-linen-50 rounded-lg flex-1 border border-soft-linen-200">Sign
-                                In</button>
-                            <button data-open-signup
-                                class="bg-chai-500 text-white px-4 py-2 rounded-lg hover:bg-chai-600 transition-all duration-200 font-medium flex-1 shadow-lg hover:shadow-xl">Sign
-                                Up</button>
-                        </div>
-                    @endauth
-                </div>
+                @endauth
             </div>
         </div>
     </div>
