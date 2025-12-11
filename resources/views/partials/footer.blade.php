@@ -97,7 +97,7 @@
                         <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
                             <i data-lucide="phone" class="w-4 h-4 text-soft-blush-pink-400"></i>
                         </div>
-                        <span class="mt-1">0812-9591-1911</span>
+                        <span class="mt-1">+62 812 1908 8899</span>
                     </li>
                     <li class="flex items-start gap-3 text-soft-linen-400 text-sm">
                         <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
@@ -111,7 +111,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="text-xs font-bold text-red-400 uppercase tracking-wide">Emergency 24/7</span>
-                            <span class="font-bold text-white">+62 812 9999 0000</span>
+                            <span class="font-bold text-white">+62 812 9591 1911</span>
                         </div>
                     </li>
                 </ul>

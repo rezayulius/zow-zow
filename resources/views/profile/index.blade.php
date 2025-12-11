@@ -371,7 +371,7 @@
                             </a>
                             <a href="tel:+6281219088899" class="inline-flex items-center justify-center px-8 py-4 bg-white text-carob-700 border-2 border-gray-100 rounded-2xl hover:bg-gray-50 transition-all duration-300 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1">
                                 <i data-lucide="phone" class="w-6 h-6 mr-2"></i>
-                                Telepon Kami
+                                Customer Care
                             </a>
                         </div>
                     </div>
