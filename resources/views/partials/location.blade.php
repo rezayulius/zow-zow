@@ -1,309 +1,178 @@
 {{-- Location Section --}}
-<section id="lokasi" class="relative py-20 overflow-hidden bg-transparent">
-    <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute -top-6 left-1/3 -rotate-3 opacity-10">
-            <svg class="w-24 h-10 text-forest-moss-green-200" viewBox="0 0 100 40" fill="currentColor">
-                <circle cx="10" cy="10" r="8"></circle>
-                <circle cx="10" cy="30" r="8"></circle>
-                <circle cx="90" cy="10" r="8"></circle>
-                <circle cx="90" cy="30" r="8"></circle>
-                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
-            </svg>
-        </div>
+<section id="lokasi" class="relative py-24 overflow-hidden bg-gradient-to-b from-soft-linen-100 via-vanilla-100/50 to-white">
+    <!-- Animated Background Blobs -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-20 right-0 w-96 h-96 bg-forest-moss-green-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
+        <div class="absolute bottom-0 left-10 w-80 h-80 bg-chai-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-soft-blush-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-4000"></div>
     </div>
-    {{-- Background with gradient and blur effects --}}
-    <div class="absolute inset-0 bg-gradient-to-b from-soft-linen-50/20 via-vanilla-50/20 to-forest-moss-green-100/30"></div>
-    <div class="absolute top-10 left-10 w-72 h-72 bg-chai-200/30 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 right-10 w-96 h-96 bg-forest-moss-green-200/20 rounded-full blur-3xl"></div>
-    <div class="absolute inset-0 backdrop-blur-sm"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 z-10">
         {{-- Section Header --}}
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-chai-400 to-chai-500 rounded-full mb-6">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-forest-moss-green-50 text-forest-moss-green-700 text-xs font-bold uppercase tracking-wider mb-6 border border-forest-moss-green-100 shadow-sm">
+                <span>📍</span> Visit Us
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-carob-800 mb-4">
-                {{ __('messages.location_title') }}
+            <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight">
+                Where Happy Tails <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Come Together</span>
             </h2>
-            <p class="text-xl text-carob-600 max-w-2xl mx-auto">
-                {{ __('messages.location_subtitle') }}
+            <p class="text-lg text-carob-600 leading-relaxed">
+                Conveniently located in the heart of Kemang. Drop by for a check-up, a grooming session, or just to say hi!
             </p>
-            <div class="mt-6 flex flex-wrap justify-center gap-3">
-                <a href="tel:+6281299990000" class="inline-flex items-center bg-forest-moss-green-500 text-white px-4 py-2 rounded-lg hover:bg-forest-moss-green-600 transition-all duration-200">
-                    <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
-                    Telepon
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="https://maps.google.com/?q=Jl.+Raya+Kemang+No.+88" target="_blank" class="group inline-flex items-center bg-white text-carob-800 px-6 py-3 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:border-forest-moss-green-300 transition-all duration-300">
+                    <div class="w-8 h-8 bg-forest-moss-green-50 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-forest-moss-green-600"></i>
+                    </div>
+                    <span class="font-bold text-sm">Open in Maps</span>
                 </a>
-                <a href="https://wa.me/6281299990000" class="inline-flex items-center bg-white text-forest-moss-green-700 px-4 py-2 rounded-lg border border-forest-moss-green-200 hover:bg-soft-linen-50 transition-all duration-200">
+                <a href="https://wa.me/6281299990000" class="group inline-flex items-center bg-forest-moss-green-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-forest-moss-green-600 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                     <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
-                    WhatsApp
-                </a>
-                <a href="https://maps.google.com/?q=Jl.+Raya+Kemang+No.+88" target="_blank" class="inline-flex items-center bg-vanilla-100 text-carob-800 px-4 py-2 rounded-lg border border-vanilla-200 hover:bg-vanilla-200 transition-all duration-200">
-                    <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
-                    Buka di Maps
+                    <span class="font-bold text-sm">Chat on WhatsApp</span>
                 </a>
             </div>
         </div>
 
-        {{-- Main Content Grid --}}
-        <div class="grid lg:grid-cols-3 gap-8 mb-16">
-            {{-- Map Section --}}
-            <div class="lg:col-span-2">
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20">
-                    <div class="aspect-video bg-gray-100 relative">
-                        {{-- Placeholder for interactive map --}}
-                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green-100 to-yellow-100">
-                            <div class="text-center">
-                                <div class="w-16 h-16 bg-red-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
+        {{-- Main Grid --}}
+        <div class="grid lg:grid-cols-12 gap-8 mb-16 items-start">
+            
+            {{-- Left Column: Map & Facilities --}}
+            <div class="lg:col-span-8 space-y-8">
+                <!-- Map Card -->
+                <div class="bg-white rounded-[2.5rem] p-4 shadow-xl border border-gray-100 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-forest-moss-green-50 to-transparent opacity-50 pointer-events-none"></div>
+                    <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-inner border border-gray-100">
+                        <!-- Interactive Map Placeholder / Iframe -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.059432696683!2d106.8157773147693!3d-6.255903995471649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f17d72740263%3A0xc3c544837851613b!2sKemang%20Village!5e0!3m2!1sen!2sid!4v1625642845678!5m2!1sen!2sid" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            class="grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
+                        ></iframe>
+                        
+                        <!-- Floating Location Card -->
+                        <div class="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-gray-100 max-w-xs hidden sm:block animate-bounce-in">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-forest-moss-green-100 rounded-full flex items-center justify-center shrink-0">
+                                    <span class="text-xl">🏥</span>
                                 </div>
-                                <p class="text-gray-600 font-medium">Pet Wellness Kemang</p>
-                                <p class="text-sm text-gray-500">Jl. Kemang Raya No. 123</p>
+                                <div>
+                                    <h4 class="font-bold text-carob-900 text-sm">Zow Vetique</h4>
+                                    <p class="text-xs text-carob-500">Jl. Kemang Raya No. 123</p>
+                                </div>
                             </div>
-                        </div>
-                        {{-- Interactive elements overlay --}}
-                        <div class="absolute top-4 left-4">
-                            <button class="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-white transition-colors">
-                                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7"></path>
-                                </svg>
-                                Petunjuk Arah
-                            </button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Facilities Grid -->
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    @foreach([
+                        ['icon' => 'parking-circle', 'label' => 'Free Parking', 'color' => 'bg-chai-50 text-chai-600'],
+                        ['icon' => 'wifi', 'label' => 'Free WiFi', 'color' => 'bg-forest-moss-green-50 text-forest-moss-green-600'],
+                        ['icon' => 'coffee', 'label' => 'Pet Cafe', 'color' => 'bg-old-mustard-yellow-50 text-old-mustard-yellow-600'],
+                        ['icon' => 'snowflake', 'label' => 'Full AC', 'color' => 'bg-soft-blush-pink-50 text-soft-blush-pink-600'],
+                    ] as $facility)
+                        <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm flex items-center gap-3 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-10 h-10 rounded-full {{ $facility['color'] }} flex items-center justify-center">
+                                <i data-lucide="{{ $facility['icon'] }}" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-bold text-sm text-carob-700">{{ $facility['label'] }}</span>
+                        </div>
+                    @endforeach
+                </div>
             </div>
 
-            {{-- Contact Information --}}
-            <div class="space-y-6">
-                {{-- Contact Card --}}
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 border border-white/20">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-500 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                            </svg>
+            {{-- Right Column: Info & Hours --}}
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Info Card -->
+                <div class="bg-white rounded-[2.5rem] p-8 shadow-xl border border-gray-100 relative overflow-hidden group hover:border-forest-moss-green-200 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-forest-moss-green-50 to-transparent rounded-bl-[100px] opacity-60"></div>
+                    
+                    <h3 class="text-2xl font-bold text-carob-900 mb-8 font-heading flex items-center gap-2">
+                        <i data-lucide="info" class="w-6 h-6 text-forest-moss-green-500"></i>
+                        Clinic Info
+                    </h3>
+
+                    <div class="space-y-8 relative z-10">
+                        <!-- Address -->
+                        <div class="flex gap-4 group/item">
+                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-400 group-hover/item:bg-forest-moss-green-50 group-hover/item:text-forest-moss-green-600 transition-colors duration-300 shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-carob-900 mb-1">Visit Us</h4>
+                                <p class="text-sm text-carob-600 leading-relaxed">Jl. Kemang Raya No. 123, Jakarta Selatan 12560</p>
+                            </div>
                         </div>
-                        <h3 class="text-lg font-semibold text-carob-800">{{ __('messages.information') }}</h3>
+
+                        <!-- Phone -->
+                        <div class="flex gap-4 group/item">
+                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-400 group-hover/item:bg-chai-50 group-hover/item:text-chai-600 transition-colors duration-300 shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-carob-900 mb-1">Call Us</h4>
+                                <p class="text-sm text-carob-600 mb-1">0812-9591-1911</p>
+                                <a href="tel:+6281295911911" class="text-xs font-bold text-forest-moss-green-600 hover:underline">Call Now -></a>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="flex gap-4 group/item">
+                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-400 group-hover/item:bg-old-mustard-yellow-50 group-hover/item:text-old-mustard-yellow-600 transition-colors duration-300 shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-carob-900 mb-1">Opening Hours</h4>
+                                <div class="space-y-1">
+                                    <div class="flex justify-between text-sm w-full gap-8">
+                                        <span class="text-carob-500">Mon - Fri</span>
+                                        <span class="font-bold text-carob-800">08:00 - 20:00</span>
+                                    </div>
+                                    <div class="flex justify-between text-sm w-full gap-8">
+                                        <span class="text-carob-500">Sat - Sun</span>
+                                        <span class="font-bold text-carob-800">09:00 - 18:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="space-y-4">
-                        {{-- Address --}}
-                        <div class="flex items-start">
-                            <div class="w-8 h-8 bg-forest-moss-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                                <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-carob-800">{{ __('messages.address') }}</p>
-                                <p class="text-carob-600 text-sm">Jl. Kemang Raya No. 123, Kemang, Jakarta Selatan 12560</p>
-                            </div>
-                        </div>
-
-                        {{-- Phone --}}
-                        <div class="flex items-start">
-                            <div class="w-8 h-8 bg-forest-moss-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                                <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-carob-800">{{ __('messages.phone') }}</p>
-                                <p class="text-carob-600 text-sm">081295911911</p>
-                            </div>
-                        </div>
-
-                        {{-- Hours --}}
-                        <div class="flex items-start">
-                            <div class="w-8 h-8 bg-forest-moss-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
-                                <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-medium text-carob-800">{{ __('messages.opening_hours') }}</p>
-                                <p class="text-carob-600 text-sm">{{ __('messages.monday_friday') }}: 08:00 - 20:00</p>
-                                <p class="text-carob-600 text-sm">{{ __('messages.saturday_sunday') }}: 09:00 - 18:00</p>
-                            </div>
-                        </div>
+                <!-- Emergency Card (Small) -->
+                <div class="bg-gradient-to-br from-red-50 to-white rounded-[2rem] p-6 border border-red-100 shadow-sm flex items-center justify-between gap-4">
+                    <div>
+                        <h4 class="font-bold text-red-900 text-sm uppercase tracking-wide mb-1">Emergency 24/7</h4>
+                        <p class="text-xs text-red-700/80">Urgent care when you need it.</p>
                     </div>
-
-                    {{-- Call Button --}}
-                    <button class="w-full mt-6 bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600 text-white py-3 rounded-xl font-semibold hover:from-forest-moss-green-600 hover:to-forest-moss-green-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                        {{ __('messages.call') }}
+                    <button id="btnEmergencyLocation" class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-200 hover:scale-110 hover:bg-red-600 transition-all duration-300 animate-pulse">
+                        <i data-lucide="phone-call" class="w-5 h-5"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        {{-- Facilities and Nearby Locations --}}
-        <div class="grid lg:grid-cols-2 gap-8">
-            {{-- Facilities --}}
-            <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-500 rounded-full flex items-center justify-center mr-4">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-carob-800">Fasilitas</h3>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-center p-3 bg-chai-50 rounded-xl">
-                        <div class="w-8 h-8 bg-chai-200 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-chai-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <span class="text-sm font-medium text-carob-700">Parkir Gratis Tersedia</span>
-                    </div>
-
-                    <div class="flex items-center p-3 bg-chai-50 rounded-xl">
-                        <div class="w-8 h-8 bg-chai-200 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-chai-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
-                        </div>
-                        <span class="text-sm font-medium text-carob-700">Fasilitas Ber-AC</span>
-                    </div>
-
-                    <div class="flex items-center p-3 bg-chai-50 rounded-xl">
-                        <div class="w-8 h-8 bg-chai-200 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-chai-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
-                            </svg>
-                        </div>
-                        <span class="text-sm font-medium text-carob-700">WiFi Tersedia</span>
-                    </div>
-
-                    <div class="flex items-center p-3 bg-chai-50 rounded-xl">
-                        <div class="w-8 h-8 bg-chai-200 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-chai-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2v0a2 2 0 002-2h6.5l1 1H21l-1-1v0a2 2 0 00-2-2H5a2 2 0 00-2 2v0z"></path>
-                            </svg>
-                        </div>
-                        <span class="text-sm font-medium text-carob-700">Kafe Ramah Hewan</span>
-                    </div>
-
-                    <div class="flex items-center p-3 bg-forest-moss-green-50 rounded-xl col-span-2">
-                        <div class="w-8 h-8 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-3">
-                            <svg class="w-4 h-4 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="text-sm font-medium text-carob-700">Layanan Darurat</span>
-                            <p class="text-xs text-carob-500">Staf Profesional</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                    {{-- Nearby Locations --}}
-                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/20">
-                    <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-r from-forest-moss-green-400 to-forest-moss-green-500 rounded-full flex items-center justify-center mr-4">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-carob-800">Tempat Terdekat</h3>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
-                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-forest-moss-green-600">5</span>
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-medium text-carob-800">Kemang Village Mall</p>
-                            <p class="text-sm text-carob-500">(5 menit jalan kaki)</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
-                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-forest-moss-green-600">3</span>
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-medium text-carob-800">Kemang Icon</p>
-                            <p class="text-sm text-carob-500">(3 menit jalan kaki)</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
-                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-forest-moss-green-600">10</span>
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-medium text-carob-800">Taman Botani Bangka</p>
-                            <p class="text-sm text-carob-500">(10 menit berkendara)</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center p-4 bg-forest-moss-green-50 rounded-xl">
-                        <div class="w-10 h-10 bg-forest-moss-green-200 rounded-full flex items-center justify-center mr-4">
-                            <span class="text-sm font-bold text-forest-moss-green-600">8</span>
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-medium text-carob-800">Pasar Cipete</p>
-                            <p class="text-sm text-carob-500">(8 menit berkendara)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {{-- CTA Section --}}
-        <div class="mt-16 text-center">
-            <div class="bg-gradient-to-r from-chai-500 to-forest-moss-green-500 rounded-3xl p-8 text-white">
-                <div class="flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold mb-4">Kunjungi Kami Hari Ini</h3>
-                <p class="text-lg mb-6 opacity-90">Rasakan layanan perawatan hewan terbaik di area Kemang dengan staf profesional dan fasilitas modern</p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#lokasi" class="bg-white text-chai-600 px-8 py-3 rounded-xl font-semibold hover:bg-soft-linen-50 transition-colors shadow-lg scroll-smooth inline-block">
-                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m0 0L9 7"></path>
-                        </svg>
-                        Navigasi
-                    </a>
-                    <a href="#health" class="bg-white/20 backdrop-blur-sm text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/30 transition-colors border border-white/30 scroll-smooth inline-block">
-                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                        Layanan Kami
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        {{-- Operating Hours Notice --}}
-        <div class="mt-8 flex items-center justify-center">
-            <div class="bg-forest-moss-green-100 border border-forest-moss-green-200 rounded-xl px-6 py-3 flex items-center">
-                <svg class="w-5 h-5 text-forest-moss-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="text-forest-moss-green-800 font-medium">Kami buka setiap hari dengan jam operasional fleksibel sesuai jadwal Anda</span>
-            </div>
-        </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Re-initialize icons just in case
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Bind Emergency Button in Location Section
+        const btnEmergency = document.getElementById('btnEmergencyLocation');
+        if(btnEmergency) {
+            btnEmergency.addEventListener('click', function() {
+                const mainBtn = document.getElementById('btnEmergencyCall');
+                if(mainBtn) mainBtn.click();
+            });
+        }
+    });
+</script>

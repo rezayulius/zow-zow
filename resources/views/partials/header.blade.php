@@ -76,8 +76,8 @@
 
                 <!-- Emergency Button -->
                 <button id="btnEmergencyCall"
-                    class="bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600 text-white px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 font-medium text-sm shadow-lg shadow-soft-blush-pink-500/20 hover:shadow-soft-blush-pink-500/30 transform hover:-translate-y-0.5">
-                    <i data-lucide="phone" class="w-3.5 h-3.5 fill-current"></i>
+                    class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 font-medium text-sm shadow-lg shadow-red-200 hover:shadow-red-300 transform hover:-translate-y-0.5 animate-pulse hover:animate-none">
+                    <i data-lucide="phone-call" class="w-3.5 h-3.5 fill-current"></i>
                     <span>Emergency</span>
                 </button>
 
@@ -186,8 +186,8 @@
                 </div>
 
                 <button id="emergency-call-mobile"
-                    class="w-full bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600 text-white px-4 py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-medium shadow-md">
-                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-medium shadow-md shadow-red-200 animate-pulse hover:animate-none">
+                    <i data-lucide="phone-call" class="w-4 h-4"></i>
                     <span>Emergency Call</span>
                 </button>
 
