@@ -13,16 +13,11 @@
 
         <nav class="flex items-center w-full py-2 px-4 sm:px-6 gap-2 lg:gap-4">
             <!-- Logo (Left) -->
-            <div class="flex-shrink-0 flex items-center gap-3 group">
-                <div
-                    class="w-10 h-10 bg-gradient-to-br from-forest-moss-green-500 to-forest-moss-green-700 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-forest-moss-green-500/20 transition-all duration-300">
-                    <i data-lucide="heart" class="text-soft-linen-50 w-5 h-5 fill-current"></i>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-lg font-bold text-deep-cocoa-brown-800 font-heading leading-tight tracking-tight group-hover:text-forest-moss-green-800 transition-colors">Zow Vetique</span>
-                    <span class="text-[0.65rem] font-medium text-deep-cocoa-brown-500 uppercase tracking-widest">Pet Wellness Hub</span>
-                </div>
-            </div>
+            <a href="/" class="flex-shrink-0 flex items-center gap-3 group">
+                <img src="{{ asset('images/logo/zow-vet-logo-brown.png') }}" 
+                     alt="Zow Vetique" 
+                     class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+            </a>
 
             <!-- Desktop Navigation (Center) -->
             <div class="hidden lg:flex flex-1 items-center justify-center gap-1">
@@ -142,94 +137,133 @@
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn"
-                class="lg:hidden p-2.5 rounded-xl text-deep-cocoa-brown-600 hover:bg-soft-linen-100 transition-all duration-200 justify-self-end">
+                class="lg:hidden ml-auto p-2.5 rounded-xl text-deep-cocoa-brown-600 hover:bg-soft-linen-100 transition-all duration-200 justify-self-end">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </nav>
 
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden lg:hidden border-t border-soft-linen-100">
-            <div class="p-4 space-y-1">
-                <a href="#beranda"
-                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.home') }}</a>
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-soft-linen-100 overflow-hidden transition-all duration-300 origin-top transform scale-y-95 opacity-0">
+            <div class="p-4 space-y-4">
                 
-                <div class="space-y-1 py-1">
-                    <div class="px-4 py-2 text-xs font-semibold text-deep-cocoa-brown-400 uppercase tracking-wider">{{ __('messages.services') }}</div>
-                    <a href="#health"
-                        class="block text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-6 rounded-xl hover:bg-soft-linen-100 transition-all duration-200 text-sm border-l-2 border-transparent hover:border-forest-moss-green-300">
-                        {{ __('messages.health') }}
-                    </a>
-                    <a href="#wellness"
-                        class="block text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-6 rounded-xl hover:bg-soft-linen-100 transition-all duration-200 text-sm border-l-2 border-transparent hover:border-forest-moss-green-300">
-                        {{ __('messages.wellness') }}
-                    </a>
-                    <a href="#booking"
-                        class="block text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-6 rounded-xl hover:bg-soft-linen-100 transition-all duration-200 text-sm border-l-2 border-transparent hover:border-forest-moss-green-300">
-                        {{ __('messages.booking') }}
-                    </a>
-                </div>
-
-                <a href="#harga"
-                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.pricing') }}</a>
-                <a href="#keanggotaan"
-                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.membership') }}</a>
-                <a href="#testimoni"
-                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.testimonials') }}</a>
-                <a href="#lokasi"
-                    class="block text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">{{ __('messages.location') }}</a>
-            </div>
-
-            <div class="p-4 border-t border-soft-linen-100 space-y-4">
-                <div class="flex items-center justify-between">
-                    <span class="text-sm font-medium text-deep-cocoa-brown-600">Language</span>
-                    <x-lang-switch :locales="['id', 'en']" />
-                </div>
-
-                <button id="emergency-call-mobile"
-                    class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-medium shadow-md shadow-red-200 animate-pulse hover:animate-none">
-                    <i data-lucide="phone-call" class="w-4 h-4"></i>
-                    <span>Emergency Call</span>
-                </button>
-
+                <!-- 1. Auth Section (Moved to Top) -->
                 @auth
-                    <div class="pt-2 border-t border-soft-linen-100">
-                        <div class="flex items-center gap-3 mb-3 px-2">
-                            <div class="w-10 h-10 bg-forest-moss-green-100 rounded-full flex items-center justify-center overflow-hidden">
+                    <div class="bg-soft-linen-50 rounded-2xl p-4 border border-soft-linen-100 shadow-sm">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">
                                 @if(auth()->user()->avatar)
                                     <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover">
                                 @else
-                                    <span class="text-forest-moss-green-700 font-bold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                    <span class="text-forest-moss-green-700 font-bold text-lg">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
                                 @endif
                             </div>
-                            <div>
-                                <p class="text-sm font-semibold text-deep-cocoa-brown-800">{{ auth()->user()->name }}</p>
-                                <p class="text-xs text-deep-cocoa-brown-500">{{ auth()->user()->email }}</p>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-base font-bold text-deep-cocoa-brown-800 truncate">{{ auth()->user()->name }}</p>
+                                <p class="text-xs text-deep-cocoa-brown-500 truncate">{{ auth()->user()->email }}</p>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <a href="{{ route('profile') }}" class="flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-soft-linen-50 text-deep-cocoa-brown-600 text-sm font-medium">
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="{{ route('profile') }}" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white text-deep-cocoa-brown-600 text-sm font-bold border border-soft-linen-100 hover:bg-forest-moss-green-50 hover:text-forest-moss-green-700 transition-colors shadow-sm">
                                 <i data-lucide="user" class="w-4 h-4"></i> Profile
                             </a>
-                            <form action="{{ route('auth.signout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-50 text-red-600 text-sm font-medium">
-                                    <i data-lucide="log-out" class="w-4 h-4"></i> Sign Out
-                                </button>
-                            </form>
+                            <a href="{{ route('history') }}" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white text-deep-cocoa-brown-600 text-sm font-bold border border-soft-linen-100 hover:bg-forest-moss-green-50 hover:text-forest-moss-green-700 transition-colors shadow-sm">
+                                <i data-lucide="history" class="w-4 h-4"></i> Riwayat
+                            </a>
                         </div>
+                        <form action="{{ route('auth.signout') }}" method="POST" class="mt-3">
+                            @csrf
+                            <button type="submit" class="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-red-50 text-red-600 text-sm font-bold hover:bg-red-100 transition-colors">
+                                <i data-lucide="log-out" class="w-4 h-4"></i> Sign Out
+                            </button>
+                        </form>
                     </div>
                 @else
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-2 gap-3 p-1">
                         <button data-open-signin
-                            class="w-full text-deep-cocoa-brown-700 font-medium text-sm px-4 py-3 rounded-xl bg-soft-linen-100 hover:bg-soft-linen-200 transition-all duration-200">
+                            class="w-full text-deep-cocoa-brown-700 font-bold text-sm px-4 py-3 rounded-xl bg-soft-linen-100 hover:bg-soft-linen-200 transition-all duration-200">
                             Sign In
                         </button>
                         <button data-open-signup
-                            class="w-full bg-forest-moss-green-600 hover:bg-forest-moss-green-700 text-white px-4 py-3 rounded-xl transition-all duration-200 font-medium text-sm shadow-md">
+                            class="w-full bg-forest-moss-green-600 hover:bg-forest-moss-green-700 text-white px-4 py-3 rounded-xl transition-all duration-200 font-bold text-sm shadow-md shadow-forest-moss-green-600/20">
                             Sign Up
                         </button>
                     </div>
                 @endauth
+
+                <!-- 2. Navigation Links -->
+                <div class="space-y-1">
+                    <a href="#beranda"
+                        class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                        <i data-lucide="home" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                        {{ __('messages.home') }}
+                    </a>
+                    
+                    <!-- Services Dropdown Group -->
+                    <div class="space-y-1">
+                        <button id="mobileServicesBtn" class="w-full flex items-center justify-between text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                                {{ __('messages.services') }}
+                            </div>
+                            <i id="mobileServicesIcon" data-lucide="chevron-down" class="w-4 h-4 text-deep-cocoa-brown-400 transition-transform duration-300"></i>
+                        </button>
+                        
+                        <div id="mobileServicesDropdown" class="hidden pl-4 pr-2 space-y-1 overflow-hidden transition-all duration-300">
+                            <a href="#health"
+                                class="flex items-center gap-3 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-3 rounded-xl hover:bg-soft-linen-50 transition-all duration-200 text-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
+                                {{ __('messages.health') }}
+                            </a>
+                            <a href="#wellness"
+                                class="flex items-center gap-3 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-3 rounded-xl hover:bg-soft-linen-50 transition-all duration-200 text-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
+                                {{ __('messages.wellness') }}
+                            </a>
+                            <a href="#booking"
+                                class="flex items-center gap-3 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-3 rounded-xl hover:bg-soft-linen-50 transition-all duration-200 text-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
+                                {{ __('messages.booking') }}
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#harga"
+                        class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                        <i data-lucide="tag" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                        {{ __('messages.pricing') }}
+                    </a>
+                    <a href="#keanggotaan"
+                        class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                        <i data-lucide="crown" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                        {{ __('messages.membership') }}
+                    </a>
+                    <a href="#testimoni"
+                        class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                        <i data-lucide="message-square-heart" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                        {{ __('messages.testimonials') }}
+                    </a>
+                    <a href="#lokasi"
+                        class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                        {{ __('messages.location') }}
+                    </a>
+                </div>
+
+                <!-- 3. Bottom Actions -->
+                <div class="pt-4 border-t border-soft-linen-100 space-y-4">
+                    <div class="flex items-center justify-between bg-soft-linen-50 rounded-xl p-2 px-3">
+                        <span class="text-sm font-medium text-deep-cocoa-brown-600 flex items-center gap-2">
+                            <i data-lucide="languages" class="w-4 h-4"></i> Language
+                        </span>
+                        <x-lang-switch :locales="['id', 'en']" />
+                    </div>
+
+                    <button id="emergency-call-mobile"
+                        class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-bold shadow-lg shadow-red-200 hover:shadow-red-300 transform active:scale-95">
+                        <i data-lucide="phone-call" class="w-5 h-5 animate-pulse"></i>
+                        <span>Emergency Call</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

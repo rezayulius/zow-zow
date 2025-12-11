@@ -1,13 +1,32 @@
 import './bootstrap';
 
-// Mobile menu toggle
+// Mobile menu toggle with smooth animation
 function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Open
+                mobileMenu.classList.remove('hidden');
+                // Small delay to allow display:block to apply before transition
+                setTimeout(() => {
+                    mobileMenu.classList.remove('scale-y-95', 'opacity-0');
+                    mobileMenu.classList.add('scale-y-100', 'opacity-100');
+                }, 10);
+            } else {
+                // Close
+                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+                mobileMenu.classList.add('scale-y-95', 'opacity-0');
+                
+                // Wait for transition to finish before hiding
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Match duration-300
+            }
         });
     }
 }
@@ -25,8 +44,12 @@ function initSmoothScrolling() {
                 });
                 // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobileMenu');
-                if (mobileMenu) {
-                    mobileMenu.classList.add('hidden');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+                    mobileMenu.classList.add('scale-y-95', 'opacity-0');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
                 }
             }
         });
@@ -285,6 +308,29 @@ function initParallax() {
     updateParallax(); // Initial call
 }
 
+// Mobile services dropdown toggle
+function initMobileServicesDropdown() {
+    const btn = document.getElementById('mobileServicesBtn');
+    const dropdown = document.getElementById('mobileServicesDropdown');
+    const icon = document.getElementById('mobileServicesIcon');
+
+    if (btn && dropdown && icon) {
+        btn.addEventListener('click', () => {
+            const isHidden = dropdown.classList.contains('hidden');
+            
+            if (isHidden) {
+                // Open
+                dropdown.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                // Close
+                dropdown.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        });
+    }
+}
+
 // Initialize all functions when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Lucide icons
@@ -294,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize all functionality
     initMobileMenu();
+    initMobileServicesDropdown();
     initSmoothScrolling();
     initHeaderScrollEffect();
     initHeroSlider();

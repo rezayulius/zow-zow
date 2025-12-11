@@ -14,14 +14,8 @@
             
             <!-- Brand Column -->
             <div class="lg:col-span-4 space-y-6">
-                <div class="flex items-center gap-3 mb-2">
-                    <div class="w-12 h-12 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-forest-moss-green-900/50">
-                        <i data-lucide="heart" class="text-white w-6 h-6 fill-current"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-2xl font-bold font-heading leading-none">Zow Vetique</h2>
-                        <span class="text-xs font-medium text-forest-moss-green-400 uppercase tracking-widest">Pet Wellness Hub</span>
-                    </div>
+                <div class="mb-4">
+                    <img src="{{ asset('images/logo/zow-vet-logo-white.png') }}" alt="Zow Vetique" class="h-14 w-auto object-contain">
                 </div>
                 <p class="text-soft-linen-300 leading-relaxed">
                     Lebih dari sekadar klinik, kami adalah rumah kedua bagi sahabat berbulu Anda. Layanan penuh cinta dengan standar medis terbaik.

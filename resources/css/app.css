@@ -260,7 +260,8 @@ html {
     }
 }
 
-.bounce-in {
+.bounce-in,
+.animate-bounce-in {
     animation: bounceIn 0.6s ease-out;
 }
 
