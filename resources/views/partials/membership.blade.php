@@ -1,281 +1,220 @@
-<!-- Membership Section -->
-<section id="keanggotaan" class="py-20 relative overflow-hidden bg-transparent">
-    <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute -top-6 right-10 rotate-3 opacity-10">
-            <svg class="w-24 h-10 text-chai-200" viewBox="0 0 100 40" fill="currentColor">
-                <circle cx="10" cy="10" r="8"></circle>
-                <circle cx="10" cy="30" r="8"></circle>
-                <circle cx="90" cy="10" r="8"></circle>
-                <circle cx="90" cy="30" r="8"></circle>
-                <rect x="18" y="12" width="64" height="16" rx="8" ry="8"></rect>
+<!-- Membership & Lifestyle Ecosystem Section -->
+<section id="keanggotaan" class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-vanilla-50/30 to-white">
+    <!-- Decorative Background Elements -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-20 left-0 w-96 h-96 bg-chai-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-20 right-0 w-96 h-96 bg-forest-moss-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-20 w-96 h-96 bg-vanilla-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        
+        <!-- Abstract Shapes -->
+        <div class="absolute top-40 right-10 opacity-10 rotate-12">
+            <svg width="120" height="120" viewBox="0 0 100 100" fill="currentColor" class="text-chai-400">
+                <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
+            </svg>
+        </div>
+        <div class="absolute bottom-40 left-10 opacity-10 -rotate-12">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="currentColor" class="text-forest-moss-green-400">
+                <circle cx="50" cy="50" r="50" />
             </svg>
         </div>
     </div>
+
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <!-- Header Section -->
+        <!-- Membership Header -->
         <div class="text-center mb-16">
-            <div class="inline-flex items-center bg-forest-moss-green-100 text-forest-moss-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                Keanggotaan Premium
+            <div class="inline-flex items-center bg-white border border-carob-100 rounded-full px-6 py-2 shadow-sm mb-6 animate-fade-in-up">
+                <span class="flex h-3 w-3 relative mr-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest-moss-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-forest-moss-green-500"></span>
+                </span>
+                <span class="text-carob-600 font-medium text-sm tracking-wide uppercase">Exclusive Membership</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-4 font-heading">
-                Program Keanggotaan
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 leading-tight tracking-tight font-heading">
+                Unlock Premium Care &<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Exclusive Benefits</span>
             </h2>
-            <p class="text-xl text-carob-600 max-w-3xl mx-auto">
-                Bergabunglah dengan program keanggotaan eksklusif kami dan nikmati manfaat premium. 
-                Akses khusus, dan penawaran VIP untuk meningkatkan Anda.
+            
+            <p class="text-xl text-carob-600 max-w-2xl mx-auto leading-relaxed">
+                Choose the plan that fits your lifestyle. Enjoy priority access, special savings, and a community that treats your pet like family.
             </p>
         </div>
 
+        <!-- Why Become a Member Visuals -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+            <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
+                <div class="w-12 h-12 bg-forest-moss-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i data-lucide="clock" class="w-6 h-6 text-forest-moss-green-600"></i>
+                </div>
+                <h4 class="font-bold text-carob-900 mb-1">Priority Booking</h4>
+                <p class="text-sm text-carob-500">Skip the queue anytime</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
+                <div class="w-12 h-12 bg-chai-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i data-lucide="tag" class="w-6 h-6 text-chai-600"></i>
+                </div>
+                <h4 class="font-bold text-carob-900 mb-1">Exclusive Rates</h4>
+                <p class="text-sm text-carob-500">Up to 20% off services</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
+                <div class="w-12 h-12 bg-vanilla-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i data-lucide="message-circle" class="w-6 h-6 text-vanilla-600"></i>
+                </div>
+                <h4 class="font-bold text-carob-900 mb-1">24/7 Chat</h4>
+                <p class="text-sm text-carob-500">Direct vet access</p>
+            </div>
+            <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
+                <div class="w-12 h-12 bg-carob-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i data-lucide="gift" class="w-6 h-6 text-carob-600"></i>
+                </div>
+                <h4 class="font-bold text-carob-900 mb-1">Monthly Perks</h4>
+                <p class="text-sm text-carob-500">Free treats & grooming</p>
+            </div>
+        </div>
+
         <!-- Membership Cards -->
-        <div class="grid md:grid-cols-3 gap-8 mb-20">
-            @forelse($memberships as $index => $membership)
-                @php
-                    // Define color schemes for different membership types
-                    $colorSchemes = [
-                        'basic' => ['bg' => 'soft-linen', 'icon' => 'carob', 'button' => 'carob'],
-                        'premium' => ['bg' => 'forest-moss-green', 'icon' => 'forest-moss-green', 'button' => 'forest-moss-green'],
-                        'vip' => ['bg' => 'chai', 'icon' => 'chai', 'button' => 'chai'],
-                        'platinum' => ['bg' => 'chai', 'icon' => 'chai', 'button' => 'chai'],
-                        'diamond' => ['bg' => 'vanilla', 'icon' => 'carob', 'button' => 'carob']
-                    ];
-                    
-                    $colors = $colorSchemes[$membership->type] ?? $colorSchemes['basic'];
-                    $isFeatured = $membership->is_featured;
-                @endphp
-                
-                <!-- {{ $membership->title }} -->
-                <div class="bg-white rounded-2xl {{ $isFeatured ? 'shadow-xl hover:shadow-2xl border-2 border-' . $colors['bg'] . '-400 transform scale-105' : 'shadow-lg hover:shadow-xl border border-' . $colors['bg'] . '-200' }} transition-all duration-300 p-8 relative">
-                    @if($isFeatured)
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                            <span class="bg-{{ $colors['button'] }}-500 text-white px-4 py-2 rounded-full text-sm font-bold">TERPOPULER</span>
+        <div class="mb-20 max-w-6xl mx-auto">
+
+            <div class="grid md:grid-cols-3 gap-6 items-stretch">
+                @forelse($memberships as $index => $membership)
+                    @php
+                        // Refined pastel colors using available theme colors
+                        $palettes = [
+                            ['bg' => 'bg-forest-moss-green-50', 'border' => 'border-forest-moss-green-100', 'btn' => 'bg-forest-moss-green-500 hover:bg-forest-moss-green-600', 'text' => 'text-forest-moss-green-700'],
+                            ['bg' => 'bg-chai-50', 'border' => 'border-chai-100', 'btn' => 'bg-chai-500 hover:bg-chai-600', 'text' => 'text-chai-700'],
+                            ['bg' => 'bg-soft-blush-pink-50', 'border' => 'border-soft-blush-pink-100', 'btn' => 'bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600', 'text' => 'text-soft-blush-pink-700'],
+                        ];
+                        $p = $palettes[$index % count($palettes)];
+                        $isFeatured = $membership->is_featured;
+                    @endphp
+
+                    <div class="relative flex flex-col h-full transition-all duration-300 group 
+                        {{ $isFeatured ? 'md:-mt-4 md:mb-4 z-10' : '' }}">
+                        
+                        <!-- Card Container -->
+                        <div class="flex-1 rounded-3xl overflow-hidden flex flex-col
+                            {{ $isFeatured 
+                                ? 'bg-white shadow-2xl ring-4 ring-forest-moss-green-100' 
+                                : 'bg-white shadow-lg border border-gray-100 hover:shadow-xl' 
+                            }}">
+                            
+                            <!-- Image/Header Area -->
+                            <div class="relative h-40 overflow-hidden">
+                                @if($membership->image)
+                                    <img src="{{ asset('storage/' . $membership->image) }}" 
+                                         alt="{{ $membership->title }}" 
+                                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                @else
+                                    <div class="w-full h-full {{ $p['bg'] }} flex items-center justify-center">
+                                        <i data-lucide="{{ $index == 0 ? 'sparkles' : ($index == 1 ? 'crown' : 'heart') }}" 
+                                           class="w-12 h-12 {{ $p['text'] }} opacity-50"></i>
+                                    </div>
+                                @endif
+
+                                <!-- Badge -->
+                                @if($isFeatured)
+                                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-carob-800 shadow-sm flex items-center gap-1">
+                                        <span>👑</span> Most Loved
+                                    </div>
+                                @endif
+                                
+                                <!-- Title & Price Overlay -->
+                                <div class="absolute bottom-4 left-4 text-white drop-shadow-md">
+                                    <h3 class="text-xl font-bold font-heading leading-tight mb-0.5 {{ $membership->image ? 'text-white' : 'text-carob-900' }}">
+                                        {{ $membership->title }}
+                                    </h3>
+                                    <div class="flex items-baseline gap-1 {{ $membership->image ? 'text-white/90' : 'text-carob-600' }}">
+                                        <span class="text-lg font-bold">{{ $membership->formatted_price }}</span>
+                                        <span class="text-xs font-medium opacity-80">/{{ $membership->duration }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Benefits List -->
+                            <div class="p-6 flex-1 flex flex-col">
+                                <ul class="space-y-3 mb-6 flex-1">
+                                    @if($membership->benefits && is_array($membership->benefits))
+                                        @foreach($membership->benefits as $benefit)
+                                            <li class="flex items-start text-sm text-carob-600">
+                                                <div class="min-w-[1rem] mt-0.5 mr-2.5">
+                                                    <i data-lucide="check" class="w-4 h-4 {{ $p['text'] }}"></i>
+                                                </div>
+                                                <span class="leading-snug">{{ $benefit }}</span>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+
+                                <a href="#register-{{ $membership->id }}" 
+                                   class="w-full py-3 rounded-xl font-bold text-sm text-center transition-all duration-300 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 {{ $p['btn'] }}">
+                                    Choose Plan
+                                </a>
+                            </div>
                         </div>
-                    @endif
-                    
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-{{ $colors['bg'] }}-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-{{ $colors['icon'] }}-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
+                    </div>
+                @empty
+                     <!-- Fallback when no data -->
+                     <div class="col-span-full text-center py-8">
+                        <div class="bg-white rounded-3xl p-8 shadow-lg border border-dashed border-carob-200 max-w-lg mx-auto">
+                            <i data-lucide="construction" class="w-12 h-12 text-carob-300 mx-auto mb-4"></i>
+                            <h3 class="text-xl font-bold text-carob-900 mb-2">Coming Soon</h3>
+                            <p class="text-sm text-carob-600">We are crafting our membership tiers. Stay tuned.</p>
                         </div>
-                        <h3 class="text-2xl font-bold text-carob-900 mb-2 font-heading">{{ $membership->title }}</h3>
-                        <div class="text-3xl font-bold text-carob-900 mb-1">{{ $membership->formatted_price }}</div>
-                        <div class="text-carob-500">/{{ $membership->duration }}</div>
                     </div>
-                    
-                    <ul class="space-y-3 mb-8">
-                        @if($membership->benefits && is_array($membership->benefits))
-                            @foreach($membership->benefits as $benefit)
-                                <li class="flex items-center text-carob-700">
-                                    <svg class="w-5 h-5 text-forest-moss-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                    </svg>
-                                    {{ $benefit }}
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                    
-                    <button class="w-full bg-{{ $colors['button'] }}-600 hover:bg-{{ $colors['button'] }}-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
-                        Bergabung {{ $membership->title }}
-                    </button>
-                </div>
-            @empty
-                <!-- Fallback content when no memberships are available -->
-                <div class="col-span-full text-center py-12">
-                    <div class="w-16 h-16 bg-soft-linen-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-carob-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-carob-900 mb-2">Program Keanggotaan Segera Hadir</h3>
-                    <p class="text-carob-600">Program keanggotaan eksklusif kami sedang dalam persiapan. Nantikan informasi lebih lanjut!</p>
-                </div>
-            @endforelse
-        </div>
-
-        <!-- Why Choose Our Membership Section -->
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-carob-900 mb-4 font-heading">Mengapa Memilih Keanggotaan Kami?</h2>
-            <p class="text-lg text-carob-600 max-w-3xl mx-auto">Bergabunglah dengan komunitas eksklusif dan nikmati berbagai keuntungan yang dirancang khusus untuk meningkatkan pengalaman Anda.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-            <!-- Booking Prioritas -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-forest-moss-green-100 text-center">
-                <div class="w-16 h-16 bg-forest-moss-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-forest-moss-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-carob-900 mb-3 font-heading">Booking Prioritas</h3>
-                <p class="text-carob-600 text-sm leading-relaxed">Dapatkan akses prioritas untuk booking layanan dengan kemudahan dan kecepatan yang tak tertandingi.</p>
-            </div>
-
-            <!-- Pelayanan Eksklusif -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-chai-100 text-center">
-                <div class="w-16 h-16 bg-chai-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-chai-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-carob-900 mb-3 font-heading">Pelayanan Eksklusif</h3>
-                <p class="text-carob-600 text-sm leading-relaxed">Nikmati layanan premium eksklusif yang dirancang khusus untuk memberikan pengalaman terbaik.</p>
-            </div>
-
-            <!-- Dukungan Premium -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-soft-linen-100 text-center">
-                <div class="w-16 h-16 bg-soft-linen-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-soft-linen-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-carob-900 mb-3 font-heading">Dukungan Premium</h3>
-                <p class="text-carob-600 text-sm leading-relaxed">Dapatkan dukungan 24/7 dari tim ahli kami yang siap membantu kebutuhan Anda kapan saja.</p>
-            </div>
-
-            <!-- Reward Eksklusif -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-vanilla-100 text-center">
-                <div class="w-16 h-16 bg-vanilla-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-vanilla-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-carob-900 mb-3 font-heading">Reward Eksklusif</h3>
-                <p class="text-carob-600 text-sm leading-relaxed">Kumpulkan poin reward eksklusif dan tukarkan dengan berbagai keuntungan menarik lainnya.</p>
+                @endforelse
             </div>
         </div>
 
-        <!-- Call to Action Section -->
-        <div class="bg-gradient-to-r from-forest-moss-green-500 to-chai-600 rounded-3xl p-12 text-center">
-            <div class="max-w-3xl mx-auto">
-                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                    </svg>
-                </div>
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">
-                    Siap Bergabung dengan Komunitas Kami?
+        <!-- Community CTA -->
+        <div class="relative rounded-[3rem] overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Pet Community" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-carob-900/90 via-carob-900/80 to-transparent"></div>
+            </div>
+            
+            <div class="relative z-10 p-12 md:p-20 max-w-3xl">
+                <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    Join a Community That<br/>
+                    <span class="text-chai-300">Feels Like Family</span>
                 </h3>
-                <p class="text-xl text-white text-opacity-90 mb-8">
-                    Bergabunglah dengan ribuan member yang sudah merasakan manfaat luar biasa dari program keanggotaan eksklusif kami.
+                <p class="text-white/90 text-lg mb-10 leading-relaxed max-w-xl">
+                    Beyond perks and discounts, Zow membership connects you with fellow pet lovers who share your passion for providing the best life for their companions.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#keanggotaan" class="bg-white text-forest-moss-green-600 hover:bg-soft-linen-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center justify-center shadow-lg scroll-smooth">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                        </svg>
-                        Menjadi Member
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="#join-community" class="bg-chai-500 hover:bg-chai-600 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-chai-500/30 flex items-center justify-center">
+                        <i data-lucide="heart-handshake" class="w-5 h-5 mr-2"></i>
+                        Join the Community
                     </a>
-                    <a href="#lokasi" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-forest-moss-green-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center justify-center scroll-smooth">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                        </svg>
-                        Hubungi Kami
+                    <a href="#learn-more" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center">
+                        Discover Benefits
                     </a>
-                </div>
-                
-                <div class="mt-8 text-white text-opacity-75 text-sm">
-                    <span>Tanpa biaya setup</span>
-                    <span class="mx-2">•</span>
-                    <span>Bisa dibatalkan kapan saja</span>
-                    <span class="mx-2">•</span>
-                    <span>Garansi 30 hari</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Bubble Animation Styles -->
+<!-- Animation Styles -->
 <style>
-.bubble-animation {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.bubble {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
-    backdrop-filter: blur(10px);
-    animation: float 20s infinite linear;
-}
-
-.bubble-1 {
-    width: 80px;
-    height: 80px;
-    left: 10%;
-    animation-delay: 0s;
-    animation-duration: 25s;
-}
-
-.bubble-2 {
-    width: 120px;
-    height: 120px;
-    left: 20%;
-    animation-delay: 5s;
-    animation-duration: 30s;
-}
-
-.bubble-3 {
-    width: 60px;
-    height: 60px;
-    left: 70%;
-    animation-delay: 10s;
-    animation-duration: 20s;
-}
-
-.bubble-4 {
-    width: 100px;
-    height: 100px;
-    left: 80%;
-    animation-delay: 15s;
-    animation-duration: 35s;
-}
-
-.bubble-5 {
-    width: 40px;
-    height: 40px;
-    left: 50%;
-    animation-delay: 8s;
-    animation-duration: 18s;
-}
-
-.bubble-6 {
-    width: 90px;
-    height: 90px;
-    left: 30%;
-    animation-delay: 12s;
-    animation-duration: 28s;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
+    @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
     }
-    10% {
-        opacity: 1;
+    .animate-blob {
+        animation: blob 7s infinite;
     }
-    90% {
-        opacity: 1;
+    .animation-delay-2000 {
+        animation-delay: 2s;
     }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
+    .animation-delay-4000 {
+        animation-delay: 4s;
     }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .bubble {
-        display: none;
+    
+    .font-heading {
+        font-family: 'Plus Jakarta Sans', sans-serif; /* Ensure this font is loaded or fallback */
     }
-}
 </style>
