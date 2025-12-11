@@ -35,14 +35,36 @@ class HeroSlideForm
                         TextInput::make('primary_cta_text')
                             ->label('Primary Button Text')
                             ->default('Start Your Journey'),
-                        TextInput::make('primary_cta_url')
+                        Select::make('primary_cta_url')
                             ->label('Primary Button URL')
+                            ->options([
+                                '#health' => 'Section Health',
+                                '#wellness' => 'Section Wellness',
+                                '#booking' => 'Booking',
+                                '#harga' => 'Pricing',
+                                '#keanggotaan' => 'Membership',
+                                '#testimoni' => 'Testimonials',
+                                '#lokasi' => 'Location',
+                                'https://wa.me/6281219088899' => 'URL Whatsapp',
+                            ])
+                            ->searchable()
                             ->default('#booking'),
                         TextInput::make('secondary_cta_text')
                             ->label('Secondary Button Text')
                             ->default('Chat with Us'),
-                        TextInput::make('secondary_cta_url')
+                        Select::make('secondary_cta_url')
                             ->label('Secondary Button URL')
+                            ->options([
+                                '#health' => 'Section Health',
+                                '#wellness' => 'Section Wellness',
+                                '#booking' => 'Booking',
+                                '#harga' => 'Pricing',
+                                '#keanggotaan' => 'Membership',
+                                '#testimoni' => 'Testimonials',
+                                '#lokasi' => 'Location',
+                                'https://wa.me/6281219088899' => 'URL Whatsapp',
+                            ])
+                            ->searchable()
                             ->default('https://wa.me/6281219088899'),
                     ])->columns(2),
 
