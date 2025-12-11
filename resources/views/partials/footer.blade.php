@@ -23,7 +23,7 @@
                 
                 <!-- Social Media Pills -->
                 <div class="flex flex-wrap gap-3">
-                    <a href="#" class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
+                    <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs" target="_blank" class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
                         <i data-lucide="instagram" class="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform"></i>
                         <span class="text-xs font-bold text-soft-linen-200">Instagram</span>
                     </a>

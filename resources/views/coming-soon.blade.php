@@ -113,7 +113,7 @@
                     <span class="font-medium">Chat WhatsApp</span>
                 </a>
                 
-                <a href="https://instagram.com" target="_blank" class="flex items-center gap-3 text-[#675334] hover:text-[#d2ab80] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#f5f0ea]">
+                <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs" target="_blank" class="flex items-center gap-3 text-[#675334] hover:text-[#d2ab80] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#f5f0ea]">
                     <div class="w-10 h-10 bg-[#f5f0ea] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                         <i data-lucide="instagram" class="w-5 h-5 text-[#d2ab80]"></i>
                     </div>

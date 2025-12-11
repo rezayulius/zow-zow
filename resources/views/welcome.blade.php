@@ -1678,7 +1678,7 @@
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
                             <i data-lucide="facebook" class="text-white text-sm w-4 h-4"></i>
                         </a>
-                        <a href="#"
+                        <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs" target="_blank"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
                             <i data-lucide="instagram" class="text-white text-sm w-4 h-4"></i>
                         </a>
