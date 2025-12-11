@@ -47,7 +47,7 @@
     window.mychat.server = 'https://live.cekat.ai/widget.js';
     window.mychat.iframeWidth = '400px';
     window.mychat.iframeHeight = '700px';
-    window.mychat.accessKey = 'ZOW-moTIgTQw';
+    window.mychat.accessKey = 'ZOW-NXWaCTvC';
     (function () {
       var mychat = document.createElement('script');
       mychat.type = 'text/javascript';
