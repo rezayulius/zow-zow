@@ -8,8 +8,10 @@ use App\Http\Controllers\DigitailApiController;
 use App\Http\Controllers\DigitailSyncController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\ComingSoonController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/coming-soon', [ComingSoonController::class, 'index'])->name('coming-soon');
 
 // Redirect default auth middleware target to home
 Route::get('/login', function () {
