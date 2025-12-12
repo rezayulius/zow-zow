@@ -149,29 +149,6 @@
                                     </a>
                                     @endif
                                 </div>
-
-                                <!-- Features/Benefits -->
-                                <div class="pt-4 sm:pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full">
-                                    <div class="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-xl border border-soft-linen-100 shadow-sm">
-                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full {{ $c['badge_ping'] }} flex items-center justify-center text-white shrink-0">
-                                            <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                                        </div>
-                                        <div class="flex flex-col text-left">
-                                            <span class="text-[0.65rem] sm:text-xs font-bold {{ $c['text_dark'] }} uppercase tracking-wide">Professional</span>
-                                            <span class="text-xs sm:text-sm {{ $c['text'] }}">Expert Care</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-xl border border-soft-linen-100 shadow-sm">
-                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full {{ $c['badge_ping'] }} flex items-center justify-center text-white shrink-0">
-                                            <i data-lucide="heart-handshake" class="w-4 h-4 sm:w-5 sm:h-5"></i>
-                                        </div>
-                                        <div class="flex flex-col text-left">
-                                            <span class="text-[0.65rem] sm:text-xs font-bold {{ $c['text_dark'] }} uppercase tracking-wide">Trusted</span>
-                                            <span class="text-xs sm:text-sm {{ $c['text'] }}">Loving Environment</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                             <!-- Right Column -->
