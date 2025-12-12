@@ -1,19 +1,13 @@
 <!-- Footer (Fresh & Joyful Redesign) -->
-<footer class="bg-deep-cocoa-brown-900 text-white pt-24 pb-12 relative overflow-hidden">
+<footer class="bg-deep-cocoa-brown-900 text-white pt-24 pb-12 relative z-10 -mt-2 overflow-hidden">
     <!-- Animated Background Blobs -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-forest-moss-green-900/40 rounded-full mix-blend-overlay filter blur-3xl opacity-40 animate-blob"></div>
         <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-chai-900/40 rounded-full mix-blend-overlay filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
     </div>
 
-    <!-- Decorative Top Curve & Parade -->
-    <div class="absolute top-0 left-0 right-0 h-16 bg-white rounded-b-[50%] transform -translate-y-8 scale-x-110 z-10 flex justify-center items-end pb-2 gap-8 overflow-hidden">
-        <x-animal-icon name="dog" class="w-8 h-8 text-forest-moss-green-200 opacity-50 -rotate-12" />
-        <x-animal-icon name="cat" class="w-8 h-8 text-chai-200 opacity-50 rotate-12" />
-        <x-animal-icon name="rabbit" class="w-8 h-8 text-soft-blush-pink-200 opacity-50 -rotate-6" />
-        <x-animal-icon name="bird" class="w-8 h-8 text-forest-moss-green-200 opacity-50 rotate-6" />
-        <x-animal-icon name="hamster" class="w-8 h-8 text-chai-200 opacity-50 -rotate-12" />
-    </div>
+    <!-- Decorative Top Curve (Simple Inward) -->
+    <div class="absolute top-0 left-0 right-0 h-8 sm:h-12 md:h-16 bg-white rounded-b-[100%] z-10"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6">
         <div class="grid lg:grid-cols-12 gap-12 mb-16">

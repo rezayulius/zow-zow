@@ -1,5 +1,5 @@
 {{-- Location Section --}}
-<section id="lokasi" class="relative py-24 overflow-hidden bg-gradient-to-b from-soft-linen-100 via-vanilla-100/50 to-white">
+<section id="lokasi" class="relative z-20 py-24 overflow-hidden bg-gradient-to-b from-soft-linen-100 via-vanilla-100/50 to-white">
     <!-- Animated Background Blobs -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-20 right-0 w-96 h-96 bg-forest-moss-green-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
@@ -10,9 +10,6 @@
         <div class="absolute top-10 left-10 opacity-20 animate-float-slow">
             <x-animal-icon name="cow" class="w-40 h-40 text-forest-moss-green-300" />
         </div>
-        <div class="absolute bottom-20 right-10 opacity-20 animate-float-medium">
-            <x-animal-icon name="bird" class="w-32 h-32 text-chai-300" />
-        </div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 z-10">
@@ -22,7 +19,7 @@
                 <div class="flex items-center">
                     <x-animal-icon name="bird" class="w-4 h-4 text-forest-moss-green-600" />
                 </div>
-                Visit Us
+                Location
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight">
                 Visit Your <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Second Home</span>
@@ -170,6 +167,15 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Animal Parade (Bottom Decoration) -->
+    <div class="absolute bottom-0 left-0 right-0 h-16 z-20 flex justify-center items-end pb-4 gap-4 sm:gap-8 md:gap-12 overflow-hidden pointer-events-none">
+        <x-animal-icon name="dog" class="w-8 h-8 sm:w-10 sm:h-10 text-forest-moss-green-200 opacity-60 -rotate-6 animate-bounce-slow" />
+        <x-animal-icon name="cat" class="w-8 h-8 sm:w-10 sm:h-10 text-chai-200 opacity-60 rotate-6 animate-pulse-slow" />
+        <x-animal-icon name="rabbit" class="w-8 h-8 sm:w-10 sm:h-10 text-soft-blush-pink-200 opacity-60 -rotate-3 animate-bounce-slow" />
+        <x-animal-icon name="bird" class="w-8 h-8 sm:w-10 sm:h-10 text-forest-moss-green-200 opacity-60 rotate-12 animate-pulse-slow" />
+        <x-animal-icon name="hamster" class="w-8 h-8 sm:w-10 sm:h-10 text-chai-200 opacity-60 -rotate-6 animate-bounce-slow" />
     </div>
 </section>
 
