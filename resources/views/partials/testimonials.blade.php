@@ -26,14 +26,15 @@
         {{-- Navigation Tabs --}}
         <div class="flex justify-center mb-16 px-4">
             <div class="bg-white/80 backdrop-blur-md rounded-2xl md:rounded-full p-1.5 shadow-lg border border-white/50 flex flex-col md:flex-row w-full md:w-auto">
-                @foreach(['testimonials' => 'Stories', 'articles' => 'Tips & Tricks', 'news' => 'Clinic News', 'promo' => 'Hot Deals'] as $key => $label)
+                @foreach(['testimonials' => 'Stories', 'articles' => 'Tips & Tricks', 'news' => 'Clinic News', 'promo' => 'Hot Deals', 'faqs' => 'FAQs'] as $key => $label)
                     <button class="tab-btn px-6 py-3 rounded-xl md:rounded-full font-bold text-sm transition-all duration-300 relative overflow-hidden group {{ $loop->first ? 'active text-white shadow-md' : 'text-carob-600 hover:text-carob-800' }} flex-1 md:flex-initial" 
                             data-tab="{{ $key }}">
                         <span class="relative z-10 flex items-center justify-center gap-2">
                             @if($key == 'testimonials') <i data-lucide="message-circle-heart" class="w-4 h-4"></i>
                             @elseif($key == 'articles') <i data-lucide="book-open" class="w-4 h-4"></i>
                             @elseif($key == 'news') <i data-lucide="newspaper" class="w-4 h-4"></i>
-                            @else <i data-lucide="tag" class="w-4 h-4"></i>
+                            @elseif($key == 'promo') <i data-lucide="tag" class="w-4 h-4"></i>
+                            @else <i data-lucide="help-circle" class="w-4 h-4"></i>
                             @endif
                             <span class="whitespace-nowrap">{{ $label }}</span>
                         </span>
@@ -327,6 +328,33 @@
                 @endforelse
             </div>
         </div>
+        {{-- FAQs Tab Content --}}
+        <div id="faqs-content" class="tab-content hidden transition-opacity duration-500">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Frequently Asked Questions</h2>
+                <p class="text-lg text-carob-600">Common questions about our services and care.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                @forelse($faqs as $faq)
+                    <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm group">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 bg-white hover:bg-soft-linen-50 transition-colors" onclick="toggleFaq(this)">
+                            <span class="font-bold text-lg text-carob-900">{{ $faq->question }}</span>
+                            <span class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-500 transition-transform duration-300 group-[.active]:rotate-180">
+                                <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 text-carob-600 leading-relaxed border-t border-dashed border-gray-100 bg-soft-linen-50/30">
+                            <div class="pt-4 article-content">
+                                {!! $faq->answer !!}
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="text-center py-12 text-carob-500">No FAQs available yet.</div>
+                @endforelse
+            </div>
+        </div>
     </div>
 </section>
 
@@ -437,7 +465,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'testimonials': 'from-forest-moss-green-500 to-forest-moss-green-600',
         'articles': 'from-soft-blush-pink-500 to-soft-blush-pink-600',
         'news': 'from-chai-500 to-chai-600',
-        'promo': 'from-old-mustard-yellow-500 to-old-mustard-yellow-600'
+        'promo': 'from-old-mustard-yellow-500 to-old-mustard-yellow-600',
+        'faqs': 'from-carob-500 to-carob-600'
     };
 
     tabs.forEach(tab => {
@@ -491,6 +520,29 @@ function closeModal(id) {
     if(modal) {
         modal.classList.add('hidden');
         document.body.style.overflow = 'auto';
+    }
+}
+
+// FAQ Logic
+function toggleFaq(button) {
+    const container = button.parentElement;
+    const content = container.querySelector('.faq-content');
+    const isHidden = content.classList.contains('hidden');
+    
+    // Close all others (optional, but good UX)
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+        if(btn !== button) {
+            btn.parentElement.classList.remove('active');
+            btn.parentElement.querySelector('.faq-content').classList.add('hidden');
+        }
+    });
+
+    if(isHidden) {
+        container.classList.add('active');
+        content.classList.remove('hidden');
+    } else {
+        container.classList.remove('active');
+        content.classList.add('hidden');
     }
 }
 </script>

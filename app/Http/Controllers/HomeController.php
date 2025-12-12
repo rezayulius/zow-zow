@@ -11,6 +11,7 @@ use App\Models\Article;
 use App\Models\News;
 use App\Models\Promo;
 use App\Models\HeroSlide;
+use App\Models\Faq;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -29,6 +30,7 @@ class HomeController extends Controller
         $articles = Article::published()->featured()->ordered()->limit(3)->get();
         $news = News::published()->featured()->ordered()->limit(3)->get();
         $promos = Promo::active()->ongoing()->featured()->ordered()->limit(3)->get();
+        $faqs = Faq::active()->ordered()->limit(5)->get();
 
         // Fetch vets data from Digitail API
         $vets = $this->fetchVetsFromDigitail();
@@ -44,7 +46,8 @@ class HomeController extends Controller
             'articles',
             'news',
             'promos',
-            'vets'
+            'vets',
+            'faqs'
         ));
     }
 
