@@ -100,7 +100,7 @@
             @endphp
 
             <div class="slide {{ $isActive }} absolute inset-0 w-full h-full z-10 transition-all duration-700 ease-in-out" data-slide="{{ $index }}">
-                <div class="w-full h-full flex items-center pt-32 sm:pt-28 pb-24 sm:pb-20 lg:pt-32 lg:pb-24">
+                <div class="w-full h-full flex items-center pt-32 sm:pt-28 pb-36 sm:pb-24 lg:pt-32 lg:pb-24">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                         <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                             <!-- Left Column -->

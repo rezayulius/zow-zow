@@ -36,49 +36,49 @@
             Our core values define every interaction:
         </p>
         
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
-            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
-                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Caring</span>
-                <span class="text-sm text-carob-600">Genuine empathy & attention</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Caring</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Genuine empathy & attention</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
-                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Confident</span>
-                <span class="text-sm text-carob-600">Professional expertise</span>
+            <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Confident</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Professional expertise</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
-                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Truthful</span>
-                <span class="text-sm text-carob-600">Honest & transparent</span>
+            <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Truthful</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Honest & transparent</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
-                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Warm</span>
-                <span class="text-sm text-carob-600">Friendly & welcoming</span>
+            <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Warm</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Friendly & welcoming</span>
             </div>
         </div>
 
         <!-- Service Approach -->
         <div class="max-w-5xl mx-auto">
-            <h3 class="text-2xl font-heading text-carob-900 mb-8">Our Service Approach</h3>
-            <div class="grid md:grid-cols-3 gap-6 text-left">
-                <div class="bg-white p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center mb-4 text-forest-moss-green-600">
-                        <i data-lucide="search" class="w-6 h-6"></i>
+            <h3 class="text-xl md:text-2xl font-heading text-carob-900 mb-6 md:mb-8">Our Service Approach</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-left">
+                <div class="bg-white p-5 md:p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform h-full">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center mb-4 text-forest-moss-green-600">
+                        <i data-lucide="search" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-carob-900 mb-2">Thorough Exam</h4>
-                    <p class="text-sm text-carob-600 leading-relaxed">Every visit starts with a careful, comprehensive examination of your pet's condition.</p>
+                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">Thorough Exam</h4>
+                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">Every visit starts with a careful, comprehensive examination of your pet's condition.</p>
                 </div>
-                <div class="bg-white p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-chai-100 rounded-full flex items-center justify-center mb-4 text-chai-600">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                <div class="bg-white p-5 md:p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform h-full">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-chai-100 rounded-full flex items-center justify-center mb-4 text-chai-600">
+                        <i data-lucide="message-circle" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-carob-900 mb-2">Simple Explanation</h4>
-                    <p class="text-sm text-carob-600 leading-relaxed">We explain medical conditions simply, avoiding confusing jargon so you truly understand.</p>
+                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">Simple Explanation</h4>
+                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">We explain medical conditions simply, avoiding confusing jargon so you truly understand.</p>
                 </div>
-                <div class="bg-white p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform">
-                    <div class="w-12 h-12 bg-soft-blush-pink-100 rounded-full flex items-center justify-center mb-4 text-soft-blush-pink-600">
-                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                <div class="bg-white p-5 md:p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform h-full">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-soft-blush-pink-100 rounded-full flex items-center justify-center mb-4 text-soft-blush-pink-600">
+                        <i data-lucide="heart-handshake" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <h4 class="font-bold text-lg text-carob-900 mb-2">Open Discussion</h4>
-                    <p class="text-sm text-carob-600 leading-relaxed">We discuss treatment options and costs openly, involving you in every decision.</p>
+                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">Open Discussion</h4>
+                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">We discuss treatment options and costs openly, involving you in every decision.</p>
                 </div>
             </div>
         </div>
@@ -346,26 +346,26 @@
                 <div class="absolute bottom-10 left-1/2 w-24 h-24 bg-forest-moss-green-500/20 rounded-full blur-xl z-20"></div>
             </div>
             
-            <div class="relative z-20 p-8 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12">
-                <div class="max-w-2xl">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 hover:bg-white/20 transition-colors cursor-default">
+            <div class="relative z-20 p-6 sm:p-10 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+                <div class="max-w-2xl text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 lg:mb-8 hover:bg-white/20 transition-colors cursor-default">
                         <span class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
                         <span class="text-xs font-bold tracking-wide uppercase text-white">Online Booking Available</span>
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-heading font-medium mb-6 leading-tight">Ready to visit your pet's <br> <span class="italic text-chai-300 font-heading">second home?</span></h2>
-                    <p class="text-carob-100 text-lg md:text-xl leading-relaxed opacity-90 font-light">
+                    <h2 class="text-3xl md:text-5xl lg:text-6xl font-heading font-medium mb-4 lg:mb-6 leading-tight">Ready to visit your pet's <br> <span class="italic text-chai-300 font-heading">second home?</span></h2>
+                    <p class="text-carob-100 text-base md:text-lg lg:text-xl leading-relaxed opacity-90 font-light">
                         Schedule an appointment in seconds via Digitail. Whether it's a check-up, grooming session, or a playdate.
                     </p>
                 </div>
 
                 <div class="flex flex-col gap-4 w-full lg:w-auto min-w-[300px]">
-                    <a href="https://developer.digitail.io/clinics/zowzowvetique-first?widget" target="_blank" class="w-full py-5 px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
-                        <i data-lucide="calendar-plus" class="w-6 h-6 group-hover:rotate-12 transition-transform"></i>
-                        <span class="text-lg">Book Appointment</span>
+                    <a href="https://developer.digitail.io/clinics/zowzowvetique-first?widget" target="_blank" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
+                        <i data-lucide="calendar-plus" class="w-5 h-5 lg:w-6 lg:h-6 group-hover:rotate-12 transition-transform"></i>
+                        <span class="text-base lg:text-lg">Book Appointment</span>
                     </a>
-                    <a href="https://wa.me/6281219088899" target="_blank" class="w-full py-5 px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
-                        <i data-lucide="message-circle" class="w-6 h-6"></i>
-                        <span class="text-lg">Chat on WhatsApp</span>
+                    <a href="https://wa.me/6281219088899" target="_blank" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
+                        <i data-lucide="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                        <span class="text-base lg:text-lg">Chat on WhatsApp</span>
                     </a>
                 </div>
             </div>
