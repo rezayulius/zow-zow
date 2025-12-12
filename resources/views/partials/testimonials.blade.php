@@ -25,21 +25,26 @@
         
         {{-- Navigation Tabs --}}
         <div class="flex justify-center mb-16 px-4">
-            <div class="bg-white/80 backdrop-blur-md rounded-2xl md:rounded-full p-1.5 shadow-lg border border-white/50 flex flex-col md:flex-row w-full md:w-auto">
+            <div class="bg-white/80 backdrop-blur-md rounded-2xl md:rounded-full p-1.5 shadow-lg border border-white/50 flex flex-col md:flex-row w-full md:w-auto gap-2 md:gap-0">
                 @foreach(['testimonials' => 'Stories', 'articles' => 'Tips & Tricks', 'news' => 'Clinic News', 'promo' => 'Hot Deals', 'faqs' => 'FAQs'] as $key => $label)
-                    <button class="tab-btn px-6 py-3 rounded-xl md:rounded-full font-bold text-sm transition-all duration-300 relative overflow-hidden group {{ $loop->first ? 'active text-white shadow-md' : 'text-carob-600 hover:text-carob-800' }} flex-1 md:flex-initial" 
+                    <button class="tab-btn px-6 py-3 rounded-xl md:rounded-full font-bold text-sm transition-all duration-300 relative overflow-hidden group {{ $loop->first ? 'active text-white shadow-md' : 'text-carob-600 hover:text-carob-800 bg-white md:bg-transparent' }} flex-1 md:flex-initial shadow-sm md:shadow-none" 
                             data-tab="{{ $key }}">
-                        <span class="relative z-10 flex items-center justify-center gap-2">
-                            @if($key == 'testimonials') <i data-lucide="message-circle-heart" class="w-4 h-4"></i>
-                            @elseif($key == 'articles') <i data-lucide="book-open" class="w-4 h-4"></i>
-                            @elseif($key == 'news') <i data-lucide="newspaper" class="w-4 h-4"></i>
-                            @elseif($key == 'promo') <i data-lucide="tag" class="w-4 h-4"></i>
-                            @else <i data-lucide="help-circle" class="w-4 h-4"></i>
-                            @endif
+                        <span class="relative z-10 flex items-center justify-start md:justify-center gap-3 md:gap-2">
+                            <span class="p-1.5 rounded-lg {{ $loop->first ? 'bg-white/20' : 'bg-soft-linen-100 group-hover:bg-white' }} transition-colors">
+                                @if($key == 'testimonials') <i data-lucide="message-circle-heart" class="w-4 h-4"></i>
+                                @elseif($key == 'articles') <i data-lucide="book-open" class="w-4 h-4"></i>
+                                @elseif($key == 'news') <i data-lucide="newspaper" class="w-4 h-4"></i>
+                                @elseif($key == 'promo') <i data-lucide="tag" class="w-4 h-4"></i>
+                                @else <i data-lucide="help-circle" class="w-4 h-4"></i>
+                                @endif
+                            </span>
                             <span class="whitespace-nowrap">{{ $label }}</span>
+                            
+                            <!-- Mobile Arrow Indicator -->
+                            <i data-lucide="chevron-right" class="w-4 h-4 ml-auto md:hidden opacity-50"></i>
                         </span>
                         @if($loop->first)
-                            <div class="absolute inset-0 bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600"></div>
+                            <div class="absolute inset-0 tab-active-bg bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600"></div>
                         @else
                             <div class="absolute inset-0 bg-carob-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         @endif
@@ -344,7 +349,7 @@
                                 <i data-lucide="chevron-down" class="w-5 h-5"></i>
                             </span>
                         </button>
-                        <div class="faq-content hidden px-6 pb-6 text-carob-600 leading-relaxed border-t border-dashed border-gray-100 bg-soft-linen-50/30">
+                        <div class="faq-content hidden px-6 pb-6 text-carob-600 leading-relaxed border-t border-dashed border-gray-100 bg-soft-linen-50/30 transition-all duration-300 ease-in-out overflow-hidden" style="max-height: 0; opacity: 0;">
                             <div class="pt-4 article-content">
                                 {!! $faq->answer !!}
                             </div>
@@ -462,11 +467,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
     const bgColors = {
-        'testimonials': 'from-forest-moss-green-500 to-forest-moss-green-600',
-        'articles': 'from-soft-blush-pink-500 to-soft-blush-pink-600',
-        'news': 'from-chai-500 to-chai-600',
-        'promo': 'from-old-mustard-yellow-500 to-old-mustard-yellow-600',
-        'faqs': 'from-carob-500 to-carob-600'
+        'testimonials': 'bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600',
+        'articles': 'bg-gradient-to-r from-soft-blush-pink-500 to-soft-blush-pink-600',
+        'news': 'bg-gradient-to-r from-chai-500 to-chai-600',
+        'promo': 'bg-gradient-to-r from-old-mustard-yellow-500 to-old-mustard-yellow-600',
+        'faqs': 'bg-carob-600'
     };
 
     tabs.forEach(tab => {
@@ -474,8 +479,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Deactivate all
             tabs.forEach(t => {
                 t.classList.remove('active', 'text-white', 'shadow-md');
-                t.classList.add('text-carob-600');
-                const bg = t.querySelector('.absolute.inset-0.bg-gradient-to-r');
+                t.classList.add('text-carob-600', 'bg-white', 'md:bg-transparent');
+                
+                // Reset icon bg
+                // Use attribute selector instead of class selector with dots
+                const iconSpan = t.querySelector('span[class*="p-1.5"]');
+                if(iconSpan) {
+                    iconSpan.classList.remove('bg-white/20');
+                    iconSpan.classList.add('bg-soft-linen-100');
+                }
+
+                const bg = t.querySelector('.tab-active-bg') || t.querySelector('.absolute.inset-0.bg-gradient-to-r');
                 if(bg) bg.remove();
             });
             
@@ -486,12 +500,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Activate clicked
             tab.classList.add('active', 'text-white', 'shadow-md');
-            tab.classList.remove('text-carob-600');
+            tab.classList.remove('text-carob-600', 'bg-white', 'md:bg-transparent');
             
+            // Active icon bg
+            const activeIconSpan = tab.querySelector('span[class*="p-1.5"]');
+            if(activeIconSpan) {
+                activeIconSpan.classList.remove('bg-soft-linen-100');
+                activeIconSpan.classList.add('bg-white/20');
+            }
+
             // Add bg
             const tabName = tab.dataset.tab;
             const bgDiv = document.createElement('div');
-            bgDiv.className = `absolute inset-0 bg-gradient-to-r ${bgColors[tabName]}`;
+            bgDiv.className = `absolute inset-0 tab-active-bg ${bgColors[tabName]}`;
             // Insert as first child to be behind text
             tab.insertBefore(bgDiv, tab.firstChild);
 
@@ -529,20 +550,40 @@ function toggleFaq(button) {
     const content = container.querySelector('.faq-content');
     const isHidden = content.classList.contains('hidden');
     
-    // Close all others (optional, but good UX)
+    // Close all others
     document.querySelectorAll('.faq-btn').forEach(btn => {
         if(btn !== button) {
-            btn.parentElement.classList.remove('active');
-            btn.parentElement.querySelector('.faq-content').classList.add('hidden');
+            const otherContainer = btn.parentElement;
+            if(otherContainer.classList.contains('active')) {
+                otherContainer.classList.remove('active');
+                const otherContent = otherContainer.querySelector('.faq-content');
+                otherContent.style.maxHeight = '0px';
+                otherContent.style.opacity = '0';
+                setTimeout(() => {
+                    otherContent.classList.add('hidden');
+                }, 300);
+            }
         }
     });
 
     if(isHidden) {
+        // Open
         container.classList.add('active');
         content.classList.remove('hidden');
+        // Force reflow
+        void content.offsetWidth; 
+        
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
     } else {
+        // Close
         container.classList.remove('active');
-        content.classList.add('hidden');
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+        
+        setTimeout(() => {
+            content.classList.add('hidden');
+        }, 300);
     }
 }
 </script>
