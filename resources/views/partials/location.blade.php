@@ -128,8 +128,11 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-carob-900 mb-1">Call Us</h4>
-                                <p class="text-sm text-carob-600 mb-1">0812-9591-1911</p>
-                                <a href="tel:+6281295911911" class="text-xs font-bold text-forest-moss-green-600 hover:underline">Call Now -></a>
+                                <p class="text-sm text-carob-600 mb-2">0812-9591-1911</p>
+                                <a href="tel:+6281295911911" class="inline-flex items-center gap-1 text-xs font-bold text-white bg-forest-moss-green-500 hover:bg-forest-moss-green-600 px-3 py-1.5 rounded-full shadow-sm transition-all duration-300 group/link">
+                                    <i data-lucide="phone" class="w-3 h-3"></i>
+                                    Call Now
+                                </a>
                             </div>
                         </div>
 

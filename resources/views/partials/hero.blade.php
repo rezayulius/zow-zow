@@ -100,13 +100,13 @@
             @endphp
 
             <div class="slide {{ $isActive }} absolute inset-0 w-full h-full z-10 transition-all duration-700 ease-in-out" data-slide="{{ $index }}">
-                <div class="w-full h-full flex items-center pt-24 sm:pt-28 pb-12 sm:pb-16 lg:pt-32 lg:pb-24">
+                <div class="w-full h-full flex items-center pt-32 sm:pt-28 pb-24 sm:pb-20 lg:pt-32 lg:pb-24">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                             <!-- Left Column -->
-                            <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:space-y-8 relative z-20 order-2 lg:order-1">
+                            <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-4 lg:space-y-8 relative z-20 order-2 lg:order-1">
                                 @if($slide->badge_text)
-                                <div class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/60 backdrop-blur-sm border border-soft-linen-200 shadow-sm shadow-deep-cocoa-brown-900/5 cursor-default">
+                                <div class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/60 backdrop-blur-sm border border-soft-linen-200 shadow-sm shadow-deep-cocoa-brown-900/5 cursor-default mt-4 lg:mt-0">
                                     <span class="flex h-2 w-2 relative">
                                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full {{ $c['badge_ping'] }} opacity-75"></span>
                                         <span class="relative inline-flex rounded-full h-2 w-2 {{ $c['badge_dot'] }}"></span>
@@ -125,14 +125,17 @@
                                         </span>
                                         @endif
                                     </h1>
-                                    <p class="text-base sm:text-xl text-deep-cocoa-brown-600 leading-relaxed font-light">
+                                    <p class="text-base sm:text-xl text-deep-cocoa-brown-600 leading-relaxed font-light hidden sm:block">
+                                        {{ $slide->description }}
+                                    </p>
+                                    <p class="text-sm text-deep-cocoa-brown-600 leading-relaxed font-light sm:hidden line-clamp-3">
                                         {{ $slide->description }}
                                     </p>
                                 </div>
 
-                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+                                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
                                     @if($slide->primary_cta_text)
-                                    <a href="{{ $slide->primary_cta_url ?? '#' }}" class="group relative overflow-hidden {{ $c['btn_bg'] }} text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-medium text-sm sm:text-base shadow-xl {{ $c['btn_shadow'] }} hover:{{ $c['btn_hover_shadow'] }} hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2">
+                                    <a href="{{ $slide->primary_cta_url ?? '#' }}" class="group relative overflow-hidden {{ $c['btn_bg'] }} text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-medium text-sm sm:text-base shadow-xl {{ $c['btn_shadow'] }} hover:{{ $c['btn_hover_shadow'] }} hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2 w-full sm:w-auto">
                                         <span class="relative z-10">{{ $slide->primary_cta_text }}</span>
                                         <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300"></i>
                                         <div class="absolute inset-0 bg-gradient-to-r {{ $c['gradient_from'] }} {{ $c['gradient_to'] }} opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -140,44 +143,46 @@
                                     @endif
 
                                     @if($slide->secondary_cta_text)
-                                    <a href="{{ $slide->secondary_cta_url ?? '#' }}" class="group bg-white/80 backdrop-blur-sm text-deep-cocoa-brown-700 px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-medium text-sm sm:text-base border border-soft-linen-200 {{ $c['border_hover'] }} hover:bg-white shadow-lg shadow-deep-cocoa-brown-900/5 hover:shadow-deep-cocoa-brown-900/10 hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2">
+                                    <a href="{{ $slide->secondary_cta_url ?? '#' }}" class="group bg-white/80 backdrop-blur-sm text-deep-cocoa-brown-700 px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-medium text-sm sm:text-base border border-soft-linen-200 {{ $c['border_hover'] }} hover:bg-white shadow-lg shadow-deep-cocoa-brown-900/5 hover:shadow-deep-cocoa-brown-900/10 hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2 w-full sm:w-auto">
                                         <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 {{ $c['icon_color'] }} group-hover:scale-110 transition-transform duration-300"></i>
                                         <span>{{ $slide->secondary_cta_text }}</span>
                                     </a>
                                     @endif
                                 </div>
 
-                                <!-- Trust Indicators -->
-                                <div class="pt-2 sm:pt-4 flex items-center gap-6 sm:gap-8 text-deep-cocoa-brown-500/80">
-                                    <div class="flex items-center gap-2">
-                                        <div class="flex -space-x-2 sm:-space-x-3">
-                                            <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=100&h=100&fit=crop" alt="User">
-                                            <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User">
-                                            <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop" alt="User">
+                                <!-- Features/Benefits -->
+                                <div class="pt-4 sm:pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 w-full">
+                                    <div class="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-xl border border-soft-linen-100 shadow-sm">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full {{ $c['badge_ping'] }} flex items-center justify-center text-white shrink-0">
+                                            <i data-lucide="shield-check" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                                         </div>
-                                        <div class="flex flex-col text-[0.65rem] sm:text-xs leading-tight">
-                                            <span class="font-bold text-deep-cocoa-brown-700">500+</span>
-                                            <span>Happy Owners</span>
+                                        <div class="flex flex-col text-left">
+                                            <span class="text-[0.65rem] sm:text-xs font-bold {{ $c['text_dark'] }} uppercase tracking-wide">Professional</span>
+                                            <span class="text-xs sm:text-sm {{ $c['text'] }}">Expert Care</span>
                                         </div>
                                     </div>
-                                    <div class="w-px h-6 sm:h-8 bg-deep-cocoa-brown-200/50"></div>
-                                    <div class="flex flex-col text-[0.65rem] sm:text-xs leading-tight">
-                                        <span class="font-bold text-deep-cocoa-brown-700 text-sm sm:text-base">4.9/5</span>
-                                        <span class="flex items-center gap-0.5">
-                                            <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
-                                            Top Rated
-                                        </span>
+
+                                    <div class="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-xl border border-soft-linen-100 shadow-sm">
+                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full {{ $c['badge_ping'] }} flex items-center justify-center text-white shrink-0">
+                                            <i data-lucide="heart-handshake" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                                        </div>
+                                        <div class="flex flex-col text-left">
+                                            <span class="text-[0.65rem] sm:text-xs font-bold {{ $c['text_dark'] }} uppercase tracking-wide">Trusted</span>
+                                            <span class="text-xs sm:text-sm {{ $c['text'] }}">Loving Environment</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Right Column -->
-                            <div class="relative h-[300px] sm:h-[400px] lg:h-full lg:min-h-[500px] w-full perspective-1000 group mt-4 lg:mt-0 order-1 lg:order-2">
-                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[65%] sm:w-[50%] lg:w-[90%] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-deep-cocoa-brown-900/10 rotate-[-3deg] transition-all duration-700 group-hover:rotate-0 border-[4px] sm:border-[6px] border-white z-10">
-                                    <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700">
+                            <div class="relative h-[280px] sm:h-[400px] lg:h-full lg:min-h-[500px] w-full perspective-1000 group mt-8 lg:mt-0 order-1 lg:order-2 flex justify-center items-center">
+                                <div class="relative w-[70%] sm:w-[50%] lg:w-[90%] aspect-[4/5]">
+                                    <div class="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-deep-cocoa-brown-900/10 rotate-[-3deg] transition-all duration-700 group-hover:rotate-0 border-[4px] sm:border-[6px] border-white z-10">
+                                        <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700">
+                                    </div>
                                     
                                     <!-- Floating Card -->
-                                    <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border border-soft-linen-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                                    <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border border-soft-linen-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100 z-20">
                                         <div class="flex items-center justify-between">
                                             <div>
                                                 <p class="text-[0.6rem] sm:text-xs font-semibold text-deep-cocoa-brown-400 uppercase tracking-wider mb-0.5 sm:mb-1">Wellness Status</p>
@@ -194,7 +199,7 @@
                                 </div>
 
                                 @if($secondaryImage)
-                                <div class="absolute top-[10%] right-[10%] sm:right-[20%] lg:right-[5%] w-[40%] sm:w-[30%] lg:w-[60%] aspect-square rounded-[2rem] overflow-hidden shadow-xl {{ $c['secondary_blob_shadow'] }} rotate-[6deg] opacity-90 transition-all duration-700 group-hover:rotate-[3deg] group-hover:translate-x-4 border-[4px] sm:border-[6px] border-white z-0 hidden sm:block">
+                                <div class="absolute top-[5%] right-[5%] sm:right-[15%] lg:right-0 w-[35%] sm:w-[30%] lg:w-[60%] aspect-square rounded-[2rem] overflow-hidden shadow-xl {{ $c['secondary_blob_shadow'] }} rotate-[6deg] opacity-90 transition-all duration-700 group-hover:rotate-[3deg] group-hover:translate-x-4 border-[4px] sm:border-[6px] border-white z-0 hidden sm:block">
                                      <img src="{{ $secondaryImage }}" alt="Detail" class="w-full h-full object-cover">
                                 </div>
                                 @endif
@@ -220,7 +225,7 @@
     
     <!-- Slider Navigation (Bottom Center) -->
     @if(count($heroSlides) > 1)
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-4">
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center gap-4">
         <!-- Dots -->
         <div class="flex items-center gap-3">
             @foreach($heroSlides as $index => $slide)
@@ -229,6 +234,13 @@
         </div>
     </div>
     @endif
+
+    <!-- Bottom Wave Separator (Seamless Transition) -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none text-soft-linen-50">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[50px] sm:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-current transform rotate-180 origin-center"></path>
+        </svg>
+    </div>
 </section>
 
 <style>

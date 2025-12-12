@@ -10,6 +10,7 @@ use App\Models\Testimonial;
 use App\Models\Article;
 use App\Models\News;
 use App\Models\Promo;
+use App\Models\HeroSlide;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Call HeroSlideSeeder
+        $this->call(HeroSlideSeeder::class);
+
         // Create admin user if not exists
         User::firstOrCreate(
             ['email' => 'admin@gmail.com'],

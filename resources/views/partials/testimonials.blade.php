@@ -16,7 +16,7 @@
         <div class="absolute top-1/2 left-1/4 opacity-10 animate-float-fast text-soft-blush-pink-400">
             <x-animal-icon name="rabbit" class="w-20 h-20" />
         </div>
-        <div class="absolute bottom-10 right-1/3 opacity-15 animate-float-slow text-old-mustard-yellow-400">
+        <div class="absolute bottom-10 right-1/3 opacity-20 animate-float-slow text-old-mustard-yellow-400">
             <x-animal-icon name="bird" class="w-28 h-28 -rotate-6" />
         </div>
     </div>

@@ -2,7 +2,7 @@
 <section class="relative py-16 md:py-24 overflow-hidden bg-soft-linen-50">
     <!-- Decorative Elements -->
     <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        <div class="absolute -top-20 -left-20 w-96 h-96 bg-forest-moss-green-200/40 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-24 -left-20 w-96 h-96 bg-forest-moss-green-200/40 rounded-full blur-3xl animate-pulse-slow"></div>
         <div class="absolute top-1/2 -right-20 w-80 h-80 bg-chai-200/40 rounded-full blur-3xl animate-bounce-slow"></div>
         <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-pistache-200/40 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
         
