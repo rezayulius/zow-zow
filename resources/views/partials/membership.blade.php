@@ -6,16 +6,15 @@
         <div class="absolute top-20 right-0 w-96 h-96 bg-forest-moss-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
         <div class="absolute -bottom-32 left-20 w-96 h-96 bg-vanilla-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
         
-        <!-- Abstract Shapes -->
-        <div class="absolute top-40 right-10 opacity-10 rotate-12">
-            <svg width="120" height="120" viewBox="0 0 100 100" fill="currentColor" class="text-chai-400">
-                <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
-            </svg>
+        <!-- Abstract Shapes & Animal Icons -->
+        <div class="absolute top-40 right-10 opacity-10 rotate-12 animate-float-slow">
+             <x-animal-icon name="cat" class="w-40 h-40 text-chai-400" />
         </div>
-        <div class="absolute bottom-40 left-10 opacity-10 -rotate-12">
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="currentColor" class="text-forest-moss-green-400">
-                <circle cx="50" cy="50" r="50" />
-            </svg>
+        <div class="absolute bottom-40 left-10 opacity-10 -rotate-12 animate-float-medium">
+             <x-animal-icon name="dog" class="w-48 h-48 text-forest-moss-green-400" />
+        </div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5 animate-pulse-slow">
+             <x-animal-icon name="rabbit" class="w-64 h-64 text-soft-blush-pink-400" />
         </div>
     </div>
 
@@ -23,9 +22,8 @@
         <!-- Membership Header -->
         <div class="text-center mb-16">
             <div class="inline-flex items-center bg-white border border-carob-100 rounded-full px-6 py-2 shadow-sm mb-6 animate-fade-in-up">
-                <span class="flex h-3 w-3 relative mr-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest-moss-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-forest-moss-green-500"></span>
+                <span class="mr-3 flex items-center">
+                    <x-animal-icon name="hamster" class="w-6 h-6 text-forest-moss-green-500" />
                 </span>
                 <span class="text-carob-600 font-medium text-sm tracking-wide uppercase">Join Our Family</span>
             </div>

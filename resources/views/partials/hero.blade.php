@@ -200,7 +200,7 @@
                                 @endif
 
                                 <div class="absolute -top-2 left-[15%] sm:-top-4 sm:left-[20%] lg:left-[10%] bg-white p-2 sm:p-3 rounded-2xl shadow-xl rotate-[-10deg] animate-float-slow z-20">
-                                    <span class="text-xl sm:text-2xl">🐾</span>
+                                    <x-animal-icon name="bird" class="w-8 h-8 sm:w-10 sm:h-10 text-forest-moss-green-500" />
                                 </div>
                             </div>
                         </div>

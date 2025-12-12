@@ -3,15 +3,14 @@
     <!-- Background Elements -->
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-vanilla-50/50 to-transparent opacity-50"></div>
-        <div class="absolute -top-10 -left-10 rotate-12 opacity-10">
-            <svg class="w-32 h-32 text-forest-moss-green-200" viewBox="0 0 100 100" fill="currentColor">
-                <path d="M50 0 C22.4 0 0 22.4 0 50 C0 77.6 22.4 100 50 100 C77.6 100 100 77.6 100 50 C100 22.4 77.6 0 50 0 Z M50 80 C33.4 80 20 66.6 20 50 C20 33.4 33.4 20 50 20 C66.6 20 80 33.4 80 50 C80 66.6 66.6 80 50 80 Z" />
-            </svg>
+        <div class="absolute -top-10 -left-10 rotate-12 opacity-10 animate-float-slow">
+            <x-animal-icon name="cow" class="w-48 h-48 text-forest-moss-green-200" />
         </div>
-        <div class="absolute bottom-20 right-10 -rotate-12 opacity-10">
-            <svg class="w-40 h-40 text-chai-200" viewBox="0 0 100 100" fill="currentColor">
-                <path d="M50 0 L100 50 L50 100 L0 50 Z" />
-            </svg>
+        <div class="absolute bottom-20 right-10 -rotate-12 opacity-10 animate-float-medium">
+            <x-animal-icon name="hamster" class="w-56 h-56 text-chai-200" />
+        </div>
+        <div class="absolute top-1/3 right-1/4 opacity-5 animate-pulse-slow">
+            <x-animal-icon name="cat" class="w-32 h-32 text-soft-blush-pink-200" />
         </div>
     </div>
 
@@ -19,7 +18,9 @@
         <!-- Header -->
         <div class="text-center mb-16">
             <div class="inline-flex items-center bg-vanilla-100 text-chai-800 px-6 py-2 rounded-full text-sm font-medium mb-6 shadow-sm border border-vanilla-200">
-                <i data-lucide="shield-check" class="w-4 h-4 mr-2 text-chai-600"></i>
+                <div class="mr-2 flex items-center">
+                    <x-animal-icon name="bear" class="w-5 h-5 text-chai-600" />
+                </div>
                 Transparency & Trust
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 leading-tight">

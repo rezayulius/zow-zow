@@ -5,13 +5,24 @@
         <div class="absolute top-20 right-0 w-96 h-96 bg-forest-moss-green-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
         <div class="absolute bottom-0 left-10 w-80 h-80 bg-chai-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-soft-blush-pink-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-4000"></div>
+        
+        <!-- Floating Icon -->
+        <div class="absolute top-10 left-10 opacity-20 animate-float-slow">
+            <x-animal-icon name="cow" class="w-40 h-40 text-forest-moss-green-300" />
+        </div>
+        <div class="absolute bottom-20 right-10 opacity-20 animate-float-medium">
+            <x-animal-icon name="bird" class="w-32 h-32 text-chai-300" />
+        </div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 z-10">
         {{-- Section Header --}}
         <div class="text-center mb-16 max-w-3xl mx-auto">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-forest-moss-green-50 text-forest-moss-green-700 text-xs font-bold uppercase tracking-wider mb-6 border border-forest-moss-green-100 shadow-sm">
-                <span>📍</span> Visit Us
+                <div class="flex items-center">
+                    <x-animal-icon name="bird" class="w-4 h-4 text-forest-moss-green-600" />
+                </div>
+                Visit Us
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight">
                 Visit Your <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Second Home</span>

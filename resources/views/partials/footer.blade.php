@@ -6,8 +6,14 @@
         <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-chai-900/40 rounded-full mix-blend-overlay filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
     </div>
 
-    <!-- Decorative Top Curve -->
-    <div class="absolute top-0 left-0 right-0 h-16 bg-white rounded-b-[50%] transform -translate-y-8 scale-x-110"></div>
+    <!-- Decorative Top Curve & Parade -->
+    <div class="absolute top-0 left-0 right-0 h-16 bg-white rounded-b-[50%] transform -translate-y-8 scale-x-110 z-10 flex justify-center items-end pb-2 gap-8 overflow-hidden">
+        <x-animal-icon name="dog" class="w-8 h-8 text-forest-moss-green-200 opacity-50 -rotate-12" />
+        <x-animal-icon name="cat" class="w-8 h-8 text-chai-200 opacity-50 rotate-12" />
+        <x-animal-icon name="rabbit" class="w-8 h-8 text-soft-blush-pink-200 opacity-50 -rotate-6" />
+        <x-animal-icon name="bird" class="w-8 h-8 text-forest-moss-green-200 opacity-50 rotate-6" />
+        <x-animal-icon name="hamster" class="w-8 h-8 text-chai-200 opacity-50 -rotate-12" />
+    </div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6">
         <div class="grid lg:grid-cols-12 gap-12 mb-16">

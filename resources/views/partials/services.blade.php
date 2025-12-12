@@ -7,9 +7,15 @@
         <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-pistache-200/40 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
         
         <!-- Joyful elements -->
-        <svg class="absolute top-10 right-10 w-24 h-24 text-chai-300/30 animate-spin-slow" viewBox="0 0 100 100" fill="currentColor">
-            <path d="M50 0 L61 39 L100 50 L61 61 L50 100 L39 61 L0 50 L39 39 Z" />
-        </svg>
+        <div class="absolute top-10 right-10 opacity-20 animate-float-slow">
+            <x-animal-icon name="dog" class="w-48 h-48 text-forest-moss-green-300" />
+        </div>
+        <div class="absolute bottom-10 left-10 opacity-20 animate-float-medium">
+            <x-animal-icon name="cat" class="w-40 h-40 text-chai-300" />
+        </div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10 animate-pulse-slow">
+            <x-animal-icon name="hamster" class="w-56 h-56 text-soft-blush-pink-400" />
+        </div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
