@@ -14,10 +14,10 @@
                 <span>📍</span> Visit Us
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight">
-                Where Happy Tails <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Come Together</span>
+                Visit Your <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Second Home</span>
             </h2>
             <p class="text-lg text-carob-600 leading-relaxed">
-                Conveniently located in the heart of Kemang. Drop by for a check-up, a grooming session, or just to say hi!
+                A safe, comfortable, and warm environment in the heart of Kemang. Drop by for a check-up, a grooming session, or just to say hi!
             </p>
             
             <div class="mt-8 flex flex-wrap justify-center gap-4">

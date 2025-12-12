@@ -19,14 +19,14 @@
         <!-- Header -->
         <div class="text-center mb-16">
             <div class="inline-flex items-center bg-vanilla-100 text-chai-800 px-6 py-2 rounded-full text-sm font-medium mb-6 shadow-sm border border-vanilla-200">
-                <i data-lucide="heart-handshake" class="w-4 h-4 mr-2 text-chai-600"></i>
-                Lifestyle Membership
+                <i data-lucide="shield-check" class="w-4 h-4 mr-2 text-chai-600"></i>
+                Transparency & Trust
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 leading-tight">
-                Invest in Their <span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Happiness</span>
+                Transparent Care, <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Trusted Value</span>
             </h2>
             <p class="text-carob-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                Beyond just a clinic, Zow is a sanctuary for happiness. We invite you to experience a lifestyle where premium care meets the warmth of a second home—designed for their wellness and your peace of mind.
+                We believe in honest communication. Upfront estimates, no hidden costs, and clear explanations. Just genuine care for your family member.
             </p>
         </div>
 

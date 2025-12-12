@@ -15,20 +15,67 @@
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
         <div class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border-2 border-forest-moss-green-100 shadow-sm mb-8 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group cursor-default">
             <span class="w-3 h-3 rounded-full bg-forest-moss-green-500 group-hover:animate-ping"></span>
-            <span class="text-sm font-bold text-forest-moss-green-700 tracking-wide uppercase">Our Happy Philosophy</span>
+            <span class="text-sm font-bold text-forest-moss-green-700 tracking-wide uppercase">Our Philosophy</span>
         </div>
 
         <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-medium text-carob-900 mb-6 leading-[1.1] max-w-6xl mx-auto relative">
-            <span class="relative inline-block transform hover:rotate-2 transition-transform duration-300">Zow</span> is more than <br class="hidden md:block"> just a place.
+            More than just a clinic.<br class="hidden md:block">
             <span class="block text-xl md:text-3xl lg:text-4xl mt-4 text-carob-600 font-sans font-light italic opacity-90">
-                It's a <span class="text-chai-600 font-medium not-italic decoration-wavy underline decoration-chai-300">second home</span> for pets & people!
+                ZOW Vet is your pet's <span class="text-chai-600 font-medium not-italic decoration-wavy underline decoration-chai-300">second home</span>.
             </span>
         </h1>
 
-        <p class="text-base md:text-xl text-carob-700 max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-            A joyful space where <span class="font-bold text-forest-moss-green-700 bg-forest-moss-green-50 px-2 rounded-lg">love</span>, <span class="font-bold text-forest-moss-green-700 bg-forest-moss-green-50 px-2 rounded-lg">care</span>, and <span class="font-bold text-forest-moss-green-700 bg-forest-moss-green-50 px-2 rounded-lg">comfort</span> bloom.
-            We are building a lifestyle ecosystem that nurtures wellness, joy, and community.
+        <p class="text-base md:text-xl text-carob-700 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
+            We build emotional connections, not just medical ones.
+            Our core values define every interaction:
         </p>
+        
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
+                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Caring</span>
+                <span class="text-sm text-carob-600">Genuine empathy & attention</span>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
+                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Confident</span>
+                <span class="text-sm text-carob-600">Professional expertise</span>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
+                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Truthful</span>
+                <span class="text-sm text-carob-600">Honest & transparent</span>
+            </div>
+            <div class="bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all">
+                <span class="block font-bold text-forest-moss-green-700 text-lg mb-1">Warm</span>
+                <span class="text-sm text-carob-600">Friendly & welcoming</span>
+            </div>
+        </div>
+
+        <!-- Service Approach -->
+        <div class="max-w-5xl mx-auto">
+            <h3 class="text-2xl font-heading text-carob-900 mb-8">Our Service Approach</h3>
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <div class="bg-white p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center mb-4 text-forest-moss-green-600">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-carob-900 mb-2">Thorough Exam</h4>
+                    <p class="text-sm text-carob-600 leading-relaxed">Every visit starts with a careful, comprehensive examination of your pet's condition.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-chai-100 rounded-full flex items-center justify-center mb-4 text-chai-600">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-carob-900 mb-2">Simple Explanation</h4>
+                    <p class="text-sm text-carob-600 leading-relaxed">We explain medical conditions simply, avoiding confusing jargon so you truly understand.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform">
+                    <div class="w-12 h-12 bg-soft-blush-pink-100 rounded-full flex items-center justify-center mb-4 text-soft-blush-pink-600">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-carob-900 mb-2">Open Discussion</h4>
+                    <p class="text-sm text-carob-600 leading-relaxed">We discuss treatment options and costs openly, involving you in every decision.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bottom Wave Separator -->
@@ -55,8 +102,12 @@
             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-forest-moss-green-100 text-forest-moss-green-600 mb-6 rotate-3 hover:rotate-12 transition-transform duration-500 shadow-xl shadow-forest-moss-green-200/50 border-4 border-white">
                 <i data-lucide="stethoscope" class="w-10 h-10"></i>
             </div>
-            <h2 class="text-4xl md:text-5xl font-heading text-forest-moss-green-900 mb-4">Comprehensive Health</h2>
-            <p class="text-forest-moss-green-700/80 text-xl max-w-2xl mx-auto">Expert medical care delivered with <span class="text-forest-moss-green-600 font-heading italic transform -rotate-2 inline-block">compassion</span> & joy!</p>
+            <h2 class="text-4xl md:text-5xl font-heading text-forest-moss-green-900 mb-4">Professional Health Care</h2>
+            <p class="text-forest-moss-green-700/80 text-xl max-w-2xl mx-auto">
+                From accurate diagnosis to modern therapies like 
+                <span class="text-forest-moss-green-600 font-bold italic">Stem Cell</span> & 
+                <span class="text-forest-moss-green-600 font-bold italic">Laser Therapy</span>.
+            </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -167,8 +218,11 @@
             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-chai-100 text-chai-600 mb-6 -rotate-3 hover:-rotate-12 transition-transform duration-500 shadow-xl shadow-chai-200/50 border-4 border-white">
                 <i data-lucide="sparkles" class="w-10 h-10"></i>
             </div>
-            <h2 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">Lifestyle & Wellness</h2>
-            <p class="text-chai-800/80 text-xl max-w-2xl mx-auto">Pamper your pet with premium grooming, comfortable stays, and social <span class="text-chai-600 font-bold italic">fun!</span></p>
+            <h2 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">Wellness & Prevention</h2>
+            <p class="text-chai-800/80 text-xl max-w-2xl mx-auto">
+                Focusing on prevention and quality of life. We educate pawrents on healthy lifestyles for a 
+                <span class="text-chai-600 font-bold italic">joyful future!</span>
+            </p>
         </div>
 
         <!-- Masonry Grid for Wellness -->

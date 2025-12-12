@@ -27,16 +27,16 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-forest-moss-green-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-3 w-3 bg-forest-moss-green-500"></span>
                 </span>
-                <span class="text-carob-600 font-medium text-sm tracking-wide uppercase">Exclusive Membership</span>
+                <span class="text-carob-600 font-medium text-sm tracking-wide uppercase">Join Our Family</span>
             </div>
             
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 leading-tight tracking-tight font-heading">
-                Unlock Premium Care &<br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Exclusive Benefits</span>
+                A Community That<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Feels Like Home</span>
             </h2>
             
             <p class="text-xl text-carob-600 max-w-2xl mx-auto leading-relaxed">
-                Choose the plan that fits your lifestyle. Enjoy priority access, special savings, and a community that treats your pet like family.
+                Designed for Pawrents who treat pets as family. Enjoy priority access, special savings, and a community that shares your love.
             </p>
         </div>
 
