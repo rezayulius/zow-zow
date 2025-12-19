@@ -13,6 +13,7 @@ class DigitailService
     private $clientId;
     private $clientSecret;
     private $redirectUri;
+    private $authBase;
     private $apiBase;
 
     public function __construct()
@@ -20,6 +21,7 @@ class DigitailService
         $this->clientId = config('services.digitail.client_id');
         $this->clientSecret = config('services.digitail.client_secret');
         $this->redirectUri = config('services.digitail.redirect');
+        $this->authBase = config('services.digitail.auth_base');
         $this->apiBase = config('services.digitail.api_base');
     }
 
