@@ -122,7 +122,10 @@ class DigitailService
             throw new \Exception('No refresh token available.');
         }
 
-        $response = Http::asForm()->post('https://identity.digitail.io/oauth/token', [
+        // Remove trailing slash if present
+        $baseUrl = rtrim($this->authBase, '/');
+
+        $response = Http::asForm()->post("{$baseUrl}/oauth/token", [
             'grant_type' => 'refresh_token',
             'refresh_token' => $token->refresh_token,
             'client_id' => $this->clientId,

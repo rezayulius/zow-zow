@@ -25,7 +25,8 @@ class DigitailAuthController extends Controller
             return redirect($url);
         } catch (\Exception $e) {
             Log::error('Digitail Auth Redirect Error: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Failed to initialize Digitail authentication.');
+            // Show actual error for debugging
+            return redirect()->back()->with('error', 'Failed to initialize Digitail authentication: ' . $e->getMessage());
         }
     }
 
