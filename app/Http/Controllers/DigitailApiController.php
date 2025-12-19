@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\DigitailService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -9,16 +10,16 @@ use Illuminate\Support\Facades\Log;
 class DigitailApiController extends Controller
 {
     private $baseUrl;
-    private $accessToken;
     private $defaultClinicId;
     private $timeout;
+    private $digitailService;
 
-    public function __construct()
+    public function __construct(DigitailService $digitailService)
     {
-        $this->baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
-        $this->accessToken = env('DIGITAIL_ACCESS_TOKEN');
-        $this->defaultClinicId = env('DIGITAIL_DEFAULT_CLINIC_ID', 562);
-        $this->timeout = env('DIGITAIL_TIMEOUT', 20);
+        $this->digitailService = $digitailService;
+        $this->baseUrl = config('services.digitail.api_base');
+        $this->defaultClinicId = config('services.digitail.default_clinic_id');
+        $this->timeout = config('services.digitail.timeout');
     }
 
     /**
@@ -26,11 +27,13 @@ class DigitailApiController extends Controller
      */
     private function createHttpClient()
     {
+        $accessToken = $this->digitailService->getAccessToken();
+
         return Http::timeout($this->timeout)
             ->withHeaders([
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $this->accessToken,
+                'Authorization' => 'Bearer ' . $accessToken,
             ]);
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DigitailController;
 use App\Http\Controllers\DigitailApiController;
 use App\Http\Controllers\DigitailSyncController;
+use App\Http\Controllers\DigitailAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ComingSoonController;
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
 // Digitail Dynamic Dashboard Route
 Route::prefix('digitail')->name('digitail.')->group(function () {
     Route::get('/', [DigitailController::class, 'dashboard'])->name('dashboard');
+    
+    // OAuth Routes
+    Route::get('/auth/redirect', [DigitailAuthController::class, 'redirect'])->name('auth.redirect');
+    Route::get('/auth/callback', [DigitailAuthController::class, 'handleCallback'])->name('auth.callback');
 });
 
 // Digitail Synchronization Routes (Admin only)

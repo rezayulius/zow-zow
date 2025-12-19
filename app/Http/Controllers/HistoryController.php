@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\DigitailService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +10,13 @@ use Illuminate\Support\Facades\Log;
 
 class HistoryController extends Controller
 {
+    private $digitailService;
+
+    public function __construct(DigitailService $digitailService)
+    {
+        $this->digitailService = $digitailService;
+    }
+
     /**
      * Display medical records history page
      */
@@ -55,8 +63,8 @@ class HistoryController extends Controller
     private function fetchPetParentByEmail(string $email)
     {
         try {
-            $baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
-            $accessToken = env('DIGITAIL_ACCESS_TOKEN');
+            $baseUrl = config('services.digitail.api_base');
+            $accessToken = $this->digitailService->getAccessToken();
 
             $response = Http::timeout(10)
                 ->withHeaders([
@@ -92,9 +100,9 @@ class HistoryController extends Controller
     private function fetchPetsByOwnerId(int $ownerId)
     {
         try {
-            $baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
-            $accessToken = env('DIGITAIL_ACCESS_TOKEN');
-            $clinicId = env('DIGITAIL_DEFAULT_CLINIC_ID', 562);
+            $baseUrl = config('services.digitail.api_base');
+            $accessToken = $this->digitailService->getAccessToken();
+            $clinicId = config('services.digitail.default_clinic_id');
 
             $response = Http::timeout(10)
                 ->withHeaders([
@@ -127,9 +135,9 @@ class HistoryController extends Controller
     private function fetchRecordsByPetId(int $petId)
     {
         try {
-            $baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
-            $accessToken = env('DIGITAIL_ACCESS_TOKEN');
-            $clinicId = env('DIGITAIL_DEFAULT_CLINIC_ID', 562);
+            $baseUrl = config('services.digitail.api_base');
+            $accessToken = $this->digitailService->getAccessToken();
+            $clinicId = config('services.digitail.default_clinic_id');
 
             $response = Http::timeout(10)
                 ->withHeaders([

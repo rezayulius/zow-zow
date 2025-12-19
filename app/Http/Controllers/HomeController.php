@@ -12,11 +12,19 @@ use App\Models\News;
 use App\Models\Promo;
 use App\Models\HeroSlide;
 use App\Models\Faq;
+use App\Services\DigitailService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
+    private $digitailService;
+
+    public function __construct(DigitailService $digitailService)
+    {
+        $this->digitailService = $digitailService;
+    }
+
     public function index()
     {
         // Fetch dynamic data from database
@@ -57,9 +65,9 @@ class HomeController extends Controller
     private function fetchVetsFromDigitail()
     {
         try {
-            $baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
-            $accessToken = env('DIGITAIL_ACCESS_TOKEN');
-            $clinicId = env('DIGITAIL_DEFAULT_CLINIC_ID', 562);
+            $baseUrl = config('services.digitail.api_base');
+            $accessToken = $this->digitailService->getAccessToken();
+            $clinicId = config('services.digitail.default_clinic_id');
 
             $response = Http::timeout(10)
                 ->withHeaders([

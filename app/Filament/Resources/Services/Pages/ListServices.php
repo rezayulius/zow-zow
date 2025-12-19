@@ -37,21 +37,20 @@ class ListServices extends ListRecords
     {
         try {
             // Validasi konfigurasi API
-            $baseUrl = config('app.digitail_api_base', env('DIGITAIL_API_BASE'));
-            $accessToken = env('DIGITAIL_ACCESS_TOKEN');
-            $clinicId = env('DIGITAIL_DEFAULT_CLINIC_ID');
+            $baseUrl = config('services.digitail.api_base');
+            $clinicId = config('services.digitail.default_clinic_id');
 
-            if (!$baseUrl || !$accessToken || !$clinicId) {
+            if (!$baseUrl || !$clinicId) {
                 Notification::make()
                     ->title('Konfigurasi API Tidak Lengkap')
-                    ->body('Pastikan DIGITAIL_API_BASE, DIGITAIL_ACCESS_TOKEN, dan DIGITAIL_DEFAULT_CLINIC_ID sudah dikonfigurasi.')
+                    ->body('Pastikan konfigurasi Digitail sudah lengkap.')
                     ->danger()
                     ->send();
                 return;
             }
 
             // Fetch data dari Digitail API
-            $controller = new \App\Http\Controllers\DigitailSyncController();
+            $controller = app(\App\Http\Controllers\DigitailSyncController::class);
             $servicePackages = $controller->fetchAllServices($clinicId);
 
             if (empty($servicePackages)) {

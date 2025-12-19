@@ -36,7 +36,11 @@ return [
     ],
 
     'digitail' => [
-        'access_token' => env('DIGITAIL_ACCESS_TOKEN'),
+        'client_id' => env('DIGITAIL_CLIENT_ID'),
+        'client_secret' => env('DIGITAIL_CLIENT_SECRET'),
+        'redirect' => env('DIGITAIL_REDIRECT_URI', env('APP_URL') . '/digitail/auth/callback'),
+        'auth_base' => env('DIGITAIL_AUTH_BASE', 'https://identity.digitail.io'), // Configurable Auth URL
+        'access_token' => env('DIGITAIL_ACCESS_TOKEN'), // Keep for backward compatibility/fallback
         'api_base' => env('DIGITAIL_API_BASE', 'https://developer.digitail.io/api/v1'),
         'timeout' => env('DIGITAIL_TIMEOUT', 20),
         'default_clinic_id' => env('DIGITAIL_DEFAULT_CLINIC_ID', 562),
