@@ -158,28 +158,33 @@ class DigitailSyncController extends Controller
      */
     private function mapServiceData($digitailService)
     {
+        $category = $digitailService['category'] ?? '';
+        if (is_array($category)) {
+            $category = json_encode($category);
+        }
+
         return [
             // Digitail specific fields
             'digitail_id' => $digitailService['id'] ?? null,
             'name' => $digitailService['name'] ?? null,
-            'client_name' => $digitailService['client_name'] ?? null,
+            'client_name' => is_array($digitailService['client_name'] ?? null) ? json_encode($digitailService['client_name']) : ($digitailService['client_name'] ?? null),
             'clinic_id' => $digitailService['clinic_id'] ?? null,
             'service_id' => $digitailService['service_id'] ?? null,
             'visit_type_id' => $digitailService['visit_type_id'] ?? null,
             'unit_price' => $digitailService['unit_price'] ?? null,
             'price_includes_tax' => $digitailService['price_includes_tax'] ?? false,
             'tax' => $digitailService['tax'] ?? null,
-            'aaha_code' => $digitailService['aaha_code'] ?? null,
-            'barcode' => $digitailService['barcode'] ?? null,
+            'aaha_code' => is_array($digitailService['aaha_code'] ?? null) ? json_encode($digitailService['aaha_code']) : ($digitailService['aaha_code'] ?? null),
+            'barcode' => is_array($digitailService['barcode'] ?? null) ? json_encode($digitailService['barcode']) : ($digitailService['barcode'] ?? null),
             'status' => $digitailService['status'] ?? 'enabled',
             'lab_tests' => $digitailService['lab_tests'] ?? [],
-            'aaha_category' => $digitailService['aaha_category'] ?? null,
+            'aaha_category' => is_array($digitailService['aaha_category'] ?? null) ? json_encode($digitailService['aaha_category']) : ($digitailService['aaha_category'] ?? null),
             'is_plan_benefit' => $digitailService['is_plan_benefit'] ?? false,
             
             // Map to existing local fields
             'title' => $digitailService['name'] ?? 'Untitled Service',
             'description' => $digitailService['description'] ?? '',
-            'category' => $this->mapCategory($digitailService['category'] ?? ''),
+            'category' => $this->mapCategory($category),
             'price' => $digitailService['price'] ?? null,
             'is_active' => ($digitailService['status'] ?? 'enabled') === 'enabled',
             'sort_order' => 0,

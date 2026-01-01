@@ -33,6 +33,29 @@ class ListServices extends ListRecords
         ];
     }
 
+    private function mapCategory($digitailCategory)
+    {
+        if (is_array($digitailCategory)) {
+            // Jika kategori berupa array, ambil nilai pertama atau default
+            $digitailCategory = reset($digitailCategory);
+        }
+
+        $categoryMap = [
+            'Grooming' => 'Wellness',
+            'Vaccinations' => 'Health',
+            'Wellness' => 'Wellness',
+            'Health' => 'Health',
+            'Medical' => 'Health',
+            'Preventive' => 'Health',
+            'Diagnostic' => 'Health',
+            'Treatment' => 'Health',
+            'Surgery' => 'Health',
+            'Emergency' => 'Health',
+        ];
+
+        return $categoryMap[$digitailCategory] ?? 'Wellness';
+    }
+
     private function syncDigitailData()
     {
         try {
@@ -74,28 +97,32 @@ class ListServices extends ListRecords
                 $digitailData = [
                     'digitail_id' => $package['id'],
                     'name' => $package['name'],
-                    'client_name' => $package['client_name'] ?? null,
+                    'client_name' => is_array($package['client_name'] ?? null) ? json_encode($package['client_name']) : ($package['client_name'] ?? null),
                     'clinic_id' => $package['clinic_id'],
                     'service_id' => $package['service_id'],
                     'visit_type_id' => $package['visit_type_id'],
                     'unit_price' => $package['unit_price'],
                     'price_includes_tax' => $package['price_includes_tax'] ?? false,
                     'tax' => $package['tax'] ?? null,
-                    'aaha_code' => $package['aaha_code'] ?? null,
-                    'barcode' => $package['barcode'] ?? null,
+                    'aaha_code' => is_array($package['aaha_code'] ?? null) ? json_encode($package['aaha_code']) : ($package['aaha_code'] ?? null),
+                    'barcode' => is_array($package['barcode'] ?? null) ? json_encode($package['barcode']) : ($package['barcode'] ?? null),
                     'status' => $package['status'] ?? 'enabled',
-                    'lab_tests' => $package['lab_tests'] ?? null,
-                    'aaha_category' => $package['aaha_category'] ?? null,
+                    'lab_tests' => $package['lab_tests'] ?? [],
+                    'aaha_category' => is_array($package['aaha_category'] ?? null) ? json_encode($package['aaha_category']) : ($package['aaha_category'] ?? null),
                     'is_plan_benefit' => $package['is_plan_benefit'] ?? false,
                     'digitail_synced_at' => $now,
                 ];
+
+                // Map category correctly using helper function
+                $rawCategory = $package['category'] ?? ($package['client_name'] ?? '');
+                $category = $this->mapCategory($rawCategory);
 
                 if ($service) {
                     // Update existing service - update field Digitail dan field lokal
                     $updateData = array_merge($digitailData, [
                         'title' => $package['name'],
                         'description' => $package['description'] ?? $service->description,
-                        'category' => $package['client_name'] ?? $service->category,
+                        'category' => $category,
                         'price' => $package['unit_price'],
                         'is_active' => $package['status'] === 'enabled',
                     ]);
@@ -106,7 +133,7 @@ class ListServices extends ListRecords
                     $serviceData = array_merge($digitailData, [
                         'title' => $package['name'],
                         'description' => $package['description'] ?? 'Service dari Digitail',
-                        'category' => $package['client_name'] ?? 'Health', // client_name dari API menjadi category
+                        'category' => $category, // client_name dari API menjadi category
                         'price' => $package['unit_price'],
                         'is_active' => $package['status'] === 'enabled',
                         'sort_order' => 0,

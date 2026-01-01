@@ -188,7 +188,7 @@
         const API_BASE_URL = '{{ url("/api/digitail") }}';
 
         // Default clinic_id for testing
-        const DEFAULT_CLINIC_ID = 562;
+        const DEFAULT_CLINIC_ID = 3536;
 
         async function testRealEndpoint(path, method, responseId) {
             const resultDiv = document.getElementById(`result-${responseId}`);

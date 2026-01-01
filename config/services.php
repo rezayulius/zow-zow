@@ -43,7 +43,7 @@ return [
         'access_token' => env('DIGITAIL_ACCESS_TOKEN'), // Keep for backward compatibility/fallback
         'api_base' => env('DIGITAIL_API_BASE', 'https://developer.digitail.io/api/v1'),
         'timeout' => env('DIGITAIL_TIMEOUT', 20),
-        'default_clinic_id' => env('DIGITAIL_DEFAULT_CLINIC_ID', 562),
+        'default_clinic_id' => env('DIGITAIL_DEFAULT_CLINIC_ID', 3536),
     ],
 
     'google' => [
