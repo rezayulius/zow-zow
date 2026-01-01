@@ -69,37 +69,67 @@ class HomeController extends Controller
             $accessToken = $this->digitailService->getAccessToken();
             $clinicId = config('services.digitail.default_clinic_id');
 
-            $response = Http::timeout(10)
-                ->withHeaders([
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer ' . $accessToken,
-                ])
-                ->get($baseUrl . '/vets', [
-                    'filter[clinic_id]' => $clinicId,
-                    'page' => 1,
-                    'per_page' => 10
-                ]);
+            $allVets = [];
+            $page = 1;
+            $perPage = 50; // Fetch more per page to minimize requests
+            $hasMore = true;
 
-            if ($response->successful()) {
-                $data = $response->json();
-                $vets = $data['data'] ?? [];
+            while ($hasMore) {
+                $response = Http::timeout(10)
+                    ->withHeaders([
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json',
+                        'Authorization' => 'Bearer ' . $accessToken,
+                    ])
+                    ->get($baseUrl . '/vets', [
+                        'filter[clinic_id]' => $clinicId,
+                        'page' => $page,
+                        'per_page' => $perPage
+                    ]);
 
-                // Filter only vets with type = 'groomer' or 'veterinarian', exclude type = null
-                $filteredVets = array_filter($vets, function ($vet) {
-                    return isset($vet['type']) && in_array($vet['type'], ['groomer', 'veterinarian']);
-                });
+                if ($response->successful()) {
+                    $data = $response->json();
+                    $vets = $data['data'] ?? [];
+                    
+                    if (empty($vets)) {
+                        $hasMore = false;
+                        break;
+                    }
 
-                // Re-index array to avoid gaps in array keys
-                return array_values($filteredVets);
+                    $allVets = array_merge($allVets, $vets);
+                    
+                    // Check if we need to fetch next page
+                    // Based on meta or just if we got full page
+                    $meta = $data['meta'] ?? [];
+                    if (isset($meta['current_page']) && isset($meta['last_page'])) {
+                        $hasMore = $meta['current_page'] < $meta['last_page'];
+                    } else {
+                        // Fallback: if we got less than perPage, it's the last page
+                        $hasMore = count($vets) >= $perPage;
+                    }
+                    
+                    $page++;
+                } else {
+                    Log::warning('Failed to fetch vets from Digitail API', [
+                        'status' => $response->status(),
+                        'response' => $response->body()
+                    ]);
+                    $hasMore = false;
+                }
             }
 
-            Log::warning('Failed to fetch vets from Digitail API', [
-                'status' => $response->status(),
-                'response' => $response->body()
-            ]);
+            Log::info('Total Raw Vets Fetched: ' . count($allVets));
 
-            return [];
+            // Filter only vets with type = 'veterinarian'
+            $filteredVets = array_filter($allVets, function ($vet) {
+                return isset($vet['type']) && $vet['type'] === 'veterinarian';
+            });
+            
+            Log::info('Filtered Vets Count: ' . count($filteredVets));
+
+            // Re-index array to avoid gaps in array keys
+            return array_values($filteredVets);
+
         } catch (\Exception $e) {
             Log::error('Error fetching vets from Digitail API: ' . $e->getMessage());
             return [];

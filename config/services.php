@@ -41,7 +41,7 @@ return [
         'redirect' => env('DIGITAIL_REDIRECT_URI', env('APP_URL') . '/digitail/auth/callback'),
         'auth_base' => env('DIGITAIL_AUTH_BASE', 'https://identity.digitail.io'), // Configurable Auth URL
         'access_token' => env('DIGITAIL_ACCESS_TOKEN'), // Keep for backward compatibility/fallback
-        'api_base' => env('DIGITAIL_API_BASE', 'https://developer.digitail.io/api/v1'),
+        'api_base' => env('DIGITAIL_API_BASE', 'https://vet.digitail.io/api/v1'),
         'timeout' => env('DIGITAIL_TIMEOUT', 20),
         'default_clinic_id' => env('DIGITAIL_DEFAULT_CLINIC_ID', 3536),
     ],

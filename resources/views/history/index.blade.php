@@ -94,7 +94,7 @@
                                     <div class="flex items-center space-x-5">
                                         <!-- Pet Avatar -->
                                         <div class="relative flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                            @if($record['pet_info']['profile_picture'] && $record['pet_info']['profile_picture'] !== 'https://developer.digitail.io/images/petpic.png')
+                                            @if($record['pet_info']['profile_picture'] && $record['pet_info']['profile_picture'] !== 'https://vet.digitail.io/images/petpic.png')
                                                 <img src="{{ $record['pet_info']['profile_picture'] }}" alt="{{ $record['pet_info']['nickname'] }}" class="w-20 h-20 rounded-2xl object-cover shadow-md border-4 border-white">
                                             @else
                                                 <div class="w-20 h-20 bg-gradient-to-br from-forest-moss-green-400 to-forest-moss-green-600 rounded-2xl flex items-center justify-center shadow-md border-4 border-white">

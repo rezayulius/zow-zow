@@ -180,7 +180,7 @@
                                     Rp {{ number_format($service->price, 0, ',', '.') }}
                                 </span>
                             </div>
-                            <a href="https://developer.digitail.io/clinics/zowzowvetique-first?widget" target="_blank" class="w-10 h-10 rounded-full bg-forest-moss-green-600 text-white flex items-center justify-center hover:bg-forest-moss-green-700 transition-all duration-300 group-hover:scale-110 shadow-md">
+                            <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" class="w-10 h-10 rounded-full bg-forest-moss-green-600 text-white flex items-center justify-center hover:bg-forest-moss-green-700 transition-all duration-300 group-hover:scale-110 shadow-md">
                                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </a>
                         </div>
@@ -291,7 +291,7 @@
                                     Rp {{ number_format($service->price, 0, ',', '.') }}
                                 </span>
                             </div>
-                            <a href="https://developer.digitail.io/clinics/zowzowvetique-first?widget" target="_blank" class="px-6 py-2.5 rounded-2xl bg-chai-100 text-chai-800 font-bold hover:bg-chai-600 hover:text-white transition-all duration-300 flex items-center gap-2 group-hover:shadow-lg hover:scale-105 shadow-chai-100">
+                            <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" class="px-6 py-2.5 rounded-2xl bg-chai-100 text-chai-800 font-bold hover:bg-chai-600 hover:text-white transition-all duration-300 flex items-center gap-2 group-hover:shadow-lg hover:scale-105 shadow-chai-100">
                                 <span class="text-sm">Reserve</span>
                                 <i data-lucide="calendar-heart" class="w-4 h-4"></i>
                             </a>
@@ -346,7 +346,7 @@
                 </div>
 
                 <div class="flex flex-col gap-4 w-full lg:w-auto min-w-[300px]">
-                    <a href="https://developer.digitail.io/clinics/zowzowvetique-first?widget" target="_blank" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
+                    <a href="https://vet.digitail.io/clinics/zow-vet-clinic?widget" target="_blank" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
                         <i data-lucide="calendar-plus" class="w-5 h-5 lg:w-6 lg:h-6 group-hover:rotate-12 transition-transform"></i>
                         <span class="text-base lg:text-lg">Book Appointment</span>
                     </a>
@@ -375,7 +375,7 @@
                     $rating = [4.9, 5.0, 4.8, 4.9][$index % 4];
                 @endphp
 
-                <a href="https://developer.digitail.io/clinics/zowzowvetique-first?widget" target="_blank" class="group relative block h-full">
+                <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" class="group relative block h-full">
                     <div class="bg-white rounded-[2rem] overflow-hidden border border-carob-100 hover:border-carob-300 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col relative shadow-lg">
                         <!-- Top Background & Status -->
                         <div class="h-24 bg-gradient-to-r from-carob-50 to-soft-linen-50 relative">
@@ -391,7 +391,7 @@
                         <div class="px-5 pb-6 flex flex-col flex-grow -mt-12">
                             <!-- Avatar -->
                             <div class="relative w-24 h-24 rounded-full border-4 border-white shadow-lg overflow-hidden mb-4 mx-auto group-hover:scale-105 transition-transform duration-300 bg-white">
-                                @if(!empty($vet['avatar']) && $vet['avatar'] !== 'https://developer.digitail.io/images/profilepic.jpg')
+                                @if(!empty($vet['avatar']) && $vet['avatar'] !== 'https://vet.digitail.io/images/profilepic.jpg')
                                     <img src="{{ $vet['avatar'] }}" alt="{{ $vet['full_name'] ?? 'Doctor' }}" class="w-full h-full object-cover">
                                 @else
                                     <div class="w-full h-full flex items-center justify-center bg-soft-linen-100 text-carob-300">

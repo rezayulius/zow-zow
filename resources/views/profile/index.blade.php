@@ -249,7 +249,7 @@
                                         <div class="relative z-10 flex flex-col h-full">
                                             <div class="flex items-start justify-between mb-4">
                                                 <div class="relative">
-                                                    @if($pet['profile_picture'] && $pet['profile_picture'] !== 'https://developer.digitail.io/images/petpic.png')
+                                                    @if($pet['profile_picture'] && $pet['profile_picture'] !== 'https://vet.digitail.io/images/petpic.png')
                                                         <img src="{{ $pet['profile_picture'] }}" alt="{{ $pet['nickname'] }}" class="w-20 h-20 rounded-2xl object-cover shadow-md group-hover:scale-110 transition-transform duration-300">
                                                     @else
                                                         <div class="w-20 h-20 rounded-2xl {{ $scheme['icon_bg'] }} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
