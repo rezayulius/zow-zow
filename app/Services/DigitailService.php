@@ -26,6 +26,49 @@ class DigitailService
     }
 
     /**
+     * Get Aggregated Pets Report
+     */
+    public function getPetsReportAggregated()
+    {
+        $accessToken = $this->getAccessToken();
+        
+        $response = Http::withToken($accessToken)
+            ->get("{$this->apiBase}/pets-report/aggregated", [
+                'without_archived' => 'true'
+            ]);
+
+        if (!$response->successful()) {
+            Log::error('Digitail Pets Report Failed', ['body' => $response->body()]);
+            return null;
+        }
+
+        return $response->json();
+    }
+
+    /**
+     * Get Appointments Report
+     */
+    public function getAppointments(int $page = 1, int $perPage = 15)
+    {
+        $accessToken = $this->getAccessToken();
+        $clinicId = config('services.digitail.default_clinic_id');
+
+        $response = Http::withToken($accessToken)
+            ->get("{$this->apiBase}/reports/appointments", [
+                'filter[clinic_id]' => $clinicId,
+                'page' => $page,
+                'per_page' => $perPage,
+            ]);
+
+        if (!$response->successful()) {
+            Log::error('Digitail Appointments Report Failed', ['body' => $response->body()]);
+            return null;
+        }
+
+        return $response->json();
+    }
+
+    /**
      * Generate the authorization URL with PKCE
      */
     public function getAuthorizationUrl()
