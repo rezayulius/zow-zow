@@ -45,14 +45,12 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
                                 {{ __('messages.wellness') }}
                             </a>
-                            <a href="#booking"
-                                class="flex items-center gap-2 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 font-medium text-sm px-3 py-2.5 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200">
-                                <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
-                                {{ __('messages.booking') }}
-                            </a>
                         </div>
                     </div>
                 </div>
+
+                <a href="#booking"
+                    class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.booking') }}</a>
 
                 <a href="#harga"
                     class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.pricing') }}</a>
@@ -72,11 +70,14 @@
                 <div class="h-6 w-px bg-deep-cocoa-brown-100"></div>
 
                 <!-- Emergency Button -->
-                <button id="btnEmergencyCall"
-                    class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 font-medium text-sm shadow-lg shadow-red-200 hover:shadow-red-300 transform hover:-translate-y-0.5 animate-pulse hover:animate-none">
-                    <i data-lucide="phone-call" class="w-3.5 h-3.5 fill-current"></i>
-                    <span>Emergency</span>
-                </button>
+                <div class="flex flex-col items-center">
+                    <button id="btnEmergencyCall"
+                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 font-medium text-sm shadow-lg shadow-red-200 hover:shadow-red-300 transform hover:-translate-y-0.5 animate-pulse hover:animate-none group">
+                        <i data-lucide="phone-call" class="w-3.5 h-3.5 fill-current"></i>
+                        <span>Emergency</span>
+                    </button>
+                    <a href="tel:+6281295911911" class="text-[10px] font-bold text-red-500 hover:text-red-600 mt-1 tracking-wide transition-colors">+62 812 9591 1911</a>
+                </div>
 
                 <!-- Auth -->
                 @auth
@@ -223,13 +224,14 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
                                 {{ __('messages.wellness') }}
                             </a>
-                            <a href="#booking"
-                                class="flex items-center gap-3 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 py-2.5 px-3 rounded-xl hover:bg-soft-linen-50 transition-all duration-200 text-sm">
-                                <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-300"></span>
-                                {{ __('messages.booking') }}
-                            </a>
                         </div>
                     </div>
+
+                    <a href="#booking"
+                        class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
+                        <i data-lucide="calendar-check" class="w-5 h-5 text-deep-cocoa-brown-400"></i>
+                        {{ __('messages.booking') }}
+                    </a>
 
                     <a href="#harga"
                         class="flex items-center gap-3 text-deep-cocoa-brown-700 hover:text-forest-moss-green-700 font-medium py-3 px-4 rounded-xl hover:bg-soft-linen-50 transition-all duration-200">
@@ -262,11 +264,14 @@
                         <x-lang-switch :locales="['id', 'en']" />
                     </div>
 
-                    <button id="emergency-call-mobile"
-                        class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-bold shadow-lg shadow-red-200 hover:shadow-red-300 transform active:scale-95">
-                        <i data-lucide="phone-call" class="w-5 h-5 animate-pulse"></i>
-                        <span>Emergency Call</span>
-                    </button>
+                    <div class="flex flex-col items-center w-full">
+                        <button id="emergency-call-mobile"
+                            class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-bold shadow-lg shadow-red-200 hover:shadow-red-300 transform active:scale-95">
+                            <i data-lucide="phone-call" class="w-5 h-5 animate-pulse"></i>
+                            <span>Emergency Call</span>
+                        </button>
+                        <a href="tel:+6281295911911" class="text-xs font-bold text-red-500 hover:text-red-600 mt-2 tracking-wide transition-colors">+62 812 9591 1911</a>
+                    </div>
                 </div>
             </div>
         </div>

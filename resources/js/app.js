@@ -161,7 +161,7 @@ function initHeroSlider() {
             updateNavigationButtons(index);
 
             currentSlide = index;
-        }, 600); // Wait for exit animation to complete (0.5s + buffer)
+        }, 1200); // Wait for exit animation to complete (0.5s + buffer)
     }
 
     function updateProgressIndicators(activeIndex) {

@@ -118,24 +118,25 @@ class ListServices extends ListRecords
                 $category = $this->mapCategory($rawCategory);
 
                 if ($service) {
-                    // Update existing service - update field Digitail dan field lokal
+                    // PERBAIKAN: Update existing service - PERTAHANKAN is_active yang lama
                     $updateData = array_merge($digitailData, [
                         'title' => $package['name'],
                         'description' => $package['description'] ?? $service->description,
                         'category' => $category,
                         'price' => $package['unit_price'],
-                        'is_active' => $package['status'] === 'enabled',
+                        // HAPUS baris ini: 'is_active' => $package['status'] === 'enabled',
+                        // is_active TIDAK diupdate, biarkan tetap seperti nilai sebelumnya
                     ]);
                     $service->update($updateData);
                     $updatedCount++;
                 } else {
-                    // Create new service dengan mapping ke field lokal
+                    // PERBAIKAN: Create new service - DEFAULT is_active = FALSE
                     $serviceData = array_merge($digitailData, [
                         'title' => $package['name'],
                         'description' => $package['description'] ?? 'Service dari Digitail',
-                        'category' => $category, // client_name dari API menjadi category
+                        'category' => $category,
                         'price' => $package['unit_price'],
-                        'is_active' => $package['status'] === 'enabled',
+                        'is_active' => false, // <<< DEFAULT FALSE untuk service baru
                         'sort_order' => 0,
                     ]);
                     

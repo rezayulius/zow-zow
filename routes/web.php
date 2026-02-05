@@ -58,7 +58,7 @@ Route::prefix('admin/digitail-sync')->name('admin.digitail-sync.')->group(functi
     Route::post('/services', [DigitailSyncController::class, 'syncServices'])->name('services');
     Route::get('/status', [DigitailSyncController::class, 'getSyncStatus'])->name('status');
 });
-
+Route::get('/digitail/test-sync', [App\Http\Controllers\DigitailSyncController::class, 'testSync'])->name('test-sync');
 // Digitail API Proxy Routes (to avoid CORS issues)
 Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
     // Specific endpoints
@@ -75,4 +75,5 @@ Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
     Route::any('/{endpoint}', [DigitailApiController::class, 'proxyRequest'])
         ->where('endpoint', '.*')
         ->name('proxy');
+        
 });

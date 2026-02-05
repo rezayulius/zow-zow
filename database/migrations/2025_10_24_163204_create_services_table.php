@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('icon')->nullable(); // untuk icon class atau path gambar
             $table->string('image')->nullable(); // untuk gambar service
             $table->decimal('price', 10, 2)->nullable(); // harga service
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->integer('sort_order')->default(0); // untuk urutan tampil
             $table->timestamps();
         });

@@ -53,6 +53,10 @@ class Service extends Model
         'digitail_synced_at' => 'datetime'
     ];
 
+    protected $attributes = [
+        'is_active' => false,  // Pastikan default false, BUKAN true
+    ];
+
     // Scope untuk service yang aktif
     public function scopeActive($query)
     {

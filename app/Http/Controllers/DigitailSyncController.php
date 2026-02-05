@@ -25,9 +25,6 @@ class DigitailSyncController extends Controller
         $this->timeout = config('services.digitail.timeout');
     }
 
-    /**
-     * Create HTTP client with default headers
-     */
     private function createHttpClient()
     {
         $accessToken = $this->digitailService->getAccessToken();
@@ -40,18 +37,11 @@ class DigitailSyncController extends Controller
             ]);
     }
 
-    /**
-     * Synchronize services from Digitail API
-     */
     public function syncServices(Request $request)
     {
         try {
-            Log::info('Starting Digitail services synchronization');
-
-            // Validate clinic_id parameter
             $clinicId = $request->get('clinic_id', $this->defaultClinicId);
             
-            // Fetch all services from Digitail API
             $allServices = $this->fetchAllServices($clinicId);
             
             if (empty($allServices)) {
@@ -62,32 +52,92 @@ class DigitailSyncController extends Controller
                 ], 404);
             }
 
-            // Start database transaction
             DB::beginTransaction();
 
             try {
-                // Truncate services table to ensure fresh data
-                Service::truncate();
-                Log::info('Services table truncated');
+                // Simpan status is_active yang lama
+                $existingStatus = DB::select(
+                    'SELECT digitail_id, is_active FROM services WHERE digitail_id IS NOT NULL'
+                );
+                
+                $existingMap = [];
+                foreach ($existingStatus as $row) {
+                    $existingMap[$row->digitail_id] = $row->is_active;
+                }
 
-                // Insert new services from Digitail
-                $insertedCount = 0;
-                foreach ($allServices as $serviceData) {
-                    $mappedData = $this->mapServiceData($serviceData);
-                    Service::create($mappedData);
-                    $insertedCount++;
+                // Truncate table
+                DB::statement('TRUNCATE TABLE services RESTART IDENTITY CASCADE');
+
+                // Prepare data untuk insert
+                $insertData = [];
+                
+                foreach ($allServices as $service) {
+                    $digitailId = $service['id'] ?? null;
+                    
+                    // Tentukan is_active berdasarkan existing atau default false
+                    $isActive = $existingMap[$digitailId] ?? false;
+                    
+                    $category = $service['category'] ?? '';
+                    if (is_array($category)) {
+                        $category = json_encode($category);
+                    }
+                    
+                    $insertData[] = [
+                        'digitail_id' => $digitailId,
+                        'name' => $service['name'] ?? null,
+                        'client_name' => is_array($service['client_name'] ?? null) 
+                            ? json_encode($service['client_name']) 
+                            : ($service['client_name'] ?? null),
+                        'clinic_id' => $service['clinic_id'] ?? null,
+                        'service_id' => $service['service_id'] ?? null,
+                        'visit_type_id' => $service['visit_type_id'] ?? null,
+                        'unit_price' => $service['unit_price'] ?? null,
+                        'price_includes_tax' => $service['price_includes_tax'] ?? false,
+                        'tax' => $service['tax'] ?? null,
+                        'aaha_code' => is_array($service['aaha_code'] ?? null) 
+                            ? json_encode($service['aaha_code']) 
+                            : ($service['aaha_code'] ?? null),
+                        'barcode' => is_array($service['barcode'] ?? null) 
+                            ? json_encode($service['barcode']) 
+                            : ($service['barcode'] ?? null),
+                        'status' => $service['status'] ?? 'enabled',
+                        'lab_tests' => json_encode($service['lab_tests'] ?? []),
+                        'aaha_category' => is_array($service['aaha_category'] ?? null) 
+                            ? json_encode($service['aaha_category']) 
+                            : ($service['aaha_category'] ?? null),
+                        'is_plan_benefit' => $service['is_plan_benefit'] ?? false,
+                        'title' => $service['name'] ?? 'Untitled Service',
+                        'description' => $service['description'] ?? '',
+                        'category' => $this->mapCategory($category),
+                        'price' => $service['price'] ?? null,
+                        'is_active' => $isActive,
+                        'sort_order' => 0,
+                        'features' => json_encode([]),
+                        'icon' => null,
+                        'image' => null,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ];
+                }
+
+                // Insert dalam batch
+                foreach (array_chunk($insertData, 100) as $chunk) {
+                    DB::table('services')->insert($chunk);
                 }
 
                 DB::commit();
-                Log::info("Successfully synchronized {$insertedCount} services from Digitail");
+
+                $stats = [
+                    'total_synced' => count($insertData),
+                    'active_count' => DB::table('services')->where('is_active', true)->count(),
+                    'inactive_count' => DB::table('services')->where('is_active', false)->count(),
+                    'clinic_id' => $clinicId
+                ];
 
                 return response()->json([
                     'success' => true,
-                    'message' => "Successfully synchronized {$insertedCount} services from Digitail",
-                    'data' => [
-                        'total_synced' => $insertedCount,
-                        'clinic_id' => $clinicId
-                    ]
+                    'message' => "Successfully synchronized " . count($insertData) . " services",
+                    'data' => $stats
                 ]);
 
             } catch (Exception $e) {
@@ -96,18 +146,13 @@ class DigitailSyncController extends Controller
             }
 
         } catch (Exception $e) {
-            Log::error('Digitail sync error: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
                 'message' => 'Synchronization failed: ' . $e->getMessage(),
-                'data' => []
             ], 500);
         }
     }
 
-    /**
-     * Fetch all services from Digitail API with pagination
-     */
     public function fetchAllServices($clinicId)
     {
         $allServices = [];
@@ -116,16 +161,13 @@ class DigitailSyncController extends Controller
 
         while ($hasMorePages) {
             try {
-                $queryParams = [
+                $response = $this->createHttpClient()->get($this->baseUrl . '/service-packages', [
                     'page' => $page,
-                    'per_page' => 50, // Fetch more per page for efficiency
+                    'per_page' => 50,
                     'filter[clinic_id]' => $clinicId
-                ];
-
-                $response = $this->createHttpClient()->get($this->baseUrl . '/service-packages', $queryParams);
+                ]);
 
                 if (!$response->successful()) {
-                    Log::error("API request failed on page {$page}: " . $response->body());
                     break;
                 }
 
@@ -133,19 +175,14 @@ class DigitailSyncController extends Controller
                 
                 if (isset($responseData['data']) && is_array($responseData['data'])) {
                     $allServices = array_merge($allServices, $responseData['data']);
-                    
-                    // Check if there are more pages
                     $meta = $responseData['meta'] ?? [];
                     $hasMorePages = isset($meta['next_page_url']) && $meta['next_page_url'] !== null;
                     $page++;
-                    
-                    Log::info("Fetched page {$page} with " . count($responseData['data']) . " services");
                 } else {
                     $hasMorePages = false;
                 }
 
             } catch (Exception $e) {
-                Log::error("Error fetching page {$page}: " . $e->getMessage());
                 break;
             }
         }
@@ -153,50 +190,6 @@ class DigitailSyncController extends Controller
         return $allServices;
     }
 
-    /**
-     * Map Digitail service data to local service model structure
-     */
-    private function mapServiceData($digitailService)
-    {
-        $category = $digitailService['category'] ?? '';
-        if (is_array($category)) {
-            $category = json_encode($category);
-        }
-
-        return [
-            // Digitail specific fields
-            'digitail_id' => $digitailService['id'] ?? null,
-            'name' => $digitailService['name'] ?? null,
-            'client_name' => is_array($digitailService['client_name'] ?? null) ? json_encode($digitailService['client_name']) : ($digitailService['client_name'] ?? null),
-            'clinic_id' => $digitailService['clinic_id'] ?? null,
-            'service_id' => $digitailService['service_id'] ?? null,
-            'visit_type_id' => $digitailService['visit_type_id'] ?? null,
-            'unit_price' => $digitailService['unit_price'] ?? null,
-            'price_includes_tax' => $digitailService['price_includes_tax'] ?? false,
-            'tax' => $digitailService['tax'] ?? null,
-            'aaha_code' => is_array($digitailService['aaha_code'] ?? null) ? json_encode($digitailService['aaha_code']) : ($digitailService['aaha_code'] ?? null),
-            'barcode' => is_array($digitailService['barcode'] ?? null) ? json_encode($digitailService['barcode']) : ($digitailService['barcode'] ?? null),
-            'status' => $digitailService['status'] ?? 'enabled',
-            'lab_tests' => $digitailService['lab_tests'] ?? [],
-            'aaha_category' => is_array($digitailService['aaha_category'] ?? null) ? json_encode($digitailService['aaha_category']) : ($digitailService['aaha_category'] ?? null),
-            'is_plan_benefit' => $digitailService['is_plan_benefit'] ?? false,
-            
-            // Map to existing local fields
-            'title' => $digitailService['name'] ?? 'Untitled Service',
-            'description' => $digitailService['description'] ?? '',
-            'category' => $this->mapCategory($category),
-            'price' => $digitailService['price'] ?? null,
-            'is_active' => ($digitailService['status'] ?? 'enabled') === 'enabled',
-            'sort_order' => 0,
-            'features' => [], // Can be populated later if needed
-            'icon' => null,
-            'image' => null,
-        ];
-    }
-
-    /**
-     * Map Digitail category to local category enum
-     */
     private function mapCategory($digitailCategory)
     {
         $categoryMap = [
@@ -215,9 +208,6 @@ class DigitailSyncController extends Controller
         return $categoryMap[$digitailCategory] ?? 'Wellness';
     }
 
-    /**
-     * Get sync status and statistics
-     */
     public function getSyncStatus()
     {
         try {
@@ -239,7 +229,6 @@ class DigitailSyncController extends Controller
                 ]
             ]);
         } catch (Exception $e) {
-            Log::error('Error getting sync status: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to get sync status: ' . $e->getMessage()
