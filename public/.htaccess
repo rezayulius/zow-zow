@@ -5,20 +5,36 @@
 
     RewriteEngine On
 
-    # Handle Authorization Header
+    #################################################################
+    # 1. FORCE HTTPS + CANONICAL DOMAIN (WAJIB PALING ATAS)
+    #################################################################
+
+    RewriteCond %{HTTPS} !=on [OR]
+    RewriteCond %{HTTP_HOST} !^zowvetique\.com$ [NC]
+    RewriteRule ^(.*)$ https://zowvetique.com/$1 [R=301,L]
+
+    #################################################################
+    # 2. HANDLE AUTH & XSRF (LARAVEL DEFAULT)
+    #################################################################
+
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Handle X-XSRF-Token Header
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    # Redirect Trailing Slashes If Not A Folder...
+    #################################################################
+    # 3. REMOVE TRAILING SLASH (SEO CONSISTENCY)
+    #################################################################
+
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send Requests To Front Controller...
+    #################################################################
+    # 4. SEND REQUEST TO LARAVEL FRONT CONTROLLER
+    #################################################################
+
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
