@@ -364,88 +364,79 @@
             <p class="text-carob-600 text-xl max-w-2xl mx-auto font-light">Dedicated professionals who treat your pets like their own family.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @forelse($vets ?? [] as $index => $vet)
-                @php
-                    $isAvailable = $vet['is_available_for_appointments'] ?? false;
-                    // Mock data for professionalism since actual data might be limited
-                    $specialties = ['General Medicine', 'Surgery', 'Dermatology', 'Dentistry'];
-                    $specialty = $specialties[$index % 4];
-                    $experience = [5, 8, 12, 6][$index % 4] . '+ Years Exp.';
-                    $rating = [4.9, 5.0, 4.8, 4.9][$index % 4];
-                @endphp
+        @php
+            $availableVets = collect($vets ?? [])
+                ->filter(fn($vet) => $vet['is_available_for_appointments'] ?? false);
+        @endphp
 
-                <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" class="group relative block h-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            @forelse($availableVets as $index => $vet)
+
+                <a href="{{ $vet['public_appointment_link'] ?? '#' }}"
+                target="_blank"
+                class="group relative block h-full">
+
                     <div class="bg-white rounded-[2rem] overflow-hidden border border-carob-100 hover:border-carob-300 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col relative shadow-lg">
-                        <!-- Top Background & Status -->
+
+                        <!-- Top Background -->
                         <div class="h-24 bg-gradient-to-r from-carob-50 to-soft-linen-50 relative">
                             <div class="absolute top-3 right-3">
-                                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-white/50 text-[10px] font-bold tracking-wide uppercase {{ $isAvailable ? 'text-forest-moss-green-700' : 'text-amber-600' }}">
-                                    <span class="w-1.5 h-1.5 rounded-full {{ $isAvailable ? 'bg-forest-moss-green-500 animate-pulse' : 'bg-amber-500' }}"></span>
-                                    {{ $isAvailable ? 'Available Now' : 'Book Ahead' }}
+                                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-white/50 text-[10px] font-bold tracking-wide uppercase text-forest-moss-green-700">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-500 animate-pulse"></span>
+                                    Available Now
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Avatar & Info Container -->
+                        <!-- Avatar & Content -->
                         <div class="px-5 pb-6 flex flex-col flex-grow -mt-12">
+
                             <!-- Avatar -->
                             <div class="relative w-24 h-24 rounded-full border-4 border-white shadow-lg overflow-hidden mb-4 mx-auto group-hover:scale-105 transition-transform duration-300 bg-white">
-                                @if(!empty($vet['avatar']) && $vet['avatar'] !== 'https://vet.digitail.io/images/profilepic.jpg')
-                                    <img src="{{ $vet['avatar'] }}" alt="{{ $vet['full_name'] ?? 'Doctor' }}" class="w-full h-full object-cover">
+
+                                @if(!empty($vet['avatar']))
+                                    <img
+                                        src="{{ trim($vet['avatar']) }}"
+                                        alt="{{ $vet['full_name'] ?? 'Doctor' }}"
+                                        class="w-full h-full object-cover"
+                                    >
                                 @else
                                     <div class="w-full h-full flex items-center justify-center bg-soft-linen-100 text-carob-300">
                                         <i data-lucide="user" class="w-12 h-12"></i>
                                     </div>
                                 @endif
+
                             </div>
 
-                            <!-- Name & Title -->
+                            <!-- Name -->
                             <div class="text-center mb-4">
                                 <h3 class="text-lg font-bold text-carob-900 font-heading leading-tight mb-1 group-hover:text-forest-moss-green-700 transition-colors">
                                     {{ $vet['name_with_title'] ?? $vet['full_name'] ?? 'Dokter' }}
                                 </h3>
-                                <p class="text-carob-500 text-xs font-medium uppercase tracking-wider">{{ $vet['job_title'] ?? 'Veterinarian' }}</p>
+
+                                <p class="text-carob-500 text-xs font-medium uppercase tracking-wider">
+                                    {{ $vet['job_title'] ?? 'Veterinarian' }}
+                                </p>
                             </div>
 
-                            <!-- Professional Details -->
-                            <div class="grid grid-cols-2 gap-2 mb-6 border-y border-dashed border-carob-100 py-3">
-                                <div class="text-center border-r border-carob-100">
-                                    <span class="block text-xs text-carob-400 mb-0.5">Experience</span>
-                                    <span class="block text-sm font-bold text-carob-800">{{ $experience }}</span>
-                                </div>
-                                <div class="text-center">
-                                    <span class="block text-xs text-carob-400 mb-0.5">Rating</span>
-                                    <div class="flex items-center justify-center gap-1">
-                                        <span class="text-sm font-bold text-carob-800">{{ $rating }}</span>
-                                        <i data-lucide="star" class="w-3 h-3 text-yellow-400 fill-current"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tags/Specialties -->
-                            <div class="flex flex-wrap justify-center gap-2 mb-6">
-                                <span class="px-3 py-1 rounded-full bg-forest-moss-green-50 text-forest-moss-green-700 text-[10px] font-bold border border-forest-moss-green-100">
-                                    {{ $specialty }}
-                                </span>
-                                <span class="px-3 py-1 rounded-full bg-soft-linen-100 text-carob-700 text-[10px] font-bold border border-carob-100">
-                                    Pet Lover
-                                </span>
-                            </div>
-                            
-                            <!-- Action Button -->
+                            <!-- Button -->
                             <div class="mt-auto">
                                 <div class="w-full py-2.5 rounded-xl bg-carob-900 text-white font-bold text-sm group-hover:bg-forest-moss-green-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform group-hover:-translate-y-0.5">
                                     <span>Schedule Visit</span>
                                     <i data-lucide="calendar-check" class="w-4 h-4"></i>
                                 </div>
                             </div>
+
                         </div>
                     </div>
+
                 </a>
+
             @empty
-                 <div class="col-span-full text-center py-12">
-                    <p class="text-carob-500">Our team is growing!</p>
+                <div class="col-span-full text-center py-12">
+                    <p class="text-carob-500">
+                        No doctors available at the moment.
+                    </p>
                 </div>
             @endforelse
         </div>

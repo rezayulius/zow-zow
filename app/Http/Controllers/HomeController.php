@@ -128,6 +128,11 @@ class HomeController extends Controller
             Log::info('Filtered Vets Count: ' . count($filteredVets));
 
             // Re-index array to avoid gaps in array keys
+            // If filtering results in empty array, return all vets for now (based on user request showing other types in sample)
+            if (empty($filteredVets) && !empty($allVets)) {
+                return $allVets;
+            }
+
             return array_values($filteredVets);
 
         } catch (\Exception $e) {
