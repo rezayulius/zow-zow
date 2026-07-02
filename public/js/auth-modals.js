@@ -171,20 +171,40 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(signInForm);
         const button = signInBtn;
         const errorDiv = document.getElementById('signin-error');
-
+        const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+        
         button.disabled = true;
         button.textContent = 'Signing in...';
         errorDiv.classList.add('hidden');
 
         try {
+            const headers = {
+                'Accept': 'application/json',
+            };
+            
+            // Add CSRF token if available
+            if (csrfMeta) {
+                headers['X-CSRF-TOKEN'] = csrfMeta.content;
+            }
+
             const response = await fetch('/auth/signin', {
                 method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                    'Accept': 'application/json',
-                },
+                headers: headers,
                 body: formData
             });
+
+            if (!response.ok) {
+                console.error('Sign in error status:', response.status, response.statusText);
+                let errorText = 'Terjadi kesalahan saat login';
+                try {
+                    const errorData = await response.json();
+                    errorText = errorData.message || errorText;
+                } catch (e) {
+                    errorText = 'Status error: ' + response.status;
+                }
+                showError(errorDiv, errorText);
+                return;
+            }
 
             const data = await response.json();
 
@@ -203,7 +223,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 showError(errorDiv, data.message || 'Login failed');
             }
         } catch (error) {
-            showError(errorDiv, 'An error occurred. Please try again.');
+            console.error('Sign in exception:', error);
+            showError(errorDiv, 'Terjadi kesalahan. Silakan coba lagi.');
         } finally {
             button.disabled = false;
             button.textContent = 'Sign In';

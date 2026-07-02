@@ -143,7 +143,7 @@
                                 <div class="space-y-1">
                                     <div class="flex justify-between text-sm w-full gap-8">
                                         <span class="text-carob-500">Every Day</span>
-                                        <span class="font-bold text-carob-800">09:00 - 21:00</span>
+                                        <span class="font-bold text-carob-800">07:00 AM - 10:00 PM</span>
                                     </div>
                                 </div>
                             </div>

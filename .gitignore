@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+# Test files
+public/test-form.html
+public/test-post.php
+app/Http/Middleware/VerifyCsrfToken.php
