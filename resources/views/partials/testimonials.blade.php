@@ -440,14 +440,26 @@
                             Share Joy
                         </div>
                         <div class="flex gap-3">
+                            <!-- Facebook -->
                             <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1877F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
-                                <i data-lucide="facebook" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i> Facebook
+                                <img src="https://cdn.simpleicons.org/facebook/currentColor"
+                                    alt="Facebook"
+                                    class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
+                                Facebook
                             </button>
-                            <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1DA1F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
-                                <i data-lucide="twitter" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i> Twitter
+
+                            <!-- X (Twitter) -->
+                            <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm group">
+                                <img src="https://cdn.simpleicons.org/x/currentColor"
+                                    alt="X"
+                                    class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
+                                X
                             </button>
+
+                            <!-- Copy Link -->
                             <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group">
-                                <i data-lucide="link" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i> Copy Link
+                                <i data-lucide="link" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                                Copy Link
                             </button>
                         </div>
                     </div>

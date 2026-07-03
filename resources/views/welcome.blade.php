@@ -1674,17 +1674,28 @@
                         Klinik hewan terpercaya dengan layanan terbaik untuk sahabat berbulu Anda.
                     </p>
                     <div class="flex space-x-3">
-                        <a href="#"
+                        <!-- Facebook -->
+                        <a href="https://facebook.com/"
+                            target="_blank"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
-                            <i data-lucide="facebook" class="text-white text-sm w-4 h-4"></i>
+                            <img src="https://cdn.simpleicons.org/facebook/ffffff"
+                                alt="Facebook" class="w-4 h-4">
                         </a>
-                        <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs" target="_blank"
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs"
+                            target="_blank"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
-                            <i data-lucide="instagram" class="text-white text-sm w-4 h-4"></i>
+                            <img src="https://cdn.simpleicons.org/instagram/ffffff"
+                                alt="Instagram" class="w-4 h-4">
                         </a>
-                        <a href="#"
+
+                        <!-- X (Twitter) -->
+                        <a href="https://x.com/"
+                            target="_blank"
                             class="w-8 h-8 bg-carob-800 rounded-lg flex items-center justify-center hover:bg-matcha-500 transition-all duration-200 hover:scale-105">
-                            <i data-lucide="twitter" class="text-white text-sm w-4 h-4"></i>
+                            <img src="https://cdn.simpleicons.org/x/ffffff"
+                                alt="X" class="w-4 h-4">
                         </a>
                     </div>
                 </div>

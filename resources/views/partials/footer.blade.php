@@ -26,17 +26,35 @@
                 
                 <!-- Social Media Pills -->
                 <div class="flex flex-wrap gap-3">
-                    <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs" target="_blank" class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
-                        <i data-lucide="instagram" class="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform"></i>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs"
+                        target="_blank"
+                        class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
+                        <img
+                            src="https://cdn.simpleicons.org/instagram/E4405F"
+                            alt="Instagram"
+                            class="w-4 h-4 group-hover:scale-110 transition-transform">
                         <span class="text-xs font-bold text-soft-linen-200">Instagram</span>
                     </a>
-                    <a href="#" class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
-                        <i data-lucide="facebook" class="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform"></i>
+
+                    <!-- Facebook -->
+                    <a href="#"
+                        class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
+                        <img
+                            src="https://cdn.simpleicons.org/facebook/1877F2"
+                            alt="Facebook"
+                            class="w-4 h-4 group-hover:scale-110 transition-transform">
                         <span class="text-xs font-bold text-soft-linen-200">Facebook</span>
                     </a>
-                    <a href="#" class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
-                        <i data-lucide="youtube" class="w-4 h-4 text-red-400 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-xs font-bold text-soft-linen-200">Youtube</span>
+
+                    <!-- YouTube -->
+                    <a href="#"
+                        class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
+                        <img
+                            src="https://cdn.simpleicons.org/youtube/FF0000"
+                            alt="YouTube"
+                            class="w-4 h-4 group-hover:scale-110 transition-transform">
+                        <span class="text-xs font-bold text-soft-linen-200">YouTube</span>
                     </a>
                 </div>
             </div>

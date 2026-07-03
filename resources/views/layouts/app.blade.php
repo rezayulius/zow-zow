@@ -44,19 +44,17 @@
 
   <!-- Cekat.AI Live Chat Widget -->
   <script type="text/javascript">
-    window.mychat = window.mychat || {};
-    window.mychat.server = 'https://live.cekat.ai/widget.js';
-    window.mychat.iframeWidth = '400px';
-    window.mychat.iframeHeight = '700px';
-    window.mychat.accessKey = 'ZOW-NXWaCTvC';
-    (function () {
-      var mychat = document.createElement('script');
-      mychat.type = 'text/javascript';
-      mychat.async = true;
-      mychat.src = window.mychat.server;
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(mychat, s);
-    })();
+    !function(c,e,k,a,t){
+    c.mychat=c.mychat||{server:"https://live.cekat.ai/widget.js",iframeWidth:"400px",iframeHeight:"700px",accessKey:"ZOW-NXWaCTvC",offsetX:-24,offsetY:24,position:"bottom-right"};
+    var q=[];
+    c.Cekat=function(){q.push(arguments)};
+    c.Cekat.q=q;
+    a=e.createElement(k);
+    t=e.getElementsByTagName(k)[0];
+    a.async=1;
+    a.src=c.mychat.server;
+    t.parentNode.insertBefore(a,t);
+    }(window,document,"script");
   </script>
 
   <!-- SweetAlert2 CDN -->
