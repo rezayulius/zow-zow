@@ -6,6 +6,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="description" content="Zow Vetique adalah klinik hewan dan pet spa di Kebayoran Baru, Jakarta Selatan. Layanan pemeriksaan kesehatan, vaksinasi, steril, grooming, dan penitipan hewan dengan dokter berpengalaman, buka setiap hari 07.00-22.00.">
+  <meta property="og:title" content="Zow Vetique - Klinik Hewan & Pet Wellness di Jakarta Selatan">
+  <meta property="og:description" content="Second home untuk hewan peliharaan Anda. Pemeriksaan kesehatan, vaksinasi, grooming spa, dan penitipan hewan di Kebayoran Baru.">
+  <meta property="og:type" content="business.business">
+  <meta property="og:url" content="https://zowvetique.com/">
+  <meta property="og:image" content="https://www.zowvetique.com/images/logo/zow-vet-logo-brown.png">
+  <meta property="og:locale" content="id_ID">
+  
+  
+  
   <title>@yield('title', 'PetWellness Hub - Klinik Hewan Jakarta')</title>
   <link rel="icon" href="{{ asset('favicon-zow.ico') }}">
   <!-- Fonts -->
@@ -21,6 +31,91 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   @stack('styles')
+
+  <!-- ===== JSON-LD: VeterinaryCare / LocalBusiness ===== -->
+  <script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@@type": "VeterinaryCare",
+    "name": "Zow Vetique",
+    "alternateName": "ZOW Vet",
+    "image": "https://www.zowvetique.com/images/logo/zow-vet-logo-brown.png",
+    "url": "https://zowvetique.com/",
+    "telephone": "+62-812-9591-1911",
+    "contactPoint": [
+      {
+        "@@type": "ContactPoint",
+        "telephone": "+62-812-9591-1911",
+        "contactType": "emergency",
+        "areaServed": "ID",
+        "availableLanguage": ["Indonesian", "English"]
+      },
+      {
+        "@@type": "ContactPoint",
+        "telephone": "+62-812-1908-8899",
+        "contactType": "customer service",
+        "areaServed": "ID",
+        "availableLanguage": ["Indonesian", "English"]
+      }
+    ],
+    "priceRange": "Rp100.000 - Rp2.000.000",
+    "address": {
+      "@@type": "PostalAddress",
+      "streetAddress": "Jl. Prapanca Raya No. 25A, RT.2/RW.3, Pulo, Kec. Kby. Baru",
+      "addressLocality": "Kota Jakarta Selatan",
+      "addressRegion": "DKI Jakarta",
+      "postalCode": "12160",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@@type": "GeoCoordinates",
+      "latitude": -6.2530625,
+      "longitude": 106.8084375
+    },
+    "hasMap": "https://plus.codes/6P58PRW5+Q9",
+    "openingHoursSpecification": {
+      "@@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+      ],
+      "opens": "07:00",
+      "closes": "22:00"
+    },
+    "sameAs": [
+      "https://www.instagram.com/zowvetclinic"
+    ],
+    "aggregateRating": {
+      "@@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500"
+    }
+  }
+  </script>
+  <!-- ===== JSON-LD: FAQPage ===== -->
+  <script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@@type": "Question",
+        "name": "Apa saja layanan yang tersedia di klinik hewan ini?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Kami menyediakan berbagai layanan seperti pemeriksaan kesehatan rutin, vaksinasi, steril/kebiri, operasi minor & mayor, konsultasi nutrisi, pemeriksaan laboratorium, grooming, dan penitipan hewan."
+        }
+      },
+      {
+        "@@type": "Question",
+        "name": "Apakah klinik menerima emergency case?",
+        "acceptedAnswer": {
+          "@@type": "Answer",
+          "text": "Ya, kami menerima kasus darurat selama jam operasional. Untuk kejadian di luar jam operasional, silakan hubungi hotline emergency kami."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="font-sans antialiased">

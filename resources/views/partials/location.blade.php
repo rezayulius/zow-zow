@@ -53,7 +53,7 @@
                     <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-inner border border-gray-100">
                         <!-- Interactive Map Placeholder / Iframe -->
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.059432696683!2d106.8157773147693!3d-6.255903995471649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f17d72740263%3A0xc3c544837851613b!2sKemang%20Village!5e0!3m2!1sen!2sid!4v1625642845678!5m2!1sen!2sid" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.8084375!3d-6.2530625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTUnMTEuMCJTIDEwNsKwNDgnMzAuNCJF!5e0!3m2!1sen!2sid!4v1720000000000!5m2!1sen!2sid" 
                             width="100%" 
                             height="100%" 
                             style="border:0;" 
@@ -125,8 +125,8 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-carob-900 mb-1">Call Us</h4>
-                                <p class="text-sm text-carob-600 mb-2">0812-9591-1911</p>
-                                <a href="tel:+6281295911911" class="inline-flex items-center gap-1 text-xs font-bold text-white bg-forest-moss-green-500 hover:bg-forest-moss-green-600 px-3 py-1.5 rounded-full shadow-sm transition-all duration-300 group/link">
+                                <p class="text-sm text-carob-600 mb-2">0812 1908 8899</p>
+                                <a href="tel:+6281219088899" class="inline-flex items-center gap-1 text-xs font-bold text-white bg-forest-moss-green-500 hover:bg-forest-moss-green-600 px-3 py-1.5 rounded-full shadow-sm transition-all duration-300 group/link">
                                     <i data-lucide="phone" class="w-3 h-3"></i>
                                     Call Now
                                 </a>

@@ -112,7 +112,7 @@
                         <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
                             <i data-lucide="map-pin" class="w-4 h-4 text-soft-blush-pink-400"></i>
                         </div>
-                        <span class="mt-1">Jl. Raya Kemang No. 88, Jakarta Selatan</span>
+                        <span class="mt-1">Jl. Prapanca Raya No.25A, RT.2/RW.3, Pulo, Kec. Kby. Baru, Kota Jakarta Selatan, DKI Jakarta 12160</span>
                     </li>
                     <li class="flex items-start gap-3 text-soft-linen-400 text-sm">
                         <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">

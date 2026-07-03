@@ -1613,7 +1613,7 @@
                                     <div>
                                         <h4 class="font-semibold text-carob-800">Telepon</h4>
                                         <p class="text-carob-600">+62 812 3456 7890</p>
-                                        <p class="text-carob-600">Emergency: 162 21 1234 9999</p>
+                                        <p class="text-carob-600">Emergency: +62 812-9591-1911</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start space-x-4">
@@ -1745,7 +1745,7 @@
                         <li><i data-lucide="map-pin" class="inline w-4 h-4 mr-2"></i> Jl. Sudirman No. 123, Jakarta</li>
                         <li><i data-lucide="phone" class="inline w-4 h-4 mr-2"></i> +62 812 3456 7890</li>
                         <li><i data-lucide="mail" class="inline w-4 h-4 mr-2"></i> info@petwellnesshub.com</li>
-                        <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: 162 21 1234 9999</li>
+                        <li class="text-chai-400 font-semibold"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i> Emergency: +62 812-9591-1911</li>
                     </ul>
                 </div>
             </div>
