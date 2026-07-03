@@ -99,7 +99,7 @@ class ListServices extends ListRecords
                     'name' => $package['name'],
                     'client_name' => is_array($package['client_name'] ?? null) ? json_encode($package['client_name']) : ($package['client_name'] ?? null),
                     'clinic_id' => $package['clinic_id'],
-                    'service_id' => $package['service_id'],
+                    'service_id' => $package['id'],
                     'visit_type_id' => $package['visit_type_id'],
                     'unit_price' => $package['unit_price'],
                     'price_includes_tax' => $package['price_includes_tax'] ?? false,
