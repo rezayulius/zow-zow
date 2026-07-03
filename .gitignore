@@ -26,3 +26,6 @@ Thumbs.db
 public/test-form.html
 public/test-post.php
 app/Http/Middleware/VerifyCsrfToken.php
+public/css
+public/js/filament
+public/livewire
