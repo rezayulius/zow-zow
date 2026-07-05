@@ -7,9 +7,15 @@ use Carbon\Carbon;
 
 class OtpVerification extends Model
 {
+    /**
+     * Maximum number of incorrect verification attempts allowed per OTP.
+     */
+    public const MAX_ATTEMPTS = 5;
+
     protected $fillable = [
         'email',
         'otp',
+        'attempts',
         'expires_at',
         'verified_at',
     ];
@@ -49,14 +55,28 @@ class OtpVerification extends Model
     }
 
     /**
+     * Check if the maximum number of failed attempts has been reached.
+     */
+    public function hasTooManyAttempts(): bool
+    {
+        return $this->attempts >= self::MAX_ATTEMPTS;
+    }
+
+    /**
      * Verify OTP code
      */
     public function verify(string $otpCode): bool
     {
-        if ($this->otp === $otpCode && !$this->isExpired() && is_null($this->verified_at)) {
+        if ($this->isExpired() || !is_null($this->verified_at) || $this->hasTooManyAttempts()) {
+            return false;
+        }
+
+        if (hash_equals($this->otp, $otpCode)) {
             $this->update(['verified_at' => Carbon::now()]);
             return true;
         }
+
+        $this->increment('attempts');
 
         return false;
     }

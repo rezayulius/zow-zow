@@ -18,14 +18,13 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\SetLocale::class,
         ]);
-        
+
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+        ]);
+
         // Trust all proxies including Cloudflare
         $middleware->trustProxies(at: '*');
-        
-        // Exclude auth routes from CSRF temporarily
-        $middleware->validateCsrfTokens(except: [
-            '/auth/*',
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

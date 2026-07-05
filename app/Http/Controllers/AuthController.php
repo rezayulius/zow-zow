@@ -34,9 +34,25 @@ class AuthController extends Controller
         $remember = $request->boolean('remember');
 
         if (Auth::attempt($credentials, $remember)) {
+            $user = Auth::user();
+
+            if (is_null($user->email_verified_at)) {
+                Auth::logout();
+
+                // Issue a fresh OTP so the (legitimate) account owner can complete verification
+                $otpRecord = OtpVerification::generateOtp($user->email);
+                $this->sendOtpEmail($user->email, $otpRecord->otp);
+
+                return response()->json([
+                    'success' => false,
+                    'requires_verification' => true,
+                    'email' => $user->email,
+                    'message' => 'Email Anda belum diverifikasi. Kami telah mengirimkan kode OTP baru.'
+                ], 403);
+            }
+
             $request->session()->regenerate();
 
-            $user = Auth::user();
             $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
 
             return response()->json([
@@ -131,6 +147,13 @@ class AuthController extends Controller
                 'success' => false,
                 'message' => 'Kode OTP sudah kadaluarsa. Silakan minta kode baru.'
             ], 400);
+        }
+
+        if ($otpRecord->hasTooManyAttempts()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terlalu banyak percobaan. Silakan minta kode OTP baru.'
+            ], 429);
         }
 
         if ($otpRecord->verify($request->otp)) {
