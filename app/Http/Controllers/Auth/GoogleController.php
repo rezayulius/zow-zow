@@ -23,7 +23,7 @@ class GoogleController extends Controller
     /**
      * Handle Google OAuth callback
      */
-    public function handleGoogleCallback()
+    public function handleGoogleCallback(Request $request)
     {
         try {
             $googleUser = Socialite::driver('google')->user();
@@ -34,6 +34,7 @@ class GoogleController extends Controller
             if ($user) {
                 // User exists, login
                 Auth::login($user);
+                $request->session()->regenerate();
                 $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
                 return redirect($redirectUrl)->with('success', 'Berhasil login dengan Google!');
             }
@@ -54,6 +55,7 @@ class GoogleController extends Controller
                 ]);
 
                 Auth::login($user);
+                $request->session()->regenerate();
                 $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
                 return redirect($redirectUrl)->with('success', 'Akun Google berhasil dihubungkan!');
             }
@@ -70,6 +72,7 @@ class GoogleController extends Controller
             ]);
 
             Auth::login($user);
+            $request->session()->regenerate();
             return redirect('/')->with('success', 'Akun berhasil dibuat dengan Google!');
 
         } catch (\Exception $e) {
