@@ -113,7 +113,7 @@
                             <div class="flex items-center gap-4">
                                 <div class="relative">
                                     @if($testimonial->avatar)
-                                        <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm">
+                                        <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm">
                                     @else
                                         <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-carob-400 font-bold text-lg ring-2 ring-white shadow-sm">
                                             {{ substr($testimonial->name, 0, 1) }}
@@ -193,7 +193,7 @@
                                 </button>
                                 <div class="flex items-center gap-3 mt-auto pt-6">
                                     @if($review['profile_photo_url'])
-                                        <img src="{{ $review['profile_photo_url'] }}" alt="{{ $review['author_name'] }}" class="w-10 h-10 rounded-full object-cover ring-2 ring-white shadow-sm" referrerpolicy="no-referrer">
+                                        <img src="{{ $review['profile_photo_url'] }}" alt="{{ $review['author_name'] }}" loading="lazy" class="w-10 h-10 rounded-full object-cover ring-2 ring-white shadow-sm" referrerpolicy="no-referrer">
                                     @else
                                         <div class="w-10 h-10 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-400 font-bold ring-2 ring-white shadow-sm">
                                             {{ substr($review['author_name'], 0, 1) }}
@@ -231,7 +231,7 @@
                         <!-- Image -->
                         <div class="relative h-56 overflow-hidden">
                             @if($article->featured_image)
-                                <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                             @else
                                 <div class="w-full h-full bg-soft-linen-100 flex items-center justify-center text-soft-linen-400">
                                     <i data-lucide="image" class="w-12 h-12"></i>
@@ -318,7 +318,7 @@
                         
                         @if($newsItem->featured_image)
                             <div class="w-full md:w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
-                                <img src="{{ asset('storage/' . $newsItem->featured_image) }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <img src="{{ asset('storage/' . $newsItem->featured_image) }}" alt="{{ $newsItem->title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             </div>
                         @endif
                     </div>
@@ -345,7 +345,7 @@
                             <!-- Left: Image & Discount -->
                             <div class="md:w-2/5 relative h-48 md:h-auto overflow-hidden">
                                 @if($promo->featured_image)
-                                    <img src="{{ asset('storage/' . $promo->featured_image) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                    <img src="{{ asset('storage/' . $promo->featured_image) }}" alt="{{ $promo->title }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                                 @else
                                     <div class="w-full h-full bg-forest-moss-green-50"></div>
                                 @endif
@@ -424,6 +424,29 @@
     </div>
 </section>
 
+@if($faqs->count() > 0)
+    @push('json-ld')
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "FAQPage",
+        "mainEntity": [
+            @foreach($faqs as $faq)
+            {
+                "@@type": "Question",
+                "name": {!! json_encode(strip_tags($faq->question)) !!},
+                "acceptedAnswer": {
+                    "@@type": "Answer",
+                    "text": {!! json_encode(strip_tags($faq->answer)) !!}
+                }
+            }@if(!$loop->last),@endif
+            @endforeach
+        ]
+    }
+    </script>
+    @endpush
+@endif
+
 <!-- Modals (Header, Body, Footer Layout - Joyful Edition) -->
 @foreach(['article' => $articles, 'news' => $news] as $type => $items)
     @if(isset($items) && $items->count() > 0)
@@ -485,7 +508,7 @@
                         <!-- Featured Image -->
                         @if($item->featured_image)
                             <div class="rounded-[2rem] overflow-hidden shadow-md mb-8 ring-4 ring-soft-linen-50">
-                                <img src="{{ asset('storage/' . $item->featured_image) }}" class="w-full h-auto object-cover max-h-[400px]">
+                                <img src="{{ asset('storage/' . $item->featured_image) }}" alt="{{ $item->title }}" loading="lazy" class="w-full h-auto object-cover max-h-[400px]">
                             </div>
                         @endif
 
