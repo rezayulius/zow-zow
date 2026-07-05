@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
@@ -41,11 +42,15 @@ class GoogleController extends Controller
             $user = User::where('email', $googleUser->email)->first();
 
             if ($user) {
-                // User exists with email, link Google account
+                // User exists with email, link Google account.
+                // Rotate the password so a pre-existing (possibly attacker-set,
+                // unverified) local password can no longer be used to sign in
+                // once Google has verified real ownership of this email.
                 $user->update([
                     'google_id' => $googleUser->id,
                     'avatar' => $googleUser->avatar,
                     'email_verified_at' => now(), // Auto verify email from Google
+                    'password' => Hash::make(Str::random(40)),
                 ]);
 
                 Auth::login($user);

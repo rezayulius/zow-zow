@@ -39,8 +39,8 @@ Route::get('/set-locale/{locale}', [LocaleController::class, 'setLocale'])
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::post('/signin', [AuthController::class, 'signIn'])->name('signin');
     Route::post('/signup', [AuthController::class, 'signUp'])->name('signup');
-    Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('verify-otp');
-    Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('resend-otp');
+    Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->middleware('throttle:10,1')->name('verify-otp');
+    Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->middleware('throttle:5,1')->name('resend-otp');
     Route::post('/signout', [AuthController::class, 'signOut'])->name('signout');
 
     // Google OAuth
@@ -54,23 +54,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
 });
 
-// Digitail Dynamic Dashboard Route
-Route::prefix('digitail')->name('digitail.')->group(function () {
+// Digitail Dynamic Dashboard Route (Admin only - internal API testing/config tool)
+Route::middleware(['auth', 'admin'])->prefix('digitail')->name('digitail.')->group(function () {
     Route::get('/', [DigitailController::class, 'dashboard'])->name('dashboard');
-    
+
     // OAuth Routes
     Route::get('/auth/redirect', [DigitailAuthController::class, 'redirect'])->name('auth.redirect');
     Route::get('/auth/callback', [DigitailAuthController::class, 'handleCallback'])->name('auth.callback');
 });
 
 // Digitail Synchronization Routes (Admin only)
-Route::prefix('admin/digitail-sync')->name('admin.digitail-sync.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin/digitail-sync')->name('admin.digitail-sync.')->group(function () {
     Route::post('/services', [DigitailSyncController::class, 'syncServices'])->name('services');
     Route::get('/status', [DigitailSyncController::class, 'getSyncStatus'])->name('status');
 });
-Route::get('/digitail/test-sync', [App\Http\Controllers\DigitailSyncController::class, 'testSync'])->name('test-sync');
-// Digitail API Proxy Routes (to avoid CORS issues)
-Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
+
+// Digitail API Proxy Routes (Admin only - internal API testing tool, not for end-user/customer access)
+Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail.')->group(function () {
     // Specific endpoints
     Route::get('/auth/me', [DigitailApiController::class, 'getMe'])->name('auth.me');
     Route::get('/pets', [DigitailApiController::class, 'getPets'])->name('pets');
@@ -85,5 +85,5 @@ Route::prefix('api/digitail')->name('api.digitail.')->group(function () {
     Route::any('/{endpoint}', [DigitailApiController::class, 'proxyRequest'])
         ->where('endpoint', '.*')
         ->name('proxy');
-        
+
 });
