@@ -13,16 +13,19 @@ use App\Models\Promo;
 use App\Models\HeroSlide;
 use App\Models\Faq;
 use App\Services\DigitailService;
+use App\Services\GooglePlacesService;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
     private $digitailService;
+    private $googlePlacesService;
 
-    public function __construct(DigitailService $digitailService)
+    public function __construct(DigitailService $digitailService, GooglePlacesService $googlePlacesService)
     {
         $this->digitailService = $digitailService;
+        $this->googlePlacesService = $googlePlacesService;
     }
 
     public function index()
@@ -35,6 +38,7 @@ class HomeController extends Controller
         $pricing = Pricing::active()->ordered()->get();
         $memberships = Membership::active()->ordered()->get();
         $testimonials = Testimonial::active()->featured()->ordered()->limit(6)->get();
+        $googleReviews = $this->googlePlacesService->getReviews();
         $articles = Article::published()->featured()->ordered()->limit(3)->get();
         $news = News::published()->featured()->ordered()->limit(3)->get();
         $promos = Promo::active()->ongoing()->featured()->ordered()->limit(3)->get();
@@ -51,6 +55,7 @@ class HomeController extends Controller
             'pricing',
             'memberships',
             'testimonials',
+            'googleReviews',
             'articles',
             'news',
             'promos',

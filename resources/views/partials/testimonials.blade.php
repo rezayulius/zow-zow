@@ -148,6 +148,67 @@
                     <p class="text-carob-600">No stories shared yet. Be the first!</p>
                 </div>
             @endif
+
+            {{-- Google Reviews --}}
+            @if(!empty($googleReviews['reviews']))
+                <div class="mt-20">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-bold text-carob-900">Google Reviews</h3>
+                                @if($googleReviews['rating'])
+                                    <p class="text-sm text-carob-500">
+                                        <span class="font-bold text-carob-800">{{ $googleReviews['rating'] }}</span> ★ from {{ $googleReviews['user_ratings_total'] }} reviews
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        @if($googleReviews['url'])
+                            <a href="{{ $googleReviews['url'] }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 transition-colors">
+                                See all reviews on Google
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        @endif
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach($googleReviews['reviews'] as $review)
+                            <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col h-full">
+                                <div class="flex gap-1 mb-4">
+                                    @for($i = 0; $i < 5; $i++)
+                                        <i data-lucide="star" class="w-4 h-4 {{ $i < $review['rating'] ? 'text-old-mustard-yellow-500 fill-current' : 'text-gray-200' }}"></i>
+                                    @endfor
+                                </div>
+                                <p class="google-review-text text-carob-700 leading-relaxed text-sm line-clamp-5">
+                                    "{{ $review['text'] }}"
+                                </p>
+                                <button type="button" class="google-review-toggle hidden text-xs font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 mt-2 text-left" onclick="toggleGoogleReview(this)">
+                                    Baca selengkapnya
+                                </button>
+                                <div class="flex items-center gap-3 mt-auto pt-6">
+                                    @if($review['profile_photo_url'])
+                                        <img src="{{ $review['profile_photo_url'] }}" alt="{{ $review['author_name'] }}" class="w-10 h-10 rounded-full object-cover ring-2 ring-white shadow-sm" referrerpolicy="no-referrer">
+                                    @else
+                                        <div class="w-10 h-10 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-400 font-bold ring-2 ring-white shadow-sm">
+                                            {{ substr($review['author_name'], 0, 1) }}
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <h4 class="font-bold text-carob-900 text-sm">{{ $review['author_name'] }}</h4>
+                                        <p class="text-xs text-carob-400">{{ $review['relative_time_description'] }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
         </div>
 
         {{-- Articles Tab Content --}}
@@ -471,10 +532,27 @@
 @endforeach
 
 <script>
+function toggleGoogleReview(button) {
+    const text = button.previousElementSibling;
+    const expanded = text.classList.toggle('line-clamp-5');
+    text.classList.toggle('line-clamp-none');
+    button.textContent = expanded ? 'Baca selengkapnya' : 'Sembunyikan';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
+
+    // Show "Baca selengkapnya" only for Google review texts that are actually truncated
+    document.querySelectorAll('.google-review-text').forEach(function (el) {
+        if (el.scrollHeight > el.clientHeight + 1) {
+            const toggle = el.nextElementSibling;
+            if (toggle && toggle.classList.contains('google-review-toggle')) {
+                toggle.classList.remove('hidden');
+            }
+        }
+    });
 
     const tabs = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');

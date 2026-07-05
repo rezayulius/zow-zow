@@ -52,4 +52,10 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI', env('APP_URL') . '/auth/google/callback'),
     ],
 
+    'google_places' => [
+        'api_key' => env('GOOGLE_PLACES_API_KEY'),
+        'place_id' => env('GOOGLE_PLACES_PLACE_ID'),
+        'cache_ttl' => env('GOOGLE_PLACES_CACHE_TTL', 1440),
+    ],
+
 ];
