@@ -11,16 +11,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ComingSoonController;
 
-// Tambahkan ini di paling atas routes/web.php
-Route::post('/test', function () {
-    return response()->json([
-        'success' => true,
-        'message' => 'POST works!',
-        'method' => request()->method(),
-        'all' => request()->all()
-    ]);
-})->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/coming-soon', [ComingSoonController::class, 'index'])->name('coming-soon');
 
