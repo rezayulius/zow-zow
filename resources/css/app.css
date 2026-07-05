@@ -139,6 +139,18 @@ html {
     --color-vanilla-700: #ac9d8b;
     --color-vanilla-800: #8a7e70;
     --color-vanilla-900: #71675c;
+
+    /* Pistache → #B3B792 */
+    --color-pistache-50: #f7f8f5;
+    --color-pistache-100: #eff1ea;
+    --color-pistache-200: #d7dccb;
+    --color-pistache-300: #bfc7ac;
+    --color-pistache-400: #c6cfa4;
+    --color-pistache-500: #b3b792;
+    --color-pistache-600: #a1a583;
+    --color-pistache-700: #86896d;
+    --color-pistache-800: #6b6e57;
+    --color-pistache-900: #575a47;
 }
 
 /* Custom Scrollbar */
