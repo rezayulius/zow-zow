@@ -4,10 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class HeroSlide extends Model
 {
     use HasFactory;
+    use HasTranslations;
+
+    public array $translatable = [
+        'title',
+        'highlight_text',
+        'description',
+        'badge_text',
+        'primary_cta_text',
+        'secondary_cta_text',
+    ];
 
     protected $fillable = [
         'title',
