@@ -18,10 +18,10 @@
                     <img src="{{ asset('images/logo/zow-vet-logo-white.png') }}" alt="Zow Vetique" class="h-14 w-auto object-contain">
                 </div>
                 <p class="text-soft-linen-300 leading-relaxed font-medium">
-                    ZOW Vet — Klinik Hewan dengan Hati Keluarga.
+                    ZOW Vet — Stem Cell Therapy & Advanced Lab.
                 </p>
                 <p class="text-soft-linen-400 text-sm leading-relaxed">
-                    Tempat di mana pets dirawat dengan ilmu, empati, dan kasih sayang—serta pawrents didampingi dengan komunikasi yang jujur dan hangat.
+                    Perawatan modern untuk pets, dengan pendekatan medis yang presisi, penuh empati, dan didukung komunikasi yang hangat untuk setiap pawrent.
                 </p>
                 
                 <!-- Social Media Pills -->

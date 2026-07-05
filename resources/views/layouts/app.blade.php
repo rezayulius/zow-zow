@@ -1,121 +1,180 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-  <link rel="canonical" href="https://zowvetique.com/" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="description" content="Zow Vetique adalah klinik hewan dan pet spa di Kebayoran Baru, Jakarta Selatan. Layanan pemeriksaan kesehatan, vaksinasi, steril, grooming, dan penitipan hewan dengan dokter berpengalaman, buka setiap hari 07.00-22.00.">
-  <meta property="og:title" content="Zow Vetique - Klinik Hewan & Pet Wellness di Jakarta Selatan">
-  <meta property="og:description" content="Second home untuk hewan peliharaan Anda. Pemeriksaan kesehatan, vaksinasi, grooming spa, dan penitipan hewan di Kebayoran Baru.">
-  <meta property="og:type" content="business.business">
-  <meta property="og:url" content="https://zowvetique.com/">
-  <meta property="og:image" content="https://www.zowvetique.com/images/logo/zow-vet-logo-brown.png">
-  <meta property="og:locale" content="id_ID">
-  
-  
-  
-  <title>@yield('title', 'PetWellness Hub - Klinik Hewan Jakarta')</title>
+
+  @php
+    $pageTitle = trim((string) $__env->yieldContent('title')) ?: 'Klinik Hewan Jakarta Selatan | ZOW Vetique Kemang';
+    $pageDescription = trim((string) $__env->yieldContent('meta_description')) ?: 'ZOW Vetique adalah klinik hewan di Kemang, Jakarta Selatan, menyediakan konsultasi dokter hewan, vaksinasi, steril, grooming, lab, terapi, pet spa, penitipan, dan emergency care.';
+    $pageCanonical = trim((string) $__env->yieldContent('canonical')) ?: url()->current();
+    $pageOgImage = trim((string) $__env->yieldContent('og_image')) ?: 'https://zowvetique.com/images/logo/zow-vet-logo-brown.png';
+    $pageRobots = trim((string) $__env->yieldContent('robots')) ?: 'index, follow';
+  @endphp
+
+  <title>{{ $pageTitle }}</title>
+  <link rel="canonical" href="{{ $pageCanonical }}" />
+  <meta name="robots" content="{{ $pageRobots }}">
+  <meta name="description" content="{{ $pageDescription }}">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="ZOW Vetique">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ $pageTitle }}">
+  <meta property="og:description" content="{{ $pageDescription }}">
+  <meta property="og:url" content="{{ $pageCanonical }}">
+  <meta property="og:image" content="{{ $pageOgImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="{{ app()->getLocale() === 'en' ? 'en_US' : 'id_ID' }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ $pageTitle }}">
+  <meta name="twitter:description" content="{{ $pageDescription }}">
+  <meta name="twitter:image" content="{{ $pageOgImage }}">
+
+  <meta name="theme-color" content="#553822">
   <link rel="icon" href="{{ asset('favicon-zow.ico') }}">
+  <link rel="apple-touch-icon" href="{{ asset('favicon-zow.ico') }}">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.bunny.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   @stack('styles')
 
-  <!-- ===== JSON-LD: VeterinaryCare / LocalBusiness ===== -->
+  <!-- ===== JSON-LD: VeterinaryCare / LocalBusiness (sitewide) ===== -->
   <script type="application/ld+json">
   {
     "@@context": "https://schema.org",
     "@@type": "VeterinaryCare",
-    "name": "Zow Vetique",
-    "alternateName": "ZOW Vet",
-    "image": "https://www.zowvetique.com/images/logo/zow-vet-logo-brown.png",
+    "@@id": "https://zowvetique.com/#veterinarycare",
+    "name": "ZOW Vetique",
+    "alternateName": "ZOW Vet Clinic",
     "url": "https://zowvetique.com/",
-    "telephone": "+62-812-9591-1911",
+    "logo": "https://zowvetique.com/logo.png",
+    "image": [
+      "https://zowvetique.com/images/zow-vetique-clinic.jpg"
+    ],
+    "description": "ZOW Vetique adalah klinik hewan di Prapanca, Kebayoran Baru, Jakarta Selatan yang menyediakan layanan konsultasi dokter hewan, vaksinasi, steril, grooming, laboratorium, terapi lanjutan, dan emergency care untuk hewan peliharaan.",
+    "slogan": "Klinik Hewan dengan Hati Keluarga",
+    "telephone": "+6281295911911",
+    "priceRange": "$$",
+    "address": {
+      "@@type": "PostalAddress",
+      "streetAddress": "Jl. Prapanca Raya No.25A, RT.2/RW.3, Pulo, Kec. Kby. Baru",
+      "addressLocality": "Kota Jakarta Selatan",
+      "addressRegion": "Daerah Khusus Ibukota Jakarta",
+      "postalCode": "12160",
+      "addressCountry": "ID"
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=PRW5%2BQ9%20Pulo%2C%20South%20Jakarta%20City%2C%20Jakarta",
+    "areaServed": [
+      "Jakarta Selatan",
+      "Kebayoran Baru",
+      "Pulo",
+      "Prapanca",
+      "Kemang",
+      "DKI Jakarta"
+    ],
+    "openingHours": [
+      "Mo-Su 07:00-22:00"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "07:00",
+        "closes": "22:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/zowvetclinic/"
+    ],
     "contactPoint": [
       {
         "@@type": "ContactPoint",
-        "telephone": "+62-812-9591-1911",
-        "contactType": "emergency",
-        "areaServed": "ID",
-        "availableLanguage": ["Indonesian", "English"]
-      },
-      {
-        "@@type": "ContactPoint",
-        "telephone": "+62-812-1908-8899",
+        "telephone": "+6281295911911",
         "contactType": "customer service",
         "areaServed": "ID",
         "availableLanguage": ["Indonesian", "English"]
       }
     ],
-    "priceRange": "Rp100.000 - Rp2.000.000",
-    "address": {
-      "@@type": "PostalAddress",
-      "streetAddress": "Jl. Prapanca Raya No. 25A, RT.2/RW.3, Pulo, Kec. Kby. Baru",
-      "addressLocality": "Kota Jakarta Selatan",
-      "addressRegion": "DKI Jakarta",
-      "postalCode": "12160",
-      "addressCountry": "ID"
-    },
-    "geo": {
-      "@@type": "GeoCoordinates",
-      "latitude": -6.2530625,
-      "longitude": 106.8084375
-    },
-    "hasMap": "https://plus.codes/6P58PRW5+Q9",
-    "openingHoursSpecification": {
-      "@@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-      ],
-      "opens": "07:00",
-      "closes": "22:00"
-    },
-    "sameAs": [
-      "https://www.instagram.com/zowvetclinic"
-    ],
-    "aggregateRating": {
-      "@@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "500"
+    "hasOfferCatalog": {
+      "@@type": "OfferCatalog",
+      "name": "Layanan Klinik Hewan ZOW Vetique",
+      "itemListElement": [
+        {
+          "@@type": "Offer",
+          "itemOffered": {
+            "@@type": "Service",
+            "name": "Konsultasi Dokter Hewan"
+          }
+        },
+        {
+          "@@type": "Offer",
+          "itemOffered": {
+            "@@type": "Service",
+            "name": "Vaksinasi Hewan"
+          }
+        },
+        {
+          "@@type": "Offer",
+          "itemOffered": {
+            "@@type": "Service",
+            "name": "Steril Kucing dan Anjing"
+          }
+        },
+        {
+          "@@type": "Offer",
+          "itemOffered": {
+            "@@type": "Service",
+            "name": "Grooming dan Pet Care"
+          }
+        },
+        {
+          "@@type": "Offer",
+          "itemOffered": {
+            "@@type": "Service",
+            "name": "Laboratorium dan Advanced Therapy"
+          }
+        },
+        {
+          "@@type": "Offer",
+          "itemOffered": {
+            "@@type": "EmergencyService",
+            "name": "Emergency Vet Care"
+          }
+        }
+      ]
     }
   }
   </script>
-  <!-- ===== JSON-LD: FAQPage ===== -->
-  <script type="application/ld+json">
-  {
-    "@@context": "https://schema.org",
-    "@@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@@type": "Question",
-        "name": "Apa saja layanan yang tersedia di klinik hewan ini?",
-        "acceptedAnswer": {
-          "@@type": "Answer",
-          "text": "Kami menyediakan berbagai layanan seperti pemeriksaan kesehatan rutin, vaksinasi, steril/kebiri, operasi minor & mayor, konsultasi nutrisi, pemeriksaan laboratorium, grooming, dan penitipan hewan."
-        }
-      },
-      {
-        "@@type": "Question",
-        "name": "Apakah klinik menerima emergency case?",
-        "acceptedAnswer": {
-          "@@type": "Answer",
-          "text": "Ya, kami menerima kasus darurat selama jam operasional. Untuk kejadian di luar jam operasional, silakan hubungi hotline emergency kami."
-        }
-      }
-    ]
-  }
-  </script>
+
+  {{-- Page-specific structured data (e.g. FAQPage) is pushed only from views that
+       render matching visible content, so it stays valid per Google's guidelines --}}
+  @stack('json-ld')
 </head>
 
 <body class="font-sans antialiased">
@@ -164,31 +223,33 @@
             title: 'Konfirmasi Emergency Call',
             html: `
                 <div class="text-left text-sm">
-                  <p class="text-gray-700 mb-2">Panggilan emergency dapat dikenakan biaya tambahan. Emergency mencakup:</p>
+                  <p class="text-gray-700 mb-2">Layanan emergency call ditujukan untuk kondisi darurat pada hewan peliharaan yang membutuhkan penanganan segera. Layanan ini dapat dikenakan biaya tambahan sesuai tarif yang berlaku.</p>
+                  <p class="text-gray-700 mb-2">Kondisi darurat dapat mencakup:</p>
                   <ul class="list-disc list-inside text-gray-800 mb-4">
-                    <li>Gangguan kritis pada sistem atau layanan.</li>
-                    <li>Kejadian terkait keselamatan atau keamanan.</li>
-                    <li>Permasalahan operasional mendesak di luar jam kerja.</li>
+                    <li>Sesak napas, kejang, pingsan, atau lemas berat.</li>
+                    <li>Perdarahan, luka serius, trauma, atau kecelakaan.</li>
+                    <li>Dugaan keracunan, muntah/diare berat, atau kondisi memburuk tiba-tiba.</li>
+                    <li>Kondisi mendesak lainnya yang memerlukan respons dokter hewan.</li>
                   </ul>
                   <div class="border-t pt-4 mt-4">
-                    <p class="text-gray-700 mb-3 font-medium">Syarat dan Ketentuan Emergency Call:</p>
+                    <p class="text-gray-700 mb-3 font-medium">Syarat dan Ketentuan:</p>
                     <ul class="list-disc list-inside text-gray-600 text-xs mb-4 space-y-1">
-                      <li>Saya memahami bahwa layanan emergency call dikenakan biaya tambahan sesuai tarif yang berlaku.</li>
-                      <li>Saya menyatakan bahwa kondisi hewan peliharaan saya memerlukan penanganan darurat segera.</li>
+                      <li>Saya memahami bahwa emergency call dapat dikenakan biaya tambahan.</li>
+                      <li>Saya menyatakan bahwa kondisi hewan peliharaan saya membutuhkan bantuan segera.</li>
                       <li>Saya bersedia memberikan informasi lengkap mengenai kondisi hewan saat dihubungi.</li>
-                      <li>Saya memahami bahwa dokter hewan akan menentukan tindakan yang diperlukan berdasarkan kondisi hewan.</li>
+                      <li>Saya memahami bahwa dokter hewan akan menentukan tindakan berdasarkan hasil penilaian awal.</li>
                     </ul>
                     <div class="flex items-start space-x-2">
                       <input type="checkbox" id="emergencyTermsCheckbox" class="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded">
                       <label for="emergencyTermsCheckbox" class="text-xs text-gray-700 cursor-pointer">
-                        Saya telah membaca dan menyetujui syarat dan ketentuan emergency call di atas
+                        Saya telah membaca dan menyetujui syarat dan ketentuan emergency call di atas.
                       </label>
                     </div>
                   </div>
                 </div>
               `,
             showCancelButton: true,
-            confirmButtonText: 'Telpon Sekarang',
+            confirmButtonText: 'Telepon Sekarang',
             cancelButtonText: 'Tutup',
             confirmButtonColor: '#f43f5e', // rose-500
             cancelButtonColor: '#e5e7eb', // gray-200

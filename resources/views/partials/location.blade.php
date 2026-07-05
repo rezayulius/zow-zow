@@ -70,7 +70,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-carob-900 text-sm">Zow Vetique</h4>
-                                    <p class="text-xs text-carob-500">Jl. Prapanca Raya No.25A</p>
+                                    <p class="text-xs text-carob-500">Jl. Prapanca Raya No.25A, Pulo, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160Jl. Prapanca Raya No.25A</p>
                                 </div>
                             </div>
                         </div>
