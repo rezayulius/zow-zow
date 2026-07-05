@@ -116,7 +116,7 @@
                                 @endif
 
                                 <div class="space-y-3 sm:space-y-4 max-w-2xl">
-                                    <h1 class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold {{ $c['text_dark'] }} leading-[1.1] tracking-tight">
+                                    <{{ $index === 0 ? 'h1' : 'h2' }} class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold {{ $c['text_dark'] }} leading-[1.1] tracking-tight">
                                         {{ $slide->title }} <br>
                                         @if($slide->highlight_text)
                                         <span class="{{ str_replace('text-', 'text-', $c['text']) }} relative inline-block">
@@ -124,7 +124,7 @@
                                             <svg class="absolute w-full h-2 sm:h-3 -bottom-1 left-0 {{ $c['highlight_underline'] }} -z-10" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7201 5.20448 132.856 2.00006 198.001 3.50002" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
                                         </span>
                                         @endif
-                                    </h1>
+                                    </{{ $index === 0 ? 'h1' : 'h2' }}>
                                     <p class="text-base sm:text-xl text-deep-cocoa-brown-600 leading-relaxed font-light hidden sm:block">
                                         {{ $slide->description }}
                                     </p>
@@ -155,7 +155,7 @@
                             <div class="relative h-[280px] sm:h-[400px] lg:h-full lg:min-h-[500px] w-full perspective-1000 group mt-8 lg:mt-0 order-1 lg:order-2 flex justify-center items-center">
                                 <div class="relative w-[70%] sm:w-[50%] lg:w-[90%] aspect-[4/5]">
                                     <div class="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-deep-cocoa-brown-900/10 rotate-[-3deg] transition-all duration-700 group-hover:rotate-0 border-[4px] sm:border-[6px] border-white z-10">
-                                        <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700">
+                                        <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700" {{ $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' }}>
                                     </div>
                                     
                                     <!-- Floating Card -->
@@ -177,7 +177,7 @@
 
                                 @if($secondaryImage)
                                 <div class="absolute top-[5%] right-[5%] sm:right-[15%] lg:right-0 w-[35%] sm:w-[30%] lg:w-[60%] aspect-square rounded-[2rem] overflow-hidden shadow-xl {{ $c['secondary_blob_shadow'] }} rotate-[6deg] opacity-90 transition-all duration-700 group-hover:rotate-[3deg] group-hover:translate-x-4 border-[4px] sm:border-[6px] border-white z-0 hidden sm:block">
-                                     <img src="{{ $secondaryImage }}" alt="Detail" class="w-full h-full object-cover">
+                                     <img src="{{ $secondaryImage }}" alt="Detail perawatan hewan ZOW Vetique" class="w-full h-full object-cover" loading="lazy">
                                 </div>
                                 @endif
 

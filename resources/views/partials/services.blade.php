@@ -24,12 +24,12 @@
             <span class="text-sm font-bold text-forest-moss-green-700 tracking-wide uppercase">Our Philosophy</span>
         </div>
 
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-medium text-carob-900 mb-6 leading-[1.1] max-w-6xl mx-auto relative">
+        <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-medium text-carob-900 mb-6 leading-[1.1] max-w-6xl mx-auto relative">
             More than just a clinic.<br class="hidden md:block">
             <span class="block text-xl md:text-3xl lg:text-4xl mt-4 text-carob-600 font-sans font-light italic opacity-90">
                 ZOW Vet is your pet's <span class="text-chai-600 font-medium not-italic decoration-wavy underline decoration-chai-300">second home</span>.
             </span>
-        </h1>
+        </h2>
 
         <p class="text-base md:text-xl text-carob-700 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
             We build emotional connections, not just medical ones.
@@ -140,8 +140,9 @@
                 <div class="group relative bg-white rounded-[2rem] p-5 border border-forest-moss-green-100 hover:border-forest-moss-green-300 shadow-lg shadow-forest-moss-green-50 hover:shadow-2xl hover:shadow-forest-moss-green-200/30 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full overflow-hidden">
                     <!-- Image Area - Square/Circle Hybrid -->
                     <div class="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-6 group-hover:rotate-1 transition-transform duration-500">
-                        <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}" 
+                        <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}"
                              alt="{{ $service->title }}"
+                             loading="lazy"
                              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-forest-moss-green-900/40 to-transparent"></div>
                         
@@ -252,8 +253,9 @@
                 <div class="group relative bg-white break-inside-avoid rounded-[3rem] rounded-tr-none p-4 border border-chai-100 hover:border-chai-300 shadow-xl shadow-chai-100/30 hover:shadow-2xl hover:shadow-chai-200/50 transition-all duration-500 hover:-translate-y-2 flex flex-col overflow-hidden">
                      <!-- Image Area - Full Bleed Top -->
                      <div class="relative h-72 -mx-4 -mt-4 mb-6 overflow-hidden rounded-[3rem] rounded-tr-none">
-                        <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}" 
+                        <img src="{{ $service->image ? asset('storage/' . $service->image) : $defaultImage }}"
                              alt="{{ $service->title }}"
+                             loading="lazy"
                              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                         
@@ -326,7 +328,7 @@
         <div class="relative rounded-[3rem] overflow-hidden bg-carob-900 text-white mb-16 shadow-2xl shadow-carob-900/30 group transform transition-all hover:scale-[1.01] duration-500">
             <div class="absolute inset-0">
                 <div class="absolute inset-0 bg-gradient-to-r from-carob-900 via-carob-800/90 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Pet Care" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
+                <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Pet Care" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
                 
                 <!-- Joyful decorative circles -->
                 <div class="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse-slow z-20"></div>
@@ -398,6 +400,7 @@
                                     <img
                                         src="{{ trim($vet['avatar']) }}"
                                         alt="{{ $vet['full_name'] ?? 'Doctor' }}"
+                                        loading="lazy"
                                         class="w-full h-full object-cover"
                                     >
                                 @else

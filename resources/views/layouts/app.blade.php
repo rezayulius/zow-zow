@@ -81,7 +81,12 @@
       "postalCode": "12160",
       "addressCountry": "ID"
     },
-    "hasMap": "https://www.google.com/maps/search/?api=1&query=PRW5%2BQ9%20Pulo%2C%20South%20Jakarta%20City%2C%20Jakarta",
+    "hasMap": "https://maps.app.goo.gl/7nqSYBnUKGHxvoKSA",
+    "geo": {
+      "@@type": "GeoCoordinates",
+      "latitude": -6.2530661,
+      "longitude": 106.8084629
+    },
     "areaServed": [
       "Jakarta Selatan",
       "Kebayoran Baru",

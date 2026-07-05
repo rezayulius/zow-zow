@@ -99,8 +99,9 @@
                             <!-- Image/Header Area -->
                             <div class="relative h-40 overflow-hidden">
                                 @if($membership->image)
-                                    <img src="{{ asset('storage/' . $membership->image) }}" 
-                                         alt="{{ $membership->title }}" 
+                                    <img src="{{ asset('storage/' . $membership->image) }}"
+                                         alt="{{ $membership->title }}"
+                                         loading="lazy"
                                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                                 @else
@@ -167,7 +168,7 @@
         <!-- Community CTA -->
         <div class="relative rounded-[3rem] overflow-hidden">
             <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Pet Community" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Pet Community" loading="lazy" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-r from-carob-900/90 via-carob-900/80 to-transparent"></div>
             </div>
             
