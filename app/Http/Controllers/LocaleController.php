@@ -30,7 +30,7 @@ class LocaleController extends Controller
         // Set application locale for current request
         app()->setLocale($locale);
         
-        return Redirect::back()->with('success', 'Language changed successfully');
+        return Redirect::back();
     }
     
     /**
