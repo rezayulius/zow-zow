@@ -155,7 +155,7 @@
                             <div class="relative h-[280px] sm:h-[400px] lg:h-full lg:min-h-[500px] w-full perspective-1000 group mt-8 lg:mt-0 order-1 lg:order-2 flex justify-center items-center">
                                 <div class="relative w-[70%] sm:w-[50%] lg:w-[90%] aspect-[4/5]">
                                     <div class="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-deep-cocoa-brown-900/10 rotate-[-3deg] transition-all duration-700 group-hover:rotate-0 border-[4px] sm:border-[6px] border-white z-10">
-                                        <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700" {{ $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' }}>
+                                        <img src="{{ $mainImage }}" alt="{{ $slide->title }}" class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700" {!! $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' !!}>
                                     </div>
                                     
                                     <!-- Floating Card -->

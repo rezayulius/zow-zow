@@ -15,6 +15,7 @@ class DigitailService
     private $redirectUri;
     private $authBase;
     private $apiBase;
+    private $timeout;
 
     public function __construct()
     {
@@ -23,6 +24,7 @@ class DigitailService
         $this->redirectUri = config('services.digitail.redirect');
         $this->authBase = config('services.digitail.auth_base');
         $this->apiBase = config('services.digitail.api_base');
+        $this->timeout = config('services.digitail.timeout', 20);
     }
 
     /**
@@ -31,8 +33,9 @@ class DigitailService
     public function getPetsReportAggregated()
     {
         $accessToken = $this->getAccessToken();
-        
+
         $response = Http::withToken($accessToken)
+            ->timeout($this->timeout)
             ->get("{$this->apiBase}/pets-report/aggregated", [
                 'without_archived' => 'true'
             ]);
@@ -54,6 +57,7 @@ class DigitailService
         $clinicId = config('services.digitail.default_clinic_id');
 
         $response = Http::withToken($accessToken)
+            ->timeout($this->timeout)
             ->get("{$this->apiBase}/reports/appointments", [
                 'filter[clinic_id]' => $clinicId,
                 'page' => $page,
@@ -116,7 +120,7 @@ class DigitailService
         $baseUrl = rtrim($this->authBase, '/');
         
         // Exchange code for token
-        $response = Http::asForm()->post("{$baseUrl}/oauth/token", [
+        $response = Http::asForm()->timeout($this->timeout)->post("{$baseUrl}/oauth/token", [
             'grant_type' => 'authorization_code',
             'client_id' => $this->clientId,
             'client_secret' => $this->clientSecret,
@@ -170,7 +174,7 @@ class DigitailService
         // Remove trailing slash if present
         $baseUrl = rtrim($this->authBase, '/');
 
-        $response = Http::asForm()->post("{$baseUrl}/oauth/token", [
+        $response = Http::asForm()->timeout($this->timeout)->post("{$baseUrl}/oauth/token", [
             'grant_type' => 'refresh_token',
             'refresh_token' => $token->refresh_token,
             'client_id' => $this->clientId,

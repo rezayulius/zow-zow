@@ -199,6 +199,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 try {
                     const errorData = await response.json();
                     errorText = errorData.message || errorText;
+
+                    if (errorData.requires_verification && errorData.email) {
+                        closeModal(signInModal);
+                        document.getElementById('otp-email').textContent = errorData.email;
+                        document.getElementById('otp-email-hidden').value = errorData.email;
+                        openModal(otpModal);
+                        return;
+                    }
                 } catch (e) {
                     errorText = 'Status error: ' + response.status;
                 }

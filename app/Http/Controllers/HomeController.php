@@ -14,6 +14,7 @@ use App\Models\HeroSlide;
 use App\Models\Faq;
 use App\Services\DigitailService;
 use App\Services\GooglePlacesService;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -65,9 +66,28 @@ class HomeController extends Controller
     }
 
     /**
-     * Fetch veterinarians data from Digitail API
+     * Fetch veterinarians data from Digitail API (cached — this backs every homepage
+     * request, so a slow/unreachable Digitail API must never block page load).
      */
     private function fetchVetsFromDigitail()
+    {
+        $cached = Cache::get('digitail.vets');
+        if ($cached !== null) {
+            return $cached;
+        }
+
+        $vets = $this->fetchVetsFromDigitailUncached();
+
+        // Only cache successful, non-empty results so a transient API failure
+        // doesn't get "locked in" and hide the vets section for a full hour.
+        if (!empty($vets)) {
+            Cache::put('digitail.vets', $vets, now()->addMinutes(60));
+        }
+
+        return $vets;
+    }
+
+    private function fetchVetsFromDigitailUncached()
     {
         try {
             $baseUrl = config('services.digitail.api_base');
