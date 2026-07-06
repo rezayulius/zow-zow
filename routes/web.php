@@ -69,6 +69,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin/digitail-sync')->name('admin
     Route::get('/status', [DigitailSyncController::class, 'getSyncStatus'])->name('status');
 });
 
+// Digitail Public API Routes (read-only, powers the "Schedule Visit" widget on the homepage)
+// Registered before the admin group below so its wildcard proxy route can't swallow these paths first.
+Route::middleware('throttle:30,1')->prefix('api/digitail/public')->name('api.digitail.public.')->group(function () {
+    Route::get('/visit-types', [DigitailApiController::class, 'getVisitTypes'])->name('visit-types');
+    Route::get('/vet-schedule', [DigitailApiController::class, 'getVetSchedule'])->name('vet-schedule');
+});
+
 // Digitail API Proxy Routes (Admin only - internal API testing tool, not for end-user/customer access)
 Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail.')->group(function () {
     // Specific endpoints
@@ -87,5 +94,4 @@ Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail
     Route::any('/{endpoint}', [DigitailApiController::class, 'proxyRequest'])
         ->where('endpoint', '.*')
         ->name('proxy');
-
 });
