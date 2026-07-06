@@ -240,6 +240,57 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Get a veterinarian's schedule for a date range and visit type
+     */
+    public function getVetSchedule(Request $request)
+    {
+        try {
+            $vetId = $request->get('vet_id');
+            $startDate = $request->get('start_date');
+            $endDate = $request->get('end_date');
+            $visitTypeId = $request->get('visit_type_id');
+
+            if (!$vetId || !$startDate || !$endDate || !$visitTypeId) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'vet_id, start_date, end_date and visit_type_id are required'
+                ], 400);
+            }
+
+            $queryParams = [
+                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
+                'filter[start_date]' => $startDate,
+                'filter[end_date]' => $endDate,
+                'visit_type_id' => $visitTypeId,
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . "/vets/{$vetId}/schedule", $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/vets/{vet_id}/schedule');
+        }
+    }
+
+    /**
+     * Get visit types list with pagination and clinic filter
+     */
+    public function getVisitTypes(Request $request)
+    {
+        try {
+            $queryParams = [
+                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
+                'page' => $request->get('page', 1),
+                'per_page' => $request->get('per_page', 15)
+            ];
+
+            $response = $this->createHttpClient()->get($this->baseUrl . '/visit-types', $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, '/visit-types');
+        }
+    }
+
+    /**
      * Get medical records by pet ID
      */
     public function getRecordsByPet(Request $request)

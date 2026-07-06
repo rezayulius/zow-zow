@@ -178,6 +178,63 @@ class DigitailController extends Controller
                                 'description' => 'Filter by clinic ID (default: 562)'
                             ]
                         ]
+                    ],
+                    [
+                        'method' => 'GET',
+                        'path' => '/vet-schedule',
+                        'name' => 'Retrieve Vet Schedule',
+                        'description' => 'Retrieve a veterinarian\'s available schedule for a date range and visit type',
+                        'parameters' => [
+                            [
+                                'name' => 'vet_id',
+                                'type' => 'integer',
+                                'description' => 'Veterinarian ID (required)'
+                            ],
+                            [
+                                'name' => 'start_date',
+                                'type' => 'date',
+                                'description' => 'Schedule range start date, format YYYY-MM-DD (required)'
+                            ],
+                            [
+                                'name' => 'end_date',
+                                'type' => 'date',
+                                'description' => 'Schedule range end date, format YYYY-MM-DD (required)'
+                            ],
+                            [
+                                'name' => 'visit_type_id',
+                                'type' => 'integer',
+                                'description' => 'Visit type ID (required)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Visit Types',
+                'description' => 'Operations related to visit type management',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/visit-types',
+                        'name' => 'List all Visit Types',
+                        'description' => 'Retrieve a paginated list of all visit types filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ],
+                            [
+                                'name' => 'clinic_id',
+                                'type' => 'integer',
+                                'description' => 'Filter by clinic ID (default: 562)'
+                            ]
+                        ]
                     ]
                 ]
             ]

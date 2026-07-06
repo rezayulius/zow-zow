@@ -79,6 +79,8 @@ Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail
     Route::get('/pets-by-owner', [DigitailApiController::class, 'getPetsByOwner'])->name('pets-by-owner');
     Route::get('/service-packages', [DigitailApiController::class, 'getServicePackages'])->name('service-packages');
     Route::get('/vets', [DigitailApiController::class, 'getVets'])->name('vets');
+    Route::get('/vet-schedule', [DigitailApiController::class, 'getVetSchedule'])->name('vet-schedule');
+    Route::get('/visit-types', [DigitailApiController::class, 'getVisitTypes'])->name('visit-types');
     Route::get('/records-by-pet', [DigitailApiController::class, 'getRecordsByPet'])->name('records-by-pet');
 
     // Generic proxy for other endpoints

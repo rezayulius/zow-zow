@@ -108,6 +108,36 @@
                                         </div>
                                     @endif
 
+                                    @if($endpoint['path'] === '/vet-schedule')
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">Vet ID (required)</label>
+                                            <input type="number" id="vet-id-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                placeholder="e.g., 39926"
+                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                value="39926">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">Start Date (required)</label>
+                                            <input type="date" id="start-date-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                value="2026-07-06">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">End Date (required)</label>
+                                            <input type="date" id="end-date-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                                value="2026-07-12">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="block text-xs font-medium text-gray-700 mb-1">Visit Type (required)</label>
+                                            <select id="visit-type-id-{{ $loop->parent->index }}-{{ $loop->index }}"
+                                                class="visit-type-select w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                                <option value="">Loading visit types...</option>
+                                            </select>
+                                            <p class="text-xs text-gray-500 mt-1">Enter vet ID, date range, and visit type to fetch schedule</p>
+                                        </div>
+                                    @endif
+
                                     @if($endpoint['path'] === '/pet-parent-by-email')
                                         <div class="mb-3">
                                             <label class="block text-xs font-medium text-gray-700 mb-1">Email (required)</label>
@@ -253,6 +283,36 @@
                     urlParams.append('pet_id', petId);
                     urlParams.append('clinic_id', DEFAULT_CLINIC_ID);
                     urlParams.append('page', '1');
+                }
+                // Handle vet-schedule endpoint
+                else if (path === '/vet-schedule') {
+                    const vetIdInput = document.getElementById(`vet-id-${responseId}`);
+                    const startDateInput = document.getElementById(`start-date-${responseId}`);
+                    const endDateInput = document.getElementById(`end-date-${responseId}`);
+                    const visitTypeIdInput = document.getElementById(`visit-type-id-${responseId}`);
+
+                    const vetId = vetIdInput ? vetIdInput.value : '';
+                    const startDate = startDateInput ? startDateInput.value : '';
+                    const endDate = endDateInput ? endDateInput.value : '';
+                    const visitTypeId = visitTypeIdInput ? visitTypeIdInput.value : '';
+
+                    if (!vetId || !startDate || !endDate || !visitTypeId) {
+                        resultContent.innerHTML = `
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                                    <span class="text-red-800 font-semibold">Error: Vet ID, Start Date, End Date, and Visit Type ID are required</span>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    urlParams.append('vet_id', vetId);
+                    urlParams.append('start_date', startDate);
+                    urlParams.append('end_date', endDate);
+                    urlParams.append('visit_type_id', visitTypeId);
+                    urlParams.append('clinic_id', DEFAULT_CLINIC_ID);
                 }
                 // Handle pet-parent-by-email endpoint
                 else if (path === '/pet-parent-by-email') {
@@ -410,6 +470,47 @@
             const resultDiv = document.getElementById(`result-${responseId}`);
             resultDiv.classList.add('hidden');
         }
+
+        // Populate the Visit Type dropdown(s) with real data from the Visit Types endpoint
+        async function loadVisitTypeOptions() {
+            const selects = document.querySelectorAll('.visit-type-select');
+            if (selects.length === 0) return;
+
+            try {
+                const url = `${API_BASE_URL}/visit-types?clinic_id=${DEFAULT_CLINIC_ID}&per_page=100`;
+                const response = await fetch(url, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                const proxyResponse = await response.json();
+                const visitTypes = proxyResponse?.data?.data || [];
+
+                selects.forEach((select) => {
+                    select.innerHTML = '';
+
+                    if (visitTypes.length === 0) {
+                        select.innerHTML = '<option value="">No visit types found</option>';
+                        return;
+                    }
+
+                    visitTypes.forEach((visitType) => {
+                        const option = document.createElement('option');
+                        option.value = visitType.id;
+                        option.textContent = `${visitType.name} (#${visitType.id})`;
+                        select.appendChild(option);
+                    });
+                });
+            } catch (error) {
+                console.error('Failed to load visit types:', error);
+                selects.forEach((select) => {
+                    select.innerHTML = '<option value="">Failed to load visit types</option>';
+                });
+            }
+        }
+
+        loadVisitTypeOptions();
 
         // Add some helpful console logging
         console.log('🚀 Digitail Dynamic Dashboard loaded');
