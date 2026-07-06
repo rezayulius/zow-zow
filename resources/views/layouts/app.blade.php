@@ -18,6 +18,7 @@
   <link rel="canonical" href="{{ $pageCanonical }}" />
   <meta name="robots" content="{{ $pageRobots }}">
   <meta name="description" content="{{ $pageDescription }}">
+  <meta name="author" content="ZOW Vetique">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="ZOW Vetique">
@@ -28,6 +29,7 @@
   <meta property="og:image" content="{{ $pageOgImage }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ZOW Vetique - Klinik Hewan Jakarta Selatan">
   <meta property="og:locale" content="{{ app()->getLocale() === 'en' ? 'en_US' : 'id_ID' }}">
 
   <!-- Twitter Card -->
@@ -56,6 +58,22 @@
 
   @stack('styles')
 
+  <!-- ===== JSON-LD: WebSite (sitewide, tells Google the site name is "ZOW Vetique") ===== -->
+  <script type="application/ld+json">
+  {
+    "@@context": "https://schema.org",
+    "@@type": "WebSite",
+    "@@id": "https://zowvetique.com/#website",
+    "name": "ZOW Vetique",
+    "alternateName": "ZOW Vetique Kemang",
+    "url": "https://zowvetique.com/",
+    "inLanguage": "{{ app()->getLocale() === 'en' ? 'en-US' : 'id-ID' }}",
+    "publisher": {
+      "@@id": "https://zowvetique.com/#veterinarycare"
+    }
+  }
+  </script>
+
   <!-- ===== JSON-LD: VeterinaryCare / LocalBusiness (sitewide) ===== -->
   <script type="application/ld+json">
   {
@@ -66,6 +84,9 @@
     "alternateName": "ZOW Vet Clinic",
     "url": "https://zowvetique.com/",
     "logo": "https://zowvetique.com/logo.png",
+    "isPartOf": {
+      "@@id": "https://zowvetique.com/#website"
+    },
     "image": [
       "https://zowvetique.com/images/zow-vetique-clinic.jpg"
     ],
