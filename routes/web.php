@@ -10,6 +10,7 @@ use App\Http\Controllers\DigitailAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ComingSoonController;
+use App\Http\Controllers\ContentViewController;
 
 // Tambahkan ini di paling atas routes/web.php
 Route::post('/test', function () {
@@ -23,6 +24,11 @@ Route::post('/test', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/coming-soon', [ComingSoonController::class, 'index'])->name('coming-soon');
+
+Route::post('/content/{type}/{id}/view', [ContentViewController::class, 'increment'])
+    ->where(['type' => 'article|news', 'id' => '[0-9]+'])
+    ->middleware('throttle:30,1')
+    ->name('content.view');
 
 // Redirect default auth middleware target to home
 Route::get('/login', function () {

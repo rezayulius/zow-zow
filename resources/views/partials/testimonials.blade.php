@@ -87,60 +87,85 @@
                 @endforeach
             </div>
 
-            {{-- Testimonials Masonry --}}
+            {{-- Testimonials Animated Columns --}}
             @if($testimonials->count() > 0)
-                <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                    @foreach($testimonials as $index => $testimonial)
-                        @php
-                            $colors = ['bg-forest-moss-green-50', 'bg-chai-50', 'bg-soft-blush-pink-50', 'bg-white'];
-                            $bg = $colors[$index % 4];
-                            $border = $bg === 'bg-white' ? 'border-gray-100' : 'border-transparent';
-                        @endphp
-                        <div class="break-inside-avoid {{ $bg }} rounded-[2rem] p-8 shadow-sm border {{ $border }} hover:shadow-md transition-all duration-300 group">
-                            <!-- Rating -->
-                            <div class="flex gap-1 mb-6">
-                                @for($i = 0; $i < 5; $i++)
-                                    <i data-lucide="star" class="w-4 h-4 {{ $i < $testimonial->rating ? 'text-old-mustard-yellow-500 fill-current' : 'text-gray-200' }}"></i>
-                                @endfor
-                            </div>
-                            
-                            <!-- Content -->
-                            <p class="text-carob-700 leading-relaxed mb-8 text-lg font-medium">
-                                "{{ $testimonial->content }}"
-                            </p>
-                            
-                            <!-- User Info -->
-                            <div class="flex items-center gap-4">
-                                <div class="relative">
-                                    @if($testimonial->avatar)
-                                        <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm">
-                                    @else
-                                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-carob-400 font-bold text-lg ring-2 ring-white shadow-sm">
-                                            {{ substr($testimonial->name, 0, 1) }}
-                                        </div>
-                                    @endif
-                                    <!-- Pet Badge -->
-                                    @if($testimonial->pet_type)
-                                        <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-1 shadow-sm text-xs">
-                                            @if(strtolower($testimonial->pet_type) == 'dog') 🐶 
-                                            @elseif(strtolower($testimonial->pet_type) == 'cat') 🐱 
-                                            @else 🐾 @endif
-                                        </div>
-                                    @endif
+                @php
+                    $testimonialColumns = [[], [], []];
+                    foreach($testimonials as $i => $t) {
+                        $testimonialColumns[$i % 3][] = ['item' => $t, 'index' => $i];
+                    }
+                    $columnDurations = [28, 34, 31];
+                    $columnVisibility = ['', 'hidden md:block', 'hidden lg:block'];
+                @endphp
+                <div class="relative h-[600px] md:h-[760px] overflow-hidden">
+                    {{-- Fade masks top & bottom --}}
+                    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-10"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
+                        @foreach($testimonialColumns as $colIndex => $colItems)
+                            @continue(empty($colItems))
+                            <div class="testimonial-column {{ $columnVisibility[$colIndex] ?? '' }} overflow-hidden">
+                                <div class="testimonial-track flex flex-col gap-6 {{ $colIndex === 1 ? 'testimonial-track-reverse' : '' }}" style="--duration: {{ $columnDurations[$colIndex] ?? 30 }}s;">
+                                    @for($rep = 0; $rep < 2; $rep++)
+                                        @foreach($colItems as $entry)
+                                            @php
+                                                $testimonial = $entry['item'];
+                                                $index = $entry['index'];
+                                                $colors = ['bg-forest-moss-green-50', 'bg-chai-50', 'bg-soft-blush-pink-50', 'bg-white'];
+                                                $bg = $colors[$index % 4];
+                                                $border = $bg === 'bg-white' ? 'border-gray-100' : 'border-transparent';
+                                            @endphp
+                                            <div class="{{ $bg }} rounded-[2rem] p-8 shadow-sm border {{ $border }} hover:shadow-md transition-shadow duration-300" aria-hidden="{{ $rep === 1 ? 'true' : 'false' }}">
+                                                <!-- Rating -->
+                                                <div class="flex gap-1 mb-6">
+                                                    @for($i = 0; $i < 5; $i++)
+                                                        <i data-lucide="star" class="w-4 h-4 {{ $i < $testimonial->rating ? 'text-old-mustard-yellow-500 fill-current' : 'text-gray-200' }}"></i>
+                                                    @endfor
+                                                </div>
+
+                                                <!-- Content -->
+                                                <p class="text-carob-700 leading-relaxed mb-8 text-lg font-medium">
+                                                    "{{ $testimonial->content }}"
+                                                </p>
+
+                                                <!-- User Info -->
+                                                <div class="flex items-center gap-4">
+                                                    <div class="relative">
+                                                        @if($testimonial->avatar)
+                                                            <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm">
+                                                        @else
+                                                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-carob-400 font-bold text-lg ring-2 ring-white shadow-sm">
+                                                                {{ substr($testimonial->name, 0, 1) }}
+                                                            </div>
+                                                        @endif
+                                                        <!-- Pet Badge -->
+                                                        @if($testimonial->pet_type)
+                                                            <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-1 shadow-sm text-xs">
+                                                                @if(strtolower($testimonial->pet_type) == 'dog') 🐶
+                                                                @elseif(strtolower($testimonial->pet_type) == 'cat') 🐱
+                                                                @else 🐾 @endif
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="font-bold text-carob-900 text-sm">{{ $testimonial->name }}</h4>
+                                                        <p class="text-xs text-carob-500">
+                                                            @if($testimonial->pet_name)
+                                                                Parent of <span class="text-forest-moss-green-600 font-medium">{{ $testimonial->pet_name }}</span>
+                                                            @else
+                                                                Pet Parent
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endfor
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-carob-900 text-sm">{{ $testimonial->name }}</h4>
-                                    <p class="text-xs text-carob-500">
-                                        @if($testimonial->pet_name)
-                                            Parent of <span class="text-forest-moss-green-600 font-medium">{{ $testimonial->pet_name }}</span>
-                                        @else
-                                            Pet Parent
-                                        @endif
-                                    </p>
-                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             @else
                 <div class="text-center py-12 bg-white rounded-3xl border border-dashed border-carob-200">
@@ -394,6 +419,7 @@
                 @endforelse
             </div>
         </div>
+        
         {{-- FAQs Tab Content --}}
         <div id="faqs-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
@@ -500,7 +526,7 @@
                                     <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
                                         <i data-lucide="eye" class="w-4 h-4"></i>
                                     </div>
-                                    <span class="font-medium">{{ $item->views }} views</span>
+                                    <span class="font-medium" id="views-count-{{ $type }}-{{ $item->id }}">{{ $item->views }} views</span>
                                 </div>
                             @endif
                         </div>
@@ -523,9 +549,11 @@
                         <div class="text-xs font-bold text-carob-400 uppercase tracking-wider">
                             Share Joy
                         </div>
-                        <div class="flex gap-3">
+                        <div class="flex gap-3"
+                             data-share-url="{{ url('/') }}/#modal-{{ $type }}-{{ $item->id }}"
+                             data-share-title="{{ $item->title }}">
                             <!-- Facebook -->
-                            <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1877F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
+                            <button type="button" onclick="shareToFacebook(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1877F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
                                 <img src="https://cdn.simpleicons.org/facebook/currentColor"
                                     alt="Facebook"
                                     class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
@@ -533,7 +561,7 @@
                             </button>
 
                             <!-- X (Twitter) -->
-                            <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm group">
+                            <button type="button" onclick="shareToX(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm group">
                                 <img src="https://cdn.simpleicons.org/x/currentColor"
                                     alt="X"
                                     class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
@@ -541,9 +569,9 @@
                             </button>
 
                             <!-- Copy Link -->
-                            <button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group">
+                            <button type="button" onclick="copyShareLink(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group">
                                 <i data-lucide="link" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                                Copy Link
+                                <span class="copy-link-label">Copy Link</span>
                             </button>
                         </div>
                     </div>
@@ -646,6 +674,7 @@ function openModal(id) {
     if(modal) {
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+        trackModalView(id);
     }
 }
 
@@ -656,6 +685,96 @@ function closeModal(id) {
         document.body.style.overflow = 'auto';
     }
 }
+
+// Views Counter
+function trackModalView(modalId) {
+    const match = modalId.match(/^modal-(article|news)-(\d+)$/);
+    if (!match) return;
+
+    const [, type, contentId] = match;
+    const token = document.querySelector('meta[name="csrf-token"]')?.content;
+    if (!token) return;
+
+    fetch(`/content/${type}/${contentId}/view`, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': token,
+            'Accept': 'application/json',
+        },
+    })
+        .then(response => response.ok ? response.json() : null)
+        .then(data => {
+            if (!data) return;
+            const counter = document.getElementById(`views-count-${type}-${contentId}`);
+            if (counter) {
+                counter.textContent = `${data.views} views`;
+            }
+        })
+        .catch(() => {});
+}
+
+// Share Logic
+function getShareContext(el) {
+    const container = el.closest('[data-share-url]');
+    return {
+        url: container?.dataset.shareUrl || window.location.href,
+        title: container?.dataset.shareTitle || document.title,
+    };
+}
+
+function shareToFacebook(el) {
+    const { url } = getShareContext(el);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer,width=600,height=500');
+}
+
+function shareToX(el) {
+    const { url, title } = getShareContext(el);
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank', 'noopener,noreferrer,width=600,height=500');
+}
+
+function copyShareLink(el) {
+    const { url } = getShareContext(el);
+    const button = el.closest('button');
+    const label = button.querySelector('.copy-link-label');
+    if (!label) return;
+
+    const originalLabel = label.textContent;
+    const showCopied = () => {
+        label.textContent = 'Copied!';
+        setTimeout(() => { label.textContent = originalLabel; }, 2000);
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(showCopied).catch(() => fallbackCopyText(url, showCopied));
+    } else {
+        fallbackCopyText(url, showCopied);
+    }
+}
+
+function fallbackCopyText(text, onDone) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(textarea);
+    onDone();
+}
+
+// Open shared modal directly from URL hash, e.g. #modal-article-12
+document.addEventListener('DOMContentLoaded', function () {
+    const hash = window.location.hash.slice(1);
+    const match = hash.match(/^modal-(article|news)-(\d+)$/);
+    if (!match || !document.getElementById(hash)) return;
+
+    const tabName = match[1] === 'article' ? 'articles' : 'news';
+    const tabButton = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+    if (tabButton) tabButton.click();
+
+    openModal(hash);
+});
 
 // FAQ Logic
 function toggleFaq(button) {
@@ -742,7 +861,28 @@ function toggleFaq(button) {
     .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
     .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
     .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
-    
+
+    /* Testimonials Infinite Scroll Columns */
+    @keyframes testimonial-scroll {
+        from { transform: translateY(0); }
+        to { transform: translateY(-50%); }
+    }
+    .testimonial-track {
+        animation: testimonial-scroll var(--duration, 30s) linear infinite;
+        will-change: transform;
+    }
+    .testimonial-track-reverse {
+        animation-direction: reverse;
+    }
+    .testimonial-column:hover .testimonial-track {
+        animation-play-state: paused;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .testimonial-track {
+            animation: none;
+        }
+    }
+
     /* Article Content Styling */
     .article-content p {
         margin-bottom: 1.25em;
