@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\DigitailToken;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -147,7 +148,7 @@ class DigitailService
     {
         // For migration/fallback phase, if env token exists and no DB token, use env token
         // But for best practice, we prefer DB token.
-        
+
         $token = DigitailToken::latest()->first();
 
         if (!$token) {
@@ -155,11 +156,28 @@ class DigitailService
             return config('services.digitail.access_token');
         }
 
-        if ($token->isExpired()) {
-            return $this->refreshToken($token);
+        if (!$token->isExpired()) {
+            return $token->access_token;
         }
 
-        return $token->access_token;
+        // These public-facing routes can now receive many concurrent requests
+        // right around token expiry; without a lock, each would independently
+        // refresh the token and race to overwrite the stored record.
+        $lock = Cache::lock('digitail.token.refresh', 10);
+
+        try {
+            $lock->block(5);
+
+            // Another request may have already refreshed it while we waited.
+            $token->refresh();
+            if (!$token->isExpired()) {
+                return $token->access_token;
+            }
+
+            return $this->refreshToken($token);
+        } finally {
+            $lock->release();
+        }
     }
 
     /**

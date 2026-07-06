@@ -1,4 +1,5 @@
 import './bootstrap';
+import { initVetScheduleWidget } from './vet-schedule';
 
 // Mobile menu toggle with smooth animation
 function initMobileMenu() {
@@ -344,5 +345,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initHeaderScrollEffect();
     initHeroSlider();
+    initVetScheduleWidget();
     initParallax();
 });

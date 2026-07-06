@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\DigitailService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -38,6 +39,20 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Shared GET-and-format helper used by every read-only proxy action below,
+     * so the request/response/error shape only needs to be fixed in one place.
+     */
+    private function proxyGet(string $path, array $queryParams, string $errorContext)
+    {
+        try {
+            $response = $this->createHttpClient()->get($this->baseUrl . $path, $queryParams);
+            return $this->formatResponse($response);
+        } catch (\Exception $e) {
+            return $this->handleError($e, $errorContext);
+        }
+    }
+
+    /**
      * Format API response
      */
     private function formatResponse($response)
@@ -46,12 +61,14 @@ class DigitailApiController extends Controller
             'success' => $response->successful(),
             'status' => $response->status(),
             'data' => $response->json(),
-            'headers' => $response->headers()
         ], $response->status());
     }
 
     /**
-     * Handle API errors
+     * Handle API errors. The raw exception is logged server-side only —
+     * some of these endpoints are public and must never echo internal
+     * exception text (which can carry upstream URLs or request details)
+     * back to an anonymous caller.
      */
     private function handleError(\Exception $e, string $endpoint)
     {
@@ -60,8 +77,22 @@ class DigitailApiController extends Controller
         return response()->json([
             'success' => false,
             'error' => 'API request failed',
-            'message' => $e->getMessage()
+            'message' => 'Terjadi kesalahan saat menghubungi layanan Digitail. Silakan coba lagi.',
         ], 500);
+    }
+
+    /**
+     * A required id/parameter that must be a positive integer (used for any
+     * value interpolated into the upstream URL path, not just query params).
+     */
+    private function invalidPositiveInt($value): bool
+    {
+        return !ctype_digit((string) $value) || (int) $value < 1;
+    }
+
+    private function invalidDate($value): bool
+    {
+        return !is_string($value) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $value);
     }
 
     /**
@@ -69,12 +100,7 @@ class DigitailApiController extends Controller
      */
     public function getMe()
     {
-        try {
-            $response = $this->createHttpClient()->get($this->baseUrl . '/auth/me');
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/auth/me');
-        }
+        return $this->proxyGet('/auth/me', [], '/auth/me');
     }
 
     /**
@@ -82,18 +108,11 @@ class DigitailApiController extends Controller
      */
     public function getPets(Request $request)
     {
-        try {
-            $queryParams = [
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 15)
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . '/pets', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/pets');
-        }
+        return $this->proxyGet('/pets', [
+            'filter[clinic_id]' => $this->defaultClinicId,
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+        ], '/pets');
     }
 
     /**
@@ -101,17 +120,10 @@ class DigitailApiController extends Controller
      */
     public function getPetParents(Request $request)
     {
-        try {
-            $queryParams = [
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 15)
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . '/pet-parents', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/pet-parents');
-        }
+        return $this->proxyGet('/pet-parents', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+        ], '/pet-parents');
     }
 
     /**
@@ -119,28 +131,21 @@ class DigitailApiController extends Controller
      */
     public function getPetsByOwner(Request $request)
     {
-        try {
-            $ownerId = $request->get('owner_id');
+        $ownerId = $request->get('owner_id');
 
-            if (!$ownerId) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Owner ID is required'
-                ], 400);
-            }
-
-            $queryParams = [
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
-                'filter[owner_id]' => $ownerId,
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 15)
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . '/pets', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/pets (by owner)');
+        if (!$ownerId) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Owner ID is required'
+            ], 400);
         }
+
+        return $this->proxyGet('/pets', [
+            'filter[clinic_id]' => $this->defaultClinicId,
+            'filter[owner_id]' => $ownerId,
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+        ], '/pets (by owner)');
     }
 
     /**
@@ -206,18 +211,11 @@ class DigitailApiController extends Controller
      */
     public function getServicePackages(Request $request)
     {
-        try {
-            $queryParams = [
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 15),
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId)
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . '/service-packages', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/service-packages');
-        }
+        return $this->proxyGet('/service-packages', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/service-packages');
     }
 
     /**
@@ -225,69 +223,84 @@ class DigitailApiController extends Controller
      */
     public function getVets(Request $request)
     {
-        try {
-            $queryParams = [
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 15)
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . '/vets', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/vets');
-        }
+        return $this->proxyGet('/vets', [
+            'filter[clinic_id]' => $this->defaultClinicId,
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+        ], '/vets');
     }
 
     /**
-     * Get a veterinarian's schedule for a date range and visit type
+     * Get a veterinarian's schedule for a date range and visit type.
+     *
+     * Reachable from an unauthenticated public route (the homepage booking
+     * widget), so every input that ends up in the upstream URL/query is
+     * validated here rather than trusted.
      */
     public function getVetSchedule(Request $request)
     {
-        try {
-            $vetId = $request->get('vet_id');
-            $startDate = $request->get('start_date');
-            $endDate = $request->get('end_date');
-            $visitTypeId = $request->get('visit_type_id');
+        $vetId = $request->get('vet_id');
+        $startDate = $request->get('start_date');
+        $endDate = $request->get('end_date');
+        $visitTypeId = $request->get('visit_type_id');
 
-            if (!$vetId || !$startDate || !$endDate || !$visitTypeId) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'vet_id, start_date, end_date and visit_type_id are required'
-                ], 400);
-            }
-
-            $queryParams = [
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
-                'filter[start_date]' => $startDate,
-                'filter[end_date]' => $endDate,
-                'visit_type_id' => $visitTypeId,
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . "/vets/{$vetId}/schedule", $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/vets/{vet_id}/schedule');
+        if ($this->invalidPositiveInt($vetId) || $this->invalidPositiveInt($visitTypeId)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'vet_id and visit_type_id must be positive integers',
+            ], 422);
         }
+
+        if ($this->invalidDate($startDate) || $this->invalidDate($endDate)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'start_date and end_date must be in YYYY-MM-DD format',
+            ], 422);
+        }
+
+        return $this->proxyGet("/vets/{$vetId}/schedule", [
+            'filter[clinic_id]' => $this->defaultClinicId,
+            'filter[start_date]' => $startDate,
+            'filter[end_date]' => $endDate,
+            'visit_type_id' => $visitTypeId,
+        ], '/vets/{vet_id}/schedule');
     }
 
     /**
-     * Get visit types list with pagination and clinic filter
+     * Get visit types list, cached — this is near-static reference data and
+     * this endpoint is public, so every visitor who opens the booking widget
+     * would otherwise trigger a live upstream call.
      */
     public function getVisitTypes(Request $request)
     {
-        try {
-            $queryParams = [
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 15)
-            ];
+        $cacheKey = "digitail.visit_types.{$this->defaultClinicId}";
 
-            $response = $this->createHttpClient()->get($this->baseUrl . '/visit-types', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/visit-types');
+        $payload = Cache::remember($cacheKey, now()->addMinutes(60), function () use ($request) {
+            $response = $this->createHttpClient()->get($this->baseUrl . '/visit-types', [
+                'filter[clinic_id]' => $this->defaultClinicId,
+                'page' => 1,
+                'per_page' => $request->get('per_page', 100),
+            ]);
+
+            if (!$response->successful()) {
+                return null;
+            }
+
+            return [
+                'success' => true,
+                'status' => $response->status(),
+                'data' => $response->json(),
+            ];
+        });
+
+        if ($payload === null) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal memuat visit types.',
+            ], 502);
         }
+
+        return response()->json($payload, $payload['status']);
     }
 
     /**
@@ -295,32 +308,25 @@ class DigitailApiController extends Controller
      */
     public function getRecordsByPet(Request $request)
     {
-        try {
-            $petId = $request->get('pet_id');
+        $petId = $request->get('pet_id');
 
-            if (!$petId) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Pet ID is required'
-                ], 400);
-            }
-
-            $queryParams = [
-                'filter[clinic_id]' => $request->get('clinic_id', $this->defaultClinicId),
-                'filter[pet_id]' => $petId,
-                'page' => $request->get('page', 1),
-                'per_page' => $request->get('per_page', 50)
-            ];
-
-            $response = $this->createHttpClient()->get($this->baseUrl . '/records', $queryParams);
-            return $this->formatResponse($response);
-        } catch (\Exception $e) {
-            return $this->handleError($e, '/records (by pet)');
+        if (!$petId) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Pet ID is required'
+            ], 400);
         }
+
+        return $this->proxyGet('/records', [
+            'filter[clinic_id]' => $this->defaultClinicId,
+            'filter[pet_id]' => $petId,
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 50),
+        ], '/records (by pet)');
     }
 
     /**
-     * Generic API proxy method for other endpoints
+     * Generic API proxy method for other endpoints (admin testing tool only)
      */
     public function proxyRequest(Request $request, $endpoint)
     {
