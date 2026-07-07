@@ -25,8 +25,7 @@ class DigitailAuthController extends Controller
             return redirect($url);
         } catch (\Exception $e) {
             Log::error('Digitail Auth Redirect Error: ' . $e->getMessage());
-            // Show actual error for debugging
-            return redirect()->back()->with('error', 'Failed to initialize Digitail authentication: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to initialize Digitail authentication. Check application logs for details.');
         }
     }
 
@@ -50,7 +49,7 @@ class DigitailAuthController extends Controller
         } catch (\Exception $e) {
             Log::error('Digitail Auth Callback Error: ' . $e->getMessage());
             return redirect()->route('admin.digitail-sync.status')
-                ->with('error', 'Failed to authenticate with Digitail: ' . $e->getMessage());
+                ->with('error', 'Failed to authenticate with Digitail. Check application logs for details.');
         }
     }
 }

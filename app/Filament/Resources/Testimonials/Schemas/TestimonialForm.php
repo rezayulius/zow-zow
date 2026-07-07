@@ -46,6 +46,7 @@ class TestimonialForm
                         FileUpload::make('avatar')
                             ->label('Foto Profil')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                             ->disk('public')
                             ->directory('testimonials/avatars')
                             ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))

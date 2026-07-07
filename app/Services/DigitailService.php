@@ -29,24 +29,34 @@ class DigitailService
     }
 
     /**
+     * How long dashboard report responses are cached for. Several Filament
+     * widgets independently call getAppointments()/getPetsReportAggregated()
+     * on every render (some polling every 30s); without a shared cache each
+     * dashboard load fired ~8 duplicate calls to the same Digitail endpoints.
+     */
+    private const REPORT_CACHE_TTL = 60;
+
+    /**
      * Get Aggregated Pets Report
      */
     public function getPetsReportAggregated()
     {
-        $accessToken = $this->getAccessToken();
+        return Cache::remember('digitail.pets_report_aggregated', self::REPORT_CACHE_TTL, function () {
+            $accessToken = $this->getAccessToken();
 
-        $response = Http::withToken($accessToken)
-            ->timeout($this->timeout)
-            ->get("{$this->apiBase}/pets-report/aggregated", [
-                'without_archived' => 'true'
-            ]);
+            $response = Http::withToken($accessToken)
+                ->timeout($this->timeout)
+                ->get("{$this->apiBase}/pets-report/aggregated", [
+                    'without_archived' => 'true'
+                ]);
 
-        if (!$response->successful()) {
-            Log::error('Digitail Pets Report Failed', ['body' => $response->body()]);
-            return null;
-        }
+            if (!$response->successful()) {
+                Log::error('Digitail Pets Report Failed', ['body' => $response->body()]);
+                return null;
+            }
 
-        return $response->json();
+            return $response->json();
+        });
     }
 
     /**
@@ -54,23 +64,27 @@ class DigitailService
      */
     public function getAppointments(int $page = 1, int $perPage = 15)
     {
-        $accessToken = $this->getAccessToken();
         $clinicId = config('services.digitail.default_clinic_id');
+        $cacheKey = "digitail.appointments.{$clinicId}.{$page}.{$perPage}";
 
-        $response = Http::withToken($accessToken)
-            ->timeout($this->timeout)
-            ->get("{$this->apiBase}/reports/appointments", [
-                'filter[clinic_id]' => $clinicId,
-                'page' => $page,
-                'per_page' => $perPage,
-            ]);
+        return Cache::remember($cacheKey, self::REPORT_CACHE_TTL, function () use ($page, $perPage, $clinicId) {
+            $accessToken = $this->getAccessToken();
 
-        if (!$response->successful()) {
-            Log::error('Digitail Appointments Report Failed', ['body' => $response->body()]);
-            return null;
-        }
+            $response = Http::withToken($accessToken)
+                ->timeout($this->timeout)
+                ->get("{$this->apiBase}/reports/appointments", [
+                    'filter[clinic_id]' => $clinicId,
+                    'page' => $page,
+                    'per_page' => $perPage,
+                ]);
 
-        return $response->json();
+            if (!$response->successful()) {
+                Log::error('Digitail Appointments Report Failed', ['body' => $response->body()]);
+                return null;
+            }
+
+            return $response->json();
+        });
     }
 
     /**

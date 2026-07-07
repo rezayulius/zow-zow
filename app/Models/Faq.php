@@ -27,4 +27,12 @@ class Faq extends Model
     {
         return $query->orderBy('sort_order', 'asc');
     }
+
+    // Sanitize rich-text HTML from the admin editor before it's persisted,
+    // so a compromised/malicious admin account can't stash a stored-XSS
+    // payload in a field rendered unescaped ({!! !!}) on the public site.
+    public function setAnswerAttribute($value)
+    {
+        $this->attributes['answer'] = $value === null ? null : clean($value);
+    }
 }

@@ -12,16 +12,6 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\ContentViewController;
 
-// Tambahkan ini di paling atas routes/web.php
-Route::post('/test', function () {
-    return response()->json([
-        'success' => true,
-        'message' => 'POST works!',
-        'method' => request()->method(),
-        'all' => request()->all()
-    ]);
-})->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/coming-soon', [ComingSoonController::class, 'index'])->name('coming-soon');
 
@@ -44,7 +34,7 @@ Route::get('/set-locale/{locale}', [LocaleController::class, 'setLocale'])
 // Authentication Routes
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::post('/signin', [AuthController::class, 'signIn'])->middleware('throttle:5,1')->name('signin');
-    Route::post('/signup', [AuthController::class, 'signUp'])->name('signup');
+    Route::post('/signup', [AuthController::class, 'signUp'])->middleware('throttle:5,1')->name('signup');
     Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->middleware('throttle:10,1')->name('verify-otp');
     Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->middleware('throttle:5,1')->name('resend-otp');
     Route::post('/signout', [AuthController::class, 'signOut'])->name('signout');

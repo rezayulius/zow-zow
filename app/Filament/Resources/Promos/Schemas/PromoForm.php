@@ -87,6 +87,7 @@ class PromoForm
                         FileUpload::make('featured_image')
                             ->label('Gambar Promo')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                             ->disk('public')
                             ->directory('promos')
                             ->visibility('public')

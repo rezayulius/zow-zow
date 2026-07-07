@@ -19,13 +19,19 @@ class DigitailToken extends Model
         'clinic_id',
     ];
 
+    protected $casts = [
+        'access_token' => 'encrypted',
+        'refresh_token' => 'encrypted',
+    ];
+
     /**
      * Check if the access token is expired.
      * We add a buffer of 60 seconds to be safe.
      */
     public function isExpired(): bool
     {
-        // If created_at + expires_in < now, it's expired
-        return $this->updated_at->addSeconds($this->expires_in)->subSeconds(60)->isPast();
+        // updated_at is a shared mutable Carbon instance; copy() before mutating
+        // so repeated calls don't permanently shift the stored timestamp.
+        return $this->updated_at->copy()->addSeconds($this->expires_in)->subSeconds(60)->isPast();
     }
 }

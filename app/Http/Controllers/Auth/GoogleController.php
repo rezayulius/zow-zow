@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -76,7 +77,9 @@ class GoogleController extends Controller
             return redirect('/')->with('success', 'Akun berhasil dibuat dengan Google!');
 
         } catch (\Exception $e) {
-            return redirect('/')->with('error', 'Gagal login dengan Google: ' . $e->getMessage());
+            Log::error('Google OAuth login failed', ['message' => $e->getMessage()]);
+
+            return redirect('/')->with('error', 'Gagal login dengan Google. Silakan coba lagi.');
         }
     }
 }

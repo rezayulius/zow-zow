@@ -2,11 +2,14 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use App\Models\User;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Collection;
 
 class UsersTable
 {
@@ -36,8 +39,8 @@ class UsersTable
                 TextColumn::make('otp_status')
                     ->label('OTP Status')
                     ->badge()
-                    ->color(fn(\App\Models\User $record): string => $record->otpVerifications()->whereNotNull('verified_at')->exists() ? 'success' : 'danger')
-                    ->getStateUsing(fn(\App\Models\User $record): string => $record->otpVerifications()->whereNotNull('verified_at')->exists() ? 'Verified' : 'Not Verified'),
+                    ->getStateUsing(fn(\App\Models\User $record): string => $record->otpVerifications()->whereNotNull('verified_at')->exists() ? 'Verified' : 'Not Verified')
+                    ->color(fn(string $state): string => $state === 'Verified' ? 'success' : 'danger'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -55,7 +58,21 @@ class UsersTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+                    DeleteBulkAction::make()
+                        ->before(function (DeleteBulkAction $action, Collection $records) {
+                            $adminsBeingDeleted = $records->where('role', 'admin')->count();
+                            $totalAdmins = User::where('role', 'admin')->count();
+
+                            if ($adminsBeingDeleted > 0 && $adminsBeingDeleted >= $totalAdmins) {
+                                Notification::make()
+                                    ->title('Cannot delete all admin accounts')
+                                    ->body('At least one admin account must remain so the panel stays accessible.')
+                                    ->danger()
+                                    ->send();
+
+                                $action->halt();
+                            }
+                        }),
                 ]),
             ]);
     }

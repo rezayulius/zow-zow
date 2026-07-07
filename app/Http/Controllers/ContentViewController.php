@@ -19,7 +19,7 @@ class ContentViewController extends Controller
             abort(404);
         }
 
-        $model = self::MODELS[$type]::findOrFail($id);
+        $model = self::MODELS[$type]::published()->findOrFail($id);
 
         $sessionKey = "viewed_{$type}_{$id}";
         if (!session()->has($sessionKey)) {

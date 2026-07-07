@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\HeroSlide;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
 
 class HeroSlideSeeder extends Seeder
 {
@@ -12,6 +13,11 @@ class HeroSlideSeeder extends Seeder
      */
     public function run(): void
     {
+        // These strings are English; the translatable columns must be stored
+        // under the 'en' locale key, not whatever APP_LOCALE happens to be
+        // (id), otherwise they show up mislabeled as the Indonesian translation.
+        $originalLocale = App::getLocale();
+        App::setLocale('en');
         $slides = [
             [
                 'title' => 'A Second Home',
@@ -63,5 +69,7 @@ class HeroSlideSeeder extends Seeder
         foreach ($slides as $slide) {
             HeroSlide::create($slide);
         }
+
+        App::setLocale($originalLocale);
     }
 }

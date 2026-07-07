@@ -66,6 +66,14 @@ class Article extends Model
         $this->increment('views');
     }
 
+    // Sanitize rich-text HTML from the admin editor before it's persisted,
+    // so a compromised/malicious admin account can't stash a stored-XSS
+    // payload in a field rendered unescaped ({!! !!}) on the public site.
+    public function setContentAttribute($value)
+    {
+        $this->attributes['content'] = $value === null ? null : clean($value);
+    }
+
     // Estimated reading time in minutes, based on a 200 words/minute pace
     public function getReadingTimeAttribute(): int
     {

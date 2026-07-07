@@ -23,8 +23,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
         ]);
 
-        // Trust all proxies including Cloudflare
-        $middleware->trustProxies(at: '*');
+        // Trust only Cloudflare's published edge IP ranges (see config/trusted_proxies.php)
+        // instead of '*', so X-Forwarded-For can't be spoofed by a client that
+        // reaches the origin directly and defeat IP-based rate limiting.
+        // The config() helper isn't available yet this early in bootstrapping,
+        // so the file is loaded directly instead.
+        $middleware->trustProxies(at: (require __DIR__.'/../config/trusted_proxies.php')['cloudflare']);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

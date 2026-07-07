@@ -73,6 +73,7 @@ class HeroSlideForm
                     ->schema([
                         FileUpload::make('main_image')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                             ->disk('public')
                             ->directory('hero-slides')
                             ->visibility('public')
@@ -80,6 +81,7 @@ class HeroSlideForm
                             ->required(),
                         FileUpload::make('secondary_image')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                             ->disk('public')
                             ->directory('hero-slides')
                             ->visibility('public')

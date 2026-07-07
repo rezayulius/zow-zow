@@ -102,6 +102,7 @@ class ServiceForm
                         FileUpload::make('image')
                             ->label('Gambar Service')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                             ->disk('public')
                             ->directory('services')
                             ->visibility('public')

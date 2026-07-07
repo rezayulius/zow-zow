@@ -99,6 +99,7 @@ class ArticleForm
                         FileUpload::make('featured_image')
                             ->label('Gambar Utama')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                             ->disk('public')
                             ->directory('articles')
                             ->visibility('public')

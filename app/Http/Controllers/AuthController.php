@@ -7,6 +7,7 @@ use App\Models\OtpVerification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
@@ -109,9 +110,11 @@ class AuthController extends Controller
             ]);
 
         } catch (\Exception $e) {
+            Log::error('Sign up failed', ['message' => $e->getMessage()]);
+
             return response()->json([
                 'success' => false,
-                'message' => 'Terjadi kesalahan saat membuat akun: ' . $e->getMessage()
+                'message' => 'Terjadi kesalahan saat membuat akun. Silakan coba lagi.'
             ], 500);
         }
     }
@@ -210,9 +213,11 @@ class AuthController extends Controller
             ]);
 
         } catch (\Exception $e) {
+            Log::error('Resend OTP failed', ['message' => $e->getMessage()]);
+
             return response()->json([
                 'success' => false,
-                'message' => 'Gagal mengirim OTP: ' . $e->getMessage()
+                'message' => 'Gagal mengirim OTP. Silakan coba lagi.'
             ], 500);
         }
     }
