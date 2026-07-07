@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\HeroSlides\Schemas;
 
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -75,12 +76,14 @@ class HeroSlideForm
                             ->disk('public')
                             ->directory('hero-slides')
                             ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->required(),
                         FileUpload::make('secondary_image')
                             ->image()
                             ->disk('public')
                             ->directory('hero-slides')
-                            ->visibility('public'),
+                            ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file)),
                         Select::make('theme_color')
                             ->options([
                                 'forest-moss-green' => 'Forest Moss Green',

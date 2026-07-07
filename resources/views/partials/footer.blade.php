@@ -15,7 +15,7 @@
             <!-- Brand Column -->
             <div class="lg:col-span-4 space-y-6">
                 <div class="mb-4">
-                    <img src="{{ asset('images/logo/zow-vet-logo-white.png') }}" alt="Zow Vetique" class="h-14 w-auto object-contain">
+                    <img src="{{ asset('images/logo/zow-vet-logo-white.webp') }}" alt="Zow Vetique" width="500" height="223" loading="lazy" class="h-14 w-auto object-contain">
                 </div>
                 <p class="text-soft-linen-300 leading-relaxed font-medium">
                     ZOW Vet — Stem Cell Therapy & Advanced Lab.
@@ -28,11 +28,12 @@
                 <div class="flex flex-wrap gap-3">
                     <!-- Instagram -->
                     <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs"
-                        target="_blank"
+                        target="_blank" rel="noopener noreferrer"
                         class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full transition-all duration-300 border border-white/10 hover:border-white/20">
                         <img
                             src="https://cdn.simpleicons.org/instagram/E4405F"
                             alt="Instagram"
+                            width="16" height="16" loading="lazy"
                             class="w-4 h-4 group-hover:scale-110 transition-transform">
                         <span class="text-xs font-bold text-soft-linen-200">Instagram</span>
                     </a>
@@ -43,6 +44,7 @@
                         <img
                             src="https://cdn.simpleicons.org/facebook/1877F2"
                             alt="Facebook"
+                            width="16" height="16" loading="lazy"
                             class="w-4 h-4 group-hover:scale-110 transition-transform">
                         <span class="text-xs font-bold text-soft-linen-200">Facebook</span>
                     </a>
@@ -53,6 +55,7 @@
                         <img
                             src="https://cdn.simpleicons.org/youtube/FF0000"
                             alt="YouTube"
+                            width="16" height="16" loading="lazy"
                             class="w-4 h-4 group-hover:scale-110 transition-transform">
                         <span class="text-xs font-bold text-soft-linen-200">YouTube</span>
                     </a>
@@ -124,7 +127,11 @@
                         <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
                             <i data-lucide="mail" class="w-4 h-4 text-soft-blush-pink-400"></i>
                         </div>
-                        <span class="mt-1">support@zowvetique.com</span>
+                        @php
+                            $supportEmail = 'support@zowvetique.com';
+                            $supportEmailEntities = collect(str_split($supportEmail))->map(fn($c) => '&#' . ord($c) . ';')->implode('');
+                        @endphp
+                        <a href="{!! 'mailto:' . $supportEmailEntities !!}" class="mt-1 hover:text-white transition-colors">{!! $supportEmailEntities !!}</a>
                     </li>
                     <li class="flex items-start gap-3 text-soft-linen-400 text-sm">
                         <div class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 animate-pulse">

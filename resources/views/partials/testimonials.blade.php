@@ -242,9 +242,9 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-soft-blush-pink-50 text-soft-blush-pink-700 text-xs font-bold uppercase tracking-wider mb-6 border border-soft-blush-pink-100">
                     <span>💡</span> Expert Knowledge
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">
                     Pet Care <span class="italic text-soft-blush-pink-600">Wisdom</span>
-                </h2>
+                </h3>
                 <p class="text-lg text-carob-600 leading-relaxed">
                     Tips, tricks, and deep dives into pet health from our veterinary experts.
                 </p>
@@ -307,7 +307,7 @@
         {{-- News Tab Content --}}
         <div id="news-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Clinic Updates</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Clinic Updates</h3>
                 <p class="text-lg text-carob-600">What's happening at Zow.</p>
             </div>
             
@@ -356,7 +356,7 @@
         {{-- Promo Tab Content --}}
         <div id="promo-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Hot Deals</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Hot Deals</h3>
                 <p class="text-lg text-carob-600">Exclusive offers for our beloved community.</p>
             </div>
 
@@ -423,7 +423,7 @@
         {{-- FAQs Tab Content --}}
         <div id="faqs-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Frequently Asked Questions</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Frequently Asked Questions</h3>
                 <p class="text-lg text-carob-600">Common questions about our services and care.</p>
             </div>
 
@@ -493,9 +493,9 @@
                                 <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-500 animate-pulse"></span>
                                 {{ $item->category ?? ucfirst($type) }}
                             </span>
-                            <h2 class="text-2xl md:text-3xl font-bold text-carob-900 font-heading leading-tight line-clamp-2">
+                            <h3 class="text-2xl md:text-3xl font-bold text-carob-900 font-heading leading-tight line-clamp-2">
                                 {{ $item->title }}
-                            </h2>
+                            </h3>
                         </div>
 
                         <!-- Close Button -->

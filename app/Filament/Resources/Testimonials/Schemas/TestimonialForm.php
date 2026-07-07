@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Testimonials\Schemas;
 
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -47,6 +48,7 @@ class TestimonialForm
                             ->image()
                             ->disk('public')
                             ->directory('testimonials/avatars')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->imageEditor()
                             ->imageEditorAspectRatios([
                                 '1:1',

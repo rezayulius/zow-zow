@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Promos\Schemas;
 
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -89,6 +90,7 @@ class PromoForm
                             ->disk('public')
                             ->directory('promos')
                             ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->imageEditor()
                             ->imageEditorAspectRatios([
                                 '16:9',

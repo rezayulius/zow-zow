@@ -309,7 +309,7 @@
                                 </div>
                                 <h4 class="text-xl font-bold text-carob-900 mb-2">Belum ada anabul terdaftar</h4>
                                 <p class="text-carob-500 mb-6">Wah, kandangnya masih kosong nih! Yuk daftarkan anabul kesayanganmu di klinik.</p>
-                                <a href="https://wa.me/6281219088899" target="_blank" class="inline-flex items-center px-6 py-3 bg-forest-moss-green-600 text-white rounded-xl font-bold hover:bg-forest-moss-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-forest-moss-green-600 text-white rounded-xl font-bold hover:bg-forest-moss-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                                     <i data-lucide="plus-circle" class="w-5 h-5 mr-2"></i>
                                     Hubungi Admin Klinik
                                 </a>
@@ -365,7 +365,7 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="https://wa.me/6281219088899" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-2xl hover:bg-green-600 transition-all duration-300 font-bold shadow-lg hover:shadow-green-200 hover:-translate-y-1 group">
+                            <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-2xl hover:bg-green-600 transition-all duration-300 font-bold shadow-lg hover:shadow-green-200 hover:-translate-y-1 group">
                                 <i data-lucide="message-circle" class="w-6 h-6 mr-2 group-hover:animate-bounce"></i>
                                 Chat WhatsApp
                             </a>

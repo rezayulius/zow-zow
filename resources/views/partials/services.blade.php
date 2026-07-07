@@ -89,7 +89,7 @@
 <section id="health" class="relative py-16 overflow-hidden bg-white">
     <!-- Seamless Transitions & Backgrounds -->
     <div class="absolute inset-0 bg-gradient-to-b from-white via-forest-moss-green-50/30 to-white -z-20"></div>
-    <div class="absolute inset-0 opacity-[0.08] -z-10 mix-blend-multiply" style="background-image: url('{{ asset('images/backgorund/pattern-tulang-trans.png') }}'); background-size: 400px; background-repeat: repeat;"></div>
+    <div class="absolute inset-0 opacity-[0.08] -z-10 mix-blend-multiply" style="background-image: url('{{ asset('images/backgorund/pattern-tulang-trans.webp') }}'); background-size: 400px; background-repeat: repeat;"></div>
     
     <!-- Fresh Green Blobs for Health -->
     <div class="absolute top-20 left-10 w-64 h-64 bg-forest-moss-green-100/60 rounded-full blur-3xl animate-bounce-slow"></div>
@@ -101,7 +101,7 @@
             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-forest-moss-green-100 text-forest-moss-green-600 mb-6 rotate-3 hover:rotate-12 transition-transform duration-500 shadow-xl shadow-forest-moss-green-200/50 border-4 border-white">
                 <i data-lucide="stethoscope" class="w-10 h-10"></i>
             </div>
-            <h2 class="text-4xl md:text-5xl font-heading text-forest-moss-green-900 mb-4">Professional Health Care</h2>
+            <h3 class="text-4xl md:text-5xl font-heading text-forest-moss-green-900 mb-4">Professional Health Care</h3>
             <p class="text-forest-moss-green-700/80 text-xl max-w-2xl mx-auto">
                 From accurate diagnosis to modern therapies like 
                 <span class="text-forest-moss-green-600 font-bold italic">Stem Cell</span> & 
@@ -181,7 +181,7 @@
                                     Rp {{ number_format($service->price, 0, ',', '.') }}
                                 </span>
                             </div>
-                            <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" class="w-10 h-10 rounded-full bg-forest-moss-green-600 text-white flex items-center justify-center hover:bg-forest-moss-green-700 transition-all duration-300 group-hover:scale-110 shadow-md">
+                            <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-forest-moss-green-600 text-white flex items-center justify-center hover:bg-forest-moss-green-700 transition-all duration-300 group-hover:scale-110 shadow-md">
                                 <i data-lucide="arrow-right" class="w-5 h-5"></i>
                             </a>
                         </div>
@@ -212,7 +212,7 @@
             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-chai-100 text-chai-600 mb-6 -rotate-3 hover:-rotate-12 transition-transform duration-500 shadow-xl shadow-chai-200/50 border-4 border-white">
                 <i data-lucide="sparkles" class="w-10 h-10"></i>
             </div>
-            <h2 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">Wellness & Prevention</h2>
+            <h3 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">Wellness & Prevention</h3>
             <p class="text-chai-800/80 text-xl max-w-2xl mx-auto">
                 Focusing on prevention and quality of life. We educate pawrents on healthy lifestyles for a 
                 <span class="text-chai-600 font-bold italic">joyful future!</span>
@@ -293,7 +293,7 @@
                                     Rp {{ number_format($service->price, 0, ',', '.') }}
                                 </span>
                             </div>
-                            <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" class="px-6 py-2.5 rounded-2xl bg-chai-100 text-chai-800 font-bold hover:bg-chai-600 hover:text-white transition-all duration-300 flex items-center gap-2 group-hover:shadow-lg hover:scale-105 shadow-chai-100">
+                            <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-2xl bg-chai-100 text-chai-800 font-bold hover:bg-chai-600 hover:text-white transition-all duration-300 flex items-center gap-2 group-hover:shadow-lg hover:scale-105 shadow-chai-100">
                                 <span class="text-sm">Reserve</span>
                                 <i data-lucide="calendar-heart" class="w-4 h-4"></i>
                             </a>
@@ -341,18 +341,18 @@
                         <span class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
                         <span class="text-xs font-bold tracking-wide uppercase text-white">Online Booking Available</span>
                     </div>
-                    <h2 class="text-3xl md:text-5xl lg:text-6xl font-heading font-medium mb-4 lg:mb-6 leading-tight">Ready to visit your pet's <br> <span class="italic text-chai-300 font-heading">second home?</span></h2>
+                    <h3 class="text-3xl md:text-5xl lg:text-6xl font-heading font-medium mb-4 lg:mb-6 leading-tight">Ready to visit your pet's <br> <span class="italic text-chai-300 font-heading">second home?</span></h3>
                     <p class="text-carob-100 text-base md:text-lg lg:text-xl leading-relaxed opacity-90 font-light">
                         Schedule an appointment in seconds via Digitail. Whether it's a check-up, grooming session, or a playdate.
                     </p>
                 </div>
 
                 <div class="flex flex-col gap-4 w-full lg:w-auto min-w-[300px]">
-                    <a href="https://vet.digitail.io/clinics/zow-vet-clinic?widget" target="_blank" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
+                    <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" rel="noopener noreferrer" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
                         <i data-lucide="calendar-plus" class="w-5 h-5 lg:w-6 lg:h-6 group-hover:rotate-12 transition-transform"></i>
                         <span class="text-base lg:text-lg">Book Appointment</span>
                     </a>
-                    <a href="https://wa.me/6281219088899" target="_blank" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
+                    <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
                         <i data-lucide="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
                         <span class="text-base lg:text-lg">Chat on WhatsApp</span>
                     </a>
@@ -362,7 +362,7 @@
 
         <!-- Meet Our Experts -->
         <div class="mb-10 text-center">
-            <h2 class="text-4xl md:text-5xl font-heading text-carob-900 mb-6">Meet Our Experts</h2>
+            <h3 class="text-4xl md:text-5xl font-heading text-carob-900 mb-6">Meet Our Experts</h3>
             <p class="text-carob-600 text-xl max-w-2xl mx-auto font-light">Dedicated professionals who treat your pets like their own family.</p>
         </div>
 

@@ -29,7 +29,7 @@
             </p>
             
             <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="https://maps.app.goo.gl/va69apSq9NWWaDG16?g_st=iw" target="_blank" class="group inline-flex items-center bg-white text-carob-800 px-6 py-3 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:border-forest-moss-green-300 transition-all duration-300">
+                <a href="https://maps.app.goo.gl/va69apSq9NWWaDG16?g_st=iw" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center bg-white text-carob-800 px-6 py-3 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:border-forest-moss-green-300 transition-all duration-300">
                     <div class="w-8 h-8 bg-forest-moss-green-50 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
                         <i data-lucide="map-pin" class="w-4 h-4 text-forest-moss-green-600"></i>
                     </div>

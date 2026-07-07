@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Articles\Schemas;
 
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -101,6 +102,7 @@ class ArticleForm
                             ->disk('public')
                             ->directory('articles')
                             ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->imageEditor()
                             ->imageEditorAspectRatios([
                                 '16:9',

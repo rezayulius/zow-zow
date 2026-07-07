@@ -10,7 +10,7 @@
     $pageTitle = trim((string) $__env->yieldContent('title')) ?: 'Klinik Hewan Jakarta Selatan | ZOW Vetique Kemang';
     $pageDescription = trim((string) $__env->yieldContent('meta_description')) ?: 'ZOW Vetique adalah klinik hewan di Kemang, Jakarta Selatan, menyediakan konsultasi dokter hewan, vaksinasi, steril, grooming, lab, terapi, pet spa, penitipan, dan emergency care.';
     $pageCanonical = trim((string) $__env->yieldContent('canonical')) ?: url()->current();
-    $pageOgImage = trim((string) $__env->yieldContent('og_image')) ?: 'https://zowvetique.com/images/logo/zow-vet-logo-brown.png';
+    $pageOgImage = trim((string) $__env->yieldContent('og_image')) ?: 'https://zowvetique.com/images/og-image.png';
     $pageRobots = trim((string) $__env->yieldContent('robots')) ?: 'index, follow';
   @endphp
 
@@ -83,12 +83,12 @@
     "name": "ZOW Vetique",
     "alternateName": "ZOW Vet Clinic",
     "url": "https://zowvetique.com/",
-    "logo": "https://zowvetique.com/logo.png",
+    "logo": "https://zowvetique.com/images/logo/zow-vet-logo-brown.webp",
     "isPartOf": {
       "@@id": "https://zowvetique.com/#website"
     },
     "image": [
-      "https://zowvetique.com/images/zow-vetique-clinic.jpg"
+      "https://zowvetique.com/images/og-image.png"
     ],
     "description": "ZOW Vetique adalah klinik hewan di Prapanca, Kebayoran Baru, Jakarta Selatan yang menyediakan layanan konsultasi dokter hewan, vaksinasi, steril, grooming, laboratorium, terapi lanjutan, dan emergency care untuk hewan peliharaan.",
     "slogan": "Klinik Hewan dengan Hati Keluarga",
@@ -201,6 +201,17 @@
   {{-- Page-specific structured data (e.g. FAQPage) is pushed only from views that
        render matching visible content, so it stays valid per Google's guidelines --}}
   @stack('json-ld')
+
+  @if(config('services.google.analytics_id'))
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google.analytics_id') }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ config('services.google.analytics_id') }}');
+  </script>
+  @endif
 </head>
 
 <body class="font-sans antialiased">
@@ -222,23 +233,25 @@
 
   @yield('content')
 
-  <!-- Cekat.AI Live Chat Widget -->
+  <!-- Cekat.AI Live Chat Widget (deferred until after page load so it doesn't compete with above-the-fold resources) -->
   <script type="text/javascript">
-    !function(c,e,k,a,t){
-    c.mychat=c.mychat||{server:"https://live.cekat.ai/widget.js",iframeWidth:"400px",iframeHeight:"700px",accessKey:"ZOW-NXWaCTvC",offsetX:-24,offsetY:24,position:"bottom-right"};
-    var q=[];
-    c.Cekat=function(){q.push(arguments)};
-    c.Cekat.q=q;
-    a=e.createElement(k);
-    t=e.getElementsByTagName(k)[0];
-    a.async=1;
-    a.src=c.mychat.server;
-    t.parentNode.insertBefore(a,t);
-    }(window,document,"script");
+    window.addEventListener('load', function () {
+      !function(c,e,k,a,t){
+      c.mychat=c.mychat||{server:"https://live.cekat.ai/widget.js",iframeWidth:"400px",iframeHeight:"700px",accessKey:"ZOW-NXWaCTvC",offsetX:-24,offsetY:24,position:"bottom-right"};
+      var q=[];
+      c.Cekat=function(){q.push(arguments)};
+      c.Cekat.q=q;
+      a=e.createElement(k);
+      t=e.getElementsByTagName(k)[0];
+      a.async=1;
+      a.src=c.mychat.server;
+      t.parentNode.insertBefore(a,t);
+      }(window,document,"script");
+    });
   </script>
 
   <!-- SweetAlert2 CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const bindEmergency = (btn) => {

@@ -183,7 +183,7 @@
                     <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
                     Connected Wellness
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-carob-900 mb-6">Technology That Cares</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-carob-900 mb-6">Technology That Cares</h3>
                 <p class="text-carob-600 max-w-2xl mx-auto text-lg">
                     Advanced technology seamlessly integrated to provide peace of mind and enhance the bond between you and your pet.
                 </p>

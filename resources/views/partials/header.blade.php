@@ -14,8 +14,9 @@
         <nav class="flex items-center w-full py-2 px-4 sm:px-6 gap-2 lg:gap-4">
             <!-- Logo (Left) -->
             <a href="/" class="flex-shrink-0 flex items-center gap-3 group">
-                <img src="{{ asset('images/logo/zow-vet-logo-brown.png') }}" 
-                     alt="Zow Vetique" 
+                <img src="{{ asset('images/logo/zow-vet-logo-brown.webp') }}"
+                     alt="Zow Vetique"
+                     width="500" height="223"
                      class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
 
@@ -89,6 +90,7 @@
                                 class="w-9 h-9 bg-gradient-to-br from-forest-moss-green-100 to-forest-moss-green-200 rounded-full flex items-center justify-center border-2 border-white shadow-sm overflow-hidden">
                                 @if(auth()->user()->avatar)
                                     <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
+                                        width="36" height="36" loading="lazy"
                                         class="w-full h-full object-cover">
                                 @else
                                     <span class="text-forest-moss-green-700 font-bold text-xs">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
@@ -157,7 +159,7 @@
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-12 h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">
                                 @if(auth()->user()->avatar)
-                                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover">
+                                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}" width="48" height="48" loading="lazy" class="w-full h-full object-cover">
                                 @else
                                     <span class="text-forest-moss-green-700 font-bold text-lg">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
                                 @endif

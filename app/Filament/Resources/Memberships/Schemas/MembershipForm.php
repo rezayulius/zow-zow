@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Memberships\Schemas;
 
 use Filament\Forms\Components\ColorPicker;
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
@@ -85,6 +86,7 @@ class MembershipForm
                             ->disk('public')
                             ->directory('memberships')
                             ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->imageEditor()
                             ->imageEditorAspectRatios([
                                 '16:9',

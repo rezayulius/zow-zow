@@ -81,7 +81,7 @@
             <!-- Logo Section -->
             <div class="mb-8 animate-bounce-in">
                 <div class="inline-flex items-center justify-center w-24 h-24 bg-white rounded-[2rem] shadow-xl border-2 border-[#f4f7f3] mb-6 transform rotate-3 hover:rotate-0 transition-all duration-500">
-                    <img src="{{ asset('images/logo/zow-vet-logo-brown.png') }}" alt="Zow Vetique Logo" class="w-16 h-auto">
+                    <img src="{{ asset('images/logo/zow-vet-logo-brown.webp') }}" alt="Zow Vetique Logo" width="500" height="223" class="w-16 h-auto">
                 </div>
             </div>
 
@@ -106,7 +106,7 @@
 
             <!-- Social & Contact -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-                <a href="https://wa.me/6281219088899" target="_blank" class="flex items-center gap-3 text-[#675334] hover:text-[#364E2C] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#e9efe7]">
+                <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-[#675334] hover:text-[#364E2C] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#e9efe7]">
                     <div class="w-10 h-10 bg-[#e9efe7] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                         <i data-lucide="message-circle" class="w-5 h-5 text-[#364E2C]"></i>
                     </div>
@@ -114,7 +114,7 @@
                 </a>
                 
                 <a href="https://www.instagram.com/zowvetclinic?igsh=aXUzZXZnc3JrYTFs"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                     class="flex items-center gap-3 text-[#675334] hover:text-[#d2ab80] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#f5f0ea]">
 
                     <div class="w-10 h-10 bg-[#f5f0ea] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">

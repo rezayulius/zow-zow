@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Services\Schemas;
 
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
@@ -104,6 +105,7 @@ class ServiceForm
                             ->disk('public')
                             ->directory('services')
                             ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->helperText('Upload gambar untuk service'),
                     ])
                     ->columns(2),

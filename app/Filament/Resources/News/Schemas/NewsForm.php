@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\News\Schemas;
 
+use App\Services\ImageOptimizer;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -116,6 +117,7 @@ class NewsForm
                             ->disk('public')
                             ->directory('news-images')
                             ->visibility('public')
+                            ->saveUploadedFileUsing(fn ($component, $file) => ImageOptimizer::store($component, $file))
                             ->maxSize(2048)
                             ->imageEditor()
                             ->imageEditorAspectRatios([

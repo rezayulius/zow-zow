@@ -116,7 +116,7 @@
                                 @endif
 
                                 <div class="space-y-3 sm:space-y-4 max-w-2xl">
-                                    <{{ $index === 0 ? 'h1' : 'h2' }} class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold {{ $c['text_dark'] }} leading-[1.1] tracking-tight">
+                                    <{{ $index === 0 ? 'h1' : 'h3' }} class="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold {{ $c['text_dark'] }} leading-[1.1] tracking-tight">
                                         {{ $slide->title }} <br>
                                         @if($slide->highlight_text)
                                         <span class="{{ str_replace('text-', 'text-', $c['text']) }} relative inline-block">
@@ -124,7 +124,7 @@
                                             <svg class="absolute w-full h-2 sm:h-3 -bottom-1 left-0 {{ $c['highlight_underline'] }} -z-10" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.00025 6.99997C25.7201 5.20448 132.856 2.00006 198.001 3.50002" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
                                         </span>
                                         @endif
-                                    </{{ $index === 0 ? 'h1' : 'h2' }}>
+                                    </{{ $index === 0 ? 'h1' : 'h3' }}>
                                     <p class="text-base sm:text-xl text-deep-cocoa-brown-600 leading-relaxed font-light hidden sm:block">
                                         {{ $slide->description }}
                                     </p>
