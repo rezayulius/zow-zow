@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\View\Composers\NavigationComposer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
 use Spatie\Translatable\Facades\Translatable;
 
@@ -33,5 +35,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production')) {
             config(['debugbar.enabled' => false]);
         }
+
+        View::composer('partials.header', NavigationComposer::class);
     }
 }

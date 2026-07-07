@@ -357,7 +357,7 @@
         </div>
 
         <!-- Meet Our Experts -->
-        <div class="mb-10 text-center">
+        <div id="our-vets" class="mb-10 text-center">
             <h3 class="text-4xl md:text-5xl font-heading text-carob-900 mb-6">{{ __('services.experts.title') }}</h3>
             <p class="text-carob-600 text-xl max-w-2xl mx-auto font-light">{{ __('services.experts.subtitle') }}</p>
         </div>

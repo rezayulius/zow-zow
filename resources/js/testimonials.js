@@ -11,6 +11,13 @@ export function initTestimonialsSection() {
     const section = document.getElementById('testimoni');
     if (!section) return; // Section not present on this page.
 
+    // wire:navigate re-runs this on every page load, including repeat visits
+    // to "/" where morphdom leaves this section's DOM untouched — without this
+    // guard, the document-level click/keydown listeners below (modals, FAQ,
+    // share buttons) would rebind and stack up on every navigation.
+    if (section.dataset.bound) return;
+    section.dataset.bound = '1';
+
     initTabs(section);
     initGoogleReviewToggle(section);
     initFaq();

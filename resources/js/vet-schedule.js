@@ -49,6 +49,13 @@ export function initVetScheduleWidget() {
     const modal = document.getElementById('vetScheduleModal');
     if (!modal) return; // Widget not present on this page.
 
+    // wire:navigate re-runs this on every page load, including repeat visits
+    // to "/" where morphdom leaves this modal's DOM untouched — without this
+    // guard, the document-level click/keydown listeners below would rebind
+    // and stack up on every navigation.
+    if (modal.dataset.bound) return;
+    modal.dataset.bound = '1';
+
     const panel = document.getElementById('vetScheduleModalPanel');
     const closeBtn = document.getElementById('closeVetScheduleModal');
     const avatarEl = document.getElementById('scheduleModalAvatar');

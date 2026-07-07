@@ -14,9 +14,6 @@ use App\Models\HeroSlide;
 use App\Models\Faq;
 use App\Services\DigitailService;
 use App\Services\GooglePlacesService;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -46,7 +43,7 @@ class HomeController extends Controller
         $faqs = Faq::active()->ordered()->limit(5)->get();
 
         // Fetch vets data from Digitail API
-        $vets = $this->fetchVetsFromDigitail();
+        $vets = $this->digitailService->getVets();
 
         return view('home', compact(
             'heroSlides',
@@ -65,104 +62,4 @@ class HomeController extends Controller
         ));
     }
 
-    /**
-     * Fetch veterinarians data from Digitail API (cached — this backs every homepage
-     * request, so a slow/unreachable Digitail API must never block page load).
-     */
-    private function fetchVetsFromDigitail()
-    {
-        $cached = Cache::get('digitail.vets');
-        if ($cached !== null) {
-            return $cached;
-        }
-
-        $vets = $this->fetchVetsFromDigitailUncached();
-
-        // Only cache successful, non-empty results so a transient API failure
-        // doesn't get "locked in" and hide the vets section for a full hour.
-        if (!empty($vets)) {
-            Cache::put('digitail.vets', $vets, now()->addMinutes(60));
-        }
-
-        return $vets;
-    }
-
-    private function fetchVetsFromDigitailUncached()
-    {
-        try {
-            $baseUrl = config('services.digitail.api_base');
-            $accessToken = $this->digitailService->getAccessToken();
-            $clinicId = config('services.digitail.default_clinic_id');
-
-            $allVets = [];
-            $page = 1;
-            $perPage = 50; // Fetch more per page to minimize requests
-            $hasMore = true;
-
-            while ($hasMore) {
-                $response = Http::timeout(10)
-                    ->withHeaders([
-                        'Accept' => 'application/json',
-                        'Content-Type' => 'application/json',
-                        'Authorization' => 'Bearer ' . $accessToken,
-                    ])
-                    ->get($baseUrl . '/vets', [
-                        'filter[clinic_id]' => $clinicId,
-                        'page' => $page,
-                        'per_page' => $perPage
-                    ]);
-
-                if ($response->successful()) {
-                    $data = $response->json();
-                    $vets = $data['data'] ?? [];
-                    
-                    if (empty($vets)) {
-                        $hasMore = false;
-                        break;
-                    }
-
-                    $allVets = array_merge($allVets, $vets);
-                    
-                    // Check if we need to fetch next page
-                    // Based on meta or just if we got full page
-                    $meta = $data['meta'] ?? [];
-                    if (isset($meta['current_page']) && isset($meta['last_page'])) {
-                        $hasMore = $meta['current_page'] < $meta['last_page'];
-                    } else {
-                        // Fallback: if we got less than perPage, it's the last page
-                        $hasMore = count($vets) >= $perPage;
-                    }
-                    
-                    $page++;
-                } else {
-                    Log::warning('Failed to fetch vets from Digitail API', [
-                        'status' => $response->status(),
-                        'response' => $response->body()
-                    ]);
-                    $hasMore = false;
-                }
-            }
-
-            Log::info('Total Raw Vets Fetched: ' . count($allVets));
-
-            // Filter only vets with type = 'veterinarian'
-            $filteredVets = array_filter($allVets, function ($vet) {
-                return isset($vet['type']) && $vet['type'] === 'veterinarian';
-            });
-            
-            Log::info('Filtered Vets Count: ' . count($filteredVets));
-
-            // Re-index array to avoid gaps in array keys
-            // If filtering results in empty array, return all vets for now (based on user request showing other types in sample)
-            if (empty($filteredVets) && !empty($allVets)) {
-                return $allVets;
-            }
-
-            return array_values($filteredVets);
-
-        } catch (\Exception $e) {
-            Log::error('Error fetching vets from Digitail API: ' . $e->getMessage());
-            return [];
-        }
-    }
 }

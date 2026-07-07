@@ -7,26 +7,36 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   @php
-    $pageTitle = trim((string) $__env->yieldContent('title')) ?: 'Klinik Hewan Jakarta Selatan | ZOW Vetique Kemang';
-    $pageDescription = trim((string) $__env->yieldContent('meta_description')) ?: 'ZOW Vetique adalah klinik hewan di Kemang, Jakarta Selatan, menyediakan konsultasi dokter hewan, vaksinasi, steril, grooming, lab, terapi, pet spa, penitipan, dan emergency care.';
-    $pageCanonical = trim((string) $__env->yieldContent('canonical')) ?: url()->current();
-    $pageOgImage = trim((string) $__env->yieldContent('og_image')) ?: 'https://zowvetique.com/images/og-image.png';
-    $pageRobots = trim((string) $__env->yieldContent('robots')) ?: 'index, follow';
+    // Fallbacks are run through e() too, so $pageTitle etc. are *always*
+    // already-escaped text regardless of whether a @section() supplied them
+    // (Laravel's inline @section('name', $value) escapes internally) or the
+    // default here kicked in — letting the {!! !!} below stay a single,
+    // consistent escape either way instead of double- or zero-escaping.
+    $pageTitle = trim((string) $__env->yieldContent('title')) ?: e('Klinik Hewan Jakarta Selatan | ZOW Vetique Kemang');
+    $pageDescription = trim((string) $__env->yieldContent('meta_description')) ?: e('ZOW Vetique adalah klinik hewan di Kemang, Jakarta Selatan, menyediakan konsultasi dokter hewan, vaksinasi, steril, grooming, lab, terapi, pet spa, penitipan, dan emergency care.');
+    $pageCanonical = trim((string) $__env->yieldContent('canonical')) ?: e(url()->current());
+    $pageOgImage = trim((string) $__env->yieldContent('og_image')) ?: e('https://zowvetique.com/images/og-image.png');
+    $pageRobots = trim((string) $__env->yieldContent('robots')) ?: e('index, follow');
   @endphp
 
-  <title>{{ $pageTitle }}</title>
-  <link rel="canonical" href="{{ $pageCanonical }}" />
-  <meta name="robots" content="{{ $pageRobots }}">
-  <meta name="description" content="{{ $pageDescription }}">
+  {{-- $pageTitle/$pageDescription/etc. are already HTML-escaped by Laravel's
+       inline @section('name', $value) helper (it calls e() internally before
+       storing the section), matching how @yield() echoes sections unescaped.
+       Escaping again here with {{ }} would double-encode entities like "&"
+       into "&amp;amp;" — so these use {!! !!} on purpose, not a XSS oversight. --}}
+  <title>{!! $pageTitle !!}</title>
+  <link rel="canonical" href="{!! $pageCanonical !!}" />
+  <meta name="robots" content="{!! $pageRobots !!}">
+  <meta name="description" content="{!! $pageDescription !!}">
   <meta name="author" content="ZOW Vetique">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="ZOW Vetique">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ $pageTitle }}">
-  <meta property="og:description" content="{{ $pageDescription }}">
-  <meta property="og:url" content="{{ $pageCanonical }}">
-  <meta property="og:image" content="{{ $pageOgImage }}">
+  <meta property="og:title" content="{!! $pageTitle !!}">
+  <meta property="og:description" content="{!! $pageDescription !!}">
+  <meta property="og:url" content="{!! $pageCanonical !!}">
+  <meta property="og:image" content="{!! $pageOgImage !!}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ZOW Vetique - Klinik Hewan Jakarta Selatan">
@@ -34,9 +44,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ $pageTitle }}">
-  <meta name="twitter:description" content="{{ $pageDescription }}">
-  <meta name="twitter:image" content="{{ $pageOgImage }}">
+  <meta name="twitter:title" content="{!! $pageTitle !!}">
+  <meta name="twitter:description" content="{!! $pageDescription !!}">
+  <meta name="twitter:image" content="{!! $pageOgImage !!}">
 
   <meta name="theme-color" content="#553822">
   <link rel="icon" href="{{ asset('favicon-zow.ico') }}">
@@ -55,6 +65,7 @@
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @livewireStyles
 
   @stack('styles')
 
@@ -235,7 +246,13 @@
 
   <!-- Cekat.AI Live Chat Widget (deferred until after page load so it doesn't compete with above-the-fold resources) -->
   <script type="text/javascript">
-    window.addEventListener('load', function () {
+    function initCekatWidget() {
+      // wire:navigate swaps <body> on every internal navigation; guard so this
+      // 3rd-party widget (which self-injects an iframe into <body>, outside
+      // Livewire's morphed region) isn't loaded/injected more than once.
+      if (window.__cekatInitialized) return;
+      window.__cekatInitialized = true;
+
       !function(c,e,k,a,t){
       c.mychat=c.mychat||{server:"https://live.cekat.ai/widget.js",iframeWidth:"400px",iframeHeight:"700px",accessKey:"ZOW-NXWaCTvC",offsetX:-24,offsetY:24,position:"bottom-right"};
       var q=[];
@@ -247,15 +264,19 @@
       a.src=c.mychat.server;
       t.parentNode.insertBefore(a,t);
       }(window,document,"script");
-    });
+    }
+
+    window.addEventListener('load', initCekatWidget);
+    document.addEventListener('livewire:navigated', initCekatWidget);
   </script>
 
   <!-- SweetAlert2 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    function initEmergencyModal() {
       const bindEmergency = (btn) => {
-        if (!btn) return;
+        if (!btn || btn.dataset.bound) return;
+        btn.dataset.bound = '1';
         btn.addEventListener('click', function () {
           Swal.fire({
             icon: 'warning',
@@ -333,8 +354,15 @@
       bindEmergency(document.getElementById('btnEmergencyCall'));
       bindEmergency(document.getElementById('btnEmergencyCallMobile'));
       bindEmergency(document.getElementById('emergency-call-mobile'));
+    }
 
-      // Handle Laravel Flash Messages
+    document.addEventListener('DOMContentLoaded', initEmergencyModal);
+    document.addEventListener('livewire:navigated', initEmergencyModal);
+
+    // Flash messages come from a full-page redirect after a form POST (e.g.
+    // sign in/out), never from a wire:navigate transition, so this only
+    // needs to run once on the initial hard load.
+    document.addEventListener('DOMContentLoaded', function () {
       @if(session('success'))
         Swal.fire({
           icon: 'success',
@@ -362,6 +390,8 @@
 
   <!-- Authentication Modals JavaScript -->
   <script src="{{ asset('js/auth-modals.js') }}"></script>
+
+  @livewireScripts
 
   @stack('scripts')
 </body>

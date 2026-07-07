@@ -7,7 +7,13 @@ function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
 
+    // wire:navigate calls this again on every page (the header is shared
+    // across all pages via a Blade partial); guard so the click listener
+    // below doesn't get bound twice on the same button.
+    if (mobileMenuBtn && mobileMenuBtn.dataset.bound) return;
+
     if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.dataset.bound = '1';
         mobileMenuBtn.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.contains('hidden');
             
@@ -31,11 +37,36 @@ function initMobileMenu() {
             }
         });
     }
+
+    // Close the mobile menu whenever a nav link inside it is clicked. This
+    // matters most for same-page anchor links (e.g. "Booking" while already
+    // on "/") which no longer go through a JS click-intercept (see
+    // initSmoothScrolling) now that header links use full "/path#section"
+    // hrefs instead of bare "#section" ones.
+    if (mobileMenu && !mobileMenu.dataset.autoCloseBound) {
+        mobileMenu.dataset.autoCloseBound = '1';
+        mobileMenu.querySelectorAll('a[href]').forEach((link) => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+                mobileMenu.classList.add('scale-y-95', 'opacity-0');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            });
+        });
+    }
 }
 
-// Smooth scrolling for navigation links
+// Smooth scrolling for same-page anchor links (bare "#section" hrefs only —
+// header nav links now point at full "/path#section" URLs so wire:navigate
+// can handle cross-page hash navigation; those never match this selector).
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // wire:navigate re-runs this on every page; guard per-anchor so
+        // repeat visits to the same page don't stack duplicate listeners.
+        if (anchor.dataset.smoothBound) return;
+        anchor.dataset.smoothBound = '1';
+
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
@@ -60,6 +91,13 @@ function initSmoothScrolling() {
 
 // Header scroll effect & Progress bar (Optimized with throttling)
 function initHeaderScrollEffect() {
+    // wire:navigate re-runs this on every page; the header partial is shared
+    // (identical markup) across all pages, so without this guard the
+    // window "scroll" listener below would be added again on every
+    // navigation and stack up.
+    if (window.__zowHeaderScrollBound) return;
+    window.__zowHeaderScrollBound = true;
+
     let headerScrollTicking = false;
     const header = document.querySelector('header');
     const scrollProgress = document.getElementById('scrollProgress');
@@ -133,6 +171,13 @@ function initHeaderScrollEffect() {
 function initHeroSlider() {
     const slides = document.querySelectorAll('.slide');
     if (slides.length === 0) return;
+
+    // wire:navigate re-runs this whenever the homepage is (re)visited; guard
+    // against re-initializing (and starting a second setInterval loop) if
+    // morphdom left the slider's DOM untouched from a previous visit.
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider && heroSlider.dataset.bound) return;
+    if (heroSlider) heroSlider.dataset.bound = '1';
 
     let currentSlide = 0;
     let slideInterval;
@@ -254,7 +299,6 @@ function initHeroSlider() {
     updateNavigationButtons(0);
 
     // Pause slider on hover
-    const heroSlider = document.querySelector('.hero-slider');
     if (heroSlider) {
         heroSlider.addEventListener('mouseenter', () => {
             stopSlider();
@@ -268,8 +312,13 @@ function initHeroSlider() {
 
 // Parallax Scrolling Effect
 function initParallax() {
+    // wire:navigate re-runs this on every page; guard the window "scroll"
+    // listener below so it doesn't get bound again on every navigation.
+    if (window.__zowParallaxBound) return;
+    window.__zowParallaxBound = true;
+
     const parallaxElements = document.querySelectorAll('.parallax-bg, .parallax-element');
-    
+
     function updateParallax() {
         const scrollTop = window.pageYOffset;
         const windowHeight = window.innerHeight;
@@ -311,42 +360,77 @@ function initParallax() {
 }
 
 // Mobile services dropdown toggle
-function initMobileServicesDropdown() {
+// Mobile Services menu: outer accordion (Services -> list of categories) plus
+// a nested accordion per category (category -> its services), driven by
+// data-category-toggle/data-category-panel attributes rather than fixed ids
+// since the category list is dynamic (admin-managed).
+function initMobileServicesAccordion() {
     const btn = document.getElementById('mobileServicesBtn');
     const dropdown = document.getElementById('mobileServicesDropdown');
     const icon = document.getElementById('mobileServicesIcon');
 
-    if (btn && dropdown && icon) {
+    if (btn && dropdown && icon && !btn.dataset.bound) {
+        btn.dataset.bound = '1';
         btn.addEventListener('click', () => {
             const isHidden = dropdown.classList.contains('hidden');
-            
+
             if (isHidden) {
-                // Open
                 dropdown.classList.remove('hidden');
                 icon.classList.add('rotate-180');
             } else {
-                // Close
                 dropdown.classList.add('hidden');
                 icon.classList.remove('rotate-180');
             }
         });
     }
+
+    document.querySelectorAll('[data-category-toggle]').forEach((toggleBtn) => {
+        if (toggleBtn.dataset.bound) return;
+        toggleBtn.dataset.bound = '1';
+
+        toggleBtn.addEventListener('click', () => {
+            const slug = toggleBtn.dataset.categoryToggle;
+            const panel = document.querySelector(`[data-category-panel="${slug}"]`);
+            const chevron = document.querySelector(`[data-category-icon="${slug}"]`);
+            if (!panel) return;
+
+            const isHidden = panel.classList.contains('hidden');
+            panel.classList.toggle('hidden', !isHidden);
+            chevron?.classList.toggle('rotate-180', isHidden);
+        });
+    });
 }
 
-// Initialize all functions when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Lucide icons
+// Initialize all page functionality. Runs on the initial hard page load
+// (DOMContentLoaded) AND after every wire:navigate transition, since Livewire's
+// SPA-like navigation swaps the page body without firing a new DOMContentLoaded
+// event. Each function above guards its own listener bindings (dataset/window
+// flags) so repeat calls across navigations don't stack duplicate handlers.
+function runPageInit() {
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
-    
-    // Initialize all functionality
+
     initMobileMenu();
-    initMobileServicesDropdown();
+    initMobileServicesAccordion();
     initSmoothScrolling();
     initHeaderScrollEffect();
     initHeroSlider();
     initVetScheduleWidget();
     initTestimonialsSection();
     initParallax();
+}
+
+document.addEventListener('DOMContentLoaded', runPageInit);
+document.addEventListener('livewire:navigated', runPageInit);
+
+// Re-render Lucide icons after any Livewire component update (e.g. live search
+// or pagination), since morphing swaps in fresh `data-lucide` placeholders that
+// haven't been converted to inline SVG yet.
+document.addEventListener('livewire:init', () => {
+    Livewire.hook('morph.updated', () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    });
 });

@@ -11,12 +11,17 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ComingSoonController;
 use App\Http\Controllers\ContentViewController;
+use App\Http\Controllers\ServiceCategoryController;
+use App\Http\Controllers\ClinicServiceController;
+use App\Http\Controllers\ClinicFacilityController;
+use App\Http\Controllers\SitemapController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/coming-soon', [ComingSoonController::class, 'index'])->name('coming-soon');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::post('/content/{type}/{id}/view', [ContentViewController::class, 'increment'])
-    ->where(['type' => 'article|news', 'id' => '[0-9]+'])
+    ->where(['type' => 'article|news|clinic-service', 'id' => '[0-9]+'])
     ->middleware('throttle:30,1')
     ->name('content.view');
 
@@ -91,3 +96,38 @@ Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail
         ->where('endpoint', '.*')
         ->name('proxy');
 });
+
+// Service category/detail catch-all routes. Registered last so their single
+// dynamic segment never shadows a specific route above (e.g. /admin, /login,
+// /profile, /coming-soon). The negative-lookahead constraint is defense in
+// depth on top of that ordering — it guarantees a reserved top-level path can
+// never resolve as a category slug regardless of route registration order
+// (e.g. across Filament's own panel routes, registered by a different
+// provider). Built from the same reserved-slugs list Filament's admin form
+// validates against, so the two can't drift out of sync.
+$reservedSlugPattern = '^(?!(?:' . implode('|', array_map(
+    'preg_quote',
+    \App\Support\ReservedSlugs::LIST
+)) . ')$)[^/]+$';
+
+// Clinic facilities (Ruang Operasi, ICU, dst.) are informational/SEO pages,
+// deliberately NOT a ServiceCategory — they aren't bookable, so they don't
+// belong in the {category:slug} catch-all below. Registered here, ahead of
+// it, and 'facility' is reserved in ReservedSlugs so no ServiceCategory can
+// ever claim that slug and shadow this route.
+Route::get('/facility', [ClinicFacilityController::class, 'index'])->name('facility.index');
+Route::get('/facility/{facility:slug}', [ClinicFacilityController::class, 'show'])->name('facility.show');
+
+Route::get('/{category:slug}', [ServiceCategoryController::class, 'show'])
+    ->where('category', $reservedSlugPattern)
+    ->name('service-category.show');
+
+// withoutScopedBindings(): Laravel's implicit nested-binding convention would
+// otherwise try to resolve {service} via a `$category->services()` relation
+// (pluralizing the param name) instead of `clinicServices()`. Scoping is
+// deliberately not used anyway — a service whose category no longer matches
+// the URL should 301 to its canonical URL (handled in the controller), not 404.
+Route::get('/{category:slug}/{service:slug}', [ClinicServiceController::class, 'show'])
+    ->where('category', $reservedSlugPattern)
+    ->withoutScopedBindings()
+    ->name('service.show');

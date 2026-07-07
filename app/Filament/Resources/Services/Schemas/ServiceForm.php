@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Services\Schemas;
 
+use App\Filament\Support\IconOptions;
 use App\Services\ImageOptimizer;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -73,28 +74,7 @@ class ServiceForm
                     ->schema([
                         Select::make('icon')
                             ->label('Icon')
-                            ->options([
-                                'stethoscope' => '🩺 Stethoscope (Pemeriksaan)',
-                                'syringe' => '💉 Syringe (Vaksinasi)',
-                                'heart' => '❤️ Heart (Kesehatan Umum)',
-                                'shield' => '🛡️ Shield (Perlindungan)',
-                                'scissors' => '✂️ Scissors (Grooming)',
-                                'sparkles' => '✨ Sparkles (Spa/Wellness)',
-                                'bed' => '🛏️ Bed (Hotel/Daycare)',
-                                'coffee' => '☕ Coffee (Cafe)',
-                                'wand' => '🪄 Wand (Magic/Premium)',
-                                'trophy' => '🏆 Trophy (Premium Service)',
-                                'star' => '⭐ Star (Rating/Quality)',
-                                'zap' => '⚡ Zap (Quick Service)',
-                                'clock' => '🕐 Clock (24/7 Service)',
-                                'phone' => '📞 Phone (Konsultasi)',
-                                'camera' => '📷 Camera (Dokumentasi)',
-                                'pill' => '💊 Pill (Obat/Treatment)',
-                                'bandage' => '🩹 Bandage (Perawatan)',
-                                'thermometer' => '🌡️ Thermometer (Diagnosis)',
-                                'microscope' => '🔬 Microscope (Lab Test)',
-                                'bone' => '🦴 Bone (Ortopedi)',
-                            ])
+                            ->options(IconOptions::forServices())
                             ->placeholder('Pilih icon untuk service')
                             ->helperText('Icon akan ditampilkan di card service')
                             ->searchable(),
