@@ -1,5 +1,6 @@
 import './bootstrap';
 import { initVetScheduleWidget } from './vet-schedule';
+import { initTestimonialsSection } from './testimonials';
 
 // Mobile menu toggle with smooth animation
 function initMobileMenu() {
@@ -346,5 +347,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderScrollEffect();
     initHeroSlider();
     initVetScheduleWidget();
+    initTestimonialsSection();
     initParallax();
 });

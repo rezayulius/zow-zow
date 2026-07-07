@@ -54,6 +54,8 @@ return [
         'save_up_to' => 'Save Up To',
         'off' => 'OFF',
         'code' => 'Code',
+        'copy_code' => 'Copy code',
+        'code_copied' => 'Copied!',
         'ends' => 'Ends :date',
         'left' => ':count left',
         'empty' => 'No active promos right now. Check back later!',
@@ -66,6 +68,7 @@ return [
     ],
 
     'modal' => [
+        'close' => 'Close',
         'default_author' => 'Zow Team',
         'views' => ':count views',
         'share_joy' => 'Share Joy',

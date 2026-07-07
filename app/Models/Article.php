@@ -65,4 +65,10 @@ class Article extends Model
     {
         $this->increment('views');
     }
+
+    // Estimated reading time in minutes, based on a 200 words/minute pace
+    public function getReadingTimeAttribute(): int
+    {
+        return (int) ceil(str_word_count(strip_tags($this->content)) / 200);
+    }
 }

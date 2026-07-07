@@ -71,14 +71,17 @@
 
             {{-- Community Stats --}}
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+                {{-- icon_classes are written out in full so Tailwind's scanner can see them —
+                     a runtime-built "bg-{$color}-50" string never matches a real utility class
+                     and would silently disappear from the production build. --}}
                 @foreach([
-                    ['icon' => 'users', 'val' => '500+', 'label' => __('testimonials.stories.stats.happy_clients'), 'color' => 'forest-moss-green'],
-                    ['icon' => 'paw-print', 'val' => '1.2k+', 'label' => __('testimonials.stories.stats.pets_served'), 'color' => 'chai'],
-                    ['icon' => 'star', 'val' => '4.9', 'label' => __('testimonials.stories.stats.average_rating'), 'color' => 'old-mustard-yellow'],
-                    ['icon' => 'award', 'val' => '5+', 'label' => __('testimonials.stories.stats.years_caring'), 'color' => 'soft-blush-pink']
+                    ['icon' => 'users', 'val' => '500+', 'label' => __('testimonials.stories.stats.happy_clients'), 'icon_classes' => 'bg-forest-moss-green-50 text-forest-moss-green-600'],
+                    ['icon' => 'paw-print', 'val' => '1.2k+', 'label' => __('testimonials.stories.stats.pets_served'), 'icon_classes' => 'bg-chai-50 text-chai-600'],
+                    ['icon' => 'star', 'val' => '4.9', 'label' => __('testimonials.stories.stats.average_rating'), 'icon_classes' => 'bg-old-mustard-yellow-50 text-old-mustard-yellow-600'],
+                    ['icon' => 'award', 'val' => '5+', 'label' => __('testimonials.stories.stats.years_caring'), 'icon_classes' => 'bg-soft-blush-pink-50 text-soft-blush-pink-600'],
                 ] as $stat)
                     <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
-                        <div class="w-12 h-12 mx-auto bg-{{ $stat['color'] }}-50 rounded-2xl flex items-center justify-center mb-4 text-{{ $stat['color'] }}-600">
+                        <div class="w-12 h-12 mx-auto {{ $stat['icon_classes'] }} rounded-2xl flex items-center justify-center mb-4">
                             <i data-lucide="{{ $stat['icon'] }}" class="w-6 h-6"></i>
                         </div>
                         <div class="text-3xl font-bold text-carob-900 mb-1">{{ $stat['val'] }}</div>
@@ -136,7 +139,7 @@
                                                             <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm">
                                                         @else
                                                             <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-carob-400 font-bold text-lg ring-2 ring-white shadow-sm">
-                                                                {{ substr($testimonial->name, 0, 1) }}
+                                                                {{ mb_substr($testimonial->name, 0, 1) }}
                                                             </div>
                                                         @endif
                                                         <!-- Pet Badge -->
@@ -213,7 +216,7 @@
                                 <p class="google-review-text text-carob-700 leading-relaxed text-sm line-clamp-5">
                                     "{{ $review['text'] }}"
                                 </p>
-                                <button type="button" class="google-review-toggle hidden text-xs font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 mt-2 text-left" onclick="toggleGoogleReview(this)" data-more-text="{{ __('testimonials.stories.read_more') }}" data-less-text="{{ __('testimonials.stories.show_less') }}">
+                                <button type="button" class="google-review-toggle hidden text-xs font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 mt-2 text-left" data-action="toggle-google-review" data-more-text="{{ __('testimonials.stories.read_more') }}" data-less-text="{{ __('testimonials.stories.show_less') }}">
                                     {{ __('testimonials.stories.read_more') }}
                                 </button>
                                 <div class="flex items-center gap-3 mt-auto pt-6">
@@ -221,7 +224,7 @@
                                         <img src="{{ $review['profile_photo_url'] }}" alt="{{ $review['author_name'] }}" loading="lazy" class="w-10 h-10 rounded-full object-cover ring-2 ring-white shadow-sm" referrerpolicy="no-referrer">
                                     @else
                                         <div class="w-10 h-10 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-400 font-bold ring-2 ring-white shadow-sm">
-                                            {{ substr($review['author_name'], 0, 1) }}
+                                            {{ mb_substr($review['author_name'], 0, 1) }}
                                         </div>
                                     @endif
                                     <div>
@@ -278,7 +281,7 @@
                                 <i data-lucide="calendar" class="w-3 h-3"></i>
                                 {{ $article->published_at ? $article->published_at->format('M d, Y') : $article->created_at->format('M d, Y') }}
                                 <span class="w-1 h-1 bg-carob-300 rounded-full"></span>
-                                <span>{{ __('testimonials.articles.min_read', ['count' => ceil(str_word_count(strip_tags($article->content)) / 200)]) }}</span>
+                                <span>{{ __('testimonials.articles.min_read', ['count' => $article->reading_time]) }}</span>
                             </div>
                             
                             <h3 class="text-xl font-bold text-carob-900 mb-3 leading-tight group-hover:text-forest-moss-green-600 transition-colors">
@@ -289,7 +292,7 @@
                                 {{ $article->excerpt ?: Str::limit(strip_tags($article->content), 100) }}
                             </p>
                             
-                            <a href="#" onclick="openModal('modal-article-{{ $article->id }}')" 
+                            <a href="#modal-article-{{ $article->id }}" data-action="open-modal" data-modal-id="modal-article-{{ $article->id }}"
                                class="inline-flex items-center text-sm font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 transition-colors group/link">
                                 {{ __('testimonials.articles.read_article') }}
                                 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
@@ -336,7 +339,7 @@
                             <p class="text-carob-600 text-sm leading-relaxed mb-4">
                                 {{ $newsItem->excerpt ?: Str::limit(strip_tags($newsItem->content), 150) }}
                             </p>
-                            <button onclick="openModal('modal-news-{{ $newsItem->id }}')" class="text-sm font-bold text-chai-600 hover:text-chai-700 underline decoration-2 decoration-chai-200 hover:decoration-chai-500 underline-offset-4 transition-all">
+                            <button type="button" data-action="open-modal" data-modal-id="modal-news-{{ $newsItem->id }}" class="text-sm font-bold text-chai-600 hover:text-chai-700 underline decoration-2 decoration-chai-200 hover:decoration-chai-500 underline-offset-4 transition-all">
                                 {{ __('testimonials.news.read_update') }}
                             </button>
                         </div>
@@ -397,15 +400,15 @@
                                 <div class="bg-soft-linen-50 border-2 border-dashed border-soft-linen-200 rounded-xl p-4 flex items-center justify-between mb-4">
                                     <div class="text-xs font-bold text-carob-400 uppercase tracking-wide">{{ __('testimonials.promo.code') }}</div>
                                     <div class="font-mono font-bold text-lg text-carob-800 tracking-wider select-all">{{ $promo->promo_code }}</div>
-                                    <button class="text-carob-400 hover:text-forest-moss-green-600 transition-colors" title="Copy">
+                                    <button type="button" data-action="copy-promo-code" data-promo-code="{{ $promo->promo_code }}" class="text-carob-400 hover:text-forest-moss-green-600 transition-colors" title="{{ __('testimonials.promo.copy_code') }}">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
-                                
+
                                 <div class="flex items-center justify-between text-xs font-medium text-carob-400">
                                     <div class="flex items-center gap-1.5">
                                         <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-                                        {{ __('testimonials.promo.ends', ['date' => \Carbon\Carbon::parse($promo->end_date)->format('M d')]) }}
+                                        {{ __('testimonials.promo.ends', ['date' => $promo->end_date->format('M d')]) }}
                                     </div>
                                     @if($promo->usage_limit)
                                         <div class="text-orange-500">{{ __('testimonials.promo.left', ['count' => $promo->usage_limit - $promo->used_count]) }}</div>
@@ -430,7 +433,7 @@
             <div class="max-w-3xl mx-auto space-y-4">
                 @forelse($faqs as $faq)
                     <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm group">
-                        <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 bg-white hover:bg-soft-linen-50 transition-colors" onclick="toggleFaq(this)">
+                        <button type="button" class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between gap-4 bg-white hover:bg-soft-linen-50 transition-colors">
                             <span class="font-bold text-lg text-carob-900">{{ $faq->question }}</span>
                             <span class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-500 transition-transform duration-300 group-[.active]:rotate-180">
                                 <i data-lucide="chevron-down" class="w-5 h-5"></i>
@@ -474,472 +477,117 @@
 @endif
 
 <!-- Modals (Header, Body, Footer Layout - Joyful Edition) -->
+{{-- Each modal's content lives inside a <template>: templates are inert (no
+     layout, no image/network requests, no script execution) until their
+     content is cloned into the live DOM, so the browser never pays to
+     parse or paint the ~6 modals below unless a visitor actually opens one. --}}
 @foreach(['article' => $articles, 'news' => $news] as $type => $items)
     @if(isset($items) && $items->count() > 0)
         @foreach($items as $item)
-            <div id="modal-{{ $type }}-{{ $item->id }}" class="fixed inset-0 bg-carob-900/80 backdrop-blur-md hidden z-50 transition-opacity duration-300 flex items-center justify-center p-4">
-                
-                <!-- Modal Container -->
-                <div class="bg-white rounded-[2.5rem] max-w-3xl w-full max-h-[90vh] shadow-2xl relative animate-scale-in flex flex-col overflow-hidden border-4 border-white ring-1 ring-gray-200">
-                    
-                    <!-- Header -->
-                    <div class="relative bg-gradient-to-r from-soft-linen-50 to-vanilla-50 p-6 md:p-8 shrink-0 border-b border-gray-100 flex items-start justify-between gap-4 overflow-hidden">
-                        <!-- Decorative Header Blobs -->
-                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-forest-moss-green-200/20 rounded-full blur-2xl pointer-events-none"></div>
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-chai-200/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div id="modal-{{ $type }}-{{ $item->id }}" data-modal class="fixed inset-0 bg-carob-900/80 backdrop-blur-md hidden z-50 transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-{{ $type }}-{{ $item->id }}-title">
+                <template>
+                    <!-- Modal Container -->
+                    <div class="bg-white rounded-[2.5rem] max-w-3xl w-full max-h-[90vh] shadow-2xl relative animate-scale-in flex flex-col overflow-hidden border-4 border-white ring-1 ring-gray-200">
 
-                        <div class="relative z-10 flex-1">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-gray-100 shadow-sm text-xs font-bold uppercase tracking-wider text-forest-moss-green-600 mb-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-500 animate-pulse"></span>
-                                {{ $item->category ?? ucfirst($type) }}
-                            </span>
-                            <h3 class="text-2xl md:text-3xl font-bold text-carob-900 font-heading leading-tight line-clamp-2">
-                                {{ $item->title }}
-                            </h3>
+                        <!-- Header -->
+                        <div class="relative bg-gradient-to-r from-soft-linen-50 to-vanilla-50 p-6 md:p-8 shrink-0 border-b border-gray-100 flex items-start justify-between gap-4 overflow-hidden">
+                            <!-- Decorative Header Blobs -->
+                            <div class="absolute -top-10 -left-10 w-32 h-32 bg-forest-moss-green-200/20 rounded-full blur-2xl pointer-events-none"></div>
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-chai-200/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                            <div class="relative z-10 flex-1">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-gray-100 shadow-sm text-xs font-bold uppercase tracking-wider text-forest-moss-green-600 mb-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-500 animate-pulse"></span>
+                                    {{ $item->category ?? ucfirst($type) }}
+                                </span>
+                                <h3 id="modal-{{ $type }}-{{ $item->id }}-title" class="text-2xl md:text-3xl font-bold text-carob-900 font-heading leading-tight line-clamp-2">
+                                    {{ $item->title }}
+                                </h3>
+                            </div>
+
+                            <!-- Close Button -->
+                            <button type="button" data-action="close-modal" class="relative z-10 w-10 h-10 bg-white hover:bg-red-50 text-carob-400 hover:text-red-500 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100 group flex-shrink-0" aria-label="{{ __('testimonials.modal.close') }}">
+                                <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
+                            </button>
                         </div>
 
-                        <!-- Close Button -->
-                        <button onclick="closeModal('modal-{{ $type }}-{{ $item->id }}')" class="relative z-10 w-10 h-10 bg-white hover:bg-red-50 text-carob-400 hover:text-red-500 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100 group flex-shrink-0">
-                            <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
-                        </button>
-                    </div>
+                        <!-- Body -->
+                        <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 bg-white relative">
 
-                    <!-- Body -->
-                    <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 bg-white relative">
-                        
-                        <!-- Meta Info Bar -->
-                        <div class="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-sm text-carob-500 pb-6 border-b border-dashed border-gray-200">
-                            <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
-                                    <i data-lucide="user" class="w-4 h-4"></i>
-                                </div>
-                                <span class="font-medium">{{ $item->author ?? __('testimonials.modal.default_author') }}</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
-                                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                                </div>
-                                <span class="font-medium">{{ $item->created_at->format('d F Y') }}</span>
-                            </div>
-                            @if(isset($item->views))
+                            <!-- Meta Info Bar -->
+                            <div class="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-sm text-carob-500 pb-6 border-b border-dashed border-gray-200">
                                 <div class="flex items-center gap-2">
                                     <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
-                                        <i data-lucide="eye" class="w-4 h-4"></i>
+                                        <i data-lucide="user" class="w-4 h-4"></i>
                                     </div>
-                                    <span class="font-medium" id="views-count-{{ $type }}-{{ $item->id }}" data-views-template="{{ __('testimonials.modal.views', ['count' => '__COUNT__']) }}">{{ __('testimonials.modal.views', ['count' => $item->views]) }}</span>
+                                    <span class="font-medium">{{ $item->author ?? __('testimonials.modal.default_author') }}</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
+                                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                                    </div>
+                                    <span class="font-medium">{{ $item->created_at->format('d F Y') }}</span>
+                                </div>
+                                @if(isset($item->views))
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
+                                            <i data-lucide="eye" class="w-4 h-4"></i>
+                                        </div>
+                                        <span class="font-medium" id="views-count-{{ $type }}-{{ $item->id }}" data-views-template="{{ __('testimonials.modal.views', ['count' => '__COUNT__']) }}">{{ __('testimonials.modal.views', ['count' => $item->views]) }}</span>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <!-- Featured Image -->
+                            @if($item->featured_image)
+                                <div class="rounded-[2rem] overflow-hidden shadow-md mb-8 ring-4 ring-soft-linen-50">
+                                    <img src="{{ asset('storage/' . $item->featured_image) }}" alt="{{ $item->title }}" loading="lazy" class="w-full h-auto object-cover max-h-[400px]">
                                 </div>
                             @endif
-                        </div>
 
-                        <!-- Featured Image -->
-                        @if($item->featured_image)
-                            <div class="rounded-[2rem] overflow-hidden shadow-md mb-8 ring-4 ring-soft-linen-50">
-                                <img src="{{ asset('storage/' . $item->featured_image) }}" alt="{{ $item->title }}" loading="lazy" class="w-full h-auto object-cover max-h-[400px]">
+                            <!-- Article Content -->
+                            <div class="article-content text-carob-700 leading-relaxed">
+                                {!! $item->content !!}
                             </div>
-                        @endif
-
-                        <!-- Article Content -->
-                        <div class="article-content text-carob-700 leading-relaxed">
-                            {!! $item->content !!}
                         </div>
+
+                        <!-- Footer -->
+                        <div class="bg-soft-linen-50/50 p-4 md:px-8 border-t border-gray-100 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 backdrop-blur-sm">
+                            <div class="text-xs font-bold text-carob-400 uppercase tracking-wider">
+                                {{ __('testimonials.modal.share_joy') }}
+                            </div>
+                            <div class="flex gap-3"
+                                 data-share-url="{{ url('/') }}/#modal-{{ $type }}-{{ $item->id }}"
+                                 data-share-title="{{ $item->title }}">
+                                <!-- Facebook -->
+                                <button type="button" data-action="share-facebook" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1877F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
+                                    <img src="https://cdn.simpleicons.org/facebook/currentColor"
+                                        alt="Facebook"
+                                        width="14" height="14" loading="lazy"
+                                        class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
+                                    {{ __('testimonials.modal.facebook') }}
+                                </button>
+
+                                <!-- X (Twitter) -->
+                                <button type="button" data-action="share-x" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm group">
+                                    <img src="https://cdn.simpleicons.org/x/currentColor"
+                                        alt="X"
+                                        width="14" height="14" loading="lazy"
+                                        class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
+                                    {{ __('testimonials.modal.x') }}
+                                </button>
+
+                                <!-- Copy Link -->
+                                <button type="button" data-action="copy-share-link" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group" data-copied-text="{{ __('testimonials.modal.copied') }}">
+                                    <i data-lucide="link" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                                    <span class="copy-link-label">{{ __('testimonials.modal.copy_link') }}</span>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
-
-                    <!-- Footer -->
-                    <div class="bg-soft-linen-50/50 p-4 md:px-8 border-t border-gray-100 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 backdrop-blur-sm">
-                        <div class="text-xs font-bold text-carob-400 uppercase tracking-wider">
-                            {{ __('testimonials.modal.share_joy') }}
-                        </div>
-                        <div class="flex gap-3"
-                             data-share-url="{{ url('/') }}/#modal-{{ $type }}-{{ $item->id }}"
-                             data-share-title="{{ $item->title }}">
-                            <!-- Facebook -->
-                            <button type="button" onclick="shareToFacebook(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1877F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
-                                <img src="https://cdn.simpleicons.org/facebook/currentColor"
-                                    alt="Facebook"
-                                    width="14" height="14" loading="lazy"
-                                    class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
-                                {{ __('testimonials.modal.facebook') }}
-                            </button>
-
-                            <!-- X (Twitter) -->
-                            <button type="button" onclick="shareToX(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm group">
-                                <img src="https://cdn.simpleicons.org/x/currentColor"
-                                    alt="X"
-                                    width="14" height="14" loading="lazy"
-                                    class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
-                                {{ __('testimonials.modal.x') }}
-                            </button>
-
-                            <!-- Copy Link -->
-                            <button type="button" onclick="copyShareLink(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group" data-copied-text="{{ __('testimonials.modal.copied') }}">
-                                <i data-lucide="link" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                                <span class="copy-link-label">{{ __('testimonials.modal.copy_link') }}</span>
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
+                </template>
             </div>
         @endforeach
     @endif
 @endforeach
-
-<script>
-function toggleGoogleReview(button) {
-    const text = button.previousElementSibling;
-    const expanded = text.classList.toggle('line-clamp-5');
-    text.classList.toggle('line-clamp-none');
-    button.textContent = expanded ? button.dataset.moreText : button.dataset.lessText;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-
-    // Show "Baca selengkapnya" only for Google review texts that are actually truncated
-    document.querySelectorAll('.google-review-text').forEach(function (el) {
-        if (el.scrollHeight > el.clientHeight + 1) {
-            const toggle = el.nextElementSibling;
-            if (toggle && toggle.classList.contains('google-review-toggle')) {
-                toggle.classList.remove('hidden');
-            }
-        }
-    });
-
-    const tabs = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.tab-content');
-    const bgColors = {
-        'testimonials': 'bg-gradient-to-r from-forest-moss-green-500 to-forest-moss-green-600',
-        'articles': 'bg-gradient-to-r from-soft-blush-pink-500 to-soft-blush-pink-600',
-        'news': 'bg-gradient-to-r from-chai-500 to-chai-600',
-        'promo': 'bg-gradient-to-r from-old-mustard-yellow-500 to-old-mustard-yellow-600',
-        'faqs': 'bg-carob-600'
-    };
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Deactivate all
-            tabs.forEach(t => {
-                t.classList.remove('active', 'text-white', 'shadow-md');
-                t.classList.add('text-carob-600', 'bg-white', 'md:bg-transparent');
-                
-                // Reset icon bg
-                // Use attribute selector instead of class selector with dots
-                const iconSpan = t.querySelector('span[class*="p-1.5"]');
-                if(iconSpan) {
-                    iconSpan.classList.remove('bg-white/20');
-                    iconSpan.classList.add('bg-soft-linen-100');
-                }
-
-                const bg = t.querySelector('.tab-active-bg') || t.querySelector('.absolute.inset-0.bg-gradient-to-r');
-                if(bg) bg.remove();
-            });
-            
-            contents.forEach(c => {
-                c.classList.add('hidden', 'opacity-0');
-                c.classList.remove('active', 'opacity-100');
-            });
-
-            // Activate clicked
-            tab.classList.add('active', 'text-white', 'shadow-md');
-            tab.classList.remove('text-carob-600', 'bg-white', 'md:bg-transparent');
-            
-            // Active icon bg
-            const activeIconSpan = tab.querySelector('span[class*="p-1.5"]');
-            if(activeIconSpan) {
-                activeIconSpan.classList.remove('bg-soft-linen-100');
-                activeIconSpan.classList.add('bg-white/20');
-            }
-
-            // Add bg
-            const tabName = tab.dataset.tab;
-            const bgDiv = document.createElement('div');
-            bgDiv.className = `absolute inset-0 tab-active-bg ${bgColors[tabName]}`;
-            // Insert as first child to be behind text
-            tab.insertBefore(bgDiv, tab.firstChild);
-
-            // Show content
-            const target = document.getElementById(`${tabName}-content`);
-            target.classList.remove('hidden');
-            // Small delay for fade in
-            setTimeout(() => {
-                target.classList.add('active', 'opacity-100');
-            }, 10);
-        });
-    });
-});
-
-// Modal Logic
-function openModal(id) {
-    const modal = document.getElementById(id);
-    if(modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        trackModalView(id);
-    }
-}
-
-function closeModal(id) {
-    const modal = document.getElementById(id);
-    if(modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Views Counter
-function trackModalView(modalId) {
-    const match = modalId.match(/^modal-(article|news)-(\d+)$/);
-    if (!match) return;
-
-    const [, type, contentId] = match;
-    const token = document.querySelector('meta[name="csrf-token"]')?.content;
-    if (!token) return;
-
-    fetch(`/content/${type}/${contentId}/view`, {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': token,
-            'Accept': 'application/json',
-        },
-    })
-        .then(response => response.ok ? response.json() : null)
-        .then(data => {
-            if (!data) return;
-            const counter = document.getElementById(`views-count-${type}-${contentId}`);
-            if (counter) {
-                const template = counter.dataset.viewsTemplate || '__COUNT__ views';
-                counter.textContent = template.replace('__COUNT__', data.views);
-            }
-        })
-        .catch(() => {});
-}
-
-// Share Logic
-function getShareContext(el) {
-    const container = el.closest('[data-share-url]');
-    return {
-        url: container?.dataset.shareUrl || window.location.href,
-        title: container?.dataset.shareTitle || document.title,
-    };
-}
-
-function shareToFacebook(el) {
-    const { url } = getShareContext(el);
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer,width=600,height=500');
-}
-
-function shareToX(el) {
-    const { url, title } = getShareContext(el);
-    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`, '_blank', 'noopener,noreferrer,width=600,height=500');
-}
-
-function copyShareLink(el) {
-    const { url } = getShareContext(el);
-    const button = el.closest('button');
-    const label = button.querySelector('.copy-link-label');
-    if (!label) return;
-
-    const originalLabel = label.textContent;
-    const showCopied = () => {
-        label.textContent = button.dataset.copiedText || 'Copied!';
-        setTimeout(() => { label.textContent = originalLabel; }, 2000);
-    };
-
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url).then(showCopied).catch(() => fallbackCopyText(url, showCopied));
-    } else {
-        fallbackCopyText(url, showCopied);
-    }
-}
-
-function fallbackCopyText(text, onDone) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try { document.execCommand('copy'); } catch (e) {}
-    document.body.removeChild(textarea);
-    onDone();
-}
-
-// Open shared modal directly from URL hash, e.g. #modal-article-12
-document.addEventListener('DOMContentLoaded', function () {
-    const hash = window.location.hash.slice(1);
-    const match = hash.match(/^modal-(article|news)-(\d+)$/);
-    if (!match || !document.getElementById(hash)) return;
-
-    const tabName = match[1] === 'article' ? 'articles' : 'news';
-    const tabButton = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
-    if (tabButton) tabButton.click();
-
-    openModal(hash);
-});
-
-// FAQ Logic
-function toggleFaq(button) {
-    const container = button.parentElement;
-    const content = container.querySelector('.faq-content');
-    const isHidden = content.classList.contains('hidden');
-    
-    // Close all others
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-        if(btn !== button) {
-            const otherContainer = btn.parentElement;
-            if(otherContainer.classList.contains('active')) {
-                otherContainer.classList.remove('active');
-                const otherContent = otherContainer.querySelector('.faq-content');
-                otherContent.style.maxHeight = '0px';
-                otherContent.style.opacity = '0';
-                setTimeout(() => {
-                    otherContent.classList.add('hidden');
-                }, 300);
-            }
-        }
-    });
-
-    if(isHidden) {
-        // Open
-        container.classList.add('active');
-        content.classList.remove('hidden');
-        // Force reflow
-        void content.offsetWidth; 
-        
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
-    } else {
-        // Close
-        container.classList.remove('active');
-        content.style.maxHeight = '0px';
-        content.style.opacity = '0';
-        
-        setTimeout(() => {
-            content.classList.add('hidden');
-        }, 300);
-    }
-}
-</script>
-
-<style>
-    @keyframes blob {
-        0% { transform: translate(0px, 0px) scale(1); }
-        33% { transform: translate(30px, -50px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
-        100% { transform: translate(0px, 0px) scale(1); }
-    }
-    .animate-blob {
-        animation: blob 7s infinite;
-    }
-    .animation-delay-2000 {
-        animation-delay: 2s;
-    }
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
-    
-    .font-heading {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    .prose p {
-        margin-bottom: 1.5em;
-        line-height: 1.8;
-    }
-
-    @keyframes float-slow {
-        0%, 100% { transform: translateY(0) rotate(12deg); }
-        50% { transform: translateY(-20px) rotate(15deg); }
-    }
-    @keyframes float-medium {
-        0%, 100% { transform: translateY(0) rotate(-12deg); }
-        50% { transform: translateY(-15px) rotate(-8deg); }
-    }
-    @keyframes float-fast {
-        0%, 100% { transform: translateY(0) scale(1); }
-        50% { transform: translateY(-10px) scale(1.1); }
-    }
-    .animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
-    .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
-    .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
-
-    /* Testimonials Infinite Scroll Columns */
-    @keyframes testimonial-scroll {
-        from { transform: translateY(0); }
-        to { transform: translateY(-50%); }
-    }
-    .testimonial-track {
-        animation: testimonial-scroll var(--duration, 30s) linear infinite;
-        will-change: transform;
-    }
-    .testimonial-track-reverse {
-        animation-direction: reverse;
-    }
-    .testimonial-column:hover .testimonial-track {
-        animation-play-state: paused;
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .testimonial-track {
-            animation: none;
-        }
-    }
-
-    /* Article Content Styling */
-    .article-content p {
-        margin-bottom: 1.25em;
-        line-height: 1.8;
-    }
-    .article-content ul {
-        list-style-type: disc;
-        padding-left: 1.5em;
-        margin-bottom: 1.25em;
-    }
-    .article-content ol {
-        list-style-type: decimal;
-        padding-left: 1.5em;
-        margin-bottom: 1.25em;
-    }
-    .article-content li {
-        margin-bottom: 0.5em;
-        padding-left: 0.5em;
-    }
-    .article-content li::marker {
-        color: var(--color-forest-moss-green-500);
-        font-weight: bold;
-    }
-    .article-content h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--color-carob-900);
-        margin-top: 2em;
-        margin-bottom: 1em;
-    }
-    .article-content h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--color-carob-800);
-        margin-top: 1.5em;
-        margin-bottom: 0.75em;
-    }
-    .article-content strong {
-        color: var(--color-carob-900);
-        font-weight: 700;
-    }
-    
-    /* Custom Scrollbar */
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #d2ab80; /* chai-500 */
-        border-radius: 10px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #bd9a73; /* chai-600 */
-    }
-</style>

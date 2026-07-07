@@ -611,3 +611,132 @@ html {
         padding: 0.5rem 1rem !important;
     }
 }
+
+/* Testimonials section: background blobs, floating icons, article prose,
+   testimonial marquee columns, and modal scrollbar */
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+.animate-blob {
+    animation: blob 7s infinite;
+}
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.font-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.prose p {
+    margin-bottom: 1.5em;
+    line-height: 1.8;
+}
+
+@keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(12deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+}
+@keyframes float-medium {
+    0%, 100% { transform: translateY(0) rotate(-12deg); }
+    50% { transform: translateY(-15px) rotate(-8deg); }
+}
+@keyframes float-fast {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
+}
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+.animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+
+/* Testimonials Infinite Scroll Columns */
+@keyframes testimonial-scroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+}
+.testimonial-track {
+    animation: testimonial-scroll var(--duration, 30s) linear infinite;
+    will-change: transform;
+}
+.testimonial-track-reverse {
+    animation-direction: reverse;
+}
+.testimonial-column:hover .testimonial-track {
+    animation-play-state: paused;
+}
+
+/* Respect the OS-level motion preference for every animated decorative
+   element in this section, not just the testimonial marquee — the blob
+   backgrounds and floating icons are otherwise infinite CSS animations too. */
+@media (prefers-reduced-motion: reduce) {
+    .testimonial-track,
+    .animate-blob,
+    .animate-float-slow,
+    .animate-float-medium,
+    .animate-float-fast {
+        animation: none;
+    }
+}
+
+/* Article Content Styling */
+.article-content p {
+    margin-bottom: 1.25em;
+    line-height: 1.8;
+}
+.article-content ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    margin-bottom: 1.25em;
+}
+.article-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5em;
+    margin-bottom: 1.25em;
+}
+.article-content li {
+    margin-bottom: 0.5em;
+    padding-left: 0.5em;
+}
+.article-content li::marker {
+    color: var(--color-forest-moss-green-500);
+    font-weight: bold;
+}
+.article-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-carob-900);
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+.article-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-carob-800);
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+}
+.article-content strong {
+    color: var(--color-carob-900);
+    font-weight: 700;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #d2ab80; /* chai-500 */
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #bd9a73; /* chai-600 */
+}

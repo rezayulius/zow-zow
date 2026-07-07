@@ -54,6 +54,8 @@ return [
         'save_up_to' => 'Hemat Hingga',
         'off' => 'OFF',
         'code' => 'Kode',
+        'copy_code' => 'Salin kode',
+        'code_copied' => 'Tersalin!',
         'ends' => 'Berakhir :date',
         'left' => 'sisa :count',
         'empty' => 'Belum ada promo aktif saat ini. Cek lagi nanti!',
@@ -66,6 +68,7 @@ return [
     ],
 
     'modal' => [
+        'close' => 'Tutup',
         'default_author' => 'Tim Zow',
         'views' => ':count kali dilihat',
         'share_joy' => 'Bagikan',
