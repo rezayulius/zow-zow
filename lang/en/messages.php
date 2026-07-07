@@ -39,4 +39,12 @@ return [
     'register' => 'Register',
     'location_title' => 'Visit Our Location',
     'location_subtitle' => 'Find us in the Heart of Kembang, South Jakarta',
+    'emergency' => 'Emergency',
+    'emergency_call' => 'Emergency Call',
+    'profile' => 'Profile',
+    'history' => 'History',
+    'sign_in' => 'Sign In',
+    'sign_up' => 'Sign Up',
+    'sign_out' => 'Sign Out',
+    'language' => 'Language',
 ];

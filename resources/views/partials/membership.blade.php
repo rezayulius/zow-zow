@@ -25,16 +25,16 @@
                 <span class="mr-3 flex items-center">
                     <x-animal-icon name="hamster" class="w-6 h-6 text-forest-moss-green-500" />
                 </span>
-                <span class="text-carob-600 font-medium text-sm tracking-wide uppercase">Join Our Family</span>
+                <span class="text-carob-600 font-medium text-sm tracking-wide uppercase">{{ __('membership.badge') }}</span>
             </div>
-            
+
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 leading-tight tracking-tight font-heading">
-                A Community That<br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Feels Like Home</span>
+                {{ __('membership.title_line1') }}<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">{{ __('membership.title_line2') }}</span>
             </h2>
-            
+
             <p class="text-xl text-carob-600 max-w-2xl mx-auto leading-relaxed">
-                Designed for Pawrents who treat pets as family. Enjoy priority access, special savings, and a community that shares your love.
+                {{ __('membership.subtitle') }}
             </p>
         </div>
 
@@ -44,29 +44,29 @@
                 <div class="w-12 h-12 bg-forest-moss-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="shield-check" class="w-6 h-6 text-forest-moss-green-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">Comprehensive Care</h4>
-                <p class="text-sm text-carob-500">Full health coverage</p>
+                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.care.title') }}</h4>
+                <p class="text-sm text-carob-500">{{ __('membership.features.care.desc') }}</p>
             </div>
             <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
                 <div class="w-12 h-12 bg-chai-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="tag" class="w-6 h-6 text-chai-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">Exclusive Rates</h4>
-                <p class="text-sm text-carob-500">Up to 20% off services</p>
+                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.rates.title') }}</h4>
+                <p class="text-sm text-carob-500">{{ __('membership.features.rates.desc') }}</p>
             </div>
             <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
                 <div class="w-12 h-12 bg-vanilla-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="message-circle" class="w-6 h-6 text-vanilla-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">24/7 Chat</h4>
-                <p class="text-sm text-carob-500">Direct vet access</p>
+                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.chat.title') }}</h4>
+                <p class="text-sm text-carob-500">{{ __('membership.features.chat.desc') }}</p>
             </div>
             <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
                 <div class="w-12 h-12 bg-carob-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="gift" class="w-6 h-6 text-carob-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">Monthly Perks</h4>
-                <p class="text-sm text-carob-500">Free treats & grooming</p>
+                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.perks.title') }}</h4>
+                <p class="text-sm text-carob-500">{{ __('membership.features.perks.desc') }}</p>
             </div>
         </div>
 
@@ -114,7 +114,7 @@
                                 <!-- Badge -->
                                 @if($isFeatured)
                                     <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-carob-800 shadow-sm flex items-center gap-1">
-                                        <span>👑</span> Most Loved
+                                        <span>👑</span> {{ __('membership.most_loved') }}
                                     </div>
                                 @endif
                                 
@@ -147,7 +147,7 @@
 
                                 <a href="#register-{{ $membership->id }}" 
                                    class="w-full py-3 rounded-xl font-bold text-sm text-center transition-all duration-300 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 {{ $p['btn'] }}">
-                                    Choose Plan
+                                    {{ __('membership.choose_plan') }}
                                 </a>
                             </div>
                         </div>
@@ -157,8 +157,8 @@
                      <div class="col-span-full text-center py-8">
                         <div class="bg-white rounded-3xl p-8 shadow-lg border border-dashed border-carob-200 max-w-lg mx-auto">
                             <i data-lucide="construction" class="w-12 h-12 text-carob-300 mx-auto mb-4"></i>
-                            <h3 class="text-xl font-bold text-carob-900 mb-2">Coming Soon</h3>
-                            <p class="text-sm text-carob-600">We are crafting our membership tiers. Stay tuned.</p>
+                            <h3 class="text-xl font-bold text-carob-900 mb-2">{{ __('membership.empty.title') }}</h3>
+                            <p class="text-sm text-carob-600">{{ __('membership.empty.subtitle') }}</p>
                         </div>
                     </div>
                 @endforelse
@@ -168,26 +168,26 @@
         <!-- Community CTA -->
         <div class="relative rounded-[3rem] overflow-hidden">
             <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Pet Community" loading="lazy" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="{{ __('membership.cta.pet_community_alt') }}" loading="lazy" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-r from-carob-900/90 via-carob-900/80 to-transparent"></div>
             </div>
-            
+
             <div class="relative z-10 p-12 md:p-20 max-w-3xl">
                 <h3 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                    Join a Community That<br/>
-                    <span class="text-chai-300">Feels Like Family</span>
+                    {{ __('membership.cta.title_line1') }}<br/>
+                    <span class="text-chai-300">{{ __('membership.cta.title_line2') }}</span>
                 </h3>
                 <p class="text-white/90 text-lg mb-10 leading-relaxed max-w-xl">
-                    Beyond perks and discounts, Zow membership connects you with fellow pet lovers who share your passion for providing the best life for their companions.
+                    {{ __('membership.cta.subtitle') }}
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-5">
                     <a href="#join-community" class="bg-chai-500 hover:bg-chai-600 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-chai-500/30 flex items-center justify-center">
                         <i data-lucide="heart-handshake" class="w-5 h-5 mr-2"></i>
-                        Join the Community
+                        {{ __('membership.cta.join_community') }}
                     </a>
                     <a href="#learn-more" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center">
-                        Discover Benefits
+                        {{ __('membership.cta.discover_benefits') }}
                     </a>
                 </div>
             </div>

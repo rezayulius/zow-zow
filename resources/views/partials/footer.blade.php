@@ -18,10 +18,10 @@
                     <img src="{{ asset('images/logo/zow-vet-logo-white.webp') }}" alt="Zow Vetique" width="500" height="223" loading="lazy" class="h-14 w-auto object-contain">
                 </div>
                 <p class="text-soft-linen-300 leading-relaxed font-medium">
-                    ZOW Vet — Stem Cell Therapy & Advanced Lab.
+                    {{ __('footer.tagline') }}
                 </p>
                 <p class="text-soft-linen-400 text-sm leading-relaxed">
-                    Perawatan modern untuk pets, dengan pendekatan medis yang presisi, penuh empati, dan didukung komunikasi yang hangat untuk setiap pawrent.
+                    {{ __('footer.description') }}
                 </p>
                 
                 <!-- Social Media Pills -->
@@ -66,15 +66,15 @@
             <div class="lg:col-span-2">
                 <h4 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-forest-moss-green-400"></span>
-                    Menu
+                    {{ __('footer.menu') }}
                 </h4>
                 <ul class="space-y-3">
                     @foreach([
-                        ['label' => 'Beranda', 'url' => '#beranda'],
-                        ['label' => 'Layanan', 'url' => '#health'],
-                        ['label' => 'Booking', 'url' => '#booking'],
-                        ['label' => 'Artikel', 'url' => '#testimoni'],
-                        ['label' => 'Kontak', 'url' => '#lokasi']
+                        ['label' => __('footer.links.home'), 'url' => '#beranda'],
+                        ['label' => __('footer.links.services'), 'url' => '#health'],
+                        ['label' => __('footer.links.booking'), 'url' => '#booking'],
+                        ['label' => __('footer.links.articles'), 'url' => '#testimoni'],
+                        ['label' => __('footer.links.contact'), 'url' => '#lokasi']
                     ] as $link)
                         <li>
                             <a href="{{ $link['url'] }}" class="text-soft-linen-400 hover:text-forest-moss-green-300 transition-colors flex items-center gap-2 group text-sm">
@@ -90,12 +90,10 @@
             <div class="lg:col-span-3">
                 <h4 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-chai-400"></span>
-                    Layanan
+                    {{ __('footer.services_heading') }}
                 </h4>
                 <ul class="space-y-3">
-                    @foreach([
-                        'Pemeriksaan Umum', 'Vaksinasi & Steril', 'Grooming Spa', 'Pet Hotel', 'UGD 24 Jam'
-                    ] as $service)
+                    @foreach(__('footer.services') as $service)
                         <li class="flex items-start gap-2 text-soft-linen-400 text-sm">
                             <i data-lucide="paw-print" class="w-3 h-3 mt-1 text-chai-500"></i>
                             {{ $service }}
@@ -108,7 +106,7 @@
             <div class="lg:col-span-3">
                 <h4 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-soft-blush-pink-400"></span>
-                    Hubungi Kami
+                    {{ __('footer.contact_us') }}
                 </h4>
                 <ul class="space-y-4">
                     <li class="flex items-start gap-3 text-soft-linen-400 text-sm">
@@ -138,7 +136,7 @@
                             <i data-lucide="phone-call" class="w-4 h-4 text-red-400"></i>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-xs font-bold text-red-400 uppercase tracking-wide">Emergency 24/7</span>
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-wide">{{ __('footer.emergency_24_7') }}</span>
                             <span class="font-bold text-white">+62 812 9591 1911</span>
                         </div>
                     </li>
@@ -149,11 +147,11 @@
 
         <!-- Bottom Bar -->
         <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-soft-linen-500">
-            <p>&copy; 2025 Zow Vetique. Dibuat dengan ❤️ untuk pecinta hewan.</p>
+            <p>{!! __('footer.copyright', ['year' => date('Y')]) !!}</p>
             <div class="flex gap-6">
-                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                <a href="#" class="hover:text-white transition-colors">{{ __('footer.privacy_policy') }}</a>
+                <a href="#" class="hover:text-white transition-colors">{{ __('footer.terms_of_service') }}</a>
+                <a href="#" class="hover:text-white transition-colors">{{ __('footer.sitemap') }}</a>
             </div>
         </div>
     </div>

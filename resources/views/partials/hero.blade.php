@@ -162,10 +162,10 @@
                                     <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg border border-soft-linen-100 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100 z-20">
                                         <div class="flex items-center justify-between">
                                             <div>
-                                                <p class="text-[0.6rem] sm:text-xs font-semibold text-deep-cocoa-brown-400 uppercase tracking-wider mb-0.5 sm:mb-1">Wellness Status</p>
+                                                <p class="text-[0.6rem] sm:text-xs font-semibold text-deep-cocoa-brown-400 uppercase tracking-wider mb-0.5 sm:mb-1">{{ __('hero.wellness_status') }}</p>
                                                 <div class="flex items-center gap-2">
                                                     <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full {{ $c['badge_dot'] }} animate-pulse"></div>
-                                                    <p class="text-xs sm:text-sm font-bold text-deep-cocoa-brown-700">Healthy & Happy</p>
+                                                    <p class="text-xs sm:text-sm font-bold text-deep-cocoa-brown-700">{{ __('hero.healthy_happy') }}</p>
                                                 </div>
                                             </div>
                                             <div class="bg-soft-linen-50 p-1.5 sm:p-2 rounded-lg">
@@ -177,7 +177,7 @@
 
                                 @if($secondaryImage)
                                 <div class="absolute top-[5%] right-[5%] sm:right-[15%] lg:right-0 w-[35%] sm:w-[30%] lg:w-[60%] aspect-square rounded-[2rem] overflow-hidden shadow-xl {{ $c['secondary_blob_shadow'] }} rotate-[6deg] opacity-90 transition-all duration-700 group-hover:rotate-[3deg] group-hover:translate-x-4 border-[4px] sm:border-[6px] border-white z-0 hidden sm:block">
-                                     <img src="{{ $secondaryImage }}" alt="Detail perawatan hewan ZOW Vetique" class="w-full h-full object-cover" loading="lazy">
+                                     <img src="{{ $secondaryImage }}" alt="{{ __('hero.secondary_image_alt') }}" class="w-full h-full object-cover" loading="lazy">
                                 </div>
                                 @endif
 
@@ -193,8 +193,8 @@
             <!-- Fallback if no slides -->
             <div class="slide active absolute inset-0 w-full h-full z-10 flex items-center justify-center">
                 <div class="text-center">
-                    <h1 class="text-4xl font-bold text-deep-cocoa-brown-800">Welcome to Zow Vetique</h1>
-                    <p class="text-xl text-deep-cocoa-brown-600 mt-4">A Second Home for Your Pet</p>
+                    <h1 class="text-4xl font-bold text-deep-cocoa-brown-800">{{ __('hero.fallback_title') }}</h1>
+                    <p class="text-xl text-deep-cocoa-brown-600 mt-4">{{ __('hero.fallback_subtitle') }}</p>
                 </div>
             </div>
         @endforelse
@@ -206,7 +206,7 @@
         <!-- Dots -->
         <div class="flex items-center gap-3">
             @foreach($heroSlides as $index => $slide)
-                <button class="slide-nav-btn w-3 h-3 rounded-full bg-deep-cocoa-brown-300 hover:bg-forest-moss-green-600 transition-all duration-300" data-slide="{{ $index }}" aria-label="Slide {{ $index + 1 }}"></button>
+                <button class="slide-nav-btn w-3 h-3 rounded-full bg-deep-cocoa-brown-300 hover:bg-forest-moss-green-600 transition-all duration-300" data-slide="{{ $index }}" aria-label="{{ __('hero.slide') }} {{ $index + 1 }}"></button>
             @endforeach
         </div>
     </div>

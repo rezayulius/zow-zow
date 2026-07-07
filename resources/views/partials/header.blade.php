@@ -75,7 +75,7 @@
                     <button id="btnEmergencyCall"
                         class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl transition-all duration-200 flex items-center gap-2 font-medium text-sm shadow-lg shadow-red-200 hover:shadow-red-300 transform hover:-translate-y-0.5 animate-pulse hover:animate-none group">
                         <i data-lucide="phone-call" class="w-3.5 h-3.5 fill-current"></i>
-                        <span>Emergency</span>
+                        <span>{{ __('messages.emergency') }}</span>
                     </button>
                     <a href="tel:+6281295911911" class="text-[10px] font-bold text-red-500 hover:text-red-600 mt-1 tracking-wide transition-colors">+62 812 9591 1911</a>
                 </div>
@@ -109,12 +109,12 @@
                                 <a href="{{ route('profile') }}"
                                     class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 text-sm">
                                     <i data-lucide="user" class="w-4 h-4"></i>
-                                    <span>Profile</span>
+                                    <span>{{ __('messages.profile') }}</span>
                                 </a>
                                 <a href="{{ route('history') }}"
                                     class="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-forest-moss-green-50/50 transition-all duration-200 text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 text-sm">
                                     <i data-lucide="history" class="w-4 h-4"></i>
-                                    <span>History</span>
+                                    <span>{{ __('messages.history') }}</span>
                                 </a>
                                 <div class="border-t border-soft-linen-100 my-1"></div>
                                 <form action="{{ route('auth.signout') }}" method="POST">
@@ -122,7 +122,7 @@
                                     <button type="submit"
                                         class="w-full flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-red-50 transition-all duration-200 text-red-600 hover:text-red-700 text-sm">
                                         <i data-lucide="log-out" class="w-4 h-4"></i>
-                                        <span>Sign Out</span>
+                                        <span>{{ __('messages.sign_out') }}</span>
                                     </button>
                                 </form>
                             </div>
@@ -132,11 +132,11 @@
                     <div class="flex items-center gap-2 ml-1">
                         <button data-open-signin
                             class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 font-medium text-sm px-4 py-2 rounded-xl hover:bg-soft-linen-100 transition-all duration-200">
-                            Sign In
+                            {{ __('messages.sign_in') }}
                         </button>
                         <button data-open-signup
                             class="bg-forest-moss-green-600 hover:bg-forest-moss-green-700 text-white px-5 py-2 rounded-xl transition-all duration-200 font-medium text-sm shadow-lg shadow-forest-moss-green-600/20 hover:shadow-forest-moss-green-600/30 transform hover:-translate-y-0.5">
-                            Sign Up
+                            {{ __('messages.sign_up') }}
                         </button>
                     </div>
                 @endauth
@@ -171,16 +171,16 @@
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <a href="{{ route('profile') }}" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white text-deep-cocoa-brown-600 text-sm font-bold border border-soft-linen-100 hover:bg-forest-moss-green-50 hover:text-forest-moss-green-700 transition-colors shadow-sm">
-                                <i data-lucide="user" class="w-4 h-4"></i> Profile
+                                <i data-lucide="user" class="w-4 h-4"></i> {{ __('messages.profile') }}
                             </a>
                             <a href="{{ route('history') }}" class="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white text-deep-cocoa-brown-600 text-sm font-bold border border-soft-linen-100 hover:bg-forest-moss-green-50 hover:text-forest-moss-green-700 transition-colors shadow-sm">
-                                <i data-lucide="history" class="w-4 h-4"></i> Riwayat
+                                <i data-lucide="history" class="w-4 h-4"></i> {{ __('messages.history') }}
                             </a>
                         </div>
                         <form action="{{ route('auth.signout') }}" method="POST" class="mt-3">
                             @csrf
                             <button type="submit" class="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-red-50 text-red-600 text-sm font-bold hover:bg-red-100 transition-colors">
-                                <i data-lucide="log-out" class="w-4 h-4"></i> Sign Out
+                                <i data-lucide="log-out" class="w-4 h-4"></i> {{ __('messages.sign_out') }}
                             </button>
                         </form>
                     </div>
@@ -188,11 +188,11 @@
                     <div class="grid grid-cols-2 gap-3 p-1">
                         <button data-open-signin
                             class="w-full text-deep-cocoa-brown-700 font-bold text-sm px-4 py-3 rounded-xl bg-soft-linen-100 hover:bg-soft-linen-200 transition-all duration-200">
-                            Sign In
+                            {{ __('messages.sign_in') }}
                         </button>
                         <button data-open-signup
                             class="w-full bg-forest-moss-green-600 hover:bg-forest-moss-green-700 text-white px-4 py-3 rounded-xl transition-all duration-200 font-bold text-sm shadow-md shadow-forest-moss-green-600/20">
-                            Sign Up
+                            {{ __('messages.sign_up') }}
                         </button>
                     </div>
                 @endauth
@@ -261,7 +261,7 @@
                 <div class="pt-4 border-t border-soft-linen-100 space-y-4">
                     <div class="flex items-center justify-between bg-soft-linen-50 rounded-xl p-2 px-3">
                         <span class="text-sm font-medium text-deep-cocoa-brown-600 flex items-center gap-2">
-                            <i data-lucide="languages" class="w-4 h-4"></i> Language
+                            <i data-lucide="languages" class="w-4 h-4"></i> {{ __('messages.language') }}
                         </span>
                         <x-lang-switch :locales="['id', 'en']" />
                     </div>
@@ -270,7 +270,7 @@
                         <button id="emergency-call-mobile"
                             class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 font-bold shadow-lg shadow-red-200 hover:shadow-red-300 transform active:scale-95">
                             <i data-lucide="phone-call" class="w-5 h-5 animate-pulse"></i>
-                            <span>Emergency Call</span>
+                            <span>{{ __('messages.emergency_call') }}</span>
                         </button>
                         <a href="tel:+6281295911911" class="text-xs font-bold text-red-500 hover:text-red-600 mt-2 tracking-wide transition-colors">+62 812 9591 1911</a>
                     </div>

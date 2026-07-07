@@ -39,4 +39,12 @@ return [
     'register' => 'Daftar',
     'location_title' => 'Kunjungi Lokasi Kami',
     'location_subtitle' => 'Temukan kami di Jantung Kembang Jakarta Selatan',
+    'emergency' => 'Darurat',
+    'emergency_call' => 'Panggilan Darurat',
+    'profile' => 'Profil',
+    'history' => 'Riwayat',
+    'sign_in' => 'Masuk',
+    'sign_up' => 'Daftar',
+    'sign_out' => 'Keluar',
+    'language' => 'Bahasa',
 ];

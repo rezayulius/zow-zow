@@ -21,13 +21,13 @@
                 <div class="mr-2 flex items-center">
                     <x-animal-icon name="bear" class="w-5 h-5 text-chai-600" />
                 </div>
-                Transparency & Trust
+                {{ __('pricing.badge') }}
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 leading-tight">
-                Transparent Care, <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">Trusted Value</span>
+                {{ __('pricing.title_line1') }} <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-chai-500 to-forest-moss-green-600">{{ __('pricing.title_line2') }}</span>
             </h2>
             <p class="text-carob-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                We believe in honest communication. Upfront estimates, no hidden costs, and clear explanations. Just genuine care for your family member.
+                {{ __('pricing.subtitle') }}
             </p>
         </div>
 
@@ -49,7 +49,7 @@
                     <div class="group relative flex flex-col h-full bg-white rounded-[2.5rem] border {{ $colors['border'] }} shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                         @if($package->is_popular)
                             <div class="absolute top-0 right-0 bg-gradient-to-bl from-chai-400 to-chai-600 text-white text-xs font-bold px-6 py-2 rounded-bl-2xl z-20 shadow-md">
-                                MOST LOVED
+                                {{ __('pricing.most_loved') }}
                             </div>
                         @endif
                         
@@ -101,11 +101,11 @@
                                         </div>
                                         
                                         <!-- Toggle button -->
-                                        <button class="expand-toggle w-full text-center py-2 text-sm font-medium {{ $colors['icon'] }} hover:bg-gray-50 rounded-lg transition-colors mt-2" 
+                                        <button class="expand-toggle w-full text-center py-2 text-sm font-medium {{ $colors['icon'] }} hover:bg-gray-50 rounded-lg transition-colors mt-2"
                                             data-expanded="false"
-                                            data-more-text="View all benefits"
-                                            data-less-text="Show less">
-                                            View all benefits
+                                            data-more-text="{{ __('pricing.view_all_benefits') }}"
+                                            data-less-text="{{ __('pricing.show_less') }}">
+                                            {{ __('pricing.view_all_benefits') }}
                                         </button>
                                     @endif
                                 </div>
@@ -113,7 +113,7 @@
 
                             <a href="#booking"
                                class="w-full {{ $colors['button'] }} text-white py-4 rounded-xl transition-all duration-300 font-bold text-center block shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]">
-                                Join Our Family
+                                {{ __('pricing.join_family') }}
                             </a>
                         </div>
                     </div>
@@ -125,8 +125,8 @@
                 <div class="bg-white rounded-3xl p-10 shadow-xl border border-vanilla-200 max-w-lg mx-auto relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-chai-400 to-forest-moss-green-500"></div>
                     <i data-lucide="coffee" class="w-16 h-16 text-chai-300 mx-auto mb-6"></i>
-                    <h3 class="text-2xl font-bold text-carob-900 mb-3">Membership Plans Coming Soon</h3>
-                    <p class="text-carob-600">We are crafting the perfect lifestyle packages for you and your pet. Stay tuned!</p>
+                    <h3 class="text-2xl font-bold text-carob-900 mb-3">{{ __('pricing.empty.title') }}</h3>
+                    <p class="text-carob-600">{{ __('pricing.empty.subtitle') }}</p>
                 </div>
             </div>
         @endif
@@ -138,9 +138,9 @@
             
             <div class="relative z-10">
                 <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-carob-900 mb-4">Building a Lifestyle Ecosystem</h3>
+                    <h3 class="text-3xl font-bold text-carob-900 mb-4">{{ __('pricing.ecosystem.title') }}</h3>
                     <p class="text-carob-700 max-w-3xl mx-auto text-lg">
-                        Zow vision goes beyond daily needs. We are nurturing wellness, joy, and community for both pets and people.
+                        {{ __('pricing.ecosystem.subtitle') }}
                     </p>
                 </div>
 
@@ -150,26 +150,26 @@
                         <div class="w-14 h-14 bg-forest-moss-green-100 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="leaf" class="w-7 h-7 text-forest-moss-green-600"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-carob-900 mb-3">Holistic Wellness</h4>
-                        <p class="text-carob-600">Comprehensive care that addresses physical health, mental well-being, and emotional balance.</p>
+                        <h4 class="text-xl font-bold text-carob-900 mb-3">{{ __('pricing.ecosystem.wellness.title') }}</h4>
+                        <p class="text-carob-600">{{ __('pricing.ecosystem.wellness.desc') }}</p>
                     </div>
-                    
+
                     <!-- Joy -->
                     <div class="bg-gradient-to-br from-chai-50 to-white p-8 rounded-3xl border border-chai-100 hover:shadow-lg transition-shadow">
                         <div class="w-14 h-14 bg-chai-100 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="smile" class="w-7 h-7 text-chai-600"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-carob-900 mb-3">Pure Joy</h4>
-                        <p class="text-carob-600">Creating moments of happiness through play, comfort, and stress-free experiences.</p>
+                        <h4 class="text-xl font-bold text-carob-900 mb-3">{{ __('pricing.ecosystem.joy.title') }}</h4>
+                        <p class="text-carob-600">{{ __('pricing.ecosystem.joy.desc') }}</p>
                     </div>
-                    
+
                     <!-- Community -->
                     <div class="bg-gradient-to-br from-vanilla-50 to-white p-8 rounded-3xl border border-vanilla-200 hover:shadow-lg transition-shadow">
                         <div class="w-14 h-14 bg-vanilla-100 rounded-2xl flex items-center justify-center mb-6">
                             <i data-lucide="users" class="w-7 h-7 text-vanilla-600"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-carob-900 mb-3">Vibrant Community</h4>
-                        <p class="text-carob-600">Connecting pet lovers in a supportive space that feels like a second home.</p>
+                        <h4 class="text-xl font-bold text-carob-900 mb-3">{{ __('pricing.ecosystem.community.title') }}</h4>
+                        <p class="text-carob-600">{{ __('pricing.ecosystem.community.desc') }}</p>
                     </div>
                 </div>
             </div>
@@ -181,11 +181,11 @@
              <div class="text-center mb-16">
                 <div class="inline-flex items-center bg-vanilla-100 text-chai-800 px-6 py-2 rounded-full text-sm font-medium mb-6">
                     <i data-lucide="sparkles" class="w-4 h-4 mr-2"></i>
-                    Connected Wellness
+                    {{ __('pricing.technology.badge') }}
                 </div>
-                <h3 class="text-3xl md:text-4xl font-bold text-carob-900 mb-6">Technology That Cares</h3>
+                <h3 class="text-3xl md:text-4xl font-bold text-carob-900 mb-6">{{ __('pricing.technology.title') }}</h3>
                 <p class="text-carob-600 max-w-2xl mx-auto text-lg">
-                    Advanced technology seamlessly integrated to provide peace of mind and enhance the bond between you and your pet.
+                    {{ __('pricing.technology.subtitle') }}
                 </p>
             </div>
 
@@ -198,16 +198,16 @@
                             <i data-lucide="calendar-heart" class="w-8 h-8 text-forest-moss-green-600"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-forest-moss-green-700 transition-colors">Seamless Care Scheduling</h3>
-                            <p class="text-carob-600 mb-4">Book appointments effortlessly. We value your time so you can spend more of it with your pet.</p>
+                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-forest-moss-green-700 transition-colors">{{ __('pricing.technology.scheduling.title') }}</h3>
+                            <p class="text-carob-600 mb-4">{{ __('pricing.technology.scheduling.desc') }}</p>
                             <ul class="space-y-2">
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-500 mr-2"></i>
-                                    Real-time Availability
+                                    {{ __('pricing.technology.scheduling.point1') }}
                                 </li>
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-500 mr-2"></i>
-                                    Instant Confirmation
+                                    {{ __('pricing.technology.scheduling.point2') }}
                                 </li>
                             </ul>
                         </div>
@@ -221,16 +221,16 @@
                             <i data-lucide="bot" class="w-8 h-8 text-chai-600"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-chai-700 transition-colors">24/7 Wellness Companion</h3>
-                            <p class="text-carob-600 mb-4">Our AI assistant is always awake to answer your concerns, because care shouldn't have office hours.</p>
+                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-chai-700 transition-colors">{{ __('pricing.technology.ai.title') }}</h3>
+                            <p class="text-carob-600 mb-4">{{ __('pricing.technology.ai.desc') }}</p>
                             <ul class="space-y-2">
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-chai-500 mr-2"></i>
-                                    Personalized Advice
+                                    {{ __('pricing.technology.ai.point1') }}
                                 </li>
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-chai-500 mr-2"></i>
-                                    Health Monitoring
+                                    {{ __('pricing.technology.ai.point2') }}
                                 </li>
                             </ul>
                         </div>
@@ -244,16 +244,16 @@
                             <i data-lucide="shield-check" class="w-8 h-8 text-vanilla-600"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-vanilla-700 transition-colors">Worry-Free Transactions</h3>
-                            <p class="text-carob-600 mb-4">Secure, transparent, and easy payment methods. Focus on love, not logistics.</p>
+                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-vanilla-700 transition-colors">{{ __('pricing.technology.payment.title') }}</h3>
+                            <p class="text-carob-600 mb-4">{{ __('pricing.technology.payment.desc') }}</p>
                             <ul class="space-y-2">
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-vanilla-500 mr-2"></i>
-                                    Multi-Payment Options
+                                    {{ __('pricing.technology.payment.point1') }}
                                 </li>
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-vanilla-500 mr-2"></i>
-                                    Digital Receipts
+                                    {{ __('pricing.technology.payment.point2') }}
                                 </li>
                             </ul>
                         </div>
@@ -267,16 +267,16 @@
                             <i data-lucide="bell-ring" class="w-8 h-8 text-forest-moss-green-600"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-forest-moss-green-700 transition-colors">Instant Peace of Mind</h3>
-                            <p class="text-carob-600 mb-4">Stay updated with real-time notifications about your pet's status and appointments.</p>
+                            <h3 class="text-xl font-bold text-carob-900 mb-2 group-hover:text-forest-moss-green-700 transition-colors">{{ __('pricing.technology.notification.title') }}</h3>
+                            <p class="text-carob-600 mb-4">{{ __('pricing.technology.notification.desc') }}</p>
                             <ul class="space-y-2">
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-500 mr-2"></i>
-                                    WhatsApp Updates
+                                    {{ __('pricing.technology.notification.point1') }}
                                 </li>
                                 <li class="flex items-center text-sm text-carob-700">
                                     <i data-lucide="check" class="w-4 h-4 text-forest-moss-green-500 mr-2"></i>
-                                    Live Status Tracking
+                                    {{ __('pricing.technology.notification.point2') }}
                                 </li>
                             </ul>
                         </div>
@@ -294,20 +294,20 @@
                 <div class="absolute bottom-0 right-0 w-48 h-48 bg-white opacity-10 rounded-full translate-x-1/2 translate-y-1/2"></div>
                 
                 <div class="relative z-10">
-                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Find Your Second Home?</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">{{ __('pricing.cta.title') }}</h3>
                     <p class="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
-                        Join the Zow lifestyle ecosystem today. Because your pet deserves a community that cares as much as you do.
+                        {{ __('pricing.cta.subtitle') }}
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
                         <a href="#booking"
                             class="bg-white text-carob-900 px-10 py-4 rounded-xl hover:bg-vanilla-50 transition-colors font-bold flex items-center justify-center shadow-lg hover:shadow-white/20">
                             <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
-                            Start Your Journey
+                            {{ __('pricing.cta.start_journey') }}
                         </a>
                         <button
                             class="bg-transparent border-2 border-white/30 text-white px-10 py-4 rounded-xl hover:bg-white/10 transition-colors font-bold flex items-center justify-center backdrop-blur-sm">
                             <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
-                            Chat With Us
+                            {{ __('pricing.cta.chat_with_us') }}
                         </button>
                     </div>
                 </div>

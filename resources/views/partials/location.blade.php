@@ -19,25 +19,25 @@
                 <div class="flex items-center">
                     <x-animal-icon name="bird" class="w-4 h-4 text-forest-moss-green-600" />
                 </div>
-                Location
+                {{ __('messages.location') }}
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight">
-                Visit Your <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Second Home</span>
+                {{ __('location.title_line1') }} <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">{{ __('location.title_line2') }}</span>
             </h2>
             <p class="text-lg text-carob-600 leading-relaxed">
-                A safe, comfortable, and warm environment in the heart of Kemang. Drop by for a check-up, a grooming session, or just to say hi!
+                {{ __('location.subtitle') }}
             </p>
-            
+
             <div class="mt-8 flex flex-wrap justify-center gap-4">
                 <a href="https://maps.app.goo.gl/va69apSq9NWWaDG16?g_st=iw" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center bg-white text-carob-800 px-6 py-3 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:border-forest-moss-green-300 transition-all duration-300">
                     <div class="w-8 h-8 bg-forest-moss-green-50 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
                         <i data-lucide="map-pin" class="w-4 h-4 text-forest-moss-green-600"></i>
                     </div>
-                    <span class="font-bold text-sm">Open in Maps</span>
+                    <span class="font-bold text-sm">{{ __('location.open_maps') }}</span>
                 </a>
                 <a href="https://wa.me/6281299990000" class="group inline-flex items-center bg-forest-moss-green-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-forest-moss-green-600 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                     <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
-                    <span class="font-bold text-sm">Chat on WhatsApp</span>
+                    <span class="font-bold text-sm">{{ __('location.chat_whatsapp') }}</span>
                 </a>
             </div>
         </div>
@@ -80,10 +80,10 @@
                 <!-- Facilities Grid -->
                 <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
                     @foreach([
-                        ['icon' => 'parking-circle', 'label' => 'Free Parking', 'color' => 'bg-chai-50 text-chai-600'],
-                        ['icon' => 'wifi', 'label' => 'Free WiFi', 'color' => 'bg-forest-moss-green-50 text-forest-moss-green-600'],
-                        ['icon' => 'coffee', 'label' => 'Pet Cafe', 'color' => 'bg-old-mustard-yellow-50 text-old-mustard-yellow-600'],
-                        ['icon' => 'snowflake', 'label' => 'Full AC', 'color' => 'bg-soft-blush-pink-50 text-soft-blush-pink-600'],
+                        ['icon' => 'parking-circle', 'label' => __('location.facilities.parking'), 'color' => 'bg-chai-50 text-chai-600'],
+                        ['icon' => 'wifi', 'label' => __('location.facilities.wifi'), 'color' => 'bg-forest-moss-green-50 text-forest-moss-green-600'],
+                        ['icon' => 'coffee', 'label' => __('location.facilities.cafe'), 'color' => 'bg-old-mustard-yellow-50 text-old-mustard-yellow-600'],
+                        ['icon' => 'snowflake', 'label' => __('location.facilities.ac'), 'color' => 'bg-soft-blush-pink-50 text-soft-blush-pink-600'],
                     ] as $facility)
                         <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm flex items-center gap-3 hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                             <div class="w-10 h-10 rounded-full {{ $facility['color'] }} flex items-center justify-center">
@@ -103,7 +103,7 @@
                     
                     <h3 class="text-2xl font-bold text-carob-900 mb-8 font-heading flex items-center gap-2">
                         <i data-lucide="info" class="w-6 h-6 text-forest-moss-green-500"></i>
-                        Clinic Info
+                        {{ __('location.clinic_info') }}
                     </h3>
 
                     <div class="space-y-8 relative z-10">
@@ -113,7 +113,7 @@
                                 <i data-lucide="map-pin" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-carob-900 mb-1">Visit Us</h4>
+                                <h4 class="font-bold text-carob-900 mb-1">{{ __('location.visit_us') }}</h4>
                                 <p class="text-sm text-carob-600 leading-relaxed">Jl. Prapanca Raya No.25A, Pulo, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160</p>
                             </div>
                         </div>
@@ -124,11 +124,11 @@
                                 <i data-lucide="phone" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-carob-900 mb-1">Call Us</h4>
+                                <h4 class="font-bold text-carob-900 mb-1">{{ __('location.call_us') }}</h4>
                                 <p class="text-sm text-carob-600 mb-2">0812 1908 8899</p>
                                 <a href="tel:+6281219088899" class="inline-flex items-center gap-1 text-xs font-bold text-white bg-forest-moss-green-500 hover:bg-forest-moss-green-600 px-3 py-1.5 rounded-full shadow-sm transition-all duration-300 group/link">
                                     <i data-lucide="phone" class="w-3 h-3"></i>
-                                    Call Now
+                                    {{ __('location.call_now') }}
                                 </a>
                             </div>
                         </div>
@@ -139,10 +139,10 @@
                                 <i data-lucide="clock" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-carob-900 mb-1">Opening Hours</h4>
+                                <h4 class="font-bold text-carob-900 mb-1">{{ __('location.opening_hours') }}</h4>
                                 <div class="space-y-1">
                                     <div class="flex justify-between text-sm w-full gap-8">
-                                        <span class="text-carob-500">Every Day</span>
+                                        <span class="text-carob-500">{{ __('location.every_day') }}</span>
                                         <span class="font-bold text-carob-800">07:00 AM - 10:00 PM</span>
                                     </div>
                                 </div>
@@ -154,8 +154,8 @@
                 <!-- Emergency Card (Small) -->
                 <div class="bg-gradient-to-br from-red-50 to-white rounded-[2rem] p-6 border border-red-100 shadow-sm flex items-center justify-between gap-4">
                     <div>
-                        <h4 class="font-bold text-red-900 text-sm uppercase tracking-wide mb-1">Emergency 24/7</h4>
-                        <p class="text-xs text-red-700/80">Urgent care when you need it.</p>
+                        <h4 class="font-bold text-red-900 text-sm uppercase tracking-wide mb-1">{{ __('location.emergency.title') }}</h4>
+                        <p class="text-xs text-red-700/80">{{ __('location.emergency.subtitle') }}</p>
                     </div>
                     <button id="btnEmergencyLocation" class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-200 hover:scale-110 hover:bg-red-600 transition-all duration-300 animate-pulse">
                         <i data-lucide="phone-call" class="w-5 h-5"></i>

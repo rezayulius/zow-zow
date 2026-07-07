@@ -26,7 +26,7 @@
         {{-- Navigation Tabs --}}
         <div class="flex justify-center mb-16 px-4">
             <div class="bg-white/80 backdrop-blur-md rounded-2xl md:rounded-full p-1.5 shadow-lg border border-white/50 flex flex-col md:flex-row w-full md:w-auto gap-2 md:gap-0">
-                @foreach(['testimonials' => 'Stories', 'articles' => 'Tips & Tricks', 'news' => 'Clinic News', 'promo' => 'Hot Deals', 'faqs' => 'FAQs'] as $key => $label)
+                @foreach(__('testimonials.tabs') as $key => $label)
                     <button class="tab-btn px-6 py-3 rounded-xl md:rounded-full font-bold text-sm transition-all duration-300 relative overflow-hidden group {{ $loop->first ? 'active text-white shadow-md' : 'text-carob-600 hover:text-carob-800 bg-white md:bg-transparent' }} flex-1 md:flex-initial shadow-sm md:shadow-none" 
                             data-tab="{{ $key }}">
                         <span class="relative z-10 flex items-center justify-start md:justify-center gap-3 md:gap-2">
@@ -59,23 +59,23 @@
             <div class="text-center mb-16 max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-chai-50 text-chai-700 text-xs font-bold uppercase tracking-wider mb-6 border border-chai-100">
                 <x-animal-icon name="bear" class="w-4 h-4 text-chai-600" />
-                Trusted by 500+ Pet Parents
+                {{ __('testimonials.stories.trusted_badge') }}
             </div>
                 <h2 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading leading-tight">
-                    Happy Pets,<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">Happier Parents</span>
+                    {{ __('testimonials.stories.title_line1') }}<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-moss-green-600 to-chai-600">{{ __('testimonials.stories.title_line2') }}</span>
                 </h2>
                 <p class="text-lg text-carob-600 leading-relaxed">
-                    Real stories from our community. Discover why Zow is the second home for so many furry friends.
+                    {{ __('testimonials.stories.subtitle') }}
                 </p>
             </div>
 
             {{-- Community Stats --}}
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
                 @foreach([
-                    ['icon' => 'users', 'val' => '500+', 'label' => 'Happy Clients', 'color' => 'forest-moss-green'],
-                    ['icon' => 'paw-print', 'val' => '1.2k+', 'label' => 'Pets Served', 'color' => 'chai'],
-                    ['icon' => 'star', 'val' => '4.9', 'label' => 'Average Rating', 'color' => 'old-mustard-yellow'],
-                    ['icon' => 'award', 'val' => '5+', 'label' => 'Years Caring', 'color' => 'soft-blush-pink']
+                    ['icon' => 'users', 'val' => '500+', 'label' => __('testimonials.stories.stats.happy_clients'), 'color' => 'forest-moss-green'],
+                    ['icon' => 'paw-print', 'val' => '1.2k+', 'label' => __('testimonials.stories.stats.pets_served'), 'color' => 'chai'],
+                    ['icon' => 'star', 'val' => '4.9', 'label' => __('testimonials.stories.stats.average_rating'), 'color' => 'old-mustard-yellow'],
+                    ['icon' => 'award', 'val' => '5+', 'label' => __('testimonials.stories.stats.years_caring'), 'color' => 'soft-blush-pink']
                 ] as $stat)
                     <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 text-center hover:-translate-y-1 transition-transform duration-300">
                         <div class="w-12 h-12 mx-auto bg-{{ $stat['color'] }}-50 rounded-2xl flex items-center justify-center mb-4 text-{{ $stat['color'] }}-600">
@@ -152,9 +152,9 @@
                                                         <h4 class="font-bold text-carob-900 text-sm">{{ $testimonial->name }}</h4>
                                                         <p class="text-xs text-carob-500">
                                                             @if($testimonial->pet_name)
-                                                                Parent of <span class="text-forest-moss-green-600 font-medium">{{ $testimonial->pet_name }}</span>
+                                                                {{ __('testimonials.stories.parent_of') }} <span class="text-forest-moss-green-600 font-medium">{{ $testimonial->pet_name }}</span>
                                                             @else
-                                                                Pet Parent
+                                                                {{ __('testimonials.stories.pet_parent') }}
                                                             @endif
                                                         </p>
                                                     </div>
@@ -170,7 +170,7 @@
             @else
                 <div class="text-center py-12 bg-white rounded-3xl border border-dashed border-carob-200">
                     <div class="text-4xl mb-4">💬</div>
-                    <p class="text-carob-600">No stories shared yet. Be the first!</p>
+                    <p class="text-carob-600">{{ __('testimonials.stories.empty') }}</p>
                 </div>
             @endif
 
@@ -186,17 +186,17 @@
                                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                             </svg>
                             <div>
-                                <h3 class="text-xl font-bold text-carob-900">Google Reviews</h3>
+                                <h3 class="text-xl font-bold text-carob-900">{{ __('testimonials.stories.google_reviews') }}</h3>
                                 @if($googleReviews['rating'])
                                     <p class="text-sm text-carob-500">
-                                        <span class="font-bold text-carob-800">{{ $googleReviews['rating'] }}</span> ★ from {{ $googleReviews['user_ratings_total'] }} reviews
+                                        <span class="font-bold text-carob-800">{{ $googleReviews['rating'] }}</span> {{ __('testimonials.stories.rating_from_reviews', ['total' => $googleReviews['user_ratings_total']]) }}
                                     </p>
                                 @endif
                             </div>
                         </div>
                         @if($googleReviews['url'])
                             <a href="{{ $googleReviews['url'] }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 transition-colors">
-                                See all reviews on Google
+                                {{ __('testimonials.stories.see_all_on_google') }}
                                 <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                             </a>
                         @endif
@@ -213,8 +213,8 @@
                                 <p class="google-review-text text-carob-700 leading-relaxed text-sm line-clamp-5">
                                     "{{ $review['text'] }}"
                                 </p>
-                                <button type="button" class="google-review-toggle hidden text-xs font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 mt-2 text-left" onclick="toggleGoogleReview(this)">
-                                    Baca selengkapnya
+                                <button type="button" class="google-review-toggle hidden text-xs font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 mt-2 text-left" onclick="toggleGoogleReview(this)" data-more-text="{{ __('testimonials.stories.read_more') }}" data-less-text="{{ __('testimonials.stories.show_less') }}">
+                                    {{ __('testimonials.stories.read_more') }}
                                 </button>
                                 <div class="flex items-center gap-3 mt-auto pt-6">
                                     @if($review['profile_photo_url'])
@@ -240,13 +240,13 @@
         <div id="articles-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-soft-blush-pink-50 text-soft-blush-pink-700 text-xs font-bold uppercase tracking-wider mb-6 border border-soft-blush-pink-100">
-                    <span>💡</span> Expert Knowledge
+                    <span>💡</span> {{ __('testimonials.articles.badge') }}
                 </div>
                 <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">
-                    Pet Care <span class="italic text-soft-blush-pink-600">Wisdom</span>
+                    {!! __('testimonials.articles.title') !!}
                 </h3>
                 <p class="text-lg text-carob-600 leading-relaxed">
-                    Tips, tricks, and deep dives into pet health from our veterinary experts.
+                    {{ __('testimonials.articles.subtitle') }}
                 </p>
             </div>
 
@@ -267,7 +267,7 @@
                             <!-- Category Badge -->
                             <div class="absolute top-4 left-4">
                                 <span class="bg-white/90 backdrop-blur-md text-carob-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                                    {{ $article->tags[0] ?? 'General' }}
+                                    {{ $article->tags[0] ?? __('testimonials.articles.default_category') }}
                                 </span>
                             </div>
                         </div>
@@ -278,7 +278,7 @@
                                 <i data-lucide="calendar" class="w-3 h-3"></i>
                                 {{ $article->published_at ? $article->published_at->format('M d, Y') : $article->created_at->format('M d, Y') }}
                                 <span class="w-1 h-1 bg-carob-300 rounded-full"></span>
-                                <span>{{ ceil(str_word_count(strip_tags($article->content)) / 200) }} min read</span>
+                                <span>{{ __('testimonials.articles.min_read', ['count' => ceil(str_word_count(strip_tags($article->content)) / 200)]) }}</span>
                             </div>
                             
                             <h3 class="text-xl font-bold text-carob-900 mb-3 leading-tight group-hover:text-forest-moss-green-600 transition-colors">
@@ -291,14 +291,14 @@
                             
                             <a href="#" onclick="openModal('modal-article-{{ $article->id }}')" 
                                class="inline-flex items-center text-sm font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 transition-colors group/link">
-                                Read Article 
+                                {{ __('testimonials.articles.read_article') }}
                                 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
                             </a>
                         </div>
                     </article>
                 @empty
                     <div class="col-span-full text-center py-12">
-                        <p class="text-carob-500">No articles available yet.</p>
+                        <p class="text-carob-500">{{ __('testimonials.articles.empty') }}</p>
                     </div>
                 @endforelse
             </div>
@@ -307,8 +307,8 @@
         {{-- News Tab Content --}}
         <div id="news-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Clinic Updates</h3>
-                <p class="text-lg text-carob-600">What's happening at Zow.</p>
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">{{ __('testimonials.news.title') }}</h3>
+                <p class="text-lg text-carob-600">{{ __('testimonials.news.subtitle') }}</p>
             </div>
             
             <div class="max-w-4xl mx-auto space-y-6">
@@ -324,7 +324,7 @@
                             <div class="flex items-center gap-3 mb-2">
                                 @if($newsItem->is_breaking)
                                     <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide flex items-center gap-1">
-                                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span> Breaking
+                                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span> {{ __('testimonials.news.breaking') }}
                                     </span>
                                 @endif
                                 <span class="text-xs font-medium text-carob-400 md:hidden">{{ $newsItem->created_at->format('M d, Y') }}</span>
@@ -337,10 +337,10 @@
                                 {{ $newsItem->excerpt ?: Str::limit(strip_tags($newsItem->content), 150) }}
                             </p>
                             <button onclick="openModal('modal-news-{{ $newsItem->id }}')" class="text-sm font-bold text-chai-600 hover:text-chai-700 underline decoration-2 decoration-chai-200 hover:decoration-chai-500 underline-offset-4 transition-all">
-                                Read Update
+                                {{ __('testimonials.news.read_update') }}
                             </button>
                         </div>
-                        
+
                         @if($newsItem->featured_image)
                             <div class="w-full md:w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
                                 <img src="{{ asset('storage/' . $newsItem->featured_image) }}" alt="{{ $newsItem->title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -348,7 +348,7 @@
                         @endif
                     </div>
                 @empty
-                    <div class="text-center py-12 text-carob-500">No news yet.</div>
+                    <div class="text-center py-12 text-carob-500">{{ __('testimonials.news.empty') }}</div>
                 @endforelse
             </div>
         </div>
@@ -356,8 +356,8 @@
         {{-- Promo Tab Content --}}
         <div id="promo-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Hot Deals</h3>
-                <p class="text-lg text-carob-600">Exclusive offers for our beloved community.</p>
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">{{ __('testimonials.promo.title') }}</h3>
+                <p class="text-lg text-carob-600">{{ __('testimonials.promo.subtitle') }}</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -377,7 +377,7 @@
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r"></div>
                                 
                                 <div class="absolute bottom-6 left-6 text-white">
-                                    <div class="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">Save Up To</div>
+                                    <div class="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">{{ __('testimonials.promo.save_up_to') }}</div>
                                     <div class="text-4xl font-extrabold tracking-tight">
                                         @if($promo->discount_type === 'percentage')
                                             {{ $promo->discount_value }}%
@@ -385,7 +385,7 @@
                                             Rp{{ number_format($promo->discount_value / 1000, 0) }}k
                                         @endif
                                     </div>
-                                    <div class="text-sm font-bold opacity-90">OFF</div>
+                                    <div class="text-sm font-bold opacity-90">{{ __('testimonials.promo.off') }}</div>
                                 </div>
                             </div>
                             
@@ -395,7 +395,7 @@
                                 <p class="text-carob-600 text-sm mb-6 flex-1">{{ $promo->description }}</p>
                                 
                                 <div class="bg-soft-linen-50 border-2 border-dashed border-soft-linen-200 rounded-xl p-4 flex items-center justify-between mb-4">
-                                    <div class="text-xs font-bold text-carob-400 uppercase tracking-wide">Code</div>
+                                    <div class="text-xs font-bold text-carob-400 uppercase tracking-wide">{{ __('testimonials.promo.code') }}</div>
                                     <div class="font-mono font-bold text-lg text-carob-800 tracking-wider select-all">{{ $promo->promo_code }}</div>
                                     <button class="text-carob-400 hover:text-forest-moss-green-600 transition-colors" title="Copy">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
@@ -405,17 +405,17 @@
                                 <div class="flex items-center justify-between text-xs font-medium text-carob-400">
                                     <div class="flex items-center gap-1.5">
                                         <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-                                        Ends {{ \Carbon\Carbon::parse($promo->end_date)->format('M d') }}
+                                        {{ __('testimonials.promo.ends', ['date' => \Carbon\Carbon::parse($promo->end_date)->format('M d')]) }}
                                     </div>
                                     @if($promo->usage_limit)
-                                        <div class="text-orange-500">{{ $promo->usage_limit - $promo->used_count }} left</div>
+                                        <div class="text-orange-500">{{ __('testimonials.promo.left', ['count' => $promo->usage_limit - $promo->used_count]) }}</div>
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 @empty
-                    <div class="col-span-full text-center py-12 text-carob-500">No active promos right now. Check back later!</div>
+                    <div class="col-span-full text-center py-12 text-carob-500">{{ __('testimonials.promo.empty') }}</div>
                 @endforelse
             </div>
         </div>
@@ -423,8 +423,8 @@
         {{-- FAQs Tab Content --}}
         <div id="faqs-content" class="tab-content hidden transition-opacity duration-500">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">Frequently Asked Questions</h3>
-                <p class="text-lg text-carob-600">Common questions about our services and care.</p>
+                <h3 class="text-4xl md:text-5xl font-bold text-carob-900 mb-6 font-heading">{{ __('testimonials.faqs.title') }}</h3>
+                <p class="text-lg text-carob-600">{{ __('testimonials.faqs.subtitle') }}</p>
             </div>
 
             <div class="max-w-3xl mx-auto space-y-4">
@@ -443,7 +443,7 @@
                         </div>
                     </div>
                 @empty
-                    <div class="text-center py-12 text-carob-500">No FAQs available yet.</div>
+                    <div class="text-center py-12 text-carob-500">{{ __('testimonials.faqs.empty') }}</div>
                 @endforelse
             </div>
         </div>
@@ -513,7 +513,7 @@
                                 <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
                                     <i data-lucide="user" class="w-4 h-4"></i>
                                 </div>
-                                <span class="font-medium">{{ $item->author ?? 'Zow Team' }}</span>
+                                <span class="font-medium">{{ $item->author ?? __('testimonials.modal.default_author') }}</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
@@ -526,7 +526,7 @@
                                     <div class="w-8 h-8 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-600">
                                         <i data-lucide="eye" class="w-4 h-4"></i>
                                     </div>
-                                    <span class="font-medium" id="views-count-{{ $type }}-{{ $item->id }}">{{ $item->views }} views</span>
+                                    <span class="font-medium" id="views-count-{{ $type }}-{{ $item->id }}" data-views-template="{{ __('testimonials.modal.views', ['count' => '__COUNT__']) }}">{{ __('testimonials.modal.views', ['count' => $item->views]) }}</span>
                                 </div>
                             @endif
                         </div>
@@ -547,7 +547,7 @@
                     <!-- Footer -->
                     <div class="bg-soft-linen-50/50 p-4 md:px-8 border-t border-gray-100 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 backdrop-blur-sm">
                         <div class="text-xs font-bold text-carob-400 uppercase tracking-wider">
-                            Share Joy
+                            {{ __('testimonials.modal.share_joy') }}
                         </div>
                         <div class="flex gap-3"
                              data-share-url="{{ url('/') }}/#modal-{{ $type }}-{{ $item->id }}"
@@ -556,22 +556,24 @@
                             <button type="button" onclick="shareToFacebook(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-[#1877F2] hover:text-white hover:border-transparent transition-all shadow-sm group">
                                 <img src="https://cdn.simpleicons.org/facebook/currentColor"
                                     alt="Facebook"
+                                    width="14" height="14" loading="lazy"
                                     class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
-                                Facebook
+                                {{ __('testimonials.modal.facebook') }}
                             </button>
 
                             <!-- X (Twitter) -->
                             <button type="button" onclick="shareToX(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm group">
                                 <img src="https://cdn.simpleicons.org/x/currentColor"
                                     alt="X"
+                                    width="14" height="14" loading="lazy"
                                     class="w-3.5 h-3.5 group-hover:scale-110 transition-transform">
-                                X
+                                {{ __('testimonials.modal.x') }}
                             </button>
 
                             <!-- Copy Link -->
-                            <button type="button" onclick="copyShareLink(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group">
+                            <button type="button" onclick="copyShareLink(this)" class="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 text-carob-600 text-xs font-bold hover:bg-forest-moss-green-500 hover:text-white hover:border-transparent transition-all shadow-sm group" data-copied-text="{{ __('testimonials.modal.copied') }}">
                                 <i data-lucide="link" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                                <span class="copy-link-label">Copy Link</span>
+                                <span class="copy-link-label">{{ __('testimonials.modal.copy_link') }}</span>
                             </button>
                         </div>
                     </div>
@@ -587,7 +589,7 @@ function toggleGoogleReview(button) {
     const text = button.previousElementSibling;
     const expanded = text.classList.toggle('line-clamp-5');
     text.classList.toggle('line-clamp-none');
-    button.textContent = expanded ? 'Baca selengkapnya' : 'Sembunyikan';
+    button.textContent = expanded ? button.dataset.moreText : button.dataset.lessText;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -707,7 +709,8 @@ function trackModalView(modalId) {
             if (!data) return;
             const counter = document.getElementById(`views-count-${type}-${contentId}`);
             if (counter) {
-                counter.textContent = `${data.views} views`;
+                const template = counter.dataset.viewsTemplate || '__COUNT__ views';
+                counter.textContent = template.replace('__COUNT__', data.views);
             }
         })
         .catch(() => {});
@@ -740,7 +743,7 @@ function copyShareLink(el) {
 
     const originalLabel = label.textContent;
     const showCopied = () => {
-        label.textContent = 'Copied!';
+        label.textContent = button.dataset.copiedText || 'Copied!';
         setTimeout(() => { label.textContent = originalLabel; }, 2000);
     };
 

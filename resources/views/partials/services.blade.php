@@ -21,64 +21,63 @@
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
         <div class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border-2 border-forest-moss-green-100 shadow-sm mb-8 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group cursor-default">
             <span class="w-3 h-3 rounded-full bg-forest-moss-green-500 group-hover:animate-ping"></span>
-            <span class="text-sm font-bold text-forest-moss-green-700 tracking-wide uppercase">Our Philosophy</span>
+            <span class="text-sm font-bold text-forest-moss-green-700 tracking-wide uppercase">{{ __('services.philosophy.badge') }}</span>
         </div>
 
         <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-medium text-carob-900 mb-6 leading-[1.1] max-w-6xl mx-auto relative">
-            More than just a clinic.<br class="hidden md:block">
+            {{ __('services.philosophy.title') }}<br class="hidden md:block">
             <span class="block text-xl md:text-3xl lg:text-4xl mt-4 text-carob-600 font-sans font-light italic opacity-90">
-                ZOW Vet is your pet's <span class="text-chai-600 font-medium not-italic decoration-wavy underline decoration-chai-300">second home</span>.
+                {{ __('services.philosophy.title_highlight_prefix') }} <span class="text-chai-600 font-medium not-italic decoration-wavy underline decoration-chai-300">{{ __('services.philosophy.title_highlight') }}</span>{{ __('services.philosophy.title_highlight_suffix') }}
             </span>
         </h2>
 
         <p class="text-base md:text-xl text-carob-700 max-w-4xl mx-auto leading-relaxed mb-8 font-light">
-            We build emotional connections, not just medical ones.
-            Our core values define every interaction:
+            {{ __('services.philosophy.subtitle') }}
         </p>
-        
+
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
-                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Caring</span>
-                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Genuine empathy & attention</span>
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">{{ __('services.philosophy.values.caring.title') }}</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">{{ __('services.philosophy.values.caring.desc') }}</span>
             </div>
             <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
-                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Confident</span>
-                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Professional expertise</span>
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">{{ __('services.philosophy.values.confident.title') }}</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">{{ __('services.philosophy.values.confident.desc') }}</span>
             </div>
             <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
-                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Truthful</span>
-                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Honest & transparent</span>
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">{{ __('services.philosophy.values.truthful.title') }}</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">{{ __('services.philosophy.values.truthful.desc') }}</span>
             </div>
             <div class="bg-white/80 backdrop-blur-sm p-4 sm:p-6 rounded-2xl border border-forest-moss-green-100 shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-center">
-                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">Warm</span>
-                <span class="text-xs sm:text-sm text-carob-600 leading-tight">Friendly & welcoming</span>
+                <span class="block font-bold text-forest-moss-green-700 text-base sm:text-lg mb-1">{{ __('services.philosophy.values.warm.title') }}</span>
+                <span class="text-xs sm:text-sm text-carob-600 leading-tight">{{ __('services.philosophy.values.warm.desc') }}</span>
             </div>
         </div>
 
         <!-- Service Approach -->
         <div class="max-w-5xl mx-auto">
-            <h3 class="text-xl md:text-2xl font-heading text-carob-900 mb-6 md:mb-8">Our Service Approach</h3>
+            <h3 class="text-xl md:text-2xl font-heading text-carob-900 mb-6 md:mb-8">{{ __('services.philosophy.approach_title') }}</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-left">
                 <div class="bg-white p-5 md:p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform h-full">
                     <div class="w-10 h-10 md:w-12 md:h-12 bg-forest-moss-green-100 rounded-full flex items-center justify-center mb-4 text-forest-moss-green-600">
                         <i data-lucide="search" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">Thorough Exam</h4>
-                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">Every visit starts with a careful, comprehensive examination of your pet's condition.</p>
+                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">{{ __('services.philosophy.approach.exam.title') }}</h4>
+                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">{{ __('services.philosophy.approach.exam.desc') }}</p>
                 </div>
                 <div class="bg-white p-5 md:p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform h-full">
                     <div class="w-10 h-10 md:w-12 md:h-12 bg-chai-100 rounded-full flex items-center justify-center mb-4 text-chai-600">
                         <i data-lucide="message-circle" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">Simple Explanation</h4>
-                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">We explain medical conditions simply, avoiding confusing jargon so you truly understand.</p>
+                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">{{ __('services.philosophy.approach.explanation.title') }}</h4>
+                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">{{ __('services.philosophy.approach.explanation.desc') }}</p>
                 </div>
                 <div class="bg-white p-5 md:p-6 rounded-3xl border border-carob-50 shadow-sm hover:-translate-y-1 transition-transform h-full">
                     <div class="w-10 h-10 md:w-12 md:h-12 bg-soft-blush-pink-100 rounded-full flex items-center justify-center mb-4 text-soft-blush-pink-600">
                         <i data-lucide="heart-handshake" class="w-5 h-5 md:w-6 md:h-6"></i>
                     </div>
-                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">Open Discussion</h4>
-                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">We discuss treatment options and costs openly, involving you in every decision.</p>
+                    <h4 class="font-bold text-base md:text-lg text-carob-900 mb-2">{{ __('services.philosophy.approach.discussion.title') }}</h4>
+                    <p class="text-xs md:text-sm text-carob-600 leading-relaxed">{{ __('services.philosophy.approach.discussion.desc') }}</p>
                 </div>
             </div>
         </div>
@@ -101,11 +100,9 @@
             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-forest-moss-green-100 text-forest-moss-green-600 mb-6 rotate-3 hover:rotate-12 transition-transform duration-500 shadow-xl shadow-forest-moss-green-200/50 border-4 border-white">
                 <i data-lucide="stethoscope" class="w-10 h-10"></i>
             </div>
-            <h3 class="text-4xl md:text-5xl font-heading text-forest-moss-green-900 mb-4">Professional Health Care</h3>
+            <h3 class="text-4xl md:text-5xl font-heading text-forest-moss-green-900 mb-4">{{ __('services.health.title') }}</h3>
             <p class="text-forest-moss-green-700/80 text-xl max-w-2xl mx-auto">
-                From accurate diagnosis to modern therapies like 
-                <span class="text-forest-moss-green-600 font-bold italic">Stem Cell</span> & 
-                <span class="text-forest-moss-green-600 font-bold italic">Laser Therapy</span>.
+                {!! __('services.health.subtitle') !!}
             </p>
         </div>
 
@@ -114,7 +111,7 @@
                 @php
                     $colors = ['forest-moss-green', 'pistache', 'mint']; // Health specific colors
                     $color = $colors[$index % 3];
-                    $badges = ['POPULAR', 'ESSENTIAL', 'PREMIUM'];
+                    $badges = __('services.health.badges');
                     $badge = $badges[$index % 3];
 
                     $defaultImages = [
@@ -127,11 +124,11 @@
 
                     if (empty($features)) {
                         if (str_contains(strtolower($service->title), 'konsultasi')) {
-                            $features = ['Pemeriksaan kesehatan lengkap', 'Konsultasi dokter berpengalaman', 'Diagnosis akurat'];
+                            $features = __('services.health.default_features.consultation');
                         } elseif (str_contains(strtolower($service->title), 'vaksin')) {
-                            $features = ['Vaksin inti & booster', 'Sertifikat vaksinasi', 'Follow-up kesehatan'];
+                            $features = __('services.health.default_features.vaccination');
                         } else {
-                            $features = ['Perawatan profesional', 'Teknologi modern', 'Hasil terjamin'];
+                            $features = __('services.health.default_features.default');
                         }
                     }
                 @endphp
@@ -176,7 +173,7 @@
 
                         <div class="mt-auto pt-4 border-t border-forest-moss-green-100 flex items-center justify-between">
                             <div class="text-left">
-                                <span class="block text-[10px] text-forest-moss-green-500 font-medium uppercase tracking-wide">Start from</span>
+                                <span class="block text-[10px] text-forest-moss-green-500 font-medium uppercase tracking-wide">{{ __('services.health.start_from') }}</span>
                                 <span class="text-lg font-bold text-forest-moss-green-700">
                                     Rp {{ number_format($service->price, 0, ',', '.') }}
                                 </span>
@@ -189,7 +186,7 @@
                 </div>
             @empty
                 <div class="col-span-full text-center py-12 bg-forest-moss-green-50/50 rounded-3xl border border-forest-moss-green-100">
-                    <p class="text-forest-moss-green-600">No health services available at the moment.</p>
+                    <p class="text-forest-moss-green-600">{{ __('services.health.empty') }}</p>
                 </div>
             @endforelse
         </div>
@@ -212,10 +209,9 @@
             <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-chai-100 text-chai-600 mb-6 -rotate-3 hover:-rotate-12 transition-transform duration-500 shadow-xl shadow-chai-200/50 border-4 border-white">
                 <i data-lucide="sparkles" class="w-10 h-10"></i>
             </div>
-            <h3 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">Wellness & Prevention</h3>
+            <h3 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">{{ __('services.wellness.title') }}</h3>
             <p class="text-chai-800/80 text-xl max-w-2xl mx-auto">
-                Focusing on prevention and quality of life. We educate pawrents on healthy lifestyles for a 
-                <span class="text-chai-600 font-bold italic">joyful future!</span>
+                {!! __('services.wellness.subtitle') !!}
             </p>
         </div>
 
@@ -225,9 +221,9 @@
                 @php
                     $colors = ['chai', 'rusty-caramel', 'vanilla']; // Wellness specific colors
                     $color = $colors[$index % 3];
-                    $badges = ['TRENDING', 'PREMIUM', 'RELAXING'];
+                    $badges = __('services.wellness.badges');
                     $badge = $badges[$index % 3];
-                    
+
                     $defaultImages = [
                         'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                         'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
@@ -238,13 +234,13 @@
 
                     if (empty($features)) {
                         if (str_contains(strtolower($service->title), 'grooming') || str_contains(strtolower($service->title), 'salon')) {
-                            $features = ['Grooming lengkap', 'Potong kuku profesional', 'Mandi aromaterapi'];
+                            $features = __('services.wellness.default_features.grooming');
                         } elseif (str_contains(strtolower($service->title), 'hotel') || str_contains(strtolower($service->title), 'daycare')) {
-                            $features = ['Pengawasan 24/7', 'Kamar ber-AC', 'Layanan makan premium'];
+                            $features = __('services.wellness.default_features.hotel');
                         } elseif (str_contains(strtolower($service->title), 'cafe') || str_contains(strtolower($service->title), 'kafe')) {
-                            $features = ['Menu spesial hewan', 'Tempat bermain luas', 'WiFi gratis'];
+                            $features = __('services.wellness.default_features.cafe');
                         } else {
-                            $features = ['Layanan berkualitas', 'Fasilitas modern', 'Pengalaman terbaik'];
+                            $features = __('services.wellness.default_features.default');
                         }
                     }
                 @endphp
@@ -294,7 +290,7 @@
                                 </span>
                             </div>
                             <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-2xl bg-chai-100 text-chai-800 font-bold hover:bg-chai-600 hover:text-white transition-all duration-300 flex items-center gap-2 group-hover:shadow-lg hover:scale-105 shadow-chai-100">
-                                <span class="text-sm">Reserve</span>
+                                <span class="text-sm">{{ __('services.wellness.reserve') }}</span>
                                 <i data-lucide="calendar-heart" class="w-4 h-4"></i>
                             </a>
                         </div>
@@ -302,7 +298,7 @@
                 </div>
             @empty
                 <div class="col-span-full text-center py-12 bg-chai-50/50 rounded-3xl border border-chai-100">
-                    <p class="text-chai-600">Wellness services coming soon.</p>
+                    <p class="text-chai-600">{{ __('services.wellness.empty') }}</p>
                 </div>
             @endforelse
         </div>
@@ -328,7 +324,7 @@
         <div class="relative rounded-[3rem] overflow-hidden bg-carob-900 text-white mb-16 shadow-2xl shadow-carob-900/30 group transform transition-all hover:scale-[1.01] duration-500">
             <div class="absolute inset-0">
                 <div class="absolute inset-0 bg-gradient-to-r from-carob-900 via-carob-800/90 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Pet Care" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
+                <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="{{ __('services.booking.pet_care_alt') }}" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
                 
                 <!-- Joyful decorative circles -->
                 <div class="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse-slow z-20"></div>
@@ -339,22 +335,22 @@
                 <div class="max-w-2xl text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 lg:mb-8 hover:bg-white/20 transition-colors cursor-default">
                         <span class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></span>
-                        <span class="text-xs font-bold tracking-wide uppercase text-white">Online Booking Available</span>
+                        <span class="text-xs font-bold tracking-wide uppercase text-white">{{ __('services.booking.badge') }}</span>
                     </div>
-                    <h3 class="text-3xl md:text-5xl lg:text-6xl font-heading font-medium mb-4 lg:mb-6 leading-tight">Ready to visit your pet's <br> <span class="italic text-chai-300 font-heading">second home?</span></h3>
+                    <h3 class="text-3xl md:text-5xl lg:text-6xl font-heading font-medium mb-4 lg:mb-6 leading-tight">{{ __('services.booking.title_line1') }} <br> <span class="italic text-chai-300 font-heading">{{ __('services.booking.title_line2') }}</span></h3>
                     <p class="text-carob-100 text-base md:text-lg lg:text-xl leading-relaxed opacity-90 font-light">
-                        Schedule an appointment in seconds via Digitail. Whether it's a check-up, grooming session, or a playdate.
+                        {{ __('services.booking.subtitle') }}
                     </p>
                 </div>
 
                 <div class="flex flex-col gap-4 w-full lg:w-auto min-w-[300px]">
                     <a href="https://vet.digitail.io/clinics/zow-vet-clinic" target="_blank" rel="noopener noreferrer" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white text-carob-900 rounded-2xl font-bold hover:bg-forest-moss-green-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-3 transform hover:-translate-y-1 hover:scale-105 group-btn">
                         <i data-lucide="calendar-plus" class="w-5 h-5 lg:w-6 lg:h-6 group-hover:rotate-12 transition-transform"></i>
-                        <span class="text-base lg:text-lg">Book Appointment</span>
+                        <span class="text-base lg:text-lg">{{ __('services.booking.book_appointment') }}</span>
                     </a>
                     <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
                         <i data-lucide="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
-                        <span class="text-base lg:text-lg">Chat on WhatsApp</span>
+                        <span class="text-base lg:text-lg">{{ __('services.booking.chat_whatsapp') }}</span>
                     </a>
                 </div>
             </div>
@@ -362,8 +358,8 @@
 
         <!-- Meet Our Experts -->
         <div class="mb-10 text-center">
-            <h3 class="text-4xl md:text-5xl font-heading text-carob-900 mb-6">Meet Our Experts</h3>
-            <p class="text-carob-600 text-xl max-w-2xl mx-auto font-light">Dedicated professionals who treat your pets like their own family.</p>
+            <h3 class="text-4xl md:text-5xl font-heading text-carob-900 mb-6">{{ __('services.experts.title') }}</h3>
+            <p class="text-carob-600 text-xl max-w-2xl mx-auto font-light">{{ __('services.experts.subtitle') }}</p>
         </div>
 
         @php
@@ -378,7 +374,7 @@
                     class="vet-schedule-trigger group relative block w-full h-full text-left appearance-none bg-transparent border-0 p-0 cursor-pointer"
                     aria-haspopup="dialog"
                     data-vet-id="{{ $vet['id'] ?? '' }}"
-                    data-vet-name="{{ $vet['name_with_title'] ?? $vet['full_name'] ?? 'Dokter' }}"
+                    data-vet-name="{{ $vet['name_with_title'] ?? $vet['full_name'] ?? __('services.experts.fallback_name') }}"
                     data-vet-avatar="{{ $vet['avatar'] ?? '' }}">
 
                     <div class="bg-white rounded-[2rem] overflow-hidden border border-carob-100 hover:border-carob-300 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 h-full flex flex-col relative shadow-lg">
@@ -388,7 +384,7 @@
                             <div class="absolute top-3 right-3">
                                 <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-md shadow-sm border border-white/50 text-[10px] font-bold tracking-wide uppercase text-forest-moss-green-700">
                                     <span class="w-1.5 h-1.5 rounded-full bg-forest-moss-green-500 animate-pulse"></span>
-                                    Available Now
+                                    {{ __('services.experts.available_now') }}
                                 </div>
                             </div>
                         </div>
@@ -402,7 +398,7 @@
                                 @if(!empty($vet['avatar']))
                                     <img
                                         src="{{ trim($vet['avatar']) }}"
-                                        alt="{{ $vet['full_name'] ?? 'Doctor' }}"
+                                        alt="{{ $vet['full_name'] ?? __('services.experts.fallback_alt') }}"
                                         loading="lazy"
                                         class="w-full h-full object-cover"
                                     >
@@ -417,18 +413,18 @@
                             <!-- Name -->
                             <div class="text-center mb-4">
                                 <h3 class="text-lg font-bold text-carob-900 font-heading leading-tight mb-1 group-hover:text-forest-moss-green-700 transition-colors">
-                                    {{ $vet['name_with_title'] ?? $vet['full_name'] ?? 'Dokter' }}
+                                    {{ $vet['name_with_title'] ?? $vet['full_name'] ?? __('services.experts.fallback_name') }}
                                 </h3>
 
                                 <p class="text-carob-500 text-xs font-medium uppercase tracking-wider">
-                                    {{ $vet['job_title'] ?? 'Veterinarian' }}
+                                    {{ $vet['job_title'] ?? __('services.experts.fallback_job_title') }}
                                 </p>
                             </div>
 
                             <!-- Button -->
                             <div class="mt-auto">
                                 <div class="w-full py-2.5 rounded-xl bg-carob-900 text-white font-bold text-sm group-hover:bg-forest-moss-green-700 transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform group-hover:-translate-y-0.5">
-                                    <span>Check Vet Availability</span>
+                                    <span>{{ __('services.experts.check_availability') }}</span>
                                     <i data-lucide="calendar-search" class="w-4 h-4"></i>
                                 </div>
                             </div>
@@ -441,7 +437,7 @@
             @empty
                 <div class="col-span-full text-center py-12">
                     <p class="text-carob-500">
-                        No doctors available at the moment.
+                        {{ __('services.experts.empty') }}
                     </p>
                 </div>
             @endforelse
