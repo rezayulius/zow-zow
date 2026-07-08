@@ -630,6 +630,20 @@ html {
     animation-delay: 4s;
 }
 
+/* Slower variants of Tailwind's built-in pulse/bounce/spin keyframes, used by
+   decorative background blobs across most homepage sections. Consolidated
+   here (was previously copy-pasted into a per-partial <style> block on every
+   page that used them, bloating every page's HTML with the same CSS text). */
+.animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.animate-bounce-slow {
+    animation: bounce 3s infinite;
+}
+.animate-spin-slow {
+    animation: spin 8s linear infinite;
+}
+
 .font-heading {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -679,7 +693,10 @@ html {
     .animate-blob,
     .animate-float-slow,
     .animate-float-medium,
-    .animate-float-fast {
+    .animate-float-fast,
+    .animate-pulse-slow,
+    .animate-bounce-slow,
+    .animate-spin-slow {
         animation: none;
     }
 }

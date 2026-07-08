@@ -37,5 +37,15 @@ class AppServiceProvider extends ServiceProvider
         }
 
         View::composer('partials.header', NavigationComposer::class);
+
+        // The Livewire runtime is only needed for wire:navigate link
+        // interception on this site (no page-critical component hydrates
+        // above the fold), so there's no reason it should block rendering.
+        // Without `defer`, the ~79KB script (mostly Alpine + its sort/focus/
+        // anchor plugins, per Lighthouse's "unused JavaScript" audit) still
+        // forces the browser to pause before it can finish the document and
+        // start compositing, which was showing up as main-thread contention
+        // delaying LCP on mobile.
+        Livewire::useScriptTagAttributes(['defer' => true]);
     }
 }

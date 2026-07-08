@@ -59,6 +59,15 @@ return [
         'chat_whatsapp' => 'Chat on WhatsApp',
     ],
 
+    'overview' => [
+        'badge' => 'Our Services',
+        'title_line1' => 'One Clinic,',
+        'title_line2' => 'Complete Care',
+        'subtitle' => 'From medical health to daily wellness, everything your pet needs is right here.',
+        'view_all' => 'View All Services',
+        'more_count' => '+:count More',
+    ],
+
     'experts' => [
         'title' => 'Meet Our Experts',
         'subtitle' => 'Dedicated professionals who treat your pets like their own family.',

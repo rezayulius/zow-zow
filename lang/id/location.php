@@ -5,6 +5,7 @@ return [
     'title_line2' => 'Rumah Kedua Kami',
     'subtitle' => 'Lingkungan yang aman, nyaman, dan hangat di jantung Kemang. Mampir untuk check-up, grooming, atau sekadar say hi!',
     'open_maps' => 'Buka di Maps',
+    'map_title' => 'Peta lokasi ZOW Vetique',
     'chat_whatsapp' => 'Chat via WhatsApp',
 
     'facilities' => [
@@ -24,5 +25,6 @@ return [
     'emergency' => [
         'title' => 'Darurat 24/7',
         'subtitle' => 'Penanganan mendesak saat kamu membutuhkannya.',
+        'call_button' => 'Telepon darurat',
     ],
 ];

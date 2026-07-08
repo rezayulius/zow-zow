@@ -17,6 +17,7 @@ use App\Http\Controllers\ClinicFacilityController;
 use App\Http\Controllers\SitemapController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('/coming-soon', [ComingSoonController::class, 'index'])->name('coming-soon');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 

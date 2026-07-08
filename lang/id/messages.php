@@ -2,6 +2,7 @@
 
 return [
     'welcome' => 'Selamat Datang',
+    'open_menu' => 'Buka menu',
     'home' => 'Beranda',
     'services' => 'Layanan',
     'health' => 'Kesehatan',

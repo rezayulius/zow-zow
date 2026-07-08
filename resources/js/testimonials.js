@@ -6,6 +6,8 @@
 // only cloned into the DOM the first time they're opened, so the page never
 // pays to parse/paint hidden modal content (including remote images) that
 // most visitors never see.
+import { createIcons } from 'lucide';
+import { icons } from './icons';
 
 export function initTestimonialsSection() {
     const section = document.getElementById('testimoni');
@@ -169,11 +171,11 @@ function flashCopiedIcon(button) {
 
     const original = icon.getAttribute('data-lucide');
     icon.setAttribute('data-lucide', 'check');
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    createIcons({ icons });
 
     setTimeout(() => {
         icon.setAttribute('data-lucide', original);
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        createIcons({ icons });
     }, 1500);
 }
 
@@ -255,7 +257,7 @@ function instantiateModalContent(modal) {
     modal.appendChild(template.content.cloneNode(true));
     modal.dataset.loaded = 'true';
 
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    createIcons({ icons });
 }
 
 function trackModalView(modalId) {

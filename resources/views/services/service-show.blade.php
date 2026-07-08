@@ -195,7 +195,7 @@
                     <div>
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-9 h-9 rounded-xl {{ $theme['iconBg'] }} flex items-center justify-center">
-                                <i data-lucide="help-circle" class="w-4 h-4 {{ $theme['iconText'] }}"></i>
+                                <i data-lucide="circle-help" class="w-4 h-4 {{ $theme['iconText'] }}"></i>
                             </div>
                             <h2 class="text-2xl font-heading text-carob-900">{{ __('messages.faq') }}</h2>
                         </div>
@@ -290,9 +290,9 @@
 {
     "@@context": "https://schema.org",
     "@@type": "Service",
-    "name": {{ Js::from($service->name) }},
-    "description": {{ Js::from($service->excerpt ?: '') }},
-    "url": {{ Js::from(url()->current()) }},
+    "name": {!! json_encode($service->name, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+    "description": {!! json_encode($service->excerpt ?: '', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+    "url": {!! json_encode(url()->current(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
     "provider": {
         "@@id": "https://zowvetique.com/#veterinarycare"
     },
@@ -311,10 +311,10 @@
         @foreach ($service->faqs as $faq)
         {
             "@@type": "Question",
-            "name": {{ Js::from($faq->question) }},
+            "name": {!! json_encode($faq->question, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
             "acceptedAnswer": {
                 "@@type": "Answer",
-                "text": {{ Js::from($faq->answer) }}
+                "text": {!! json_encode($faq->answer, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
             }
         }@if (!$loop->last),@endif
         @endforeach

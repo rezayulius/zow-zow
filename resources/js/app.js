@@ -1,6 +1,11 @@
 import './bootstrap';
+import { createIcons } from 'lucide';
+import { icons } from './icons';
 import { initVetScheduleWidget } from './vet-schedule';
 import { initTestimonialsSection } from './testimonials';
+import { initAuthModals } from './auth-modals';
+import { initEmergencyModal, initFlashMessages } from './emergency-modal';
+import { initDeferredAnalytics } from './analytics';
 
 // Mobile menu toggle with smooth animation
 function initMobileMenu() {
@@ -17,6 +22,8 @@ function initMobileMenu() {
         mobileMenuBtn.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.contains('hidden');
             
+            mobileMenuBtn.setAttribute('aria-expanded', String(isHidden));
+
             if (isHidden) {
                 // Open
                 mobileMenu.classList.remove('hidden');
@@ -29,7 +36,7 @@ function initMobileMenu() {
                 // Close
                 mobileMenu.classList.remove('scale-y-100', 'opacity-100');
                 mobileMenu.classList.add('scale-y-95', 'opacity-0');
-                
+
                 // Wait for transition to finish before hiding
                 setTimeout(() => {
                     mobileMenu.classList.add('hidden');
@@ -101,11 +108,25 @@ function initHeaderScrollEffect() {
     let headerScrollTicking = false;
     const header = document.querySelector('header');
     const scrollProgress = document.getElementById('scrollProgress');
-    
+
+    // documentElement.scrollHeight/clientHeight are layout-triggering reads.
+    // Reading them inside the scroll handler (i.e. on every frame the user
+    // scrolls) forces a synchronous reflow each time something else on the
+    // page has invalidated layout since the last read -- measured by
+    // Lighthouse as "forced reflow". Page height only changes on
+    // resize/content-load, not on scroll, so it's computed once and cached
+    // instead of on every scroll frame.
+    let cachedScrollableHeight = 0;
+    function recomputeScrollableHeight() {
+        cachedScrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    }
+    recomputeScrollableHeight();
+    window.addEventListener('resize', recomputeScrollableHeight, { passive: true });
+
     function updateHeaderAndProgress() {
         try {
             const scrollY = window.scrollY;
-            
+
             // Header scale effect
             if (header) {
                 const headerDiv = header.querySelector('div');
@@ -126,8 +147,8 @@ function initHeaderScrollEffect() {
 
             // Progress bar animation (optimized calculation with overflow protection)
             if (scrollProgress) {
-                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                
+                const scrollHeight = cachedScrollableHeight;
+
                 if (scrollHeight > 0) {
                     // Calculate scroll percentage with improved precision
                     let scrollPercentage = (scrollY / scrollHeight) * 100;
@@ -407,9 +428,7 @@ function initMobileServicesAccordion() {
 // event. Each function above guards its own listener bindings (dataset/window
 // flags) so repeat calls across navigations don't stack duplicate handlers.
 function runPageInit() {
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    createIcons({ icons });
 
     initMobileMenu();
     initMobileServicesAccordion();
@@ -418,19 +437,24 @@ function runPageInit() {
     initHeroSlider();
     initVetScheduleWidget();
     initTestimonialsSection();
+    initAuthModals();
+    initEmergencyModal();
     initParallax();
 }
 
 document.addEventListener('DOMContentLoaded', runPageInit);
 document.addEventListener('livewire:navigated', runPageInit);
 
+// Flash messages only ever come from a full-page redirect (never a
+// wire:navigate transition), so this runs once on the initial hard load.
+document.addEventListener('DOMContentLoaded', initFlashMessages);
+document.addEventListener('DOMContentLoaded', initDeferredAnalytics);
+
 // Re-render Lucide icons after any Livewire component update (e.g. live search
 // or pagination), since morphing swaps in fresh `data-lucide` placeholders that
 // haven't been converted to inline SVG yet.
 document.addEventListener('livewire:init', () => {
     Livewire.hook('morph.updated', () => {
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
+        createIcons({ icons });
     });
 });

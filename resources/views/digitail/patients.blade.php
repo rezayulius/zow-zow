@@ -20,7 +20,7 @@
         @if(session('success'))
             <div class="mb-8 bg-green-50 border border-green-200 rounded-lg p-4">
                 <div class="flex">
-                    <i data-lucide="check-circle" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
+                    <i data-lucide="circle-check-big" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
                     <p class="text-green-800">{{ session('success') }}</p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
         @if(session('error') || !$success)
             <div class="mb-8 bg-red-50 border border-red-200 rounded-lg p-4">
                 <div class="flex">
-                    <i data-lucide="alert-circle" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
+                    <i data-lucide="circle-alert" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
                     <div>
                         <p class="text-red-800 font-medium">Error</p>
                         <p class="text-red-700 text-sm mt-1">{{ session('error') ?? $error ?? 'Terjadi kesalahan saat mengambil data' }}</p>
@@ -59,7 +59,7 @@
                     
                     <a href="{{ route('digitail.me') }}" 
                        class="inline-flex items-center px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg shadow-lg border border-gray-200 hover:bg-gray-50 transform hover:scale-105 transition-all duration-300">
-                        <i data-lucide="user-circle" class="w-5 h-5 mr-2"></i>
+                        <i data-lucide="circle-user" class="w-5 h-5 mr-2"></i>
                         Account Info
                     </a>
                     
@@ -146,7 +146,7 @@
                                             <div class="flex items-center space-x-2">
                                                 <button onclick="openEditModal({{ json_encode($patient) }})" 
                                                         class="inline-flex items-center px-3 py-1.5 bg-indigo-600 text-white text-xs font-medium rounded-md hover:bg-indigo-700 transition-colors duration-200">
-                                                    <i data-lucide="edit" class="w-3 h-3 mr-1"></i>
+                                                    <i data-lucide="square-pen" class="w-3 h-3 mr-1"></i>
                                                     Edit
                                                 </button>
                                                 <button onclick="confirmDelete({{ $patient['id'] ?? 0 }})" 
@@ -213,7 +213,7 @@
         <div class="mt-3">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-2xl font-bold text-gray-900 flex items-center">
-                    <i data-lucide="plus-circle" class="w-6 h-6 mr-3 text-indigo-600"></i>
+                    <i data-lucide="circle-plus" class="w-6 h-6 mr-3 text-indigo-600"></i>
                     Tambah Pasien Baru
                 </h3>
                 <button onclick="closeAddModal()" class="text-gray-400 hover:text-gray-600">
@@ -334,7 +334,7 @@
         <div class="mt-3">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="text-2xl font-bold text-gray-900 flex items-center">
-                    <i data-lucide="edit" class="w-6 h-6 mr-3 text-indigo-600"></i>
+                    <i data-lucide="square-pen" class="w-6 h-6 mr-3 text-indigo-600"></i>
                     Edit Pasien
                 </h3>
                 <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">

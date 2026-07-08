@@ -1,5 +1,14 @@
 // Authentication Modals JavaScript
-document.addEventListener('DOMContentLoaded', function () {
+import { createIcons } from 'lucide';
+import { icons } from './icons';
+import { loadSwal } from './swal';
+
+export function initAuthModals() {
+    // wire:navigate re-renders the auth modals (they're in the shared layout)
+    // on every navigation; guard so these listeners don't rebind and stack up.
+    if (document.body.dataset.authModalsBound) return;
+    document.body.dataset.authModalsBound = '1';
+
     // Modal Elements
     const signInModal = document.getElementById('signInModal');
     const signUpModal = document.getElementById('signUpModal');
@@ -91,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const icon = button.querySelector('i');
                 if (icon) {
                     icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
-                    lucide.createIcons();
+                    createIcons({ icons });
                 }
             });
         }
@@ -133,9 +142,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function setupOtpInputs(inputs) {
+        // Pasting a 6-digit code is handled through the regular `input` event
+        // rather than intercepting `paste` with preventDefault() -- blocking
+        // the native paste breaks password managers and is flagged as a
+        // Lighthouse Best Practices issue. Each box's maxlength is relaxed
+        // (see the markup) so a pasted string arrives here intact instead of
+        // being truncated to 1 character before this handler sees it.
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
                 const value = e.target.value;
+
+                if (value.length > 1) {
+                    const digits = value.slice(0, inputs.length).split('');
+                    digits.forEach((char, i) => {
+                        if (inputs[i]) inputs[i].value = char;
+                    });
+                    const next = inputs[Math.min(digits.length, inputs.length - 1)];
+                    next.focus();
+                    next.select?.();
+                    return;
+                }
 
                 if (value.length === 1 && index < inputs.length - 1) {
                     inputs[index + 1].focus();
@@ -145,21 +171,6 @@ document.addEventListener('DOMContentLoaded', function () {
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Backspace' && !e.target.value && index > 0) {
                     inputs[index - 1].focus();
-                }
-            });
-
-            input.addEventListener('paste', (e) => {
-                e.preventDefault();
-                const pastedData = e.clipboardData.getData('text').slice(0, 6);
-
-                pastedData.split('').forEach((char, i) => {
-                    if (inputs[i]) {
-                        inputs[i].value = char;
-                    }
-                });
-
-                if (pastedData.length === 6) {
-                    inputs[5].focus();
                 }
             });
         });
@@ -172,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const button = signInBtn;
         const errorDiv = document.getElementById('signin-error');
         const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-        
+
         button.disabled = true;
         button.textContent = 'Signing in...';
         errorDiv.classList.add('hidden');
@@ -181,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const headers = {
                 'Accept': 'application/json',
             };
-            
+
             // Add CSRF token if available
             if (csrfMeta) {
                 headers['X-CSRF-TOKEN'] = csrfMeta.content;
@@ -217,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = await response.json();
 
             if (data.success) {
-                // Show success message with SweetAlert
+                const Swal = await loadSwal();
                 Swal.fire({
                     icon: 'success',
                     title: 'Login Berhasil!',
@@ -327,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = await response.json();
 
             if (data.success) {
-                // Show success message with SweetAlert
+                const Swal = await loadSwal();
                 Swal.fire({
                     icon: 'success',
                     title: 'Verifikasi Berhasil!',
@@ -400,4 +411,4 @@ document.addEventListener('DOMContentLoaded', function () {
         element.textContent = message;
         element.classList.remove('hidden');
     }
-});
+}

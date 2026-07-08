@@ -1,5 +1,5 @@
 {{-- Location Section --}}
-<section id="lokasi" class="relative z-20 py-24 overflow-hidden bg-gradient-to-b from-soft-linen-100 via-vanilla-100/50 to-white">
+<section id="lokasi" class="relative z-20 py-24 overflow-hidden bg-gradient-to-b from-soft-linen-50 via-vanilla-100/50 to-white">
     <!-- Animated Background Blobs -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-20 right-0 w-96 h-96 bg-forest-moss-green-100/30 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
@@ -35,7 +35,7 @@
                     </div>
                     <span class="font-bold text-sm">{{ __('location.open_maps') }}</span>
                 </a>
-                <a href="https://wa.me/6281299990000" class="group inline-flex items-center bg-forest-moss-green-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-forest-moss-green-600 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                <a href="https://wa.me/{{ config('clinic.whatsapp_number') }}" class="group inline-flex items-center bg-forest-moss-green-500 text-white px-6 py-3 rounded-full shadow-lg hover:bg-forest-moss-green-600 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                     <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i>
                     <span class="font-bold text-sm">{{ __('location.chat_whatsapp') }}</span>
                 </a>
@@ -52,12 +52,13 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-forest-moss-green-50 to-transparent opacity-50 pointer-events-none"></div>
                     <div class="relative rounded-[2rem] overflow-hidden aspect-video shadow-inner border border-gray-100">
                         <!-- Interactive Map Placeholder / Iframe -->
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.8084375!3d-6.2530625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTUnMTEuMCJTIDEwNsKwNDgnMzAuNCJF!5e0!3m2!1sen!2sid!4v1720000000000!5m2!1sen!2sid" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.123456789012!2d106.8084375!3d-6.2530625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTUnMTEuMCJTIDEwNsKwNDgnMzAuNCJF!5e0!3m2!1sen!2sid!4v1720000000000!5m2!1sen!2sid"
+                            title="{{ __('location.map_title') }}"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
                             loading="lazy"
                             class="grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
                         ></iframe>
@@ -69,7 +70,7 @@
                                     <span class="text-xl">🏥</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-carob-900 text-sm">Zow Vetique</h4>
+                                    <p class="font-bold text-carob-900 text-sm">Zow Vetique</p>
                                     <p class="text-xs text-carob-500">Jl. Prapanca Raya No.25A, Pulo, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160Jl. Prapanca Raya No.25A</p>
                                 </div>
                             </div>
@@ -109,7 +110,7 @@
                     <div class="space-y-8 relative z-10">
                         <!-- Address -->
                         <div class="flex gap-4 group/item">
-                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-400 group-hover/item:bg-forest-moss-green-50 group-hover/item:text-forest-moss-green-600 transition-colors duration-300 shrink-0">
+                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-500 group-hover/item:bg-forest-moss-green-50 group-hover/item:text-forest-moss-green-600 transition-colors duration-300 shrink-0">
                                 <i data-lucide="map-pin" class="w-6 h-6"></i>
                             </div>
                             <div>
@@ -120,7 +121,7 @@
 
                         <!-- Phone -->
                         <div class="flex gap-4 group/item">
-                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-400 group-hover/item:bg-chai-50 group-hover/item:text-chai-600 transition-colors duration-300 shrink-0">
+                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-500 group-hover/item:bg-chai-50 group-hover/item:text-chai-600 transition-colors duration-300 shrink-0">
                                 <i data-lucide="phone" class="w-6 h-6"></i>
                             </div>
                             <div>
@@ -135,7 +136,7 @@
 
                         <!-- Hours -->
                         <div class="flex gap-4 group/item">
-                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-400 group-hover/item:bg-old-mustard-yellow-50 group-hover/item:text-old-mustard-yellow-600 transition-colors duration-300 shrink-0">
+                            <div class="w-12 h-12 bg-soft-linen-50 rounded-2xl flex items-center justify-center text-carob-500 group-hover/item:bg-old-mustard-yellow-50 group-hover/item:text-old-mustard-yellow-600 transition-colors duration-300 shrink-0">
                                 <i data-lucide="clock" class="w-6 h-6"></i>
                             </div>
                             <div>
@@ -157,7 +158,7 @@
                         <h4 class="font-bold text-red-900 text-sm uppercase tracking-wide mb-1">{{ __('location.emergency.title') }}</h4>
                         <p class="text-xs text-red-700/80">{{ __('location.emergency.subtitle') }}</p>
                     </div>
-                    <button id="btnEmergencyLocation" class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-200 hover:scale-110 hover:bg-red-600 transition-all duration-300 animate-pulse">
+                    <button id="btnEmergencyLocation" aria-label="{{ __('location.emergency.call_button') }}" class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-red-200 hover:scale-110 hover:bg-red-600 transition-all duration-300 animate-pulse">
                         <i data-lucide="phone-call" class="w-5 h-5"></i>
                     </button>
                 </div>

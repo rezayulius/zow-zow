@@ -40,7 +40,7 @@
             <span class="text-carob-300">&middot;</span>
             <a href="{{ route('home') }}#testimoni" class="hover:text-forest-moss-green-600 transition-colors">FAQ</a>
             <span class="text-carob-300">&middot;</span>
-            <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="hover:text-forest-moss-green-600 transition-colors">Hubungi Admin</a>
+            <a href="https://wa.me/{{ config('clinic.whatsapp_number') }}" target="_blank" rel="noopener noreferrer" class="hover:text-forest-moss-green-600 transition-colors">Hubungi Admin</a>
         </div>
     </div>
 </section>

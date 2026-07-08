@@ -8,7 +8,7 @@
 
             <input type="text" wire:model.live.debounce.400ms="search"
                 placeholder="{{ __('messages.search_services_placeholder') }}"
-                class="flex-1 min-w-0 py-3 bg-transparent text-carob-800 placeholder:text-carob-400 focus:outline-none text-sm md:text-base">
+                class="flex-1 min-w-0 py-3 bg-transparent text-carob-800 placeholder:text-carob-500 focus:outline-none text-sm md:text-base">
 
             <div wire:loading wire:target="search" class="flex-shrink-0 pr-1">
                 <svg class="animate-spin h-5 w-5 {{ $theme['iconText'] }}" viewBox="0 0 24 24" fill="none">
@@ -19,7 +19,7 @@
 
             @if ($hasSearch)
                 <button type="button" wire:click="clearSearch"
-                    class="hidden sm:flex items-center justify-center w-10 h-10 rounded-2xl text-carob-400 hover:text-carob-600 hover:bg-soft-linen-100 transition-colors flex-shrink-0"
+                    class="hidden sm:flex items-center justify-center w-10 h-10 rounded-2xl text-carob-500 hover:text-carob-600 hover:bg-soft-linen-100 transition-colors flex-shrink-0"
                     title="{{ __('messages.clear_search') }}">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>

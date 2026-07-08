@@ -37,8 +37,8 @@
         {
             "@@type": "ListItem",
             "position": {{ $index + 1 }},
-            "name": {{ Js::from($item['label']) }}
-            @if (!empty($item['url'])), "item": {{ Js::from(url($item['url'])) }} @endif
+            "name": {!! json_encode($item['label'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
+            @if (!empty($item['url'])), "item": {!! json_encode(url($item['url']), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!} @endif
         }@if (!$loop->last),@endif
         @endforeach
     ]

@@ -157,9 +157,9 @@
 {
     "@@context": "https://schema.org",
     "@@type": "CollectionPage",
-    "name": {{ Js::from(__('messages.facilities')) }},
-    "description": {{ Js::from(__('messages.facilities_subtitle')) }},
-    "url": {{ Js::from(url()->current()) }},
+    "name": {!! json_encode(__('messages.facilities'), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+    "description": {!! json_encode(__('messages.facilities_subtitle'), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+    "url": {!! json_encode(url()->current(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
     "isPartOf": {
         "@@id": "https://zowvetique.com/#website"
     },
@@ -167,8 +167,8 @@
         @foreach ($facilities as $facility)
         {
             "@@type": "WebPage",
-            "name": {{ Js::from($facility->name) }},
-            "url": {{ Js::from(route('facility.show', $facility)) }}
+            "name": {!! json_encode($facility->name, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+            "url": {!! json_encode(route('facility.show', $facility), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
         }@if (!$loop->last),@endif
         @endforeach
     ]

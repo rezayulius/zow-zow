@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\ServiceCategory;
 use App\Models\Pricing;
 use App\Models\Membership;
 use App\Models\Testimonial;
@@ -33,6 +34,9 @@ class HomeController extends Controller
         $services = Service::active()->ordered()->get();
         $healthServices = Service::active()->where('category', 'Health')->ordered()->get();
         $wellnessServices = Service::active()->where('category', 'Wellness')->ordered()->get();
+        $serviceCategories = ServiceCategory::active()->ordered()
+            ->with(['clinicServices' => fn ($query) => $query->active()->ordered()])
+            ->get();
         $pricing = Pricing::active()->ordered()->get();
         $memberships = Membership::active()->ordered()->get();
         $testimonials = Testimonial::active()->featured()->ordered()->limit(6)->get();
@@ -50,6 +54,7 @@ class HomeController extends Controller
             'services',
             'healthServices',
             'wellnessServices',
+            'serviceCategories',
             'pricing',
             'memberships',
             'testimonials',

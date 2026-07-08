@@ -15,7 +15,7 @@
             <!-- Brand Column -->
             <div class="lg:col-span-4 space-y-6">
                 <div class="mb-4">
-                    <img src="{{ asset('images/logo/zow-vet-logo-white.webp') }}" alt="Zow Vetique" width="500" height="223" loading="lazy" class="h-14 w-auto object-contain">
+                    <img src="{{ asset('images/logo/zow-vet-logo-white-footer.webp') }}" alt="Zow Vetique" width="251" height="112" loading="lazy" class="h-14 w-auto object-contain">
                 </div>
                 <p class="text-soft-linen-300 leading-relaxed font-medium">
                     {{ __('footer.tagline') }}

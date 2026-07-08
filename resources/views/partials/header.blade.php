@@ -14,9 +14,9 @@
         <nav class="flex items-center w-full py-2 px-4 sm:px-6 gap-2 lg:gap-4">
             <!-- Logo (Left) -->
             <a href="{{ route('home') }}" wire:navigate class="flex-shrink-0 flex items-center gap-3 group">
-                <img src="{{ asset('images/logo/zow-vet-logo-brown.webp') }}"
+                <img src="{{ asset('images/logo/zow-vet-logo-brown-header.webp') }}"
                      alt="Zow Vetique"
-                     width="500" height="223"
+                     width="144" height="64"
                      class="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
 
@@ -26,11 +26,11 @@
                     class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200">{{ __('messages.home') }}</a>
 
                 <div class="relative group">
-                    <button
+                    <a href="{{ route('home') }}#services-overview"
                         class="text-deep-cocoa-brown-600 hover:text-forest-moss-green-700 hover:bg-forest-moss-green-50/50 font-medium text-sm px-3 py-2 rounded-xl transition-all duration-200 inline-flex items-center gap-1">
                         {{ __('messages.services') }}
                         <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-deep-cocoa-brown-400 group-hover:text-forest-moss-green-600 transition-transform duration-200 group-hover:rotate-180"></i>
-                    </button>
+                    </a>
 
                     <!-- Services Mega-menu (level 1: categories) -->
                     <div
@@ -188,7 +188,7 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn"
+            <button id="mobileMenuBtn" aria-label="{{ __('messages.open_menu') }}" aria-expanded="false" aria-controls="mobileMenu"
                 class="lg:hidden ml-auto p-2.5 rounded-xl text-deep-cocoa-brown-600 hover:bg-soft-linen-100 transition-all duration-200 justify-self-end">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>

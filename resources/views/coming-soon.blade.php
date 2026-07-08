@@ -106,7 +106,7 @@
 
             <!-- Social & Contact -->
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-                <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-[#675334] hover:text-[#364E2C] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#e9efe7]">
+                <a href="https://wa.me/{{ config('clinic.whatsapp_number') }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-[#675334] hover:text-[#364E2C] transition-colors group bg-white/50 px-6 py-3 rounded-full backdrop-blur-sm border border-transparent hover:border-[#e9efe7]">
                     <div class="w-10 h-10 bg-[#e9efe7] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                         <i data-lucide="message-circle" class="w-5 h-5 text-[#364E2C]"></i>
                     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @if(config('services.google.analytics_id')) data-ga-id="{{ config('services.google.analytics_id') }}" @endif>
 
 <head>
   <meta charset="UTF-8">
@@ -52,16 +52,18 @@
   <link rel="icon" href="{{ asset('favicon-zow.ico') }}">
   <link rel="apple-touch-icon" href="{{ asset('favicon-zow.ico') }}">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.bunny.net">
+  <!-- Fonts: only the one family actually used (.font-heading) is loaded.
+       Figtree/Poppins/Inter were linked here previously but referenced by
+       zero classes anywhere in the app -- pure dead weight, removed. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <!-- Deferred/async third-party origins: a cheap DNS/TCP head start, not a
+       full preconnect, since none of these block first paint. -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://live.cekat.ai">
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -213,32 +215,24 @@
        render matching visible content, so it stays valid per Google's guidelines --}}
   @stack('json-ld')
 
-  @if(config('services.google.analytics_id'))
-  <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.google.analytics_id') }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ config('services.google.analytics_id') }}');
-  </script>
-  @endif
+  {{-- Google Analytics (GA4): loaded on first scroll/click/touch/keypress
+       (or a 4s fallback) instead of eagerly -- see resources/js/analytics.js.
+       The measurement ID is read from the data-ga-id attribute on <html>. --}}
 </head>
 
 <body class="font-sans antialiased">
-  <!-- Global Animated Background Bubbles -->
+  {{-- Global Animated Background Bubbles: sits behind every page (z-[-1]) on
+       every route sitewide. Was 4 continuously-animated blur+compositor
+       layers running forever on every single page load regardless of
+       whether that page even shows them under its own content — trimmed to
+       2, since this is pure decoration paid for on every route in the app,
+       not just the homepage where it's more visible. --}}
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
     <div
       class="absolute -top-10 -left-10 w-72 h-72 bg-soft-linen-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
     </div>
     <div
-      class="absolute -top-10 -right-10 w-72 h-72 bg-rusty-caramel-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
-    </div>
-    <div
-      class="absolute -bottom-10 left-20 w-72 h-72 bg-old-mustard-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
-    </div>
-    <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-soft-blush-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000">
+      class="absolute -bottom-10 right-10 w-72 h-72 bg-rusty-caramel-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
     </div>
   </div>
 
@@ -252,6 +246,17 @@
       // Livewire's morphed region) isn't loaded/injected more than once.
       if (window.__cekatInitialized) return;
       window.__cekatInitialized = true;
+
+      // The widget script injects its chat <iframe> with no accessible title
+      // (a Lighthouse/screen-reader issue we can't fix at the source since
+      // it's 3rd-party markup) -- patch one in as soon as it appears.
+      new MutationObserver(function (mutations, observer) {
+        var frame = document.querySelector('iframe[src*="live.cekat.ai"]');
+        if (frame && !frame.title) {
+          frame.title = 'Live chat';
+          observer.disconnect();
+        }
+      }).observe(document.body, { childList: true, subtree: true });
 
       !function(c,e,k,a,t){
       c.mychat=c.mychat||{server:"https://live.cekat.ai/widget.js",iframeWidth:"400px",iframeHeight:"700px",accessKey:"ZOW-NXWaCTvC",offsetX:-24,offsetY:24,position:"bottom-right"};
@@ -270,126 +275,17 @@
     document.addEventListener('livewire:navigated', initCekatWidget);
   </script>
 
-  <!-- SweetAlert2 CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-  <script>
-    function initEmergencyModal() {
-      const bindEmergency = (btn) => {
-        if (!btn || btn.dataset.bound) return;
-        btn.dataset.bound = '1';
-        btn.addEventListener('click', function () {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Konfirmasi Emergency Call',
-            html: `
-                <div class="text-left text-sm">
-                  <p class="text-gray-700 mb-2">Layanan emergency call ditujukan untuk kondisi darurat pada hewan peliharaan yang membutuhkan penanganan segera. Layanan ini dapat dikenakan biaya tambahan sesuai tarif yang berlaku.</p>
-                  <p class="text-gray-700 mb-2">Kondisi darurat dapat mencakup:</p>
-                  <ul class="list-disc list-inside text-gray-800 mb-4">
-                    <li>Sesak napas, kejang, pingsan, atau lemas berat.</li>
-                    <li>Perdarahan, luka serius, trauma, atau kecelakaan.</li>
-                    <li>Dugaan keracunan, muntah/diare berat, atau kondisi memburuk tiba-tiba.</li>
-                    <li>Kondisi mendesak lainnya yang memerlukan respons dokter hewan.</li>
-                  </ul>
-                  <div class="border-t pt-4 mt-4">
-                    <p class="text-gray-700 mb-3 font-medium">Syarat dan Ketentuan:</p>
-                    <ul class="list-disc list-inside text-gray-600 text-xs mb-4 space-y-1">
-                      <li>Saya memahami bahwa emergency call dapat dikenakan biaya tambahan.</li>
-                      <li>Saya menyatakan bahwa kondisi hewan peliharaan saya membutuhkan bantuan segera.</li>
-                      <li>Saya bersedia memberikan informasi lengkap mengenai kondisi hewan saat dihubungi.</li>
-                      <li>Saya memahami bahwa dokter hewan akan menentukan tindakan berdasarkan hasil penilaian awal.</li>
-                    </ul>
-                    <div class="flex items-start space-x-2">
-                      <input type="checkbox" id="emergencyTermsCheckbox" class="mt-1 h-4 w-4 text-rose-600 focus:ring-rose-500 border-gray-300 rounded">
-                      <label for="emergencyTermsCheckbox" class="text-xs text-gray-700 cursor-pointer">
-                        Saya telah membaca dan menyetujui syarat dan ketentuan emergency call di atas.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              `,
-            showCancelButton: true,
-            confirmButtonText: 'Telepon Sekarang',
-            cancelButtonText: 'Tutup',
-            confirmButtonColor: '#f43f5e', // rose-500
-            cancelButtonColor: '#e5e7eb', // gray-200
-            didOpen: () => {
-              const confirmButton = Swal.getConfirmButton();
-              const checkbox = document.getElementById('emergencyTermsCheckbox');
+  {{-- SweetAlert2 is no longer a global CDN script -- it's dynamically
+       import()'d (see resources/js/swal.js) only the moment the emergency
+       call dialog or a flash message actually needs to render, so it never
+       ships to visitors who don't trigger either. The emergency modal
+       handlers live in resources/js/emergency-modal.js. --}}
+  @if(session('success') || session('error'))
+  <script type="application/json" id="flash-data">{!! json_encode(['success' => session('success'), 'error' => session('error')]) !!}</script>
+  @endif
 
-              // Disable button initially
-              confirmButton.disabled = true;
-              confirmButton.style.opacity = '0.5';
-              confirmButton.style.cursor = 'not-allowed';
-
-              // Enable/disable button based on checkbox
-              checkbox.addEventListener('change', function () {
-                if (this.checked) {
-                  confirmButton.disabled = false;
-                  confirmButton.style.opacity = '1';
-                  confirmButton.style.cursor = 'pointer';
-                } else {
-                  confirmButton.disabled = true;
-                  confirmButton.style.opacity = '0.5';
-                  confirmButton.style.cursor = 'not-allowed';
-                }
-              });
-            },
-            preConfirm: () => {
-              const checkbox = document.getElementById('emergencyTermsCheckbox');
-              if (!checkbox.checked) {
-                Swal.showValidationMessage('Anda harus menyetujui syarat dan ketentuan terlebih dahulu');
-                return false;
-              }
-              return true;
-            }
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = 'tel:+6281295911911';
-            }
-          });
-        });
-      };
-
-      bindEmergency(document.getElementById('btnEmergencyCall'));
-      bindEmergency(document.getElementById('btnEmergencyCallMobile'));
-      bindEmergency(document.getElementById('emergency-call-mobile'));
-    }
-
-    document.addEventListener('DOMContentLoaded', initEmergencyModal);
-    document.addEventListener('livewire:navigated', initEmergencyModal);
-
-    // Flash messages come from a full-page redirect after a form POST (e.g.
-    // sign in/out), never from a wire:navigate transition, so this only
-    // needs to run once on the initial hard load.
-    document.addEventListener('DOMContentLoaded', function () {
-      @if(session('success'))
-        Swal.fire({
-          icon: 'success',
-          title: 'Berhasil!',
-          text: '{{ session('success') }}',
-          timer: 2000,
-          showConfirmButton: false
-        });
-      @endif
-
-      @if(session('error'))
-        Swal.fire({
-          icon: 'error',
-          title: 'Error!',
-          text: '{{ session('error') }}',
-          timer: 2000,
-          showConfirmButton: false
-        });
-      @endif
-    });
-  </script>
-
-  <!-- Authentication Modals -->
+  <!-- Authentication Modals (JS bundled in app.js via initAuthModals) -->
   @include('auth.modals')
-
-  <!-- Authentication Modals JavaScript -->
-  <script src="{{ asset('js/auth-modals.js') }}"></script>
 
   @livewireScripts
 

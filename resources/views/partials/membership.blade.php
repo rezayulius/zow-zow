@@ -1,5 +1,12 @@
 <!-- Membership & Lifestyle Ecosystem Section -->
 <section id="keanggotaan" class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-vanilla-50/30 to-white">
+    <!-- Top wave: seams the soft-linen-50(Pricing) -> white(Membership) color change -->
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
+        </svg>
+    </div>
+
     <!-- Decorative Background Elements -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-20 left-0 w-96 h-96 bg-chai-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -44,28 +51,28 @@
                 <div class="w-12 h-12 bg-forest-moss-green-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="shield-check" class="w-6 h-6 text-forest-moss-green-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.care.title') }}</h4>
+                <h3 class="font-bold text-carob-900 mb-1">{{ __('membership.features.care.title') }}</h3>
                 <p class="text-sm text-carob-500">{{ __('membership.features.care.desc') }}</p>
             </div>
             <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
                 <div class="w-12 h-12 bg-chai-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="tag" class="w-6 h-6 text-chai-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.rates.title') }}</h4>
+                <h3 class="font-bold text-carob-900 mb-1">{{ __('membership.features.rates.title') }}</h3>
                 <p class="text-sm text-carob-500">{{ __('membership.features.rates.desc') }}</p>
             </div>
             <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
                 <div class="w-12 h-12 bg-vanilla-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="message-circle" class="w-6 h-6 text-vanilla-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.chat.title') }}</h4>
+                <h3 class="font-bold text-carob-900 mb-1">{{ __('membership.features.chat.title') }}</h3>
                 <p class="text-sm text-carob-500">{{ __('membership.features.chat.desc') }}</p>
             </div>
             <div class="bg-white p-6 rounded-[2rem] border border-carob-50 shadow-sm hover:shadow-lg transition-all text-center group">
                 <div class="w-12 h-12 bg-carob-50 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                     <i data-lucide="gift" class="w-6 h-6 text-carob-600"></i>
                 </div>
-                <h4 class="font-bold text-carob-900 mb-1">{{ __('membership.features.perks.title') }}</h4>
+                <h3 class="font-bold text-carob-900 mb-1">{{ __('membership.features.perks.title') }}</h3>
                 <p class="text-sm text-carob-500">{{ __('membership.features.perks.desc') }}</p>
             </div>
         </div>
@@ -76,11 +83,16 @@
             <div class="grid md:grid-cols-3 gap-6 items-stretch">
                 @forelse($memberships as $index => $membership)
                     @php
-                        // Refined pastel colors using available theme colors
+                        // Refined pastel colors using available theme colors.
+                        // chai-500 reads ~2.1:1 against white button text (WCAG AA
+                        // needs 4.5:1), darkened to chai-800 to pass. Even the darkest
+                        // defined pink (900) only reaches ~4.3:1 with white text, so
+                        // that button keeps its light pink background and uses dark
+                        // text instead (~8:1).
                         $palettes = [
-                            ['bg' => 'bg-forest-moss-green-50', 'border' => 'border-forest-moss-green-100', 'btn' => 'bg-forest-moss-green-500 hover:bg-forest-moss-green-600', 'text' => 'text-forest-moss-green-700'],
-                            ['bg' => 'bg-chai-50', 'border' => 'border-chai-100', 'btn' => 'bg-chai-500 hover:bg-chai-600', 'text' => 'text-chai-700'],
-                            ['bg' => 'bg-soft-blush-pink-50', 'border' => 'border-soft-blush-pink-100', 'btn' => 'bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600', 'text' => 'text-soft-blush-pink-700'],
+                            ['bg' => 'bg-forest-moss-green-50', 'border' => 'border-forest-moss-green-100', 'btn' => 'bg-forest-moss-green-500 hover:bg-forest-moss-green-600', 'btn_text' => 'text-white', 'text' => 'text-forest-moss-green-700'],
+                            ['bg' => 'bg-chai-50', 'border' => 'border-chai-100', 'btn' => 'bg-chai-800 hover:bg-chai-900', 'btn_text' => 'text-white', 'text' => 'text-chai-800'],
+                            ['bg' => 'bg-soft-blush-pink-50', 'border' => 'border-soft-blush-pink-100', 'btn' => 'bg-soft-blush-pink-500 hover:bg-soft-blush-pink-600', 'btn_text' => 'text-deep-cocoa-brown-800', 'text' => 'text-soft-blush-pink-700'],
                         ];
                         $p = $palettes[$index % count($palettes)];
                         $isFeatured = $membership->is_featured;
@@ -145,8 +157,8 @@
                                     @endif
                                 </ul>
 
-                                <a href="#register-{{ $membership->id }}" 
-                                   class="w-full py-3 rounded-xl font-bold text-sm text-center transition-all duration-300 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5 {{ $p['btn'] }}">
+                                <a href="#register-{{ $membership->id }}"
+                                   class="w-full py-3 rounded-xl font-bold text-sm text-center transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 {{ $p['btn'] }} {{ $p['btn_text'] }}">
                                     {{ __('membership.choose_plan') }}
                                 </a>
                             </div>
@@ -165,11 +177,13 @@
             </div>
         </div>
 
-        <!-- Community CTA -->
+        {{-- Community CTA: was a 1920px photo pulled from images.unsplash.com on
+             every homepage visit, sitting almost entirely under a 80-90%-opacity
+             gradient anyway. Replaced with the gradient + a static paw texture
+             (same technique as the Booking banner) -- no external request. --}}
         <div class="relative rounded-[3rem] overflow-hidden">
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="{{ __('membership.cta.pet_community_alt') }}" loading="lazy" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-carob-900/90 via-carob-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-carob-900 via-carob-900 to-forest-moss-green-900">
+                <div class="absolute inset-0 opacity-[0.07]" style="background-image: url('data:image/svg+xml,%3Csvg width=%2270%22 height=%2270%22 viewBox=%220 0 70 70%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%221%22%3E%3Cellipse cx=%2235%22 cy=%2244%22 rx=%2210%22 ry=%228%22/%3E%3Ccircle cx=%2221%22 cy=%2226%22 r=%225%22/%3E%3Ccircle cx=%2235%22 cy=%2218%22 r=%225.5%22/%3E%3Ccircle cx=%2249%22 cy=%2226%22 r=%225%22/%3E%3C/g%3E%3C/svg%3E');"></div>
             </div>
 
             <div class="relative z-10 p-12 md:p-20 max-w-3xl">
@@ -182,7 +196,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-5">
-                    <a href="#join-community" class="bg-chai-500 hover:bg-chai-600 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-chai-500/30 flex items-center justify-center">
+                    <a href="#join-community" class="bg-chai-800 hover:bg-chai-900 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-chai-500/30 flex items-center justify-center">
                         <i data-lucide="heart-handshake" class="w-5 h-5 mr-2"></i>
                         {{ __('membership.cta.join_community') }}
                     </a>
@@ -194,26 +208,3 @@
         </div>
     </div>
 </section>
-
-<!-- Animation Styles -->
-<style>
-    @keyframes blob {
-        0% { transform: translate(0px, 0px) scale(1); }
-        33% { transform: translate(30px, -50px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
-        100% { transform: translate(0px, 0px) scale(1); }
-    }
-    .animate-blob {
-        animation: blob 7s infinite;
-    }
-    .animation-delay-2000 {
-        animation-delay: 2s;
-    }
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
-    
-    .font-heading {
-        font-family: 'Plus Jakarta Sans', sans-serif; /* Ensure this font is loaded or fallback */
-    }
-</style>

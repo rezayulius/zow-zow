@@ -1,11 +1,14 @@
 <!-- Philosophy & Vision Section -->
 <section class="relative py-16 md:py-24 overflow-hidden bg-soft-linen-50">
+    <!-- Subtle paw-print texture, ties the "we love your pet" values to the theme -->
+    <div class="absolute inset-0 opacity-[0.05] -z-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'70\' height=\'70\' viewBox=\'0 0 70 70\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23364E2C\' fill-opacity=\'1\'%3E%3Cellipse cx=\'35\' cy=\'44\' rx=\'10\' ry=\'8\'/%3E%3Ccircle cx=\'21\' cy=\'26\' r=\'5\'/%3E%3Ccircle cx=\'35\' cy=\'18\' r=\'5.5\'/%3E%3Ccircle cx=\'49\' cy=\'26\' r=\'5\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+
     <!-- Decorative Elements -->
     <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         <div class="absolute top-24 -left-20 w-96 h-96 bg-forest-moss-green-200/40 rounded-full blur-3xl animate-pulse-slow"></div>
         <div class="absolute top-1/2 -right-20 w-80 h-80 bg-chai-200/40 rounded-full blur-3xl animate-bounce-slow"></div>
         <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-pistache-200/40 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
-        
+
         <!-- Joyful elements -->
         <div class="absolute top-10 right-10 opacity-20 animate-float-slow">
             <x-animal-icon name="dog" class="w-48 h-48 text-forest-moss-green-300" />
@@ -27,7 +30,7 @@
         <h2 class="text-4xl md:text-6xl lg:text-7xl font-heading font-medium text-carob-900 mb-6 leading-[1.1] max-w-6xl mx-auto relative">
             {{ __('services.philosophy.title') }}<br class="hidden md:block">
             <span class="block text-xl md:text-3xl lg:text-4xl mt-4 text-carob-600 font-sans font-light italic opacity-90">
-                {{ __('services.philosophy.title_highlight_prefix') }} <span class="text-chai-600 font-medium not-italic decoration-wavy underline decoration-chai-300">{{ __('services.philosophy.title_highlight') }}</span>{{ __('services.philosophy.title_highlight_suffix') }}
+                {{ __('services.philosophy.title_highlight_prefix') }} <span class="text-chai-800 font-medium not-italic decoration-wavy underline decoration-chai-300">{{ __('services.philosophy.title_highlight') }}</span>{{ __('services.philosophy.title_highlight_suffix') }}
             </span>
         </h2>
 
@@ -84,6 +87,8 @@
     </div>
 </section>
 
+@include('partials.services-overview')
+
 <!-- Health Services Section - Clean & Fresh (Green/White Theme) -->
 <section id="health" class="relative py-16 overflow-hidden bg-white">
     <!-- Seamless Transitions & Backgrounds -->
@@ -115,9 +120,9 @@
                     $badge = $badges[$index % 3];
 
                     $defaultImages = [
-                        'https://images.unsplash.com/photo-1628009368231-760335298025?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                        'https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                        'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                        asset('images/homepage/health-1.webp'),
+                        asset('images/homepage/health-2.webp'),
+                        asset('images/homepage/health-3.webp'),
                     ];
                     $defaultImage = $defaultImages[$index % 3];
                     $features = $service->features ?? [];
@@ -196,10 +201,18 @@
 <!-- Wellness Section - Warm & Cozy (Chai/Caramel Theme) -->
 <section id="wellness" class="relative py-16 overflow-hidden bg-soft-linen-50">
 
+    <!-- Top wave: seams the hard white(Health) -> soft-linen-50(Wellness) color change -->
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-soft-linen-50"></path>
+        </svg>
+    </div>
+
     <!-- Seamless Transitions & Backgrounds -->
     <div class="absolute inset-0 bg-gradient-to-br from-soft-linen-50 via-chai-50/30 to-soft-linen-50 -z-20"></div>
-    <div class="absolute inset-0 opacity-[0.04] -z-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23A7662B\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    
+    <!-- Paw-print texture (warmer & more on-theme than a generic geometric pattern) -->
+    <div class="absolute inset-0 opacity-[0.05] -z-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'70\' height=\'70\' viewBox=\'0 0 70 70\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23A7662B\' fill-opacity=\'1\'%3E%3Cellipse cx=\'35\' cy=\'44\' rx=\'10\' ry=\'8\'/%3E%3Ccircle cx=\'21\' cy=\'26\' r=\'5\'/%3E%3Ccircle cx=\'35\' cy=\'18\' r=\'5.5\'/%3E%3Ccircle cx=\'49\' cy=\'26\' r=\'5\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+
     <!-- Colorful Blobs -->
     <div class="absolute -left-20 top-20 w-80 h-80 bg-chai-200/40 rounded-full blur-3xl animate-pulse-slow"></div>
     <div class="absolute right-0 bottom-0 w-96 h-96 bg-soft-blush-pink-100/40 rounded-full blur-3xl animate-bounce-slow"></div>
@@ -210,7 +223,7 @@
                 <i data-lucide="sparkles" class="w-10 h-10"></i>
             </div>
             <h3 class="text-4xl md:text-5xl font-heading text-chai-900 mb-4">{{ __('services.wellness.title') }}</h3>
-            <p class="text-chai-800/80 text-xl max-w-2xl mx-auto">
+            <p class="text-chai-800 text-xl max-w-2xl mx-auto">
                 {!! __('services.wellness.subtitle') !!}
             </p>
         </div>
@@ -225,9 +238,9 @@
                     $badge = $badges[$index % 3];
 
                     $defaultImages = [
-                        'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                        'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                        'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+                        asset('images/homepage/wellness-1.webp'),
+                        asset('images/homepage/wellness-2.webp'),
+                        asset('images/homepage/wellness-3.webp'),
                     ];
                     $defaultImage = $defaultImages[$index % 3];
                     $features = $service->features ?? [];
@@ -270,7 +283,7 @@
                     </div>
 
                     <div class="px-2 pb-4 flex flex-col flex-grow">
-                        <p class="text-chai-800/80 text-sm leading-relaxed mb-6">
+                        <p class="text-chai-800 text-sm leading-relaxed mb-6">
                             {{ $service->description }}
                         </p>
 
@@ -285,7 +298,7 @@
 
                         <div class="flex items-center justify-between gap-4 mt-auto pt-6 border-t border-dashed border-chai-200">
                             <div class="text-left">
-                                <span class="text-xl font-bold text-chai-700">
+                                <span class="text-xl font-bold text-chai-800">
                                     Rp {{ number_format($service->price, 0, ',', '.') }}
                                 </span>
                             </div>
@@ -298,7 +311,7 @@
                 </div>
             @empty
                 <div class="col-span-full text-center py-12 bg-chai-50/50 rounded-3xl border border-chai-100">
-                    <p class="text-chai-600">{{ __('services.wellness.empty') }}</p>
+                    <p class="text-chai-800">{{ __('services.wellness.empty') }}</p>
                 </div>
             @endforelse
         </div>
@@ -316,6 +329,8 @@
 
     <!-- Joyful Background Elements -->
     <div class="absolute inset-0 bg-white -z-20"></div>
+    <!-- Tiny heart texture: booking = trust & care -->
+    <div class="absolute inset-0 opacity-[0.035] -z-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'50\' height=\'50\' viewBox=\'0 0 50 50\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath fill=\'%23364E2C\' fill-opacity=\'1\' d=\'M25 40c-1-1-15-10-15-20a8 8 0 0 1 15-5 8 8 0 0 1 15 5c0 10-14 19-15 20z\'/%3E%3C/svg%3E');"></div>
     <div class="absolute top-40 -left-20 w-72 h-72 bg-pistache-100/40 rounded-full blur-3xl animate-pulse-slow"></div>
     <div class="absolute bottom-40 -right-20 w-80 h-80 bg-forest-moss-green-100/30 rounded-full blur-3xl animate-bounce-slow"></div>
 
@@ -324,7 +339,7 @@
         <div class="relative rounded-[3rem] overflow-hidden bg-carob-900 text-white mb-16 shadow-2xl shadow-carob-900/30 group transform transition-all hover:scale-[1.01] duration-500">
             <div class="absolute inset-0">
                 <div class="absolute inset-0 bg-gradient-to-r from-carob-900 via-carob-800/90 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="{{ __('services.booking.pet_care_alt') }}" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
+                <img src="{{ asset('images/homepage/booking-banner.webp') }}" alt="{{ __('services.booking.pet_care_alt') }}" width="1400" height="933" loading="lazy" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000">
                 
                 <!-- Joyful decorative circles -->
                 <div class="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse-slow z-20"></div>
@@ -348,7 +363,7 @@
                         <i data-lucide="calendar-plus" class="w-5 h-5 lg:w-6 lg:h-6 group-hover:rotate-12 transition-transform"></i>
                         <span class="text-base lg:text-lg">{{ __('services.booking.book_appointment') }}</span>
                     </a>
-                    <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
+                    <a href="https://wa.me/{{ config('clinic.whatsapp_number') }}" target="_blank" rel="noopener noreferrer" class="w-full py-4 lg:py-5 px-8 lg:px-10 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 hover:scale-105">
                         <i data-lucide="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
                         <span class="text-base lg:text-lg">{{ __('services.booking.chat_whatsapp') }}</span>
                     </a>
@@ -446,22 +461,4 @@
 </section>
 
 <x-vet-schedule-modal />
-
-<style>
-    .animate-pulse-slow {
-        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-    .animate-bounce-slow {
-        animation: bounce 3s infinite;
-    }
-    .animate-spin-slow {
-        animation: spin 8s linear infinite;
-    }
-    .animation-delay-2000 {
-        animation-delay: 2s;
-    }
-    .animation-delay-4000 {
-        animation-delay: 4s;
-    }
-</style>
 

@@ -1,5 +1,15 @@
 <!-- Pricing & Lifestyle Section -->
-<section id="harga" class="relative py-20 overflow-hidden bg-transparent">
+<section id="harga" class="relative py-20 overflow-hidden bg-soft-linen-50">
+    <!-- Top wave: seams the white(Booking) -> soft-linen-50(Pricing) color change -->
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-soft-linen-50"></path>
+        </svg>
+    </div>
+
+    <!-- Tiny heart texture, echoes the Booking section above -->
+    <div class="absolute inset-0 opacity-[0.05] -z-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'50\' height=\'50\' viewBox=\'0 0 50 50\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath fill=\'%23D2AB80\' fill-opacity=\'1\' d=\'M25 40c-1-1-15-10-15-20a8 8 0 0 1 15-5 8 8 0 0 1 15 5c0 10-14 19-15 20z\'/%3E%3C/svg%3E');"></div>
+
     <!-- Background Elements -->
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-vanilla-50/50 to-transparent opacity-50"></div>
@@ -37,10 +47,15 @@
                 @foreach($pricing as $index => $package)
                     @php
                         // Define warm, homey color schemes
+                        // chai-500/vanilla-500 read as 2.1:1 and 1.5:1 against white --
+                        // both fail WCAG AA's 4.5:1 minimum for the "icon" color, which
+                        // doubles as the expand-toggle button's text color below.
+                        // Darkened to shades that pass while keeping each scheme
+                        // visually distinct.
                         $colorSchemes = [
-                            ['bg' => 'bg-white', 'border' => 'border-chai-200', 'header_bg' => 'bg-chai-50', 'price' => 'text-chai-700', 'button' => 'bg-chai-500 hover:bg-chai-600', 'icon' => 'text-chai-500', 'ring' => 'ring-chai-100'],
+                            ['bg' => 'bg-white', 'border' => 'border-chai-200', 'header_bg' => 'bg-chai-50', 'price' => 'text-chai-800', 'button' => 'bg-chai-800 hover:bg-chai-900', 'icon' => 'text-chai-800', 'ring' => 'ring-chai-100'],
                             ['bg' => 'bg-white', 'border' => 'border-forest-moss-green-200', 'header_bg' => 'bg-forest-moss-green-50', 'price' => 'text-forest-moss-green-700', 'button' => 'bg-forest-moss-green-600 hover:bg-forest-moss-green-700', 'icon' => 'text-forest-moss-green-600', 'ring' => 'ring-forest-moss-green-100'],
-                            ['bg' => 'bg-white', 'border' => 'border-vanilla-300', 'header_bg' => 'bg-vanilla-50', 'price' => 'text-carob-800', 'button' => 'bg-carob-600 hover:bg-carob-700', 'icon' => 'text-vanilla-500', 'ring' => 'ring-vanilla-200'],
+                            ['bg' => 'bg-white', 'border' => 'border-vanilla-300', 'header_bg' => 'bg-vanilla-50', 'price' => 'text-carob-800', 'button' => 'bg-carob-600 hover:bg-carob-700', 'icon' => 'text-carob-600', 'ring' => 'ring-vanilla-200'],
                             ['bg' => 'bg-white', 'border' => 'border-carob-200', 'header_bg' => 'bg-carob-50', 'price' => 'text-carob-800', 'button' => 'bg-carob-800 hover:bg-carob-900', 'icon' => 'text-carob-600', 'ring' => 'ring-carob-100'],
                         ];
                         $colors = $colorSchemes[$index % count($colorSchemes)];
@@ -81,7 +96,7 @@
                                     @foreach(array_slice($package->features, 0, 3) as $feature)
                                         <div class="flex items-start text-sm text-carob-700 group-hover:text-carob-900 transition-colors">
                                             <div class="min-w-[1.25rem] mt-0.5 mr-3">
-                                                <i data-lucide="check-circle-2" class="w-5 h-5 {{ $colors['icon'] }} fill-current opacity-20"></i>
+                                                <i data-lucide="circle-check" class="w-5 h-5 {{ $colors['icon'] }} fill-current opacity-20"></i>
                                             </div>
                                             {{ $feature }}
                                         </div>
@@ -93,7 +108,7 @@
                                             @foreach(array_slice($package->features, 3) as $feature)
                                                 <div class="flex items-start text-sm text-carob-700 group-hover:text-carob-900 transition-colors">
                                                     <div class="min-w-[1.25rem] mt-0.5 mr-3">
-                                                        <i data-lucide="check-circle-2" class="w-5 h-5 {{ $colors['icon'] }} fill-current opacity-20"></i>
+                                                        <i data-lucide="circle-check" class="w-5 h-5 {{ $colors['icon'] }} fill-current opacity-20"></i>
                                                     </div>
                                                     {{ $feature }}
                                                 </div>

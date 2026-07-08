@@ -147,9 +147,9 @@
 {
     "@@context": "https://schema.org",
     "@@type": "CollectionPage",
-    "name": {{ Js::from($category->name) }},
-    "description": {{ Js::from($category->description ?: '') }},
-    "url": {{ Js::from(url()->current()) }},
+    "name": {!! json_encode($category->name, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+    "description": {!! json_encode($category->description ?: '', JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+    "url": {!! json_encode(url()->current(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
     "isPartOf": {
         "@@id": "https://zowvetique.com/#website"
     },
@@ -157,8 +157,8 @@
         @foreach ($allServices as $service)
         {
             "@@type": "Service",
-            "name": {{ Js::from($service->name) }},
-            "url": {{ Js::from(route('service.show', [$category, $service])) }}
+            "name": {!! json_encode($service->name, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!},
+            "url": {!! json_encode(route('service.show', [$category, $service]), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
         }@if (!$loop->last),@endif
         @endforeach
     ]

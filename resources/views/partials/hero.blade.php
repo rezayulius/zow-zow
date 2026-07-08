@@ -23,6 +23,7 @@
                         'badge_ping' => 'bg-forest-moss-green-400',
                         'badge_dot' => 'bg-forest-moss-green-500',
                         'btn_bg' => 'bg-forest-moss-green-600',
+                        'btn_text' => 'text-white',
                         'btn_shadow' => 'shadow-forest-moss-green-600/20',
                         'btn_hover_shadow' => 'shadow-forest-moss-green-600/30',
                         'gradient_from' => 'from-forest-moss-green-500',
@@ -38,7 +39,10 @@
                         'text_dark' => 'text-deep-cocoa-brown-800',
                         'badge_ping' => 'bg-chai-400',
                         'badge_dot' => 'bg-chai-500',
-                        'btn_bg' => 'bg-chai-500',
+                        // chai-500 reads ~2.1:1 against white text (WCAG AA
+                        // needs 4.5:1) -- darkened just for the CTA button.
+                        'btn_bg' => 'bg-chai-800',
+                        'btn_text' => 'text-white',
                         'btn_shadow' => 'shadow-chai-500/20',
                         'btn_hover_shadow' => 'shadow-chai-500/30',
                         'gradient_from' => 'from-chai-400',
@@ -54,7 +58,12 @@
                         'text_dark' => 'text-deep-cocoa-brown-800',
                         'badge_ping' => 'bg-soft-blush-pink-400',
                         'badge_dot' => 'bg-soft-blush-pink-500',
+                        // Even the darkest defined pink shade (900) only reads
+                        // ~4.3:1 against white text -- dark text on the
+                        // original light pink passes comfortably (~8:1)
+                        // instead, so the background stays on-brand.
                         'btn_bg' => 'bg-soft-blush-pink-500',
+                        'btn_text' => 'text-deep-cocoa-brown-800',
                         'btn_shadow' => 'shadow-soft-blush-pink-500/20',
                         'btn_hover_shadow' => 'shadow-soft-blush-pink-500/30',
                         'gradient_from' => 'from-soft-blush-pink-400',
@@ -71,6 +80,7 @@
                         'badge_ping' => 'bg-deep-cocoa-brown-400',
                         'badge_dot' => 'bg-deep-cocoa-brown-500',
                         'btn_bg' => 'bg-deep-cocoa-brown-600',
+                        'btn_text' => 'text-white',
                         'btn_shadow' => 'shadow-deep-cocoa-brown-600/20',
                         'btn_hover_shadow' => 'shadow-deep-cocoa-brown-600/30',
                         'gradient_from' => 'from-deep-cocoa-brown-500',
@@ -135,7 +145,7 @@
 
                                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
                                     @if($slide->primary_cta_text)
-                                    <a href="{{ $slide->primary_cta_url ?? '#' }}" class="group relative overflow-hidden {{ $c['btn_bg'] }} text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-medium text-sm sm:text-base shadow-xl {{ $c['btn_shadow'] }} hover:{{ $c['btn_hover_shadow'] }} hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2 w-full sm:w-auto">
+                                    <a href="{{ $slide->primary_cta_url ?? '#' }}" class="group relative overflow-hidden {{ $c['btn_bg'] }} {{ $c['btn_text'] }} px-6 py-3.5 sm:px-8 sm:py-4 rounded-2xl font-medium text-sm sm:text-base shadow-xl {{ $c['btn_shadow'] }} hover:{{ $c['btn_hover_shadow'] }} hover:-translate-y-1 transition-all duration-300 text-center sm:text-left inline-flex items-center justify-center gap-2 w-full sm:w-auto">
                                         <span class="relative z-10">{{ $slide->primary_cta_text }}</span>
                                         <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300"></i>
                                         <div class="absolute inset-0 bg-gradient-to-r {{ $c['gradient_from'] }} {{ $c['gradient_to'] }} opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -221,17 +231,6 @@
 </section>
 
 <style>
-    @keyframes float-slow {
-        0%, 100% { transform: translateY(0) rotate(-10deg); }
-        50% { transform: translateY(-10px) rotate(-8deg); }
-    }
-    @keyframes float-medium {
-        0%, 100% { transform: translateY(0) rotate(12deg); }
-        50% { transform: translateY(-15px) rotate(15deg); }
-    }
-    .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
-    .animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
-    
     /* Slider Transitions */
     .slide {
         opacity: 0;

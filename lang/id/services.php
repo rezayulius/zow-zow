@@ -59,6 +59,15 @@ return [
         'chat_whatsapp' => 'Chat via WhatsApp',
     ],
 
+    'overview' => [
+        'badge' => 'Layanan Kami',
+        'title_line1' => 'Satu Klinik,',
+        'title_line2' => 'Perawatan Menyeluruh',
+        'subtitle' => 'Dari kesehatan medis hingga kebugaran harian, semua kebutuhan hewan kesayanganmu ada di sini.',
+        'view_all' => 'Lihat Semua Layanan',
+        'more_count' => '+:count Lainnya',
+    ],
+
     'experts' => [
         'title' => 'Kenali Tim Ahli Kami',
         'subtitle' => 'Profesional berdedikasi yang merawat hewan peliharaanmu seperti keluarga sendiri.',

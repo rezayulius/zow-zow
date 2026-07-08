@@ -78,10 +78,10 @@
                         @php
                             $statusColors = [
                                 '1' => ['bg' => 'bg-yellow-100', 'text' => 'text-yellow-700', 'border' => 'border-yellow-200', 'icon' => 'clock', 'blob' => 'bg-yellow-200'],
-                                '2' => ['bg' => 'bg-green-100', 'text' => 'text-green-700', 'border' => 'border-green-200', 'icon' => 'check-circle-2', 'blob' => 'bg-green-200'],
+                                '2' => ['bg' => 'bg-green-100', 'text' => 'text-green-700', 'border' => 'border-green-200', 'icon' => 'circle-check', 'blob' => 'bg-green-200'],
                                 '3' => ['bg' => 'bg-red-100', 'text' => 'text-red-700', 'border' => 'border-red-200', 'icon' => 'x-circle', 'blob' => 'bg-red-200']
                             ];
-                            $status = $statusColors[$record['status']] ?? ['bg' => 'bg-gray-100', 'text' => 'text-gray-700', 'border' => 'border-gray-200', 'icon' => 'help-circle', 'blob' => 'bg-gray-200'];
+                            $status = $statusColors[$record['status']] ?? ['bg' => 'bg-gray-100', 'text' => 'text-gray-700', 'border' => 'border-gray-200', 'icon' => 'circle-help', 'blob' => 'bg-gray-200'];
                         @endphp
 
                         <div class="bg-white rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group animate-bounce-in border-2 border-transparent hover:border-forest-moss-green-100 relative" style="animation-delay: {{ 0.2 + ($loop->index * 0.1) }}s;">
@@ -102,7 +102,7 @@
                                                 </div>
                                             @endif
                                             <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100">
-                                                <i data-lucide="{{ $record['pet_info']['species'] == 'Cat' ? 'cat' : 'dog' }}" class="w-4 h-4 text-carob-400"></i>
+                                                <i data-lucide="{{ $record['pet_info']['species'] == 'Cat' ? 'cat' : 'dog' }}" class="w-4 h-4 text-carob-500"></i>
                                             </div>
                                         </div>
 
@@ -207,7 +207,7 @@
 
                                 <!-- Record Timestamps -->
                                 <div class="mt-6 pt-4 border-t border-gray-100 flex justify-end">
-                                    <div class="flex flex-wrap gap-4 text-xs text-carob-400 font-medium">
+                                    <div class="flex flex-wrap gap-4 text-xs text-carob-500 font-medium">
                                         @if($record['opened_at'])
                                             <div class="flex items-center bg-gray-50 px-3 py-1 rounded-full">
                                                 <i data-lucide="clock" class="w-3 h-3 mr-1.5"></i>
@@ -216,7 +216,7 @@
                                         @endif
                                         @if($record['closed_at'])
                                             <div class="flex items-center bg-green-50 text-green-600 px-3 py-1 rounded-full">
-                                                <i data-lucide="check-circle" class="w-3 h-3 mr-1.5"></i>
+                                                <i data-lucide="circle-check-big" class="w-3 h-3 mr-1.5"></i>
                                                 <span>Ditutup: {{ \Carbon\Carbon::parse($record['closed_at'])->format('d M Y H:i') }}</span>
                                             </div>
                                         @endif
@@ -231,7 +231,7 @@
                 <div class="bg-white rounded-[3rem] shadow-2xl p-12 text-center max-w-2xl mx-auto animate-bounce-in relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-forest-moss-green-400 to-chai-400"></div>
                     <div class="w-32 h-32 bg-soft-linen-100 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner animate-pulse">
-                        <i data-lucide="file-heart" class="w-16 h-16 text-carob-400"></i>
+                        <i data-lucide="file-heart" class="w-16 h-16 text-carob-500"></i>
                     </div>
                     <h2 class="text-3xl font-bold text-carob-900 mb-4 font-heading">Belum Ada Riwayat Medis</h2>
                     <p class="text-carob-600 mb-8 leading-relaxed">

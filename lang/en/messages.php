@@ -2,6 +2,7 @@
 
 return [
     'welcome' => 'Welcome',
+    'open_menu' => 'Open menu',
     'home' => 'Home',
     'services' => 'Services',
     'health' => 'Health',

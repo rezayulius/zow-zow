@@ -69,7 +69,7 @@
                 <!-- Error Message -->
                 <div id="signin-error"
                     class="hidden bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-2xl text-sm font-medium flex items-center gap-2 animate-bounce-in">
-                    <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                    <i data-lucide="circle-alert" class="w-4 h-4"></i>
                     <span></span>
                 </div>
 
@@ -111,7 +111,7 @@
             </form>
 
             <!-- Close Button -->
-            <button id="closeSignInModal" class="absolute top-4 right-4 w-10 h-10 bg-soft-linen-50 rounded-full flex items-center justify-center text-carob-400 hover:bg-red-50 hover:text-red-500 transition-all duration-300 z-20 group shadow-sm hover:shadow-md">
+            <button id="closeSignInModal" class="absolute top-4 right-4 w-10 h-10 bg-soft-linen-50 rounded-full flex items-center justify-center text-carob-500 hover:bg-red-50 hover:text-red-500 transition-all duration-300 z-20 group shadow-sm hover:shadow-md">
                 <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
             </button>
         </div>
@@ -198,7 +198,7 @@
                                     <div class="flex-1 rounded-full bg-gray-100 transition-all duration-500 delay-150" id="strength-3"></div>
                                     <div class="flex-1 rounded-full bg-gray-100 transition-all duration-500 delay-200" id="strength-4"></div>
                                 </div>
-                                <p class="text-[10px] text-carob-400 mt-1 font-bold text-right" id="strength-text">Password Strength</p>
+                                <p class="text-[10px] text-carob-500 mt-1 font-bold text-right" id="strength-text">Password Strength</p>
                             </div>
                         </div>
 
@@ -206,7 +206,7 @@
                         <div class="group">
                             <div class="relative transition-transform duration-300 hover:scale-[1.01]">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                    <i data-lucide="check-circle-2" class="text-carob-300 w-5 h-5 group-focus-within:text-chai-500 transition-colors"></i>
+                                    <i data-lucide="circle-check" class="text-carob-300 w-5 h-5 group-focus-within:text-chai-500 transition-colors"></i>
                                 </div>
                                 <input type="password" id="signup-password-confirmation" name="password_confirmation" required
                                     class="w-full pl-12 pr-12 py-3.5 bg-soft-linen-50 border-2 border-transparent focus:border-chai-400 rounded-2xl text-carob-800 placeholder-carob-300 font-medium focus:ring-0 focus:bg-white transition-all duration-300 shadow-sm group-hover:shadow-md"
@@ -224,14 +224,14 @@
                             <input type="checkbox" id="terms" required
                                 class="w-5 h-5 text-chai-500 border-2 border-carob-200 rounded-lg focus:ring-chai-400 focus:ring-offset-0 transition-all mt-0.5 cursor-pointer group-hover:scale-110">
                             <span class="ml-3 text-sm text-carob-500 font-medium leading-tight">
-                                Saya setuju dengan <a href="#" class="text-chai-600 hover:text-chai-700 font-bold hover:underline">Syarat & Ketentuan</a> Zow Vetique.
+                                Saya setuju dengan <a href="#" class="text-chai-800 hover:text-chai-900 font-bold hover:underline">Syarat & Ketentuan</a> Zow Vetique.
                             </span>
                         </label>
 
                         <!-- Error Message -->
                         <div id="signup-error"
                             class="hidden bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-2xl text-sm font-medium flex items-center gap-2 animate-bounce-in">
-                            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                            <i data-lucide="circle-alert" class="w-4 h-4"></i>
                             <span></span>
                         </div>
 
@@ -268,14 +268,14 @@
                         <p class="text-center text-sm text-carob-500 mt-6 font-medium">
                             Sudah punya akun?
                             <button type="button" id="showSignInModal"
-                                class="text-chai-600 hover:text-chai-700 font-bold hover:underline decoration-2 underline-offset-2 ml-1 transition-colors">Masuk disini</button>
+                                class="text-chai-800 hover:text-chai-900 font-bold hover:underline decoration-2 underline-offset-2 ml-1 transition-colors">Masuk disini</button>
                         </p>
                     </form>
                 </div>
             </div>
 
             <!-- Close Button -->
-            <button id="closeSignUpModal" class="absolute top-4 right-4 w-10 h-10 bg-soft-linen-50 rounded-full flex items-center justify-center text-carob-400 hover:bg-red-50 hover:text-red-500 transition-all duration-300 z-20 group shadow-sm hover:shadow-md">
+            <button id="closeSignUpModal" class="absolute top-4 right-4 w-10 h-10 bg-soft-linen-50 rounded-full flex items-center justify-center text-carob-500 hover:bg-red-50 hover:text-red-500 transition-all duration-300 z-20 group shadow-sm hover:shadow-md">
                 <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
             </button>
         </div>
@@ -298,7 +298,7 @@
                 </div>
                 <h2 class="text-2xl font-bold text-carob-900">Verify Your Email</h2>
                 <p class="text-carob-600 text-sm mt-2">Masukkan kode 6-digit yang dikirim ke</p>
-                <p class="text-chai-600 font-semibold text-sm" id="otp-email"></p>
+                <p class="text-chai-800 font-semibold text-sm" id="otp-email"></p>
             </div>
 
             <!-- OTP Form -->
@@ -308,22 +308,22 @@
 
                 <!-- OTP Input Boxes -->
                 <div class="flex justify-center gap-2">
-                    <input type="text" maxlength="1"
+                    <input type="text" maxlength="6"
                         class="otp-input w-12 h-14 text-center text-2xl font-bold border-2 border-chai-200 rounded-lg focus:ring-2 focus:ring-pistache-500 focus:border-transparent transition-all hover:scale-105 focus:scale-110"
                         data-index="0">
-                    <input type="text" maxlength="1"
+                    <input type="text" maxlength="6"
                         class="otp-input w-12 h-14 text-center text-2xl font-bold border-2 border-chai-200 rounded-lg focus:ring-2 focus:ring-pistache-500 focus:border-transparent transition-all hover:scale-105 focus:scale-110"
                         data-index="1">
-                    <input type="text" maxlength="1"
+                    <input type="text" maxlength="6"
                         class="otp-input w-12 h-14 text-center text-2xl font-bold border-2 border-chai-200 rounded-lg focus:ring-2 focus:ring-pistache-500 focus:border-transparent transition-all hover:scale-105 focus:scale-110"
                         data-index="2">
-                    <input type="text" maxlength="1"
+                    <input type="text" maxlength="6"
                         class="otp-input w-12 h-14 text-center text-2xl font-bold border-2 border-chai-200 rounded-lg focus:ring-2 focus:ring-pistache-500 focus:border-transparent transition-all hover:scale-105 focus:scale-110"
                         data-index="3">
-                    <input type="text" maxlength="1"
+                    <input type="text" maxlength="6"
                         class="otp-input w-12 h-14 text-center text-2xl font-bold border-2 border-chai-200 rounded-lg focus:ring-2 focus:ring-pistache-500 focus:border-transparent transition-all hover:scale-105 focus:scale-110"
                         data-index="4">
-                    <input type="text" maxlength="1"
+                    <input type="text" maxlength="6"
                         class="otp-input w-12 h-14 text-center text-2xl font-bold border-2 border-chai-200 rounded-lg focus:ring-2 focus:ring-pistache-500 focus:border-transparent transition-all hover:scale-105 focus:scale-110"
                         data-index="5">
                 </div>
@@ -350,16 +350,9 @@
             </form>
 
             <!-- Close Button -->
-            <button id="closeOtpModal" class="absolute top-4 right-4 text-carob-400 hover:text-carob-600 hover:rotate-90 transition-all">
+            <button id="closeOtpModal" class="absolute top-4 right-4 text-carob-500 hover:text-carob-600 hover:rotate-90 transition-all">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
         </div>
     </div>
 </div>
-
-<!-- Include Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-    // Initialize Lucide icons
-    lucide.createIcons();
-</script>

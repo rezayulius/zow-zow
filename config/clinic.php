@@ -16,7 +16,7 @@ return [
 
     'phone' => '+6281295911911',
 
-    'whatsapp_number' => '6281295911911',
+    'whatsapp_number' => '6281219088899',
 
     'address' => [
         'street' => 'Jl. Prapanca Raya No.25A, RT.2/RW.3, Pulo, Kec. Kby. Baru',

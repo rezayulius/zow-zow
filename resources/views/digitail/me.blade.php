@@ -8,7 +8,7 @@
         <!-- Header -->
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">
-                <i data-lucide="user-circle" class="inline-block w-10 h-10 mr-3 text-indigo-600"></i>
+                <i data-lucide="circle-user" class="inline-block w-10 h-10 mr-3 text-indigo-600"></i>
                 Digitail Account Info
             </h1>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -19,7 +19,7 @@
         @if(session('success'))
             <div class="mb-8 bg-green-50 border border-green-200 rounded-lg p-4">
                 <div class="flex">
-                    <i data-lucide="check-circle" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
+                    <i data-lucide="circle-check-big" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
                     <p class="text-green-800">{{ session('success') }}</p>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         @if(session('error') || !$success)
             <div class="mb-8 bg-red-50 border border-red-200 rounded-lg p-4">
                 <div class="flex">
-                    <i data-lucide="alert-circle" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
+                    <i data-lucide="circle-alert" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
                     <div>
                         <p class="text-red-800 font-medium">Error</p>
                         <p class="text-red-700 text-sm mt-1">{{ session('error') ?? $error ?? 'Terjadi kesalahan saat mengambil data' }}</p>

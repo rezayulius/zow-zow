@@ -1,5 +1,12 @@
 {{-- Testimonials, Articles, News & Promo Section --}}
-<section id="testimoni" class="relative py-24 overflow-hidden bg-gradient-to-b from-white via-vanilla-50/30 to-white">
+<section id="testimoni" class="relative py-24 overflow-hidden bg-gradient-to-b from-soft-linen-50 via-chai-50/20 to-soft-linen-50">
+    <!-- Top wave: seams the white(Membership) -> soft-linen-50(Testimonials) color change -->
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-soft-linen-50"></path>
+        </svg>
+    </div>
+
     <!-- Animated Background Blobs -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <div class="absolute top-20 left-10 w-72 h-72 bg-forest-moss-green-100/40 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob"></div>
@@ -35,7 +42,7 @@
                                 @elseif($key == 'articles') <i data-lucide="book-open" class="w-4 h-4"></i>
                                 @elseif($key == 'news') <i data-lucide="newspaper" class="w-4 h-4"></i>
                                 @elseif($key == 'promo') <i data-lucide="tag" class="w-4 h-4"></i>
-                                @else <i data-lucide="help-circle" class="w-4 h-4"></i>
+                                @else <i data-lucide="circle-help" class="w-4 h-4"></i>
                                 @endif
                             </span>
                             <span class="whitespace-nowrap">{{ $label }}</span>
@@ -57,7 +64,7 @@
         <div id="testimonials-content" class="tab-content active transition-opacity duration-500">
             {{-- Header --}}
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-chai-50 text-chai-700 text-xs font-bold uppercase tracking-wider mb-6 border border-chai-100">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-chai-50 text-chai-800 text-xs font-bold uppercase tracking-wider mb-6 border border-chai-100">
                 <x-animal-icon name="bear" class="w-4 h-4 text-chai-600" />
                 {{ __('testimonials.stories.trusted_badge') }}
             </div>
@@ -102,8 +109,8 @@
                 @endphp
                 <div class="relative h-[600px] md:h-[760px] overflow-hidden">
                     {{-- Fade masks top & bottom --}}
-                    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-10"></div>
-                    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-soft-linen-50 to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-soft-linen-50 to-transparent z-10"></div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
                         @foreach($testimonialColumns as $colIndex => $colItems)
@@ -138,7 +145,7 @@
                                                         @if($testimonial->avatar)
                                                             <img src="{{ asset('storage/' . $testimonial->avatar) }}" alt="{{ $testimonial->name }}" loading="lazy" class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-sm">
                                                         @else
-                                                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-carob-400 font-bold text-lg ring-2 ring-white shadow-sm">
+                                                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-carob-500 font-bold text-lg ring-2 ring-white shadow-sm">
                                                                 {{ mb_substr($testimonial->name, 0, 1) }}
                                                             </div>
                                                         @endif
@@ -152,7 +159,7 @@
                                                         @endif
                                                     </div>
                                                     <div>
-                                                        <h4 class="font-bold text-carob-900 text-sm">{{ $testimonial->name }}</h4>
+                                                        <h3 class="font-bold text-carob-900 text-sm">{{ $testimonial->name }}</h3>
                                                         <p class="text-xs text-carob-500">
                                                             @if($testimonial->pet_name)
                                                                 {{ __('testimonials.stories.parent_of') }} <span class="text-forest-moss-green-600 font-medium">{{ $testimonial->pet_name }}</span>
@@ -223,13 +230,13 @@
                                     @if($review['profile_photo_url'])
                                         <img src="{{ $review['profile_photo_url'] }}" alt="{{ $review['author_name'] }}" loading="lazy" class="w-10 h-10 rounded-full object-cover ring-2 ring-white shadow-sm" referrerpolicy="no-referrer">
                                     @else
-                                        <div class="w-10 h-10 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-400 font-bold ring-2 ring-white shadow-sm">
+                                        <div class="w-10 h-10 rounded-full bg-soft-linen-100 flex items-center justify-center text-carob-500 font-bold ring-2 ring-white shadow-sm">
                                             {{ mb_substr($review['author_name'], 0, 1) }}
                                         </div>
                                     @endif
                                     <div>
                                         <h4 class="font-bold text-carob-900 text-sm">{{ $review['author_name'] }}</h4>
-                                        <p class="text-xs text-carob-400">{{ $review['relative_time_description'] }}</p>
+                                        <p class="text-xs text-carob-500">{{ $review['relative_time_description'] }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -277,7 +284,7 @@
 
                         <!-- Content -->
                         <div class="p-8 flex-1 flex flex-col">
-                            <div class="flex items-center gap-2 text-xs font-medium text-carob-400 mb-4">
+                            <div class="flex items-center gap-2 text-xs font-medium text-carob-500 mb-4">
                                 <i data-lucide="calendar" class="w-3 h-3"></i>
                                 {{ $article->published_at ? $article->published_at->format('M d, Y') : $article->created_at->format('M d, Y') }}
                                 <span class="w-1 h-1 bg-carob-300 rounded-full"></span>
@@ -330,7 +337,7 @@
                                         <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span> {{ __('testimonials.news.breaking') }}
                                     </span>
                                 @endif
-                                <span class="text-xs font-medium text-carob-400 md:hidden">{{ $newsItem->created_at->format('M d, Y') }}</span>
+                                <span class="text-xs font-medium text-carob-500 md:hidden">{{ $newsItem->created_at->format('M d, Y') }}</span>
                             </div>
                             
                             <h3 class="text-xl font-bold text-carob-900 mb-3 group-hover:text-forest-moss-green-600 transition-colors">
@@ -339,7 +346,7 @@
                             <p class="text-carob-600 text-sm leading-relaxed mb-4">
                                 {{ $newsItem->excerpt ?: Str::limit(strip_tags($newsItem->content), 150) }}
                             </p>
-                            <button type="button" data-action="open-modal" data-modal-id="modal-news-{{ $newsItem->id }}" class="text-sm font-bold text-chai-600 hover:text-chai-700 underline decoration-2 decoration-chai-200 hover:decoration-chai-500 underline-offset-4 transition-all">
+                            <button type="button" data-action="open-modal" data-modal-id="modal-news-{{ $newsItem->id }}" class="text-sm font-bold text-chai-800 hover:text-chai-900 underline decoration-2 decoration-chai-200 hover:decoration-chai-500 underline-offset-4 transition-all">
                                 {{ __('testimonials.news.read_update') }}
                             </button>
                         </div>
@@ -398,14 +405,14 @@
                                 <p class="text-carob-600 text-sm mb-6 flex-1">{{ $promo->description }}</p>
                                 
                                 <div class="bg-soft-linen-50 border-2 border-dashed border-soft-linen-200 rounded-xl p-4 flex items-center justify-between mb-4">
-                                    <div class="text-xs font-bold text-carob-400 uppercase tracking-wide">{{ __('testimonials.promo.code') }}</div>
+                                    <div class="text-xs font-bold text-carob-500 uppercase tracking-wide">{{ __('testimonials.promo.code') }}</div>
                                     <div class="font-mono font-bold text-lg text-carob-800 tracking-wider select-all">{{ $promo->promo_code }}</div>
-                                    <button type="button" data-action="copy-promo-code" data-promo-code="{{ $promo->promo_code }}" class="text-carob-400 hover:text-forest-moss-green-600 transition-colors" title="{{ __('testimonials.promo.copy_code') }}">
+                                    <button type="button" data-action="copy-promo-code" data-promo-code="{{ $promo->promo_code }}" class="text-carob-500 hover:text-forest-moss-green-600 transition-colors" title="{{ __('testimonials.promo.copy_code') }}">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
 
-                                <div class="flex items-center justify-between text-xs font-medium text-carob-400">
+                                <div class="flex items-center justify-between text-xs font-medium text-carob-500">
                                     <div class="flex items-center gap-1.5">
                                         <i data-lucide="clock" class="w-3.5 h-3.5"></i>
                                         {{ __('testimonials.promo.ends', ['date' => $promo->end_date->format('M d')]) }}
@@ -506,7 +513,7 @@
                             </div>
 
                             <!-- Close Button -->
-                            <button type="button" data-action="close-modal" class="relative z-10 w-10 h-10 bg-white hover:bg-red-50 text-carob-400 hover:text-red-500 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100 group flex-shrink-0" aria-label="{{ __('testimonials.modal.close') }}">
+                            <button type="button" data-action="close-modal" class="relative z-10 w-10 h-10 bg-white hover:bg-red-50 text-carob-500 hover:text-red-500 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-gray-100 group flex-shrink-0" aria-label="{{ __('testimonials.modal.close') }}">
                                 <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
                             </button>
                         </div>
@@ -553,7 +560,7 @@
 
                         <!-- Footer -->
                         <div class="bg-soft-linen-50/50 p-4 md:px-8 border-t border-gray-100 shrink-0 flex flex-col md:flex-row items-center justify-between gap-4 backdrop-blur-sm">
-                            <div class="text-xs font-bold text-carob-400 uppercase tracking-wider">
+                            <div class="text-xs font-bold text-carob-500 uppercase tracking-wider">
                                 {{ __('testimonials.modal.share_joy') }}
                             </div>
                             <div class="flex gap-3"

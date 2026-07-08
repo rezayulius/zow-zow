@@ -17,7 +17,7 @@
             <!-- Page Header -->
             <div class="text-center mb-10 animate-bounce-in">
                 <div class="inline-flex items-center justify-center p-3 bg-white rounded-2xl shadow-sm mb-4 transform rotate-3 hover:rotate-0 transition-all duration-300">
-                    <i data-lucide="user-circle-2" class="w-8 h-8 text-forest-moss-green-600"></i>
+                    <i data-lucide="circle-user-round" class="w-8 h-8 text-forest-moss-green-600"></i>
                 </div>
                 <h1 class="text-4xl font-bold text-carob-900 mb-2 font-heading">Profile Saya</h1>
                 <p class="text-carob-600 font-medium">Kelola informasi akun dan data hewan peliharaan Anda 🐾</p>
@@ -89,7 +89,7 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <!-- Personal -->
                                     <div class="space-y-4">
-                                        <h4 class="text-sm font-bold text-carob-400 uppercase tracking-wider mb-2">Pribadi</h4>
+                                        <h4 class="text-sm font-bold text-carob-500 uppercase tracking-wider mb-2">Pribadi</h4>
                                         
                                         <div class="group">
                                             <label class="text-xs text-carob-500 font-medium ml-1">Nama Depan</label>
@@ -118,7 +118,7 @@
 
                                     <!-- Address -->
                                     <div class="space-y-4">
-                                        <h4 class="text-sm font-bold text-carob-400 uppercase tracking-wider mb-2">Alamat & Kontak</h4>
+                                        <h4 class="text-sm font-bold text-carob-500 uppercase tracking-wider mb-2">Alamat & Kontak</h4>
 
                                         <div class="group">
                                             <label class="text-xs text-carob-500 font-medium ml-1">Alamat Utama</label>
@@ -174,7 +174,7 @@
                                 <div class="space-y-4">
                                     <div class="flex items-center justify-between p-4 bg-soft-linen-50 rounded-2xl group hover:bg-soft-linen-100 transition-colors">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-carob-400 group-hover:text-forest-moss-green-500 transition-colors">
+                                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-carob-500 group-hover:text-forest-moss-green-500 transition-colors">
                                                 <i data-lucide="calendar" class="w-5 h-5"></i>
                                             </div>
                                             <div>
@@ -186,7 +186,7 @@
 
                                     <div class="flex items-center justify-between p-4 bg-soft-linen-50 rounded-2xl group hover:bg-soft-linen-100 transition-colors">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-carob-400 group-hover:text-chai-500 transition-colors">
+                                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-carob-500 group-hover:text-chai-500 transition-colors">
                                                 <i data-lucide="smartphone" class="w-5 h-5"></i>
                                             </div>
                                             <div>
@@ -195,13 +195,13 @@
                                             </div>
                                         </div>
                                         @if($petParent['has_app'])
-                                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i>
+                                            <i data-lucide="circle-check" class="w-5 h-5 text-green-500"></i>
                                         @endif
                                     </div>
                                     
                                     <div class="flex items-center justify-between p-4 bg-soft-linen-50 rounded-2xl group hover:bg-soft-linen-100 transition-colors">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-carob-400 group-hover:text-forest-moss-green-500 transition-colors">
+                                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-carob-500 group-hover:text-forest-moss-green-500 transition-colors">
                                                 <i data-lucide="hash" class="w-5 h-5"></i>
                                             </div>
                                             <div>
@@ -305,12 +305,12 @@
                         @else
                             <div class="bg-white rounded-[2rem] p-12 text-center shadow-xl border-2 border-dashed border-gray-200">
                                 <div class="w-24 h-24 bg-soft-linen-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
-                                    <i data-lucide="dog" class="w-12 h-12 text-carob-400"></i>
+                                    <i data-lucide="dog" class="w-12 h-12 text-carob-500"></i>
                                 </div>
                                 <h4 class="text-xl font-bold text-carob-900 mb-2">Belum ada anabul terdaftar</h4>
                                 <p class="text-carob-500 mb-6">Wah, kandangnya masih kosong nih! Yuk daftarkan anabul kesayanganmu di klinik.</p>
-                                <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-forest-moss-green-600 text-white rounded-xl font-bold hover:bg-forest-moss-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                                    <i data-lucide="plus-circle" class="w-5 h-5 mr-2"></i>
+                                <a href="https://wa.me/{{ config('clinic.whatsapp_number') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-forest-moss-green-600 text-white rounded-xl font-bold hover:bg-forest-moss-green-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                    <i data-lucide="circle-plus" class="w-5 h-5 mr-2"></i>
                                     Hubungi Admin Klinik
                                 </a>
                             </div>
@@ -365,7 +365,7 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="https://wa.me/6281219088899" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-2xl hover:bg-green-600 transition-all duration-300 font-bold shadow-lg hover:shadow-green-200 hover:-translate-y-1 group">
+                            <a href="https://wa.me/{{ config('clinic.whatsapp_number') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-2xl hover:bg-green-600 transition-all duration-300 font-bold shadow-lg hover:shadow-green-200 hover:-translate-y-1 group">
                                 <i data-lucide="message-circle" class="w-6 h-6 mr-2 group-hover:animate-bounce"></i>
                                 Chat WhatsApp
                             </a>

@@ -12,7 +12,7 @@
             </div>
             <div class="min-w-0 flex-1">
                 <h3 id="scheduleModalVetName" class="text-base sm:text-lg font-bold text-carob-900 font-heading leading-tight truncate">Dokter</h3>
-                <p class="text-carob-400 text-xs">Cek ketersediaan jadwal praktik</p>
+                <p class="text-carob-500 text-xs">Cek ketersediaan jadwal praktik</p>
             </div>
             <button type="button" id="closeVetScheduleModal" aria-label="Tutup"
                 class="text-carob-300 hover:text-carob-600 hover:bg-soft-linen-50 rounded-full p-2 transition-colors flex-shrink-0">
@@ -79,7 +79,7 @@
                     <i data-lucide="calendar-search" class="w-4 h-4"></i>
                     <span>Lihat Jadwal</span>
                 </button>
-                <p class="text-[11px] text-carob-400 flex items-center gap-1.5 sm:flex-shrink-0 justify-center sm:justify-start">
+                <p class="text-[11px] text-carob-500 flex items-center gap-1.5 sm:flex-shrink-0 justify-center sm:justify-start">
                     <i data-lucide="info" class="w-3.5 h-3.5 flex-shrink-0"></i>
                     Waktu tampil dalam WIB (GMT+7)
                 </p>
