@@ -42,9 +42,7 @@ class ArticleForm
                             ->maxLength(255)
                             ->unique(ignoreRecord: true)
                             ->rules(['alpha_dash'])
-                            ->helperText('URL-friendly version dari judul. Akan otomatis dibuat dari judul.')
-                            ->disabled(fn (string $context): bool => $context === 'create')
-                            ->dehydrated(),
+                            ->helperText('Dipakai di URL /articles/{slug}. Terisi otomatis dari judul, tapi sebaiknya diedit ke Bahasa Inggris agar konsisten dengan URL Layanan (mis. pet-care-tips-rainy-season). Jangan diubah setelah dipublikasikan.'),
 
                         Textarea::make('excerpt')
                             ->label('Ringkasan')

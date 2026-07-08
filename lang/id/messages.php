@@ -71,4 +71,8 @@ return [
     'no_facilities_yet' => 'Belum ada fasilitas yang ditambahkan.',
     'available_equipment' => 'Peralatan Tersedia',
     'back_to_facilities' => 'Kembali ke Fasilitas Klinik',
+    'articles' => 'Artikel',
+    'all_articles' => 'Semua Artikel',
+    'related_articles' => 'Artikel Terkait',
+    'back_to_articles' => 'Kembali ke Artikel',
 ];

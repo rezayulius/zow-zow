@@ -71,4 +71,8 @@ return [
     'no_facilities_yet' => 'No facilities have been added yet.',
     'available_equipment' => 'Available Equipment',
     'back_to_facilities' => 'Back to Clinic Facilities',
+    'articles' => 'Articles',
+    'all_articles' => 'All Articles',
+    'related_articles' => 'Related Articles',
+    'back_to_articles' => 'Back to Articles',
 ];

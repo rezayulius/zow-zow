@@ -4,9 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\Translatable\HasTranslations;
 
 class Article extends Model
 {
+    use HasTranslations {
+        setTranslation as baseSetTranslation;
+    }
+
+    public array $translatable = [
+        'title',
+        'excerpt',
+        'content',
+    ];
+
     protected $fillable = [
         'title',
         'slug',
@@ -29,6 +40,11 @@ class Article extends Model
         'published_at' => 'datetime',
         'sort_order' => 'integer'
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     // Auto generate slug
     protected static function boot()
@@ -66,12 +82,18 @@ class Article extends Model
         $this->increment('views');
     }
 
-    // Sanitize rich-text HTML from the admin editor before it's persisted,
-    // so a compromised/malicious admin account can't stash a stored-XSS
-    // payload in a field rendered unescaped ({!! !!}) on the public site.
-    public function setContentAttribute($value)
+    // Sanitize rich-text HTML from the admin editor before it's persisted, per
+    // locale, so a compromised/malicious admin account can't stash a stored-XSS
+    // payload in `content`, which is rendered unescaped ({!! !!}) on the public
+    // detail page. Mirrors ClinicService::setTranslation() — a plain attribute
+    // mutator is bypassed by Translatable's locale-keyed writes.
+    public function setTranslation(string $key, string $locale, $value): self
     {
-        $this->attributes['content'] = $value === null ? null : clean($value);
+        if ($key === 'content' && $value !== null) {
+            $value = clean($value);
+        }
+
+        return $this->baseSetTranslation($key, $locale, $value);
     }
 
     // Estimated reading time in minutes, based on a 200 words/minute pace

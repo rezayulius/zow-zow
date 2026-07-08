@@ -299,7 +299,7 @@
                                 {{ $article->excerpt ?: Str::limit(strip_tags($article->content), 100) }}
                             </p>
                             
-                            <a href="#modal-article-{{ $article->id }}" data-action="open-modal" data-modal-id="modal-article-{{ $article->id }}"
+                            <a href="{{ route('articles.show', $article) }}" wire:navigate
                                class="inline-flex items-center text-sm font-bold text-forest-moss-green-600 hover:text-forest-moss-green-700 transition-colors group/link">
                                 {{ __('testimonials.articles.read_article') }}
                                 <i data-lucide="arrow-right" class="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"></i>
@@ -483,12 +483,15 @@
     @endpush
 @endif
 
+{{-- Articles now have their own canonical page (routes/web.php: articles.show)
+     and navigate there directly instead of opening a modal, so only News still
+     uses the modal below. --}}
 <!-- Modals (Header, Body, Footer Layout - Joyful Edition) -->
 {{-- Each modal's content lives inside a <template>: templates are inert (no
      layout, no image/network requests, no script execution) until their
      content is cloned into the live DOM, so the browser never pays to
-     parse or paint the ~6 modals below unless a visitor actually opens one. --}}
-@foreach(['article' => $articles, 'news' => $news] as $type => $items)
+     parse or paint the hidden modals below unless a visitor actually opens one. --}}
+@foreach(['news' => $news] as $type => $items)
     @if(isset($items) && $items->count() > 0)
         @foreach($items as $item)
             <div id="modal-{{ $type }}-{{ $item->id }}" data-modal class="fixed inset-0 bg-carob-900/80 backdrop-blur-md hidden z-50 transition-opacity duration-300 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-{{ $type }}-{{ $item->id }}-title">

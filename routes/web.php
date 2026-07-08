@@ -14,6 +14,7 @@ use App\Http\Controllers\ContentViewController;
 use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\ClinicServiceController;
 use App\Http\Controllers\ClinicFacilityController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\SitemapController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -118,6 +119,13 @@ $reservedSlugPattern = '^(?!(?:' . implode('|', array_map(
 // ever claim that slug and shadow this route.
 Route::get('/facility', [ClinicFacilityController::class, 'index'])->name('facility.index');
 Route::get('/facility/{facility:slug}', [ClinicFacilityController::class, 'show'])->name('facility.show');
+
+// Articles ("Wawasan Perawatan Hewan") get their own canonical, crawlable URL
+// here so they can be indexed/cited independently — previously they only
+// existed as homepage modal content (see resources/js/testimonials.js), which
+// is invisible to search engines and non-JS-executing bots alike.
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::get('/{category:slug}', [ServiceCategoryController::class, 'show'])
     ->where('category', $reservedSlugPattern)

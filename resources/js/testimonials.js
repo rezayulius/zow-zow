@@ -1,11 +1,13 @@
 // Testimonials/Articles/News/Promo/FAQ tab section on the homepage: tab
-// switching, article & news modals, Google review "read more" truncation,
-// FAQ accordion, and promo/social share copy buttons.
+// switching, news modals, Google review "read more" truncation, FAQ
+// accordion, and promo/social share copy buttons.
 //
-// Modal bodies are kept inert inside a <template> in the blade markup and
-// only cloned into the DOM the first time they're opened, so the page never
-// pays to parse/paint hidden modal content (including remote images) that
-// most visitors never see.
+// Articles link straight to their own page (routes/web.php: articles.show)
+// instead of opening a modal. News has no standalone page yet, so it still
+// uses the modal below; its body is kept inert inside a <template> in the
+// blade markup and only cloned into the DOM the first time it's opened, so
+// the page never pays to parse/paint hidden modal content (including remote
+// images) that most visitors never see.
 import { createIcons } from 'lucide';
 import { icons } from './icons';
 
@@ -179,7 +181,7 @@ function flashCopiedIcon(button) {
     }, 1500);
 }
 
-// --- Article/news modals ---------------------------------------------------
+// --- News modals -------------------------------------------------------
 // Modal bodies live inside a <template> (see the blade partial) so the
 // browser never parses/loads them until the first time they're opened.
 

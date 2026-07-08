@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\ClinicFacility;
 use App\Models\ClinicService;
 use App\Models\ServiceCategory;
@@ -59,6 +60,25 @@ class SitemapController extends Controller
                         'priority' => '0.5',
                         'changefreq' => 'monthly',
                         'lastmod' => $facility->updated_at->toDateString(),
+                    ];
+                }
+            }
+
+            $articles = Article::published()->ordered()->orderByDesc('published_at')->get();
+
+            if ($articles->isNotEmpty()) {
+                $urls[] = [
+                    'loc' => route('articles.index'),
+                    'priority' => '0.6',
+                    'changefreq' => 'weekly',
+                ];
+
+                foreach ($articles as $article) {
+                    $urls[] = [
+                        'loc' => route('articles.show', $article),
+                        'priority' => '0.5',
+                        'changefreq' => 'monthly',
+                        'lastmod' => $article->updated_at->toDateString(),
                     ];
                 }
             }

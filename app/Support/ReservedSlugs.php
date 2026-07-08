@@ -12,7 +12,7 @@ class ReservedSlugs
     public const LIST = [
         'admin', 'login', 'auth', 'api', 'profile', 'history', 'coming-soon',
         'set-locale', 'digitail', 'content', 'storage', 'our-vets', 'build',
-        'sitemap.xml', 'robots.txt', 'favicon.ico', 'facility',
+        'sitemap.xml', 'robots.txt', 'favicon.ico', 'facility', 'articles',
     ];
 
     public static function contains(string $slug): bool
