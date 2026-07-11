@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+            'executive' => \App\Http\Middleware\EnsureUserIsExecutive::class,
         ]);
 
         // Trust only Cloudflare's published edge IP ranges (see config/trusted_proxies.php)

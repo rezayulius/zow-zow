@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Services\DigitailService;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Facades\App;
@@ -10,13 +11,19 @@ use Carbon\Carbon;
 
 class AppointmentsStatsOverview extends StatsOverviewWidget
 {
+    use InteractsWithPageFilters;
+
     protected static ?int $sort = 1;
+
+    protected ?string $heading = 'Ringkasan Appointment';
+
+    protected ?string $description = 'Total appointment, rata-rata per hari, tingkat vaksinasi, dan rasio pasien baru vs lama.';
 
     protected function getStats(): array
     {
         /** @var DigitailService $service */
         $service = App::make(DigitailService::class);
-        $response = $service->getAppointments(1, 100); // Fetch 100 for stats
+        $response = $service->getAppointments(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
         $appointments = collect($response['data'] ?? []);
 
         if ($appointments->isEmpty()) {
@@ -49,7 +56,7 @@ class AppointmentsStatsOverview extends StatsOverviewWidget
 
         return [
             Stat::make('Total Appointments', $total)
-                ->description('Last 100 records')
+                ->description('Dalam rentang tanggal terpilih')
                 ->descriptionIcon('heroicon-m-calendar')
                 ->color('primary'),
 

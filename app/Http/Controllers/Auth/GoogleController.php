@@ -36,7 +36,7 @@ class GoogleController extends Controller
                 // User exists, login
                 Auth::login($user);
                 $request->session()->regenerate();
-                $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+                $redirectUrl = $user->loginRedirectUrl();
                 return redirect($redirectUrl)->with('success', 'Berhasil login dengan Google!');
             }
 
@@ -57,7 +57,7 @@ class GoogleController extends Controller
 
                 Auth::login($user);
                 $request->session()->regenerate();
-                $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+                $redirectUrl = $user->loginRedirectUrl();
                 return redirect($redirectUrl)->with('success', 'Akun Google berhasil dihubungkan!');
             }
 

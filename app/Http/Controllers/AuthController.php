@@ -54,7 +54,7 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
 
-            $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+            $redirectUrl = $user->loginRedirectUrl();
 
             return response()->json([
                 'success' => true,
@@ -168,7 +168,7 @@ class AuthController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
-            $redirectUrl = $user->role === 'admin' ? '/admin' : '/';
+            $redirectUrl = $user->loginRedirectUrl();
 
             return response()->json([
                 'success' => true,

@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\App;
 class PetsReportOverview extends StatsOverviewWidget
 {
     protected static ?int $sort = 1;
-    
+
+    protected ?string $heading = 'Ringkasan Pasien';
+
+    protected ?string $description = 'Total pasien, spesies terbanyak, ras terbanyak, dan kelompok umur terbanyak.';
+
     // In Filament v3, pollingInterval is not static on the widget class itself in the same way
     // or it might be conflicting with parent definition.
     // We can override getPollingInterval() method instead if needed, 

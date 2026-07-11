@@ -22,6 +22,7 @@ class UserForm
                 \Filament\Forms\Components\Select::make('role')
                     ->options([
                         'admin' => 'Admin',
+                        'executive' => 'Executive',
                         'user' => 'User',
                     ])
                     ->required()

@@ -7,42 +7,46 @@ use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Support\Facades\App;
 
-class AppointmentsClinicChart extends ChartWidget
+class ReminderBySpeciesChart extends ChartWidget
 {
     use InteractsWithPageFilters;
 
-    protected ?string $heading = 'Appointments by Clinic';
+    protected ?string $heading = 'Reminder Volume by Species';
 
-    protected ?string $description = 'Jumlah appointment per cabang klinik.';
+    protected ?string $description = 'Total reminder vaksin/perawatan berdasarkan spesies hewan.';
 
     protected static ?int $sort = 3;
-    
+
     protected int | string | array $columnSpan = 1;
-    
+
     protected ?string $maxHeight = '300px';
 
     protected function getData(): array
     {
         /** @var DigitailService $service */
         $service = App::make(DigitailService::class);
-        $response = $service->getAppointments(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
-        $appointments = collect($response['data'] ?? []);
+        $response = $service->getReminderProtocolUsages(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
+        $reminders = collect($response['data'] ?? []);
 
-        if ($appointments->isEmpty()) {
+        if ($reminders->isEmpty()) {
             return ['datasets' => [], 'labels' => []];
         }
 
-        $grouped = $appointments
-            ->groupBy(fn($a) => $a['clinic']['name'] ?? 'Unknown Clinic')
-            ->map(fn($group) => $group->count())
+        $species = $service->getSpecies();
+
+        $grouped = $reminders
+            ->groupBy(fn ($r) => $species[$r['pet']['species_id'] ?? null] ?? 'Unknown')
+            ->map(fn ($group) => $group->count())
             ->sortDesc();
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Appointments',
+                    'label' => 'Reminders',
                     'data' => $grouped->values()->toArray(),
-                    'backgroundColor' => '#10b981', // emerald
+                    'backgroundColor' => [
+                        '#f59e0b', '#3b82f6', '#22c55e', '#ec4899', '#a855f7', '#14b8a6',
+                    ],
                 ],
             ],
             'labels' => $grouped->keys()->toArray(),
@@ -51,6 +55,6 @@ class AppointmentsClinicChart extends ChartWidget
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'doughnut';
     }
 }

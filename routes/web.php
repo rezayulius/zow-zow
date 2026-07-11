@@ -88,6 +88,12 @@ Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail
     Route::get('/pet-parent-by-email', [DigitailApiController::class, 'getPetParentByEmail'])->name('pet-parent-by-email');
     Route::get('/pets-by-owner', [DigitailApiController::class, 'getPetsByOwner'])->name('pets-by-owner');
     Route::get('/service-packages', [DigitailApiController::class, 'getServicePackages'])->name('service-packages');
+    Route::get('/sales', [DigitailApiController::class, 'getSales'])->name('sales');
+    Route::get('/invoices', [DigitailApiController::class, 'getInvoices'])->name('invoices');
+    Route::get('/credit-notes', [DigitailApiController::class, 'getCreditNotes'])->name('credit-notes');
+    Route::get('/reports/appointments', [DigitailApiController::class, 'getAppointmentsReport'])->name('reports.appointments');
+    Route::get('/integrations/labs/orders', [DigitailApiController::class, 'getLabOrders'])->name('labs.orders');
+    Route::get('/reminder-protocol-usages', [DigitailApiController::class, 'getReminderProtocolUsages'])->name('reminder-protocol-usages');
     Route::get('/vets', [DigitailApiController::class, 'getVets'])->name('vets');
     Route::get('/vet-schedule', [DigitailApiController::class, 'getVetSchedule'])->name('vet-schedule');
     Route::get('/visit-types', [DigitailApiController::class, 'getVisitTypes'])->name('visit-types');
@@ -97,6 +103,19 @@ Route::middleware(['auth', 'admin'])->prefix('api/digitail')->name('api.digitail
     Route::any('/{endpoint}', [DigitailApiController::class, 'proxyRequest'])
         ->where('endpoint', '.*')
         ->name('proxy');
+});
+
+// Executive Dashboard (standalone, outside Filament, role=executive only)
+Route::prefix('executive')->name('executive.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [App\Http\Controllers\ExecutiveController::class, 'showLogin'])->name('login');
+        Route::post('/login', [App\Http\Controllers\ExecutiveController::class, 'login'])->name('login.store');
+    });
+
+    Route::middleware(['auth', 'executive'])->group(function () {
+        Route::get('/', [App\Http\Controllers\ExecutiveController::class, 'dashboard'])->name('dashboard');
+        Route::post('/logout', [App\Http\Controllers\ExecutiveController::class, 'logout'])->name('logout');
+    });
 });
 
 // Service category/detail catch-all routes. Registered last so their single

@@ -60,6 +60,27 @@ class User extends Authenticatable implements FilamentUser
     }
 
     /**
+     * Check if user is executive (uses the separate /executive dashboard,
+     * not the Filament admin panel)
+     */
+    public function isExecutive(): bool
+    {
+        return $this->role === 'executive';
+    }
+
+    /**
+     * Where to send this user immediately after a successful login
+     */
+    public function loginRedirectUrl(): string
+    {
+        return match ($this->role) {
+            'admin' => '/admin',
+            'executive' => '/executive',
+            default => '/',
+        };
+    }
+
+    /**
      * Get the OTP verifications for the user.
      */
     public function otpVerifications()

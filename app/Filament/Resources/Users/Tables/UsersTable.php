@@ -26,6 +26,7 @@ class UsersTable
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
                         'admin' => 'danger',
+                        'executive' => 'warning',
                         'user' => 'info',
                         default => 'gray',
                     })

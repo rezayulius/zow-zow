@@ -5,28 +5,26 @@ namespace App\Filament\Widgets;
 use App\Services\DigitailService;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Support\Facades\App;
 use App\Models\User;
 
 class LatestAppointments extends BaseWidget
 {
+    use InteractsWithPageFilters;
+
     protected static ?string $heading = 'Latest Appointments';
 
     protected int|string|array $columnSpan = 'full';
 
-    public static function canView(): bool
-    {
-        return false;
-    }
-
     public function table(Table $table): Table
     {
         return $table
+            ->description('Daftar appointment terbaru beserta status dan dokter penanggung jawab.')
             ->query(
                 User::query()->whereRaw('1 = 0')
             )
-            ->recordKey('id')
             ->columns([
                 Tables\Columns\TextColumn::make('datetime_start_utc')
                     ->label('Date')
@@ -67,7 +65,7 @@ class LatestAppointments extends BaseWidget
     {
         /** @var DigitailService $service */
         $service = App::make(DigitailService::class);
-        $response = $service->getAppointments(1, 10);
+        $response = $service->getAppointments(1, 5, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
         $records = $response['data'] ?? [];
 
         // Transform data to match user's expected column fields
@@ -86,8 +84,12 @@ class LatestAppointments extends BaseWidget
                 // Generate a stable ID based on content to satisfy Livewire
                 $record['id'] = 'appt_' . md5(json_encode($record));
             }
-            
-            return $record; 
+
+            // Filament v5 identifies array-backed table rows via '__key'
+            // (Filament\Support\ArrayRecord::getKeyName()), not 'id'.
+            $record['__key'] = $record['id'];
+
+            return $record;
         }, $records);
 
         return collect($records);

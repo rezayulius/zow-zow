@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\App;
 class AppointmentsStatusChart extends ChartWidget
 {
     protected ?string $heading = 'Appointments by Visit Type';
-    
+
+    protected ?string $description = 'Jumlah appointment per jenis kunjungan (visit type).';
+
     protected static ?int $sort = 2;
     
     protected int | string | array $columnSpan = 1;

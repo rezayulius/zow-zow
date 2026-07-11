@@ -7,43 +7,45 @@ use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Support\Facades\App;
 
-class AppointmentsVetChart extends ChartWidget
+class TopServicesChart extends ChartWidget
 {
     use InteractsWithPageFilters;
 
-    protected ?string $heading = 'Appointments by Vet';
+    protected ?string $heading = 'Top Services/Products by Revenue';
 
-    protected ?string $description = '10 dokter dengan jumlah appointment terbanyak.';
+    protected ?string $description = '10 layanan/produk dengan kontribusi pendapatan terbesar.';
 
     protected static ?int $sort = 3;
-    
+
     protected int | string | array $columnSpan = 1;
-    
+
     protected ?string $maxHeight = '300px';
 
     protected function getData(): array
     {
         /** @var DigitailService $service */
         $service = App::make(DigitailService::class);
-        $response = $service->getAppointments(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
-        $appointments = collect($response['data'] ?? []);
+        $response = $service->getSales(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
+        $sales = collect($response['data'] ?? []);
 
-        if ($appointments->isEmpty()) {
+        $treatments = $sales->flatMap(fn ($s) => $s['treatments'] ?? []);
+
+        if ($treatments->isEmpty()) {
             return ['datasets' => [], 'labels' => []];
         }
 
-        $grouped = $appointments
-            ->groupBy(fn($a) => ($a['vet']['first_name'] ?? '') . ' ' . ($a['vet']['last_name'] ?? ''))
-            ->map(fn($group) => $group->count())
+        $grouped = $treatments
+            ->groupBy(fn ($t) => $t['product_name'] ?? $t['label'] ?? 'Unknown')
+            ->map(fn ($group) => $group->sum(fn ($t) => (float) ($t['total_price'] ?? 0)))
             ->sortDesc()
-            ->take(10); // Top 10 vets
+            ->take(10);
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Appointments',
+                    'label' => 'Revenue',
                     'data' => $grouped->values()->toArray(),
-                    'backgroundColor' => '#8b5cf6', // purple
+                    'backgroundColor' => '#3b82f6',
                 ],
             ],
             'labels' => $grouped->keys()->toArray(),

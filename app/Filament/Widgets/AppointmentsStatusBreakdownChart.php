@@ -6,19 +6,20 @@ use App\Services\DigitailService;
 use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
-class AppointmentsVetChart extends ChartWidget
+class AppointmentsStatusBreakdownChart extends ChartWidget
 {
     use InteractsWithPageFilters;
 
-    protected ?string $heading = 'Appointments by Vet';
+    protected ?string $heading = 'Appointments by Status';
 
-    protected ?string $description = '10 dokter dengan jumlah appointment terbanyak.';
+    protected ?string $description = 'Jumlah appointment berdasarkan status aktual (confirmed, cancelled, completed, dll).';
 
-    protected static ?int $sort = 3;
-    
+    protected static ?int $sort = 5;
+
     protected int | string | array $columnSpan = 1;
-    
+
     protected ?string $maxHeight = '300px';
 
     protected function getData(): array
@@ -33,25 +34,26 @@ class AppointmentsVetChart extends ChartWidget
         }
 
         $grouped = $appointments
-            ->groupBy(fn($a) => ($a['vet']['first_name'] ?? '') . ' ' . ($a['vet']['last_name'] ?? ''))
-            ->map(fn($group) => $group->count())
-            ->sortDesc()
-            ->take(10); // Top 10 vets
+            ->groupBy(fn ($a) => $a['status'] ?? 'unknown')
+            ->map(fn ($group) => $group->count())
+            ->sortDesc();
 
         return [
             'datasets' => [
                 [
                     'label' => 'Appointments',
                     'data' => $grouped->values()->toArray(),
-                    'backgroundColor' => '#8b5cf6', // purple
+                    'backgroundColor' => [
+                        '#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#a855f7', '#14b8a6',
+                    ],
                 ],
             ],
-            'labels' => $grouped->keys()->toArray(),
+            'labels' => $grouped->keys()->map(fn ($status) => Str::headline($status))->toArray(),
         ];
     }
 
     protected function getType(): string
     {
-        return 'bar';
+        return 'doughnut';
     }
 }

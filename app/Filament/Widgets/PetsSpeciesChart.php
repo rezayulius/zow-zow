@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\App;
 class PetsSpeciesChart extends ChartWidget
 {
     protected ?string $heading = 'Species Distribution';
-    
+
+    protected ?string $description = 'Jumlah pasien berdasarkan spesies (anjing, kucing, dll).';
+
     protected static ?int $sort = 2;
     
     protected int | string | array $columnSpan = 1;

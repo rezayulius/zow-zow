@@ -105,6 +105,25 @@ class DigitailController extends Controller
                 ]
             ],
             [
+                'title' => 'Reminder Protocol Usages',
+                'description' => 'Clinic-wide vaccine/treatment reminders (due date, administration date, pet, vet) used for client retention outreach',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/reminder-protocol-usages',
+                        'name' => 'List all Reminder Protocol Usages',
+                        'description' => 'Retrieve a paginated list of reminder protocol usages filtered by clinic. To find reminders still pending, check administration_date === null client-side; the API has no reliable "overdue" filter',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
                 'title' => 'Medical Records',
                 'description' => 'Operations related to medical records and visit history',
                 'endpoints' => [
@@ -152,6 +171,89 @@ class DigitailController extends Controller
                                 'name' => 'clinic_id',
                                 'type' => 'integer',
                                 'description' => 'Filter by clinic ID (default: 562)'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Lab Orders',
+                'description' => 'Clinic-wide lab orders (status, ordered tests, lab partner)',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/integrations/labs/orders',
+                        'name' => 'List all Lab Orders',
+                        'description' => 'Retrieve a paginated list of lab orders (lab partner, ordered tests, status) filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Financial Reports',
+                'description' => 'Operations related to sales, invoices, and credit notes (revenue tracking)',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/sales',
+                        'name' => 'List all Sales',
+                        'description' => 'Retrieve a paginated list of sales transactions (amount paid/due, line items, vet, status) filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ]
+                        ]
+                    ],
+                    [
+                        'method' => 'GET',
+                        'path' => '/invoices',
+                        'name' => 'List all Invoices',
+                        'description' => 'Retrieve a paginated list of invoices (total, date, PDF preview link) filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ]
+                        ]
+                    ],
+                    [
+                        'method' => 'GET',
+                        'path' => '/credit-notes',
+                        'name' => 'List all Credit Notes',
+                        'description' => 'Retrieve a paginated list of credit notes (refunds/credits) filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Appointments Report',
+                'description' => 'Aggregated appointment records (status, visit type, vet, clinic) that power operational reporting',
+                'endpoints' => [
+                    [
+                        'method' => 'GET',
+                        'path' => '/reports/appointments',
+                        'name' => 'Get Appointments Report',
+                        'description' => 'Retrieve a paginated list of appointment records with status, visit type, vet, and clinic details, filtered by clinic',
+                        'parameters' => [
+                            [
+                                'name' => 'page',
+                                'type' => 'integer',
+                                'description' => 'Page number for pagination (default: 1)'
                             ]
                         ]
                     ]

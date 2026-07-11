@@ -8,48 +8,48 @@ use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 
-class AppointmentsPerDayChart extends ChartWidget
+class RevenueTrendChart extends ChartWidget
 {
     use InteractsWithPageFilters;
 
-    protected ?string $heading = 'Appointments per Day';
+    protected ?string $heading = 'Revenue Trend';
 
-    protected ?string $description = 'Tren jumlah appointment harian.';
+    protected ?string $description = 'Tren pendapatan harian dari transaksi penjualan.';
 
     protected static ?int $sort = 2;
-    
+
     protected int | string | array $columnSpan = 1;
-    
+
     protected ?string $maxHeight = '300px';
 
     protected function getData(): array
     {
         /** @var DigitailService $service */
         $service = App::make(DigitailService::class);
-        $response = $service->getAppointments(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
-        $appointments = collect($response['data'] ?? []);
+        $response = $service->getSales(1, 250, $this->pageFilters['start_date'] ?? null, $this->pageFilters['end_date'] ?? null);
+        $sales = collect($response['data'] ?? []);
 
-        if ($appointments->isEmpty()) {
+        if ($sales->isEmpty()) {
             return ['datasets' => [], 'labels' => []];
         }
 
-        $grouped = $appointments
-            ->groupBy(fn($a) => Carbon::parse($a['datetime_start_utc'])->format('Y-m-d'))
-            ->map(fn($group) => $group->count())
+        $grouped = $sales
+            ->groupBy(fn ($s) => Carbon::parse($s['closed_at'] ?? $s['created_at'])->format('Y-m-d'))
+            ->map(fn ($group) => $group->sum(fn ($s) => (float) $s['total']))
             ->sortKeys();
 
         return [
             'datasets' => [
                 [
-                    'label' => 'Appointments',
+                    'label' => 'Revenue',
                     'data' => $grouped->values()->toArray(),
-                    'borderColor' => '#3b82f6',
-                    'backgroundColor' => 'rgba(59, 130, 246, 0.1)',
+                    'borderColor' => '#10b981',
+                    'backgroundColor' => 'rgba(16, 185, 129, 0.1)',
                     'fill' => true,
                     'tension' => 0.4,
                 ],
             ],
-            'labels' => $grouped->keys()->map(fn($date) => Carbon::parse($date)->format('M d'))->toArray(),
+            'labels' => $grouped->keys()->map(fn ($date) => Carbon::parse($date)->format('M d'))->toArray(),
         ];
     }
 

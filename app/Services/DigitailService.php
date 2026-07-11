@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\DigitailToken;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -60,31 +61,164 @@ class DigitailService
     }
 
     /**
-     * Get Appointments Report
+     * Get Appointments Report, optionally scoped to a date range (Y-m-d).
+     * Supports `date_between` server-side.
      */
-    public function getAppointments(int $page = 1, int $perPage = 15)
+    public function getAppointments(int $page = 1, int $perPage = 15, ?string $startDate = null, ?string $endDate = null)
     {
         $clinicId = config('services.digitail.default_clinic_id');
-        $cacheKey = "digitail.appointments.{$clinicId}.{$page}.{$perPage}";
+        $params = ['filter[clinic_id]' => $clinicId];
 
-        return Cache::remember($cacheKey, self::REPORT_CACHE_TTL, function () use ($page, $perPage, $clinicId) {
+        if ($startDate && $endDate) {
+            $params['filter[date_between]'] = "{$startDate},{$endDate}";
+        }
+
+        return $this->getCachedList('appointments', '/reports/appointments', $params, $page, $perPage);
+    }
+
+    /**
+     * Shared cached GET helper for clinic-scoped report/list endpoints, mirroring
+     * getAppointments()/getPetsReportAggregated() above so new Filament widgets
+     * don't each reinvent caching + error handling.
+     */
+    private function getCachedList(string $cacheKey, string $path, array $params, int $page, int $perPage): ?array
+    {
+        $fullCacheKey = "digitail.{$cacheKey}." . md5(serialize($params)) . ".{$page}.{$perPage}";
+
+        return Cache::remember($fullCacheKey, self::REPORT_CACHE_TTL, function () use ($path, $params, $page, $perPage) {
             $accessToken = $this->getAccessToken();
 
             $response = Http::withToken($accessToken)
                 ->timeout($this->timeout)
-                ->get("{$this->apiBase}/reports/appointments", [
-                    'filter[clinic_id]' => $clinicId,
+                ->get("{$this->apiBase}{$path}", array_merge($params, [
                     'page' => $page,
                     'per_page' => $perPage,
-                ]);
+                ]));
 
             if (!$response->successful()) {
-                Log::error('Digitail Appointments Report Failed', ['body' => $response->body()]);
+                Log::error("Digitail {$path} report failed", ['body' => $response->body()]);
                 return null;
             }
 
             return $response->json();
         });
+    }
+
+    /**
+     * Get sales (revenue transactions), used by the Financial dashboard widgets.
+     * Date range filters on `created_at` (Y-m-d).
+     */
+    public function getSales(int $page = 1, int $perPage = 100, ?string $startDate = null, ?string $endDate = null)
+    {
+        $clinicId = config('services.digitail.default_clinic_id');
+        $params = ['filter[clinic_id]' => $clinicId];
+
+        if ($startDate && $endDate) {
+            $params['filter[created_at]'] = "{$startDate},{$endDate}";
+        }
+
+        return $this->getCachedList('sales', '/sales', $params, $page, $perPage);
+    }
+
+    /**
+     * Get invoices, used by the Financial dashboard widgets. Date range filters
+     * on `updated_at` (the closest available field) — this endpoint requires a
+     * full ISO-8601 UTC timestamp, unlike the other endpoints' plain Y-m-d.
+     */
+    public function getInvoices(int $page = 1, int $perPage = 100, ?string $startDate = null, ?string $endDate = null)
+    {
+        $clinicId = config('services.digitail.default_clinic_id');
+        $params = ['filter[clinic_id]' => $clinicId];
+
+        if ($startDate && $endDate) {
+            $params['filter[updated_from]'] = Carbon::parse($startDate)->startOfDay()->utc()->format('Y-m-d\TH:i:s\Z');
+            $params['filter[updated_to]'] = Carbon::parse($endDate)->endOfDay()->utc()->format('Y-m-d\TH:i:s\Z');
+        }
+
+        return $this->getCachedList('invoices', '/invoices', $params, $page, $perPage);
+    }
+
+    /**
+     * Get credit notes (refunds/credits), used by the Financial dashboard
+     * widgets. Date range filters on `made_at` (Y-m-d).
+     */
+    public function getCreditNotes(int $page = 1, int $perPage = 100, ?string $startDate = null, ?string $endDate = null)
+    {
+        $clinicId = config('services.digitail.default_clinic_id');
+        $params = ['filter[clinic_id]' => $clinicId];
+
+        if ($startDate && $endDate) {
+            $params['filter[made_at]'] = "{$startDate},{$endDate}";
+        }
+
+        return $this->getCachedList('credit_notes', '/credit-notes', $params, $page, $perPage);
+    }
+
+    /**
+     * Get lab orders, used by the Clinical dashboard widgets. This endpoint has
+     * no date filter and ignores pagination (Digitail always returns the full
+     * list) — callers that need a date range filter the returned `created_at`
+     * client-side.
+     */
+    public function getLabOrders(int $page = 1, int $perPage = 100)
+    {
+        $clinicId = config('services.digitail.default_clinic_id');
+
+        return $this->getCachedList('lab_orders', '/integrations/labs/orders', ['filter[clinic_id]' => $clinicId], $page, $perPage);
+    }
+
+    /**
+     * Get reminder protocol usages (vaccine/treatment reminders), used by the
+     * CRM dashboard widgets. "administration_date" is null while a reminder is
+     * still pending — the API has no reliable server-side "overdue" filter.
+     * Date range filters on `due_date` via the one-sided `date_after`/`date_before`.
+     */
+    public function getReminderProtocolUsages(int $page = 1, int $perPage = 100, ?string $startDate = null, ?string $endDate = null)
+    {
+        $clinicId = config('services.digitail.default_clinic_id');
+        $params = ['filter[clinic_id]' => $clinicId];
+
+        if ($startDate) {
+            $params['filter[date_after]'] = $startDate;
+        }
+
+        if ($endDate) {
+            $params['filter[date_before]'] = $endDate;
+        }
+
+        return $this->getCachedList('reminder_protocol_usages', '/reminder-protocol-usages', $params, $page, $perPage);
+    }
+
+    /**
+     * Get the species reference list (id => label), used to join species names
+     * onto pet records that only carry a species_id. Static reference data,
+     * so it's cached far longer than the report endpoints above.
+     */
+    public function getSpecies(): array
+    {
+        return Cache::remember('digitail.species', now()->addDay(), function () {
+            $accessToken = $this->getAccessToken();
+
+            $response = Http::withToken($accessToken)
+                ->timeout($this->timeout)
+                ->get("{$this->apiBase}/species", ['per_page' => 100]);
+
+            if (!$response->successful()) {
+                Log::error('Digitail Species Failed', ['body' => $response->body()]);
+                return [];
+            }
+
+            return collect($response->json('data'))->pluck('label', 'id')->all();
+        });
+    }
+
+    /**
+     * Get pet parents, used by the CRM dashboard widgets. This endpoint isn't
+     * clinic_id-filterable (the token is already clinic-scoped).
+     */
+    public function getPetParents(int $page = 1, int $perPage = 100)
+    {
+        return $this->getCachedList('pet_parents', '/pet-parents', [], $page, $perPage);
     }
 
     /**

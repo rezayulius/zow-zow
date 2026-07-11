@@ -207,6 +207,82 @@ class DigitailApiController extends Controller
     }
 
     /**
+     * Get sales (revenue transactions) list with pagination and clinic filter
+     */
+    public function getSales(Request $request)
+    {
+        return $this->proxyGet('/sales', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/sales');
+    }
+
+    /**
+     * Get invoices list with pagination and clinic filter
+     */
+    public function getInvoices(Request $request)
+    {
+        return $this->proxyGet('/invoices', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/invoices');
+    }
+
+    /**
+     * Get credit notes (refunds/credits) list with pagination and clinic filter
+     */
+    public function getCreditNotes(Request $request)
+    {
+        return $this->proxyGet('/credit-notes', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/credit-notes');
+    }
+
+    /**
+     * Get the appointments report (status, visit type, vet, clinic per appointment)
+     * with pagination and clinic filter
+     */
+    public function getAppointmentsReport(Request $request)
+    {
+        return $this->proxyGet('/reports/appointments', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/reports/appointments');
+    }
+
+    /**
+     * Get lab orders list with pagination and clinic filter
+     */
+    public function getLabOrders(Request $request)
+    {
+        return $this->proxyGet('/integrations/labs/orders', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/integrations/labs/orders');
+    }
+
+    /**
+     * Get reminder protocol usages (vaccine/treatment reminders) with pagination
+     * and clinic filter. "Overdue" is NOT a real API filter despite appearances —
+     * administration_date must be checked client-side (null + due_date in the
+     * past) to find reminders that are actually still pending.
+     */
+    public function getReminderProtocolUsages(Request $request)
+    {
+        return $this->proxyGet('/reminder-protocol-usages', [
+            'page' => $request->get('page', 1),
+            'per_page' => $request->get('per_page', 15),
+            'filter[clinic_id]' => $this->defaultClinicId,
+        ], '/reminder-protocol-usages');
+    }
+
+    /**
      * Get service packages list with pagination and clinic filter
      */
     public function getServicePackages(Request $request)

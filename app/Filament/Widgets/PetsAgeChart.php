@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\App;
 class PetsAgeChart extends ChartWidget
 {
     protected ?string $heading = 'Age Distribution';
-    
+
+    protected ?string $description = 'Jumlah pasien berdasarkan kelompok umur.';
+
     protected static ?int $sort = 3;
     
     protected int | string | array $columnSpan = 1;
