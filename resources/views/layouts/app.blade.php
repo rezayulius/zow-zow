@@ -52,18 +52,24 @@
   <link rel="icon" href="{{ asset('favicon-zow.ico') }}">
   <link rel="apple-touch-icon" href="{{ asset('favicon-zow.ico') }}">
 
-  <!-- Fonts: only the one family actually used (.font-heading) is loaded.
-       Figtree/Poppins/Inter were linked here previously but referenced by
-       zero classes anywhere in the app -- pure dead weight, removed. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts: only the one family actually used (.font-heading) is loaded,
+       and it's now self-hosted from /fonts (see resources/css/app.css)
+       instead of a fonts.googleapis.com stylesheet -- that removed a whole
+       render-blocking cross-origin request + connection from the critical
+       path. Figtree/Poppins/Inter were linked here previously but
+       referenced by zero classes anywhere in the app -- pure dead weight,
+       removed. -->
 
   <!-- Deferred/async third-party origins: a cheap DNS/TCP head start, not a
        full preconnect, since none of these block first paint. -->
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  <link rel="dns-prefetch" href="https://live.cekat.ai">
+  <!-- cekat.ai chat widget loads on window "load" (see script near </body>)
+       so it's not render-blocking, but the connection setup itself is slow
+       enough that Lighthouse flags it -- preconnect gives the TCP/TLS
+       handshake a head start before the widget script requests it. -->
+  <link rel="preconnect" href="https://live.cekat.ai">
+  <link rel="preconnect" href="https://server.cekat.ai">
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
